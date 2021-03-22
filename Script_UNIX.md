@@ -1,4 +1,5 @@
 # CONTENTS
+- [CONTENTS](#contents)
 - [Connecting to the cluster](#connecting-to-the-cluster)
 - [Files and file systems](#files-and-file-systems)
     + [Navigate the file system](#navigate-the-file-system)
@@ -23,9 +24,11 @@
       - [Exercise](#exercise)
     + [Comparing files](#comparing-files)
       - [Exercise](#exercise-1)
-- [Useful links:](#useful-links-)
+- [Useful links](#useful-links)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 # Connecting to the cluster
 The command ssh lets you connect to the cluster
 ```
@@ -236,7 +239,7 @@ Copy the file gRNAs.txt from your home directory into the folder "day2". Then re
 
 ### Editing in nano
 
-Now add a line at the end of the file "gRNAs.txt" that is located in your home directory. Add the gRNA "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
+Now add a line at the end of the file "gRNAs.txt" that is located in your home directory. Add the gRNA "ACTGACTG". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
 ```
 nano gRNAs.txt
 ```
@@ -265,7 +268,11 @@ nano ~/.bashrc
 
 Add the following lines in nano, then exit the file (and save it).
 ```
-TODO
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
 ```
 
 Now run the commands stored in this file
@@ -388,6 +395,7 @@ cat sample
 grep ^a sample
 grep -E p\{2} sample
 grep "a\+t" sample
+sed "s/a/XXX/g" sample
 ```
 
 ### Checking the nucleotides in the Ensembl fasta file
@@ -450,7 +458,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g' 
 
 We developed the above approach on the first 30 lines. Now run it an the full file.
 ```
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > GRCh38_reformatted.gz
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]//g' | sed -E 's/([ACTG]*)$/ seq:\1/g' | gzip > GRCh38_reformatted.gz
 ```
 
 Have a look at the generated file.
@@ -477,24 +485,24 @@ gunzip -c GRCh38_reformatted.gz | grep "gene_symbol" | head -30
 gunzip -c GRCh38_reformatted.gz | grep -v "gene_symbol" | head -30 
 ```
 
-Next we extract those sequences matching the guide "CGAC"
+Next we extract those sequences matching the guide "TTAAGACA"
 ```
-gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | head -30 
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | head -30 
 ```
 
 Now we extract the gene symbols of these matches. First we match all text before the text "gene_symbol"
 ```
-gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | sed 's/^.*gene_symbol://g' | head -30
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | head -30
 ```
 
 Then we also remove all text after the gene symbol
 ```
-gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | head -30
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | head -30
 ```
 
 Finally, we get unique gene IDs.
 ```
-gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | sort | uniq
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | sort | uniq
 ```
 
 
@@ -502,7 +510,7 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | sed 's/^.*gene_symbol
 
 Create the following files in the folder "day4":
 
-- Extract all entries with sequences matching the guide "ATTAGC" in the file guideMatch_ATTAGC.txt
+- Extract all entries with sequences matching the guide "GCGGTTTC" in the file guideMatch_GCGGTTTC.txt
 - Write the count of entries with sequences starting with "TGC" into the file count_TGC.txt
 - Write the count of entries of gene "MMP2" into the file count_MMP2_.txt. Note: Do not count genes MMP20, MMP21,...
 - Write the count of unique genes whose symbol starts with "RPL" into the file count_RPL.txt
@@ -521,7 +529,7 @@ echo $x | sed 's/a//g'
 
 Now we will write the gRNAs to test and the regexp patterns into variables
 ```
-guide=TT
+guide=TTAAGACA
 echo $guide
 pattern="seq:[ACTG]*${guide}"
 echo $pattern
@@ -571,15 +579,15 @@ wc -l results_*.txt
 Now let's compare individual files.
 ```
 cd ~/day5
-comm result_TAC.txt result_TT.txt
-comm -13 result_TAC.txt result_TT.txt
+comm results_ATCGCGGC.txt results_ATCCCAGC.txt
+comm -12 results_ATCGCGGC.txt results_ATCCCAGC.txt
 ```
 
 This overlap can be stored in a variable
 ```
-guide1=TAC
-guide2=TT
-overlap=$(comm -13 result_TAC.txt result_TT.txt)
+guide1=ATCGCGGC
+guide2=ATCCCAGC
+overlap=$(comm -12 results_ATCGCGGC.txt results_ATCCCAGC.txt | wc -l)
 echo "$guide1 $guide2 $overlap"
 ```
 
@@ -589,10 +597,10 @@ Now we will compare each pair of guides to test the overlap of genes.
 
 - Use one loop within another loop to check pairs of guides
 - Use the "comm" command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
-- "Manually" check results, for example comparing to the example above ("TAC" vs "TT")
+- "Manually" check results, for example comparing to the example above ("ATCGCGGC" vs "ATCCCAGC")
 
 
-# Useful links:
+# Useful links
 - https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0
 - https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0
 - https://bioinformatics.uconn.edu/unix-basics/#
