@@ -63,7 +63,7 @@ head day1/*
 
 # Files and file systems
 
-## Getting files
+### Getting files
 
 Make sure you are in your home directory
 ```
@@ -87,7 +87,7 @@ tail -5 profiles.txt
 less profiles.txt
 ```
 
-## Editing in nano
+### Editing in nano
 
 Now add a line at the end of this file. Add the profiles "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
 ```
@@ -111,7 +111,24 @@ ctrl+w | find matching word
 alt+w | find next match
 ctrl+\ | find and replace
 
-## Zipped files
+Now let's modify our shell to make things prettier
+```
+nano ~/.bashrc
+```
+
+Add the following lines in nano, then exit the file (and save it).
+```
+TODO
+```
+
+Now run the commands stored in this file
+```
+source ~/.bashrc
+```
+
+From now on, every time you login, these changes will be in place.
+
+### Zipped files
 
 Now let's download all human gene sequences from Ensembl.
 ```
@@ -121,6 +138,12 @@ wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.
 Have a look at this file
 ```
 head Homo_sapiens.GRCh38.cds.all.fa.gz
+```
+
+How large are those files?
+```
+du *
+du -sh *
 ```
 
 This doesn't look great. Remember to clean up your terminal
@@ -139,7 +162,9 @@ Again, remember to clean up your terminal
 clear
 ```
 
-## Piping
+Can we use "head" on the unzipped output? Yes - this is done by "pipeing"
+
+### Piping
 
 Pipeing enables you to pass the output of one command to another command.
 
@@ -153,17 +178,15 @@ cmd 1>&2 file | send output and error to file
 cmd1 \| cmd2 | send output of cmd1 to cmd2
 
 
-clear
-
+Let's have a look at the first few lines
+```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head
+```
 
+Some programs let you look at decompressed output, for example
+```
 zless Homo_sapiens.GRCh38.cds.all.fa.gz
-
-du *
-du -sh *
-
-
-
+```
 
 
 # REGEXP
