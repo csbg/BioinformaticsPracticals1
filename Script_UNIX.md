@@ -1,3 +1,15 @@
+- [Connecting to the cluster](#connecting-to-the-cluster)
+- [Files and file systems](#files-and-file-systems)
+    + [Getting files](#getting-files)
+    + [Editing in nano](#editing-in-nano)
+    + [Zipped files](#zipped-files)
+    + [Piping](#piping)
+- [REGEXP](#regexp)
+- [Loops and conditions](#loops-and-conditions)
+- [Useful links:](#useful-links-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # Connecting to the cluster
 The command ssh lets you connect to the cluster
 ```
