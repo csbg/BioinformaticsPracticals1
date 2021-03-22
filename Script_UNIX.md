@@ -61,42 +61,79 @@ man mkdir
 
 Now create some files. There are many ways to create a file
 ```
+# Create an empty file in directory "day1"
 touch day1/touch.txt
-echo "test"  > day1/echo.txt
+
+# Write the text "abcdefgh" in a file.
+echo "abcdefgh"  > day1/echo.txt
 ```
 
 List files again
 ```
 ls *
 ls -l *
+```
+
+Take a look at the files with content
+```
 head day1/*
 ```
 
-
 # Files and file systems
+
+### Navigate the file system
+```
+cd ~/
+ls -l
+pwd
+
+cd /home
+ls -l
+pwd
+
+cd ~/
+ls -l
+pwd
+
+cd day1/
+ls -l
+pwd
+
+cd ~/day1/
+ls -l
+pwd
+```
 
 ### Getting files
 
 Make sure you are in your home directory
 ```
 pwd
+cd ~/
+pwd
 ```
 
 Obtain the list of profiles - which command works and why?
 ```
+# move or copy?
 mv /home/bioinfo1/profiles.txt ~/
 cp /home/bioinfo1/profiles.txt ~/
+
+# Look at file permissions:
 ls -l /home/bioinfo1/profiles.txt
 ls -l ~/profiles.txt
 ```
 
-Now have explore this file
+Now  explore this file
 ```
-wc -l profiles.txt
 head profiles.txt
 head -5 profiles.txt
 tail -5 profiles.txt
 less profiles.txt
+more profiles.txt
+
+# Count the number of lines
+wc -l profiles.txt
 ```
 
 ### Editing in nano
@@ -180,7 +217,7 @@ Can we use "head" on the unzipped output? Yes - this is done by "pipeing"
 
 Pipeing enables you to pass the output of one command to another command.
 
-Pipe command	| Function
+Pipe command | Function
 --- | ---
 cmd < file | use file as input
 cmd > file | write output to file
@@ -200,6 +237,10 @@ Some programs let you look at decompressed output, for example
 zless Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
 
+Or count the number of lines in this file
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
+```
 
 # REGEXP
 cat sample
