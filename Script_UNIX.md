@@ -406,8 +406,6 @@ grep "a\+t" sample
 sed "s/a/XXX/g" sample
 ```
 
-
-
 Descriptions | Symbol
 --- |  ---
 replaces any character | .
@@ -493,7 +491,7 @@ We developed the above approach on the first 30 lines. Now run it an the full fi
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]//g' | sed -E 's/([ACTG]*)$/ seq:\1/g' | gzip > GRCh38_reformatted.gz
 ```
 
-Have a look at the generated file.
+Explore the generated file.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | grep ">" | wc -l
@@ -522,7 +520,7 @@ Next we extract those sequences matching the guide "TTAAGACA"
 gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | head -30 
 ```
 
-Now we extract the gene symbols of these matches. First we match all text before the text "gene_symbol" and delete it.
+Now we extract the gene symbols of these matches. First we match all text (`.*`) from the beginning of the line (`^`) before the text "gene_symbol" and delete it.
 ```
 gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | head -30
 ```
@@ -540,11 +538,11 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_sy
 
 #### Exercises
 
-Create the following files in the folder "day4":
+Create the following files in the folder "day3":
 
 - Extract all entries with sequences matching the guide "GCGGTTTC" in the file guideMatch_GCGGTTTC.txt
 - Write the count of entries with sequences starting with "TGC" into the file count_TGC.txt
-- Write the count of entries of gene "MMP2" into the file count_MMP2_.txt. Note: Do not count genes MMP20, MMP21,...
+- Write the count of entries of gene "MMP2" into the file count_MMP2.txt. Note: Do not count genes MMP20, MMP21,...
 - Write the count of unique genes whose symbol starts with "RPL" into the file count_RPL.txt
 - Write the count of all unique protein coding genes into the file count_protein_coding.txt
 
@@ -572,7 +570,9 @@ gunzip -c GRCh38_reformatted.gz | grep $pattern | sed 's/^.*gene_symbol://g' | s
 
 ### Loops
 
-The following loop starts with x = 1. It then repeats printing "Welcome ... times" and adding +1 to x, until x is greater than 5 (while x is lower or equal to 5).
+We will use `while` loops. They have the following syntax: `while [condition] do [something] done`. Different types of loops exist: https://ryanstutorials.net/bash-scripting-tutorial/bash-loops.php but are not important for this course.
+
+The following loop starts with x = 1. It then repeats printing "Welcome ... times" and adding +1 to x, until x is greater than 5 (while x is lower or equal to 5 `$x -le 5`).
 ```
 x=1
 while [ $x -le 5 ]
@@ -581,6 +581,17 @@ do
   x=$(( $x + 1 )) # syntax to add a number to x
 done
 ```
+Try to make the above loop count to 10. 
+
+Operator | Description | Example
+ --- | --- | ---
+-eq | Checks if the value of two operands are equal or not; if yes, then the condition becomes true. | [ $a -eq $b ] is not true.
+-ne | Checks if the value of two operands are equal or not; if values are not equal, then the condition becomes true. | [ $a -ne $b ] is true.
+-gt | Checks if the value of left operand is greater than the value of right operand; if yes, then the condition becomes true. | [ $a -gt $b ] is not true.
+-lt | Checks if the value of left operand is less than the value of right operand; if yes, then the condition becomes true. | [ $a -lt $b ] is true.
+-ge | Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true. | [ $a -ge $b ] is not true.
+-le | Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true. | [ $a -le $b ] is true.
+
 
 We can also loop through the content of a file.
 ```
