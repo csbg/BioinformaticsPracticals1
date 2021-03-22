@@ -1,15 +1,31 @@
+# CONTENTS
 - [Connecting to the cluster](#connecting-to-the-cluster)
 - [Files and file systems](#files-and-file-systems)
+    + [Navigate the file system](#navigate-the-file-system)
+      - [Exercises](#exercises)
     + [Getting files](#getting-files)
+      - [Exercises](#exercises-1)
     + [Editing in nano](#editing-in-nano)
     + [Zipped files](#zipped-files)
     + [Piping](#piping)
-- [REGEXP](#regexp)
-- [Loops and conditions](#loops-and-conditions)
+      - [Exercises](#exercises-2)
+- [Patterns and regular expressions](#patterns-and-regular-expressions)
+    + [File pattern matches](#file-pattern-matches)
+    + [Simple regular expressions](#simple-regular-expressions)
+    + [Checking the nucleotides in the Ensembl fasta file](#checking-the-nucleotides-in-the-ensembl-fasta-file)
+      - [Exercises](#exercises-3)
+    + [Reformatting the Ensembl fasta file](#reformatting-the-ensembl-fasta-file)
+    + [Identifying gRNA matches](#identifying-grna-matches)
+      - [Exercises](#exercises-4)
+- [Loops and variables](#loops-and-variables)
+    + [Variables](#variables)
+    + [Loops](#loops)
+      - [Exercise](#exercise)
+    + [Comparing files](#comparing-files)
+      - [Exercise](#exercise-1)
 - [Useful links:](#useful-links-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 # Connecting to the cluster
 The command ssh lets you connect to the cluster
 ```
@@ -343,7 +359,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 
 ### File pattern matches
 
-Commands can be executed on multiple files at the same time using pattern matches.
+Commands can be executed on multiple files at the same time using pattern matches (we have used this already above).
 
 ```
 ls -l
