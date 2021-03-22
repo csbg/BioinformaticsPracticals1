@@ -133,20 +133,28 @@ Change permissions in a file created in the above folder.
 ```
 touch day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 711 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 722 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 733 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 744 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 755 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 766 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 777 day2/test/folder/test.txt
 ls -l day2/test/folder
+
 chmod 700 day2/test/folder/test.txt
 ls -l day2/test/folder
 
