@@ -173,7 +173,7 @@ x | Permission | rwx | Binary
 3 | write and execute | -wx | 011
 2 | write only | -w- | 010
 1 | execute only | --x | 001
-0 | none | --- | 000
+0 | none |  | 000
 
 ### Exercises
 - Create a new folder called "test2" within in the folder ~/day2.
