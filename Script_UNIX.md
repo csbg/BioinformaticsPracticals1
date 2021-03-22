@@ -129,6 +129,10 @@ cd day2/test/folder
 pwd
 ```
 
+###Exercise
+
+Create a new folder called "test2" within in the folder ~/day2.
+
 ### Getting files
 
 Make sure you are in your home directory
@@ -165,11 +169,13 @@ more profiles.txt
 wc -l profiles.txt
 ```
 
-<!-- TODO: Split here? -->
+###Exercise
+
+Copy the file profiles.txt from your home directory into the folder "day2". Then rename the copied file in this folder to "profiles_exercise.txt".
 
 ### Editing in nano
 
-Now add a line at the end of this file. Add the profiles "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
+Now add a line at the end of the file "profiles.txt" that is located in your home directory. Add the profiles "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
 ```
 nano profiles.txt
 ```
@@ -207,6 +213,8 @@ source ~/.bashrc
 ```
 
 From now on, every time you login, these changes will be in place.
+
+<!-- TODO: Split here? -->
 
 ### Zipped files
 
@@ -258,7 +266,7 @@ cmd < file | use file as input
 cmd > file | write output to file
 cmd >> file | append output to file
 cmd 2> stderr | error output to file
-cmd 1>&2 file | send output and error to file
+cmd &> file | send output and error to file
 cmd1 \| cmd2 | send output of cmd1 to cmd2
 
 
@@ -277,7 +285,13 @@ Or count the number of lines in this file
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 ```
 
-# REGEXP
+#### Exercise
+- Create a folder called "day3" in your home
+- Store the number of lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines.txt" in the folder "day3"
+- Store the first 15 lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines.txt" in the folder "day3"
+
+# Regular expressions
+
 cat sample
 grep ^a sample
 grep -E p\{2} sample
