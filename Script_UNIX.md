@@ -163,7 +163,7 @@ x | Permission | rwx
 4 | read only | r--
 
 
-###Exercises
+### Exercises
 - Create a new folder called "test2" within in the folder ~/day2.
 - Enable full access to this folder for the owner of the folder, read access for the group, and no access for others
 
