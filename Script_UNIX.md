@@ -153,7 +153,7 @@ ls -l day2/test/folder
 man chmod
 ```
 
-The folloing table outlines permissions in chmod
+The following table outlines permissions in chmod
 
 x | Permission | rwx
 --- | --- | ---
@@ -161,6 +161,7 @@ x | Permission | rwx
 6 | read and write | rw-
 5 | read and execute | r-x
 4 | read only | r--
+
 
 ###Exercises
 - Create a new folder called "test2" within in the folder ~/day2.
