@@ -214,7 +214,7 @@ more profiles.txt
 wc -l profiles.txt
 ```
 
-###Exercises
+### Exercises
 
 Copy the file profiles.txt from your home directory into the folder "day2". Then rename the copied file in this folder to "profiles_exercise.txt".
 
@@ -323,6 +323,8 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head
 Some programs let you look at decompressed output, for example
 ```
 zless Homo_sapiens.GRCh38.cds.all.fa.gz
+# very similar to:
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | zless
 ```
 
 Or count the number of lines in this file
@@ -339,26 +341,103 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 
 # Regular expressions
 
+### The simple example
+
+The example from the slides. The file "sample" needs to be copied over from the home directory of user "bioinfo".
+<!-- TODO: place file -->
+```
 cat sample
 grep ^a sample
 grep -E p\{2} sample
 grep "a\+t" sample
+```
 
+### Checking the nucleotides in the Ensembl fasta file
+
+Have a look at the first few lines
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -50
+```
+
+We expect all DNA sequences to be made up of A, C, T, and Gs. Next, we will verify this. First, we will get all DNA-sequences from this file
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">"
+
+# from "man grep": -v Invert the sense of matching, to select non-matching lines.
+```
+
+Next we will use "tr" to delete newline characters, to place all characters in one (very long) line
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n'
+```
+
+Next we place every character on a different line
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o .
+```
+
+Finally, we sort the lines and make them uniq
+```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq
+```
 
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -30 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g'
+### Exercises
+- Create a folder "day4" in your home directory
+- Count the number of A, C, T, and G in the DNA sequences of the first 500 lines of file Homo_sapiens.GRCh38.cds.all.fa.gz
+- Store each number in the  file called nt_A.txt, nt_C.txt,... in the folder day4
 
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -30 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > Data.gz
+### Reformatting the Ensembl fasta file
 
-gunzip -c Data.gz | sed 's/.*seq://g'
+Remind ourselves of how this file looks like:
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500
+```
+
+Next we will remove all newline character matches. This is done by "sed".
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g'
+```
+
+We will place "seq:" in front of the DNA-sequence of each line.
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g'
+```
+
+We developed the above approach on the first 30 lines. Now run it an the full file.
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > GRCh38_reformatted.gz
+```
+
+Have a look at the generated file.
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | grep ">" | wc -l
+gunzip -c GRCh38_reformatted.gz | wc -l
+zless GRCh38_reformatted.gz
+```
+
 
 gunzip -c Data.gz | cut -d$" " -f7,14
 
-x=TAC
-x2="seq:[ACTG]*$x"
-echo $x2
-<!-- gunzip -c Data.gz | grep "seq:[TAC]*CGAC" | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' -->
-gunzip -c Data.gz | grep $x2 | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' | sort | uniq > "result_${x}.txt"
+### Identifying nucleotide profile matches
+
+
+Now we will 
+gunzip -c Data.gz | grep "seq:[ACTG]*CGAC" | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'
+
+
+
+
+### Exercises
+
+Create the following files in the folder day4:
+
+- Count the number of entries of gene "" into the file count.txt.
+- Count the number of entries of sequences starting with "" into the file count_.txt
+- Count the number of genes starting with "RPL"
+
+
+
 
 x=TT
 x2="seq:[ACTG]*$x"
@@ -376,7 +455,7 @@ comm -13 result_TAC.txt result_TT.txt
 
 xargs
 
-# Loops and conditions
+# Loops and variables
 
 Write your attempts in a separate file
 
@@ -386,9 +465,6 @@ Write your attempts in a separate file
 - https://bioinformatics.uconn.edu/unix-basics/#
 - https://decodebiology.github.io/bioinfotutorials/
 - https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/
+- https://www.thegeekstuff.com/2010/11/50-linux-commands/
 
-
-https://www.thegeekstuff.com/2010/11/50-linux-commands/
-
-nano
 scp?
