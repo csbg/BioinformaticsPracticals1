@@ -165,7 +165,7 @@ The following table outlines permissions in chmod
 
 
 x | Permission | rwx | Binary
---- | --- | ---
+--- | --- | --- | ---
 7 | read, write and execute | rwx | 111
 6 | read and write | rw- | 110
 5 | read and execute | r-x | 101
