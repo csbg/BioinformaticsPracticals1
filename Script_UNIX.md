@@ -1,5 +1,4 @@
 # CONTENTS
-- [CONTENTS](#contents)
 - [Connecting to the cluster](#connecting-to-the-cluster)
 - [Files and file systems](#files-and-file-systems)
     + [Navigate the file system](#navigate-the-file-system)
@@ -239,10 +238,12 @@ Copy the file gRNAs.txt from your home directory into the folder "day2". Then re
 
 ### Editing in nano
 
-Now add a line at the end of the file "gRNAs.txt" that is located in your home directory. Add the gRNA "ACTGACTG". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
+Now add a line at the end of the file "gRNAs.txt" that is located in your home directory, adding the gRNA sequence "ACTGACTG". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.
 ```
 nano gRNAs.txt
 ```
+
+Nano commands:
 
 Command | Function
  --- | --- 
@@ -261,12 +262,12 @@ ctrl+w | find matching word
 alt+w | find next match
 ctrl+\ | find and replace
 
-Now let's modify our shell to make things prettier
+Now use nano to modify the shell to make things prettier. To do so change the file bashrc. This file contains settings for each user (the naming is just by convention). It starts with a ".", which for Linux means the file is hidden. 
 ```
 nano ~/.bashrc
 ```
 
-Add the following lines in nano, then exit the file (and save it).
+Add the following lines to bashrc in nano, then exit the file and save it - see the commands above.
 ```
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -275,12 +276,19 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 ```
 
-Now run the commands stored in this file
+The changes we added to bashrc will come into effect next time you log in. To also activate them for your current login, you can "source" the file, executing the commands stored within.
 ```
+ls -l *
 source ~/.bashrc
+ls -l *
 ```
 
-From now on, every time you login, these changes will be in place.
+Also, notice the difference in ls commands to show hidden files (like bashrc).
+```
+ls -l
+ls -al
+```
+
 
 
 ### Zipped files
@@ -307,7 +315,7 @@ This doesn't look great. Remember to clean up your terminal
 clear
 ```
 
-The above file is zipped. Let unzip it.
+The above file is zipped. Now unzip it.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz
 # This command will run through the entire file which is very long. Press Ctrl+C to stop the command.
@@ -322,11 +330,11 @@ Again, remember to clean up your terminal
 clear
 ```
 
-Can we use "head" on the unzipped output? Yes - this is done by "pipeing"
+Can we use "head" on the unzipped output? Yes - this is done using a "pipe"
 
-### Piping
+### Pipes
 
-Pipeing enables you to pass the output of one command to another command.
+Linux pipes enables you to pass the output of one command to another command.
 
 Pipe command | Function
 --- | ---
@@ -338,7 +346,7 @@ cmd &> file | send output and error to file
 cmd1 \| cmd2 | send output of cmd1 to cmd2
 
 
-Let's have a look at the first few lines
+Let's have a look at the first few lines of this file.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head
 ```
@@ -350,17 +358,17 @@ zless Homo_sapiens.GRCh38.cds.all.fa.gz
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | zless
 ```
 
-Or count the number of lines in this file
+Now we can also count the number of lines in this file
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 ```
 
 #### Exercises
-- Create a folder called "day3" in your home
-- Store the number of lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lineNumber.txt" in the folder "day3"
-- Write the first 15 lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines.txt" in the folder "day3"
-- Write the 31th to 35th line of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines2.txt" in the folder "day3"
-- Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Mb into the file "size.txt" in the folder "day3"
+Create a folder called "day2" in your home. Next place the following files into the folder "day5", using pipes:
+- Store the number of lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lineNumber.txt".
+- Write the first 15 lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines1.txt".
+- Write the 31th to 35th line of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines2.txt".
+- Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Mb into the file "size.txt".
 
 # Patterns and regular expressions
 
@@ -389,7 +397,7 @@ Match anything that doesn't match one of the patterns (extglob) --> | !(patterns
 
 ### Simple regular expressions
 
-Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. The file "sample" needs to be copied over from the home directory of user "bioinfo".
+Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. Note: The file "sample" needs to be copied over from the home directory of user "bioinfo".
 ```
 cat sample
 grep ^a sample
@@ -398,31 +406,43 @@ grep "a\+t" sample
 sed "s/a/XXX/g" sample
 ```
 
+
+
+Symbol | Descriptions
+ --- | ---
+. | replaces any character
+^ | matches start of string
+$ | matches end of string
+* | matches up zero or more times the preceding character
+\ | Represent special characters
+() | Groups regular expressions
+? | Matches up exactly one character
+
 ### Checking the nucleotides in the Ensembl fasta file
 
-Have a look at the first few lines
+Now let's use regulare expressions to explore the fasta file. Have a look at the first few lines
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -50
 ```
 
-We expect all DNA sequences to be made up of A, C, T, and Gs. Next, we will verify this. First, we will get all DNA-sequences from this file
+We expect all DNA sequences to be made up of A, C, T, and Gs. Now, we will verify this. First, we will get all DNA-sequences from this file, excluding lines starting with a ">" (in a fasta files, these lines are the lines describing the sequence: https://en.wikipedia.org/wiki/FASTA_format).
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">"
 
 # from "man grep": -v Invert the sense of matching, to select non-matching lines.
 ```
 
-Next we will use "tr" to delete newline characters, to place all characters in one (very long) line
+Next we will use "tr" to delete newline characters. This will place all sequences in one (very long) line.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n'
 ```
 
-Next we place every character on a different line
+Next we place every character on a different line.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o .
 ```
 
-Finally, we want to only see unique letters. To do so, we have to first sort the lines and then make them unique.
+Finally, we want to remove repetition, to only see the unique nucleotides. To do so, we have to first sort the lines and then make them unique.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq
 
@@ -435,28 +455,40 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\
 ```
 
 #### Exercises
-- Create a folder "day4" in your home directory
-- Count the number of A, C, T, and G of the DNA sequences of the first 500 lines of file Homo_sapiens.GRCh38.cds.all.fa.gz
-- Store each number in the  file called nt_A.txt, nt_C.txt,... in the folder day4
+- Create a folder "day3" in your home directory
+- Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file Homo_sapiens.GRCh38.cds.all.fa.gz
+- Store each number in a file called nt_A.txt, nt_C.txt,... in the folder day3
 
 ### Reformatting the Ensembl fasta file
+
+Next, we will reformat the fasta file, such that every entry is on one line and the DNA sequence is at the end of the line. 
 
 Remind ourselves of how this file looks like:
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500
 ```
 
-Next we will remove all newline character matches. This is done by "sed".
+Next we will remove all newline characters, except for the newline characters followed by ">". The ">" separates different entries and entries should remain each on one line. To remove the newline characters, we will use the "sed" command.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g'
 ```
 
-We will place "seq:" in front of the DNA-sequence of each line.
+Next, we will place "seq:" in front of the DNA-sequence of each line. 
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g'
 ```
 
-We developed the above approach on the first 30 lines. Now run it an the full file.
+The argument `s/([ACTG]*)$/seq:\1/g` for sed is quite complicated, let's break it up:
+
+- `s/x/y/g` means we substitute `x` byt `y`
+- `([ACTG]*)` matches any number of the four letters A, C, T, and G. The brackets `()` tell the regex to *store* the match for later (see `\1` below)
+- `$` matches the end of the line, telling the regex that the `([ACTG]*)` has to be at the end of the line (our DNA sequences)
+- `seq:` is simply the text we want to insert
+- `\1` is going to be replaced by the match to `([ACTG]*)` stored. Therefore, here it will be replaced by the DNA sequence
+- in summary, the expression matches any number of the letters A, C, T, and G at the end of the line, stores them, and then write "seq:" and places the sequence behind it
+
+
+We developed the above approach on the first 30 lines. Now run it an the full file. This may take a couple of minutes. The "gzip" command will compress the results. The `>` will store it in a new file "GRCh38_reformatted.gz".
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]//g' | sed -E 's/([ACTG]*)$/ seq:\1/g' | gzip > GRCh38_reformatted.gz
 ```
@@ -470,11 +502,9 @@ zless GRCh38_reformatted.gz
 ```
 
 
-gunzip -c Data.gz | cut -d$" " -f7,14
-
 ### Identifying gRNA matches
 
-Now we will identify genes in the database that match a specific gRNA. 
+Now, with the newly formatted file, we can easily identify genes in the database that match a specific gRNA. 
 ```
 gunzip -c GRCh38_reformatted.gz | head -30
 ```
@@ -483,6 +513,8 @@ We check that all entries have "gene symbols"
 ```
 gunzip -c GRCh38_reformatted.gz | grep "gene_symbol" | head -30 
 gunzip -c GRCh38_reformatted.gz | grep -v "gene_symbol" | head -30 
+
+# remember: grep -v means to *not* match
 ```
 
 Next we extract those sequences matching the guide "TTAAGACA"
@@ -490,12 +522,12 @@ Next we extract those sequences matching the guide "TTAAGACA"
 gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | head -30 
 ```
 
-Now we extract the gene symbols of these matches. First we match all text before the text "gene_symbol"
+Now we extract the gene symbols of these matches. First we match all text before the text "gene_symbol" and delete it.
 ```
 gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | head -30
 ```
 
-Then we also remove all text after the gene symbol
+Then we also remove all text after the gene symbol, in this case the space and everything (`.*`) after that until the end of the line (`$`).
 ```
 gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | head -30
 ```
@@ -601,9 +633,18 @@ Now we will compare each pair of guides to test the overlap of genes.
 
 
 # Useful links
+Linux for bioinformatics
+
 - https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0
 - https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0
 - https://bioinformatics.uconn.edu/unix-basics/#
 - https://decodebiology.github.io/bioinfotutorials/
 - https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/
+
+General linux commands
+
 - https://www.thegeekstuff.com/2010/11/50-linux-commands/
+
+Regular expressions:
+
+- https://www.guru99.com/linux-regular-expressions.html
