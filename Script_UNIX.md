@@ -63,30 +63,95 @@ head day1/*
 
 # Files and file systems
 
+## Getting files
 
-Download file and look at it.
-
-Copy file of profiles from /home/bioinfo1
-
-mv 
-
-vs
-
-cp
-
+Make sure you are in your home directory
+```
 pwd
+```
 
-scp?
+Obtain the list of profiles - which command works and why?
+```
+mv /home/bioinfo1/profiles.txt ~/
+cp /home/bioinfo1/profiles.txt ~/
+ls -l /home/bioinfo1/profiles.txt
+ls -l ~/profiles.txt
+```
 
-wc -l
+Now have explore this file
+```
+wc -l profiles.txt
+head profiles.txt
+head -5 profiles.txt
+tail -5 profiles.txt
+less profiles.txt
+```
 
-https://www.thegeekstuff.com/2010/11/50-linux-commands/
+## Editing in nano
 
-nano
+Now add a line at the end of this file. Add the profiles "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
+```
+nano profiles.txt
+```
 
+Command | Function
+ --- | --- 
+ctrl+r | read/insert file
+ctrl+o | save file
+ctrl+x | close file
+alt+a | start selecting text
+ctrl+k | cut selection
+ctrl+u | uncut (paste) selection
+alt+/ | go to end of the file
+ctrl+a | go to start of the line
+ctrl+e | go to end of the line
+ctrl+c | show line number
+ctrl+_ | go to line number
+ctrl+w | find matching word
+alt+w | find next match
+ctrl+\ | find and replace
+
+## Zipped files
+
+Now let's download all human gene sequences from Ensembl.
+```
 wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.GRCh38.cds.all.fa.gz
+```
 
+Have a look at this file
+```
 head Homo_sapiens.GRCh38.cds.all.fa.gz
+```
+
+This doesn't look great. Remember to clean up your terminal
+```
+clear
+```
+
+The above file is zipped. Let unzip it.
+```
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz
+# This command will run through the entire file which is very long. Press Ctrl+C to stop the command.
+```
+
+Again, remember to clean up your terminal
+```
+clear
+```
+
+## Piping
+
+Pipeing enables you to pass the output of one command to another command.
+
+Pipe command	| Function
+--- | ---
+cmd < file | use file as input
+cmd > file | write output to file
+cmd >> file | append output to file
+cmd 2> stderr | error output to file
+cmd 1>&2 file | send output and error to file
+cmd1 \| cmd2 | send output of cmd1 to cmd2
+
 
 clear
 
@@ -97,14 +162,6 @@ zless Homo_sapiens.GRCh38.cds.all.fa.gz
 du *
 du -sh *
 
-Pipe command	| Function
---- | ---
-cmd < file | use file as input
-cmd > file | write output to file
-cmd >> file | append output to file
-cmd 2> stderr | error output to file
-cmd 1>&2 file | send output and error to file
-cmd1 \| cmd2 | send output of cmd1 to cmd2
 
 
 
@@ -158,3 +215,8 @@ Write your attempts in a separate file
 - https://decodebiology.github.io/bioinfotutorials/
 - https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/
 
+
+https://www.thegeekstuff.com/2010/11/50-linux-commands/
+
+nano
+scp?
