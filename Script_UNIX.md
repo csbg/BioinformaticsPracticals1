@@ -161,8 +161,7 @@ ls -l day2/test/folder
 man chmod
 ```
 
-The following table outlines permissions in chmod
-
+The following table outlines permissions in chmod (https://en.wikipedia.org/wiki/Chmod)
 
 x | Permission | rwx | Binary
 --- | --- | --- | ---
