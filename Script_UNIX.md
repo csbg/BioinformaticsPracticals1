@@ -124,14 +124,45 @@ pwd
 
 Let's create another folder (relative path - from your home directory). What does the "-p" stand for?
 ```
+pwd
 mkdir -p day2/test/folder
-cd day2/test/folder
 pwd
 ```
 
-###Exercise
+Change permissions in a file created in the above folder.
+```
+touch day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 711 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 722 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 733 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 744 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 755 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 766 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 777 day2/test/folder/test.txt
+ls -l day2/test/folder
+chmod 700 day2/test/folder/test.txt
+ls -l day2/test/folder
 
-Create a new folder called "test2" within in the folder ~/day2.
+man chmod
+```
+
+x | Permission | rwx
+--- | --- | ---
+7 | read, write and execute | rwx
+6 | read and write | rw-
+5 | read and execute | r-x
+4 | read only | r--
+
+###Exercises
+- Create a new folder called "test2" within in the folder ~/day2.
+- Enable full access to this folder for the owner of the folder, read access for the group, and no access for others
 
 ### Getting files
 
@@ -169,7 +200,7 @@ more profiles.txt
 wc -l profiles.txt
 ```
 
-###Exercise
+###Exercises
 
 Copy the file profiles.txt from your home directory into the folder "day2". Then rename the copied file in this folder to "profiles_exercise.txt".
 
@@ -285,10 +316,12 @@ Or count the number of lines in this file
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 ```
 
-#### Exercise
+### Exercises
 - Create a folder called "day3" in your home
-- Store the number of lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines.txt" in the folder "day3"
-- Store the first 15 lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines.txt" in the folder "day3"
+- Store the number of lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lineNumber.txt" in the folder "day3"
+- Write the first 15 lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines.txt" in the folder "day3"
+- Write the 31th to 35th line of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines2.txt" in the folder "day3"
+- Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Mb into the file "size.txt" in the folder "day3"
 
 # Regular expressions
 
