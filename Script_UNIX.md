@@ -411,7 +411,7 @@ Descriptions | Symbol
 replaces any character | .
 matches start of string | ^
 matches end of string | $
-matches up zero or more times the preceding character | star (*)
+matches up zero or more times the preceding character | *
 Represent special characters | \
 Groups regular expressions | ()
 Matches up exactly one character | ?
@@ -478,7 +478,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g' 
 
 The argument `s/([ACTG]*)$/seq:\1/g` for sed is quite complicated, let's break it up:
 
-- `s/x/y/g` means we substitute `x` byt `y`
+- `s/x/y/g` means we substitute `x` by `y`
 - `([ACTG]*)` matches any number of the four letters A, C, T, and G. The brackets `()` tell the regex to *store* the match for later (see `\1` below)
 - `$` matches the end of the line, telling the regex that the `([ACTG]*)` has to be at the end of the line (our DNA sequences)
 - `seq:` is simply the text we want to insert
