@@ -82,25 +82,50 @@ head day1/*
 # Files and file systems
 
 ### Navigate the file system
+First, let's clean up
+```
+clear
+```
+
+Go to the home directory
 ```
 cd ~/
 ls -l
 pwd
+```
 
+Go to the folder with all home directories
+```
 cd /home
 ls -l
 pwd
+```
 
+Go back to your home directory
+```
 cd ~/
 ls -l
 pwd
+```
 
+Go into the directory created yesterday
+```
 cd day1/
 ls -l
 pwd
+```
 
-cd ~/day1/
+Go back one level - where are we now?
+```
+cd ../
 ls -l
+pwd
+```
+
+Let's create another folder. What does the "-p" stand for?
+```
+mkdir -p day2/test/folder
+cd day2/test/folder
 pwd
 ```
 
