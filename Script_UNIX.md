@@ -413,7 +413,7 @@ Symbol | Descriptions
 . | replaces any character
 ^ | matches start of string
 $ | matches end of string
-* | matches up zero or more times the preceding character
+star (*) | matches up zero or more times the preceding character
 \ | Represent special characters
 () | Groups regular expressions
 ? | Matches up exactly one character
