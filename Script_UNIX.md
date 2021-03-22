@@ -1,4 +1,3 @@
-
 # Connecting to the cluster
 The command ssh lets you connect to the cluster
 ```
@@ -37,13 +36,18 @@ Now create a directory
 mkdir day1
 ```
 
-List content again
+List content of the directory again
 ```
 ls *
 ls -l *
 ```
 
-There are many ways to create a file
+What does mkdir do? Bring up the manual (press "q" to exit the manual).
+```
+man mkdir
+```
+
+Now create some files. There are many ways to create a file
 ```
 touch day1/touch.txt
 echo "test"  > day1/echo.txt
@@ -57,18 +61,51 @@ head day1/*
 ```
 
 
+# Files and file systems
 
-# Navigating the file system
+
+Download file and look at it.
+
+Copy file of profiles from /home/bioinfo1
+
+mv 
+
+vs
+
+cp
+
 pwd
 
+scp?
+
+wc -l
+
+https://www.thegeekstuff.com/2010/11/50-linux-commands/
+
+nano
+
 wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.GRCh38.cds.all.fa.gz
+
 head Homo_sapiens.GRCh38.cds.all.fa.gz
+
 clear
+
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head
+
 zless Homo_sapiens.GRCh38.cds.all.fa.gz
 
 du *
 du -sh *
+
+Pipe command	| Function
+--- | ---
+cmd < file | use file as input
+cmd > file | write output to file
+cmd >> file | append output to file
+cmd 2> stderr | error output to file
+cmd 1>&2 file | send output and error to file
+cmd1 \| cmd2 | send output of cmd1 to cmd2
+
 
 
 
@@ -78,6 +115,41 @@ grep ^a sample
 grep -E p\{2} sample
 grep "a\+t" sample
 
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq
+
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -30 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g'
+
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -30 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > Data.gz
+
+gunzip -c Data.gz | sed 's/.*seq://g'
+
+gunzip -c Data.gz | cut -d$" " -f7,14
+
+x=TAC
+x2="seq:[ACTG]*$x"
+echo $x2
+<!-- gunzip -c Data.gz | grep "seq:[TAC]*CGAC" | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' -->
+gunzip -c Data.gz | grep $x2 | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' | sort | uniq > "result_${x}.txt"
+
+x=TT
+x2="seq:[ACTG]*$x"
+echo $x2
+<!-- gunzip -c Data.gz | grep "seq:[TAC]*CGAC" | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' -->
+gunzip -c Data.gz | grep $x2 | grep "gene_symbol" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' | sort | uniq > "result_${x}.txt"
+
+diff result_TAC.txt result_TT.txt 
+
+
+
+
+comm result_TAC.txt result_TT.txt 
+comm -13 result_TAC.txt result_TT.txt 
+
+xargs
+
+# Loops and conditions
+
+Write your attempts in a separate file
 
 # Useful links:
 - https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0
