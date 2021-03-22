@@ -1,15 +1,16 @@
-ssh fortelnyb1075184@corso.came.sbg.ac.at
 
 
-# Useful links:
-- https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0
-- https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0
-- https://bioinformatics.uconn.edu/unix-basics/#
-- https://decodebiology.github.io/bioinfotutorials/
-- https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/
+
 
 
 # Connecting to the cluster
+The command ssh lets you connect to the cluster. 
+```
+ssh [username]@corso.came.sbg.ac.at
+# For example:
+ssh fortelnyb1075184@corso.came.sbg.ac.at
+```
+
 Now we are connected to the cluster. The cluster has a file system like any computer. Currently you are in your home directory. The current "path" is shown by the following command.
 ```
 pwd
@@ -65,3 +66,12 @@ cat sample
 grep ^a sample
 grep -E p\{2} sample
 grep "a\+t" sample
+
+
+# Useful links:
+- https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0
+- https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0
+- https://bioinformatics.uconn.edu/unix-basics/#
+- https://decodebiology.github.io/bioinfotutorials/
+- https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/
+
