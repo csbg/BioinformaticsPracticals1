@@ -408,15 +408,15 @@ sed "s/a/XXX/g" sample
 
 
 
-Symbol | Descriptions
- --- | ---
-. | replaces any character
-^ | matches start of string
-$ | matches end of string
-star (*) | matches up zero or more times the preceding character
-\ | Represent special characters
-() | Groups regular expressions
-? | Matches up exactly one character
+Descriptions | Symbol
+--- |  ---
+replaces any character | .
+matches start of string | ^
+matches end of string | $
+matches up zero or more times the preceding character | star (*)
+Represent special characters | \
+Groups regular expressions | ()
+Matches up exactly one character | ?
 
 ### Checking the nucleotides in the Ensembl fasta file
 
