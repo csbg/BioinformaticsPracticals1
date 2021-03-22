@@ -581,7 +581,9 @@ do
   x=$(( $x + 1 )) # syntax to add a number to x
 done
 ```
-Try to make the above loop count to 10. 
+Try to make the above loop count to 10. Or from 10 to 5. 
+
+Here are different ways to compare numbers:
 
 Operator | Description | Example
  --- | --- | ---
@@ -601,12 +603,13 @@ done <gRNAs.txt
 ```
 
 #### Exercise
-Now we will test all guides in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so:
 
-- Use the function that uses guides stored in variables to extract relevant gene symbols. 
-- Place this function into the loop that iterates through the file gRNAs.txt
-- Store all results (not the top 30 coming from head -30) of each guide into a file that is named like this: `results_${guide}.txt`. Place all files into a new folder "day4"
-- Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes?
+Now we will combine the above variables and loopes to test all guides in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so:
+
+- Use the function above (under "variables") that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
+- Place this function into the loop that iterates through the file gRNAs.txt, using the while loop iterating through the file.
+- Store all results (not just the top 30 coming from head -30) of each guide into a file that is named: `results_${guide}.txt`. Place all files into a new folder "day4" - ideally already within the loop.
+- Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?
 
 ### Comparing files
 
@@ -619,14 +622,14 @@ head results_*.txt
 wc -l results_*.txt
 ```
 
-Now let's compare individual files.
+Now let's compare results in a pairwise manner. The command `comm` will provide the gene symbols unique to one or the other file, plus the intersection of both.
 ```
 cd ~/day5
 comm results_ATCGCGGC.txt results_ATCCCAGC.txt
 comm -12 results_ATCGCGGC.txt results_ATCCCAGC.txt
 ```
 
-This overlap can be stored in a variable
+The count of genes in the overlap (intersection) can be stored in a new variable. To store results of an expression in a new variable, place the expression into parenthesis `x=$()`.
 ```
 guide1=ATCGCGGC
 guide2=ATCCCAGC
@@ -638,7 +641,7 @@ echo "$guide1 $guide2 $overlap"
 
 Now we will compare each pair of guides to test the overlap of genes.
 
-- Use one loop within another loop to check pairs of guides
+- Use one loop (iterating through all guides) within another loop (also iterating through all guides) to compare the overlap between all pairs of guides
 - Use the "comm" command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
 - "Manually" check results, for example comparing to the example above ("ATCGCGGC" vs "ATCCCAGC")
 
