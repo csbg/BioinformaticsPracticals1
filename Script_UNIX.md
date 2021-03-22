@@ -187,7 +187,7 @@ cd ~/
 pwd
 ```
 
-Obtain the list of profiles.
+Obtain the list of gRNAs.
 ```
 # move or copy?
 man mv
@@ -216,11 +216,11 @@ wc -l gRNAs.txt
 
 #### Exercises
 
-Copy the file gRNAs.txt from your home directory into the folder "day2". Then rename the copied file in this folder to "profiles_exercise.txt".
+Copy the file gRNAs.txt from your home directory into the folder "day2". Then rename the copied file in this folder to "gRNAs_exercise.txt".
 
 ### Editing in nano
 
-Now add a line at the end of the file "gRNAs.txt" that is located in your home directory. Add the profiles "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
+Now add a line at the end of the file "gRNAs.txt" that is located in your home directory. Add the gRNA "TODO". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes.
 ```
 nano gRNAs.txt
 ```
@@ -448,9 +448,9 @@ zless GRCh38_reformatted.gz
 
 gunzip -c Data.gz | cut -d$" " -f7,14
 
-### Identifying nucleotide profile matches
+### Identifying gRNA matches
 
-Now we will identify genes in the database that match a specific DNA pattern. 
+Now we will identify genes in the database that match a specific gRNA. 
 ```
 gunzip -c GRCh38_reformatted.gz | head -30
 ```
@@ -461,7 +461,7 @@ gunzip -c GRCh38_reformatted.gz | grep "gene_symbol" | head -30
 gunzip -c GRCh38_reformatted.gz | grep -v "gene_symbol" | head -30 
 ```
 
-Next we extract those sequences matching the profile "CGAC"
+Next we extract those sequences matching the guide "CGAC"
 ```
 gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | head -30 
 ```
@@ -486,7 +486,7 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*CGAC" | sed 's/^.*gene_symbol
 
 Create the following files in the folder "day4":
 
-- Extract all entries with sequences matching the pattern "ATTAGC" in the file patternMatch_ATTAGC.txt
+- Extract all entries with sequences matching the guide "ATTAGC" in the file guideMatch_ATTAGC.txt
 - Write the count of entries with sequences starting with "TGC" into the file count_TGC.txt
 - Write the count of entries of gene "MMP2" into the file count_MMP2_.txt. Note: Do not count genes MMP20, MMP21,...
 - Write the count of unique genes whose symbol starts with "RPL" into the file count_RPL.txt
@@ -503,7 +503,7 @@ echo $x
 echo $x | sed 's/a//g'
 ```
 
-Now we will write the profiles to test and the patterns into variables
+Now we will write the gRNAs to test and the regexp patterns into variables
 ```
 guide=TT
 echo $guide
@@ -534,11 +534,11 @@ done <gRNAs.txt
 ```
 
 #### Exercise
-Now we will test all profiles in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so:
+Now we will test all guides in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so:
 
-- Use the function that uses profiles stored in variables to extract relevant gene symbols. 
+- Use the function that uses guides stored in variables to extract relevant gene symbols. 
 - Place this function into the loop that iterates through the file gRNAs.txt
-- Store all results (not the top 30 coming from head -30) of each profile into a file that is named like this: `results_${profile}.txt`. Place all files into a new folder "day4"
+- Store all results (not the top 30 coming from head -30) of each guide into a file that is named like this: `results_${guide}.txt`. Place all files into a new folder "day4"
 - Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes?
 
 ### Comparing files
