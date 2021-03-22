@@ -153,6 +153,8 @@ ls -l day2/test/folder
 man chmod
 ```
 
+The folloing table outlines permissions in chmod
+
 x | Permission | rwx
 --- | --- | ---
 7 | read, write and execute | rwx
