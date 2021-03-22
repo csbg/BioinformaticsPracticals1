@@ -355,7 +355,7 @@ wc -l *.gz
 
 Pattern | Description
  --- | ---
-* | Match zero or more characters
+x | Match zero or more characters
 <!-- ? | Match any single character
 [...] | Match any of the characters in a set
 ?(patterns) | Match zero or one occurrences of the patterns (extglob)
