@@ -87,42 +87,42 @@ First, let's clean up
 clear
 ```
 
-Go to the home directory
+Go to the home directory (absolute path)
 ```
 cd ~/
 ls -l
 pwd
 ```
 
-Go to the folder with all home directories
+Go to the folder with all home directories (absolute path)
 ```
 cd /home
 ls -l
 pwd
 ```
 
-Go back to your home directory
+Go back to your home directory (absolute path)
 ```
 cd ~/
 ls -l
 pwd
 ```
 
-Go into the directory created yesterday
+Go into the directory created yesterday (relative path - from your home directory)
 ```
 cd day1/
 ls -l
 pwd
 ```
 
-Go back one level - where are we now?
+Go back one level (relative path - from the "day1" folder)
 ```
 cd ../
 ls -l
 pwd
 ```
 
-Let's create another folder. What does the "-p" stand for?
+Let's create another folder (relative path - from your home directory). What does the "-p" stand for?
 ```
 mkdir -p day2/test/folder
 cd day2/test/folder
@@ -138,18 +138,22 @@ cd ~/
 pwd
 ```
 
-Obtain the list of profiles - which command works and why?
+Obtain the list of profiles.
 ```
 # move or copy?
+man mv
+man cp
+
+# now try it:
 mv /home/bioinfo1/profiles.txt ~/
 cp /home/bioinfo1/profiles.txt ~/
 
-# Look at file permissions:
+# Why does cp not work? Look at file permissions:
 ls -l /home/bioinfo1/profiles.txt
 ls -l ~/profiles.txt
 ```
 
-Now  explore this file
+Now  explore the copied file
 ```
 head profiles.txt
 head -5 profiles.txt
@@ -160,6 +164,8 @@ more profiles.txt
 # Count the number of lines
 wc -l profiles.txt
 ```
+
+<!-- TODO: Split here? -->
 
 ### Editing in nano
 
@@ -229,6 +235,10 @@ The above file is zipped. Let unzip it.
 ```
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz
 # This command will run through the entire file which is very long. Press Ctrl+C to stop the command.
+
+man gunzip
+#        -c --stdout --to-stdout
+#              Write  output on standard output; keep original files unchanged.  If there are several input files, the output consists of a sequence of independently compressed members. To obtain better compression, concatenate all input files before compressing them.
 ```
 
 Again, remember to clean up your terminal
