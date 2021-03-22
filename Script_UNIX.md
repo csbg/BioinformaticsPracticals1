@@ -1,33 +1,43 @@
 
-
-
-
-
 # Connecting to the cluster
-The command ssh lets you connect to the cluster. 
+The command ssh lets you connect to the cluster
 ```
 ssh [username]@corso.came.sbg.ac.at
 # For example:
 ssh fortelnyb1075184@corso.came.sbg.ac.at
 ```
 
-Now we are connected to the cluster. The cluster has a file system like any computer. Currently you are in your home directory. The current "path" is shown by the following command.
+Next you will change your password. Make sure to remember this password which you will you throughout this course
+```
+passwd
+```
+
+Now we are connected to the cluster. In the following we will explore this file system. Details will be explored in the next lecture of this course. For now, just execute the commands and see if you can make sense of the results.
+
+The cluster has a file system like any computer. Currently you are in your home directory. The current "path" is shown by the following command
 ```
 pwd
 ```
 
-You can list files in your home directory using.
+You can list the content of your home directory using
 ```
 ls *
 ls -l *
 ```
+
+You can clear the terminal by typing
+```
+clear
+```
+
+Now, use the up- and down-arrows on your keyboard to look through the history of commands.
 
 Now create a directory
 ```
 mkdir day1
 ```
 
-List files again
+List content again
 ```
 ls *
 ls -l *
@@ -36,7 +46,7 @@ ls -l *
 There are many ways to create a file
 ```
 touch day1/touch.txt
-echo "test" day1/echo.txt
+echo "test"  > day1/echo.txt
 ```
 
 List files again
@@ -45,6 +55,7 @@ ls *
 ls -l *
 head day1/*
 ```
+
 
 
 # Navigating the file system
