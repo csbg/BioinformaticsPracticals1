@@ -29,7 +29,7 @@
 
 
 # Connecting to the cluster
-The command ssh lets you connect to the cluster
+The command ssh lets you connect to the cluster. Note: you will need VPN active to be able to connect.
 ```
 ssh [username]@corso.came.sbg.ac.at
 # For example:
