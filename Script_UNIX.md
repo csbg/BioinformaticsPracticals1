@@ -33,7 +33,7 @@ The command ssh lets you connect to the cluster. Note: you will need VPN active 
 ```
 ssh [username]@corso.came.sbg.ac.at
 # For example:
-ssh fortelnyb1075184@corso.came.sbg.ac.at
+ssh nfortelny@corso.came.sbg.ac.at
 ```
 
 Next you will change your password. Make sure to remember this password which you will you throughout this course
