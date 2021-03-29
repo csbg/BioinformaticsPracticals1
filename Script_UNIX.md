@@ -30,7 +30,7 @@
 
 # Connecting to the cluster
 The command ssh lets you connect to the cluster. Note: you will need VPN active to be able to connect.
-```
+```bash
 ssh [username]@corso.came.sbg.ac.at
 # For example:
 ssh nfortelny@corso.came.sbg.ac.at
@@ -50,8 +50,8 @@ pwd
 
 You can list the content of your home directory using
 ```
-ls *
-ls -l *
+ls
+ls -l
 ```
 
 You can clear the terminal by typing
@@ -68,8 +68,8 @@ mkdir day1
 
 List content of the directory again
 ```
-ls *
-ls -l *
+ls
+ls -l
 ```
 
 What does mkdir do? Bring up the manual (press "q" to exit the manual).
@@ -88,8 +88,8 @@ echo "abcdefgh"  > day1/echo.txt
 
 List files again
 ```
-ls *
-ls -l *
+ls
+ls -l
 ```
 
 Take a look at the files with content
@@ -202,6 +202,7 @@ Make sure you are in your home directory
 ```
 pwd
 cd ~/
+# same as "cd " or "cd ~" --> default value for the dir argument is HOME (see "man cd")
 pwd
 ```
 
@@ -215,7 +216,7 @@ man cp
 mv /home/bioinfo1/gRNAs.txt ~/
 cp /home/bioinfo1/gRNAs.txt ~/
 
-# Why does cp not work? Look at file permissions:
+# Why does mv not work? Look at file permissions:
 ls -l /home/bioinfo1/gRNAs.txt
 ls -l ~/gRNAs.txt
 ```
@@ -262,12 +263,12 @@ ctrl+w | find matching word
 alt+w | find next match
 ctrl+\ | find and replace
 
-Now use nano to modify the shell to make things prettier. To do so change the file bashrc. This file contains settings for each user (the naming is just by convention). It starts with a ".", which for Linux means the file is hidden. 
+Now use nano to modify the shell to make things prettier. To do so change the file bash_profile. This file contains settings for each user (the naming is just by convention). It starts with a ".", which for Linux means the file is hidden. 
 ```
-nano ~/.bashrc
+nano ~/.bash_profile
 ```
 
-Add the following lines to bashrc in nano, then exit the file and save it - see the commands above.
+Add the following lines to bash_profile in nano, then exit the file and save it - see the commands above.
 ```
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -276,14 +277,14 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 ```
 
-The changes we added to bashrc will come into effect next time you log in. To also activate them for your current login, you can "source" the file, executing the commands stored within.
+The changes we added to bash_profile will come into effect next time you log in. To also activate them for your current login, you can "source" the file, executing the commands stored within.
 ```
 ls -l *
-source ~/.bashrc
+source ~/.bash_profile
 ls -l *
 ```
 
-Also, notice the difference in ls commands to show hidden files (like bashrc).
+Also, notice the difference in ls commands to show hidden files (like bash_profile).
 ```
 ls -l
 ls -al
@@ -364,11 +365,11 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 ```
 
 #### Exercises
-Create a folder called "day2" in your home. Next place the following files into the folder "day5", using pipes:
+Create a folder called "day2" in your home. Next place the following files into the folder "day2", using pipes:
 - Store the number of lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lineNumber.txt".
 - Write the first 15 lines of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines1.txt".
 - Write the 31th to 35th line of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines2.txt".
-- Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Mb into the file "size.txt".
+- Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Megabytes into the file "size.txt".
 
 # Patterns and regular expressions
 
@@ -479,6 +480,8 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g' 
 The argument `s/([ACTG]*)$/seq:\1/g` for sed is quite complicated, let's break it up:
 
 - `s/x/y/g` means we substitute `x` by `y`
+- `s///` tells sed to substitute
+- `s///g` tells sed to substitue globally - replacing each occurance of `x`
 - `([ACTG]*)` matches any number of the four letters A, C, T, and G. The brackets `()` tell the regex to *store* the match for later (see `\1` below)
 - `$` matches the end of the line, telling the regex that the `([ACTG]*)` has to be at the end of the line (our DNA sequences)
 - `seq:` is simply the text we want to insert
@@ -488,7 +491,7 @@ The argument `s/([ACTG]*)$/seq:\1/g` for sed is quite complicated, let's break i
 
 We developed the above approach on the first 30 lines. Now run it an the full file. This may take a couple of minutes. The "gzip" command will compress the results. The `>` will store it in a new file "GRCh38_reformatted.gz".
 ```
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]//g' | sed -E 's/([ACTG]*)$/ seq:\1/g' | gzip > GRCh38_reformatted.gz
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > GRCh38_reformatted.gz
 ```
 
 Explore the generated file.
@@ -583,7 +586,7 @@ done
 ```
 Try to make the above loop count to 10. Or from 10 to 5. 
 
-Here are different ways to compare numbers:
+Here are different ways to compare numbers. Assume variable a holds 10 and variable b holds 20 then:
 
 Operator | Description | Example
  --- | --- | ---
