@@ -317,7 +317,7 @@ clear
 ```
 
 The above file is zipped. Now unzip it.
-```
+```bash
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz
 # This command will run through the entire file which is very long. Press Ctrl+C to stop the command.
 
