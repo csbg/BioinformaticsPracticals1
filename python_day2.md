@@ -1,23 +1,27 @@
+# Kurseinheit 2
+
 <!-- TOC -->
 
-- [Kontrollfluss](#kontrollfluss)
-  - [Funktionen](#funktionen)
-  - [Fallunterscheidungen und Verzweigungen](#fallunterscheidungen-und-verzweigungen)
-  - [Schleifen](#schleifen)
-  - [`while`-Schleifen](#while-schleifen)
-  - [`for`-Schleifen](#for-schleifen)
-  - [Modularisierung](#modularisierung)
-- [Datenstrukturen](#datenstrukturen)
-  - [Listen](#listen)
-  - [Tupel](#tupel)
-  - [Mengen](#mengen)
-  - [Dictionaries](#dictionaries)
-- [Reguläre Ausdrücke](#reguläre-ausdrücke)
+- [Kurseinheit 2](#kurseinheit-2)
+  - [Kontrollfluss](#kontrollfluss)
+    - [Funktionen](#funktionen)
+    - [Fallunterscheidungen und Verzweigungen](#fallunterscheidungen-und-verzweigungen)
+    - [Schleifen](#schleifen)
+      - [`while`-Schleifen](#while-schleifen)
+      - [`for`-Schleifen](#for-schleifen)
+    - [Modularisierung](#modularisierung)
+  - [Datenstrukturen](#datenstrukturen)
+    - [Listen](#listen)
+    - [Tupel](#tupel)
+    - [Mengen](#mengen)
+    - [Dictionaries](#dictionaries)
+  - [Reguläre Ausdrücke](#reguläre-ausdrücke)
+  - [Aufgaben](#aufgaben)
 
 <!-- /TOC -->
 
 
-# Kontrollfluss
+## Kontrollfluss
 
 Python führt die Anweisungen in einem Skript der Reihe nach aus.
 
@@ -32,7 +36,7 @@ print(mean)
 Es ist offensichtlich, dass dieser grundlegende Kontrollfluss nur einfachste Berechnungen ermöglicht. Daher stellt Python eine Reihe von Möglichkeiten zur Verfügung, um den Kontrollfluss zu modifizieren.
 
 
-## Funktionen
+### Funktionen
 
 Eine Funktion wird folgendermaßen *aufgerufen*:
 
@@ -100,7 +104,7 @@ print(exp(base=10, exponent=4))  # 10 -> base, 4 -> exponent
 Wir weisen insbesondere auf den Unterschied zwischen einem optionalen Parameter und einem Schlüsselwortargument hin: Obwohl sie ähnlich aussehen, bewirken sie doch ganz Unterschiedliches!
 
 
-## Fallunterscheidungen und Verzweigungen
+### Fallunterscheidungen und Verzweigungen
 
 Eine `if`-Anweisung führt ihren Anweisungskörper aus, falls eine Bedingung eintritt:
 
@@ -141,9 +145,9 @@ else:
     print(n, "ist null")
 ```
 
-## Schleifen
+### Schleifen
 
-## `while`-Schleifen
+#### `while`-Schleifen
 
 Eine `while`-Schleife führt einen Codeblock solange aus, wie eine Bedingung wahr ist. Diese Schleife wird folgendermaßen erzeigt:
 - Schlüsselwort `while`
@@ -173,7 +177,7 @@ while True:
 (Um diese Schleife zu unterbrechen, müssen wir mittels `Strg+C` nachhelfen!)
 
 
-## `for`-Schleifen
+#### `for`-Schleifen
 
 Die `for`-Schleife in Python ist eine sog. *iterative Schleife*: Sie führt ihren Anweisungskörper für jedes Element einer Sequenz aus und kann im Schleifenkörper auf das aktuelle Element zugreifen. Diese Schleife wird folgendermaßen definiert:
 - Schlüsselwort `for`
@@ -209,7 +213,7 @@ Je nach Anzahl der Argumente liefert `range()`
   ```
 
 
-## Modularisierung
+### Modularisierung
 
 Modularisierung erlaubt es, Programmcode in mehrere Dateien aufzuteilen, von denen jede thematisch zusammenhängende Funktionen und Datentypen enthält. Dadurch lässt sich Code wiederverwenden, da eine Funktion nur einmal implementiert werden muss und dann von beliebig vielen anderen Programmen durch *Einbinden* verwendet werden kann.
 
@@ -241,9 +245,9 @@ Aus Gründen der Übersicht ist es üblich, sämtliche `import`-Anweisungen an d
 
 
 
-# Datenstrukturen
+## Datenstrukturen
 
-## Listen
+### Listen
 
 Listen gehören zu den sequenziellen Datentypen, welche allgemein mehrere gleichartige oder verschiedene Elemente verwalten. Eine Liste wird erzeugt, indem sämtliche Elemente in eckigen Klammern angeführt und durch Kommas getrennt werden. Hier definieren wir eine Liste mit den ersten acht Primzahlen:
 
@@ -312,7 +316,7 @@ bases.clear()             # löscht alle Elemente
 ```
 
 
-## Tupel
+### Tupel
 
 Tupel sind im Gegensatz zu Listen unveränderlich und besitzen daher keine Methoden (wie `append()`), die ihren Inhalt verändern würden. Im Folgenden probieren wir einige Funktionen und Methoden auf Tupel aus:
 
@@ -328,7 +332,7 @@ bases.index("G")  # welchen Index hat ein Element?
 ```
 
 
-## Mengen
+### Mengen
 
 Ein weiterer sequentieller Datentyp ist die *Menge* (engl. *set*), mittels dessen Mengen im mathematischen Sinn dargestellt werden können. Mengen sind ungeordnet und existieren in einer veränderlichen (`set`) und nicht veränderlichen (`frozenset`) Variante.
 
@@ -355,7 +359,7 @@ A ^ B  # symmetrische Differenz (XOR)
 ```
 
 
-## Dictionaries
+### Dictionaries
 
 Ein *Dictionary* (kurz dict; der deutsche Begriff „Wörterbuch“ ist hingegen nicht gebräuchlich) ist eine ungeordnete Sammlung von Schlüssel-Wert-Paaren. Die Schlüssel müssen einzigartig sein. Ein dict wird erzeugt, indem diese Paare in geschweifte Klammern eingeschlossen werden:
 
@@ -391,7 +395,7 @@ for key, value in atom_names.items():
 ```
 
 
-# Reguläre Ausdrücke
+## Reguläre Ausdrücke
 
 Python bietet im Modul `re` eine umfangreiche Implementierung von Funktionen zur Verwendung regulärer Ausdrücke. Wie uns bereits aus dem Bash-Kurs bekannt ist, sind *reguläre Ausdrücke* (regex) Zeichenketten, die ein Suchmuster definieren und somit Mengen anderer Zeichenketten beschreiben.
 
@@ -448,7 +452,7 @@ Die Syntax für reguläre Ausdrücke in Python ist ähnlich der Syntax in Bash:
 
 
 
-# Aufgaben
+## Aufgaben
 
 Anhand von `print()` können wir viele Varianten von Funktionsaufrufen erproben. So akzeptiert `print()` eine beliebige Anzahl von sog. positionsbezogenen Argumenten.
 

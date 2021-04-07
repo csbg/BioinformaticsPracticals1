@@ -1,22 +1,26 @@
+# Kurseinheit 1
+
 <!-- TOC -->
 
-- [Datentypen und Operatoren](#datentypen-und-operatoren)
-  - [Numerische Typen](#numerische-typen)
-  - [Boolescher Typ](#boolescher-typ)
-  - [Texttyp](#texttyp)
-- [Interaktive Ein- und Ausgabe](#interaktive-ein--und-ausgabe)
-- [Kommandozeilenargumente](#kommandozeilenargumente)
-- [Aufgaben](#aufgaben)
+- [Kurseinheit 1](#kurseinheit-1)
+  - [Datentypen und Operatoren](#datentypen-und-operatoren)
+    - [Numerische Typen](#numerische-typen)
+    - [Boolescher Typ](#boolescher-typ)
+    - [Texttyp](#texttyp)
+    - [`None`-Typ](#none-typ)
+  - [Interaktive Ein- und Ausgabe](#interaktive-ein--und-ausgabe)
+  - [Kommandozeilenargumente](#kommandozeilenargumente)
+  - [Aufgaben](#aufgaben)
 
 <!-- /TOC -->
 
 
-# Datentypen und Operatoren
+## Datentypen und Operatoren
 
 Führen Sie die folgenden Anweisungen zunächst im interaktiven Modus aus. Versuchen Sie, das Ergebnis jeder Anweisung zu verstehen.
 
 
-## Numerische Typen
+### Numerische Typen
 
 Numerische Typen werden verwendet, um Zahlen darzustellen.
 
@@ -83,14 +87,14 @@ Klammern sind hingegen wichtig, wenn die normale *Operatorrangfolge* geändert w
 3 * (5 + 8)
 ```
 
-Im Zweifelsfall empfiehlt es sich, lieber zu viele als zu wenige Klammern zu verwenden! Axhten Sie außerdem darauf, Leerzeichen (die von Python üblicherweise ignoriert werden) sinnvoll einzusetzen:
+Im Zweifelsfall empfiehlt es sich, lieber zu viele als zu wenige Klammern zu verwenden! Achten Sie außerdem darauf, Leerzeichen (die von Python üblicherweise ignoriert werden) sinnvoll einzusetzen:
 
 ```python
 3  *  5+8  # hat die Addition hier vielleicht doch Vorrang?
 ```
 
 
-## Boolescher Typ
+### Boolescher Typ
 
 Der Boolesche Typ kennt nur zwei Werte: `True` (wahr) und `False` (falsch). Boolesche Typen sind häufig das Ergebnis von *Vergleichsoperatoren*:
 
@@ -112,7 +116,7 @@ not (5 < 7)               # Negation, ändert True zu False und umgekehrt
 ```
 
 
-## Texttyp
+### Texttyp
 
 Ein *String* (Zeichenkette) besteht aus einer Folge von Unicode-Zeichen, die in einfache oder doppelte Anführungszeichen eingeschlossen sind.
 
@@ -156,7 +160,25 @@ enzyme[:]    # Kopie des gesamten Strings
 enzyme[-9:]  # Teilstring ab der 9. Position vom Ende aus
 ```
 
-# Interaktive Ein- und Ausgabe
+
+### `None`-Typ
+
+Python stellt auch einen Datentyp `None` zur Verfügung, der das „Nichts“ explizit darstellt:
+
+```python
+nichts = None
+print(nichts)
+```
+
+Falls Sie überprüfen wollen, ob eine Variable `None` enthält, sollten Sie dies mittels des `is`-Operators tun (und *nicht* mithilfe eines Booleschen Vergleichs):
+
+```python
+nichts is None  # bevorzugte Variante
+nichts == None  # vermeiden
+```
+
+
+## Interaktive Ein- und Ausgabe
 
 Wir haben die `print()`-Funktion bereits im einleitenden Hallo-Welt-Beispiel kennen gelernt. Eine vergleichbare Funktion existiert zur Eingabe von Daten:
 
@@ -204,7 +226,7 @@ print("Das Ergebnis lautet", a * b)
 ```
 
 
-# Kommandozeilenargumente
+## Kommandozeilenargumente
 
 Ein Python-Programm auch Werte von der Kommandozeile verarbeiten und funktioniert dann ähnlich wie die Shell-Kommandos, die wir in der ersten Woche des Kurses kennengelernt haben. Diese Funktionalität ist in einem Modul namens `sys` implementiert (mehr zu Modulen morgen). Wir erzeugen ein Python-Skript `argumente.py` mit dem folgenden Inhalt:
 
@@ -247,7 +269,7 @@ python produkt2.py 35 10
 #> Das Ergebnis lautet 350.0
 ```
 
-# Aufgaben
+## Aufgaben
 
 54 // 7  # ganzzahlige Division
 54 % 7   # Modulo
