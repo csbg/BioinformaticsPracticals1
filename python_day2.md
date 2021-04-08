@@ -228,7 +228,7 @@ math.factorial(7)
 ```
 
 Es gibt aber noch weitere Varianten des Einbindens:
-- mit Umbenennung des Namensraum
+- mit Umbenennung des Namensraums
   ```python
   import math as mathematik
 
