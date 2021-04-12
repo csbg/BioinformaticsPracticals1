@@ -96,6 +96,8 @@ Take a look at the files with content
 ```bash
 head day1/*
 ```
+---------------
+END OF DAY 1
 
 # Files and file systems
 
