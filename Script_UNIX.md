@@ -98,6 +98,7 @@ head day1/*
 ```
 
 END OF DAY 1
+
 ---------------
 
 # Files and file systems
@@ -375,6 +376,7 @@ Create a folder called "day2" in your home. Next place the following files into 
 - Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Megabytes into the file "size.txt".
 
 END OF DAY 2
+
 ---------------
 
 # Patterns and regular expressions
@@ -556,6 +558,7 @@ Create the following files in the folder "day3":
 - Write the count of all unique protein coding genes into the file count_protein_coding.txt
 
 END OF DAY 3
+
 ---------------
 
 # Loops and variables
@@ -658,6 +661,7 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 - "Manually" check results, for example comparing to the example above ("ATCGCGGC" vs "ATCCCAGC")
 
 END OF DAY 4
+
 ---------------
 
 # Useful links
