@@ -29,6 +29,7 @@
 
 
 # Connecting to the cluster
+(Day 1)
 The command ssh lets you connect to the cluster. Note: you will need VPN active to be able to connect.
 ```bash
 ssh [username]@corso.came.sbg.ac.at
@@ -102,6 +103,7 @@ END OF DAY 1
 ---------------
 
 # Files and file systems
+(Day 2)
 
 ### Navigate the file system
 First, let's clean up
@@ -380,6 +382,7 @@ END OF DAY 2
 ---------------
 
 # Patterns and regular expressions
+(Day 3)
 
 ### File pattern matches
 
@@ -562,6 +565,7 @@ END OF DAY 3
 ---------------
 
 # Loops and variables
+(Day 4)
 
 ### Variables
 
