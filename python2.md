@@ -454,12 +454,19 @@ Implementieren Sie eine Funktion `get_charge`, die überprüft, ob eine Aminosä
 
 Speichern Sie diese Funktion in der Datei `aufgabe_2_2.py`.
 
-Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Beispiele testen:
+Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```python
-print(get_charge("D"))    #> "negative"
-print(get_charge("F"))    #> "neutral"
-print(get_charge("H"))    #> "positive"
-print(get_charge("foo"))  #> "invalid input"
+print(get_charge("D"))
+#> "negative"
+
+print(get_charge("F"))
+#> "neutral"
+
+print(get_charge("H"))
+#> "positive"
+
+print(get_charge("foo"))
+#> "invalid input"
 ```
 
 
@@ -472,10 +479,13 @@ Schreiben Sie eine Funktion `count_bases`, die die Anzahl an Purin- und Pyrimidi
 
 Speichern Sie diese Funktion in der Datei `aufgabe_2_3.py`.
 
-Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Beispiele testen:
+Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```python
-print(count_bases(["ACCGGGTTTT", "TTAAAGGGGCCCCC"], True))         #> 11
-print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purines=False)) #> 12
+print(count_bases(["ACCGGGTTTT", "TTAAAGGGGCCCCC"], True))
+#> 11
+
+print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purines=False))
+#> 12
 ```
 
 
@@ -493,7 +503,7 @@ Da die Sequenz zufällig erzeugt werden soll, werden Sie auf die Funktion `choic
 
 Speichern Sie diese Funktion in der Datei `aufgabe_2_4.py`.
 
-Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Beispiele testen:
+Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```python
 random.seed(42)
 print(make_sequence(20, False, "A"))
@@ -515,7 +525,7 @@ In dieser Aufgabe entwerfen Sie ein Programm `aufgabe_2_5.py`, welches die Ähnl
   2. die Anzahl der in der zweiten Probe detektierten Gene; und
   3. die Ähnlichkeit der beiden Proben, welche durch den Jaccard-Koeffizienten gemessen wird. (Der [Jaccard-Koeffizient](https://de.wikipedia.org/wiki/Jaccard-Koeffizient) zweier Mengen entspricht der Größe der Schnittmenge geteilt durch die Größe der Vereinigungsmenge.)
 
-Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Beispiele testen:
+Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```
 $ python aufgabe_2_5.py RAB5C;PITX2;ZNF222;LMTK2;LMTK2 RAB5C;PABPC4;ZNF222;PKN1;PTMA
 4

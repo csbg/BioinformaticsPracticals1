@@ -330,7 +330,7 @@ Schreiben Sie ein Programm `aufgabe_1_4.py`, welches vier Kommandozeilenargument
 
 Die Zählung der Basen folgt dabei von Eins ausgehend (d.h. die erste Base in der DNA-Sequenz trägt auch tatsächlich die Nummer „1“).
 
-Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Beispiele testen:
+Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 
 ```
                          x  a   e
