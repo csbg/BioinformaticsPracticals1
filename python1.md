@@ -27,7 +27,7 @@ Numerische Typen werden verwendet, um Zahlen darzustellen.
 3.1415  # eine Gleitkommazahl (float), die pi approximiert
 ```
 
-Die Raute `#` leitet einen *Kommentar* ein: Python ignoriert alle darauf folgenden Zeichen bis zum Zeilenende.
+Die Raute `#` leitet einen *Kommentar* ein: Python ignoriert alle darauf folgenden Zeichen bis zum Zeilenende. (Daher können Sie sämtliche Kommentare in den folgenden Beispielen ruhig weglassen, wenn Sie die Anweisungen in Python eingeben!)
 
 Zahlen lassen sich durch *arithmetische Operatoren* manipulieren:
 
@@ -269,14 +269,24 @@ python produkt2.py 35 10
 
 ## Aufgaben
 
-Jede Kurseinheit schließt mit einer Reihe von Programmieraufgaben, die Sie selbstständig bearbeiten sollen. Ihre Lösungen bilden die Grundlage für die Beurteilung des Kurses. Bei jeder Aufgabe ist die maximale Anzahl von Punkten vermerkt, die für eine richtige Lösung vergeben werden.
+Jede Kurseinheit schließt mit einer Reihe von Aufgaben, die Sie selbstständig bearbeiten sollen. Ihre Lösungen bilden die Grundlage für die Beurteilung des Kurses. Bei jeder Aufgabe ist die maximale Anzahl von Punkten vermerkt, die für eine richtige Lösung vergeben werden.
 
-Speichern Sie alle Dateien, die Sie erstellen müssen, im Ordner `python1` in Ihrem Home-Verzeichnis.
+Speichern Sie alle Dateien, die Sie in Kurseinheit 1 erstellen müssen, im Ordner `python1` in Ihrem Home-Verzeichnis.
 
 
-#### Aufgabe 1.1 (1 P)
 
-Schreiben Sie ein Python-Programm, dass die folgenden Anweisungen nacheinander ausführt. Speichern Sie das Programm unter `aufgabe_1_1.py`.
+#### Aufgabe 1.1 (3 P)
+
+Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python1` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
+- `produkt.py`
+- `argumente.py`
+- `produkt2.py`
+
+
+
+#### Aufgabe 1.2 (1 P)
+
+Schreiben Sie ein Python-Programm, dass die folgenden Anweisungen nacheinander ausführt. Speichern Sie das Programm unter `aufgabe_1_2.py`.
 1. Speichere die ganze Zahl 32 in der Variable `z` und die Gleitkommazahl 2.5 in der Variable `a`.
 2. Berechne das Produkt von `z` und `a` und speichere das Ergebnis in der Variable `b`.
 3. Dividiere `a` durch 8 und speichere das Ergebnis wiederum in `a`.
@@ -285,12 +295,12 @@ Schreiben Sie ein Python-Programm, dass die folgenden Anweisungen nacheinander a
 
 
 
-#### Aufgabe 1.2 (2 P)
+#### Aufgabe 1.3 (2 P)
 
-Schreiben Sie ein Programm `aufgabe_1_2.py`, das zur Eingabe dreier Zahlen auffordert und anschließend ausgibt, ob der Rest bei Division der ersten Zahl durch die zweite gleich der dritten Zahl ist. Ein Aufruf dieses Programms könnte z.B. folgendermaßen aussehen:
+Schreiben Sie ein Programm `aufgabe_1_3.py`, das zur Eingabe dreier Zahlen auffordert und anschließend ausgibt, ob der Rest bei Division der ersten Zahl durch die zweite gleich der dritten Zahl ist. Ein Aufruf dieses Programms könnte z.B. folgendermaßen aussehen:
 
 ```
-$ python aufgabe_1_2.py
+$ python aufgabe_1_3.py
 Dividend: 10
 Divisor: 4
 Rest: 2
@@ -302,7 +312,7 @@ Die drei Werte 10, 4, und 2 wurden eingeben, das Programm gibt anschließend `Tr
 Ein anderer Aufruf des Programms könnte so aussehen:
 
 ```
-$ python aufgabe_1_2.py
+$ python aufgabe_1_3.py
 Dividend: 835
 Divisor: 111
 Rest: 20
@@ -312,9 +322,9 @@ False
 Es ist egal, ob Ihr Programm etwas in den Eingabezeilen schreibt (z.B. „Dividend“ in der ersten Zeile). Wichtig ist lediglich, dass in der letzten Zeile der Ausgabe ein einziger Boolescher Wert steht, der richtig berechnet wurde.
 
 
-#### Aufgabe 1.3 (2 P)
+#### Aufgabe 1.4 (2 P)
 
-Schreiben Sie ein Programm `aufgabe_1_3.py`, welches vier Kommandozeilenargumente einliest. (Diese Argumente werden im Folgenden als `dna`, `x`, `a` und `e` bezeichnet.) Das erste Argument ist ein beliebig langer String, der eine DNA-Sequenz darstellt. Die Argumente zwei bis vier sind jeweils ein Integer. Das Programm soll anschließend zwei Zeilen ausgeben:
+Schreiben Sie ein Programm `aufgabe_1_4.py`, welches vier Kommandozeilenargumente einliest. (Diese Argumente werden im Folgenden als `dna`, `x`, `a` und `e` bezeichnet.) Das erste Argument ist ein beliebig langer String, der eine DNA-Sequenz darstellt. Die Argumente zwei bis vier sind jeweils ein Integer. Das Programm soll anschließend zwei Zeilen ausgeben:
 - In der ersten Zeile steht die `x`-te Base von links in `dna`.
 - In der zweiten Zeile steht jene Teilsequenz von `dna`, die zwei Basen vor der durch `a` angegebenen Stelle beginnt und an der durch `e` angegebenen Stelle endet.
 
@@ -325,13 +335,13 @@ Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Bei
 ```
                          x  a   e
                          ↓  ↓   ↓
-$ python aufgabe_1_3.py AGCTATAGTAATCCAAT 2 5 9
+$ python aufgabe_1_4.py AGCTATAGTAATCCAAT 2 5 9
 G
 CTATAGT
 
                               a     x      e
                               ↓     ↓      ↓
-$ python aufgabe_1_3.py ATCTACGCGATATCGCGATAGCCGATGCTGACGACTGACTTGACG 13 7 20
+$ python aufgabe_1_4.py ATCTACGCGATATCGCGATAGCCGATGCTGACGACTGACTTGACG 13 7 20
 T
 ACGCGATATCGCGATA
 ```

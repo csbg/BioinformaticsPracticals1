@@ -19,6 +19,59 @@
 
 <!-- /TOC -->
 
+## Reguläre Ausdrücke
+
+Das Modul `re` (in der Standardbibliothek) implementiert Funktionen zur Verwendung regulärer Ausdrücke. Wie uns bereits aus dem Bash-Kurs bekannt ist, ist ein *regulärer Ausdruck* (regex) eine Zeichenkette, die ein Suchmuster definiert und somit Mengen anderer Zeichenketten beschreibt.
+
+Das Modul `re` ist sehr umfangreich und bietet eine Fülle an Varianten an, wie reguläre Ausdrücke vorbereitet und verwendet werden können. Wir beschränken uns auf einige wenige Funktionen und verweisen ansonsten auf die [Dokumentation](https://docs.python.org/3/library/re.html) und den Artikel [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html). `findall()` beispielsweise sucht nach allen nicht-überlappenden Vorkommen eines regulären Ausdrucks (erstes Argument) in einem Suchstring (zweites Argument) und gibt alle Treffer als Liste zurück.
+
+```python
+from re import findall
+
+findall(r".ython", "Python oder Jython")
+```
+
+Es empfiehlt sich, den regulären Ausdruck mittels eines *Raw-Strings* zu definieren (ein String, vor dessen erstem Anführungszeichen ein `r` steht), um den Backslash ohne Escaping verwenden zu können.
+
+Die Syntax für reguläre Ausdrücke in Python ähnelt jener in Bash:
+
+- Der Punkt `.` bezeichnet ein *beliebiges Zeichen* (s. Beispiel oben).
+- *Zeichenklassen* werden gebildet, indem die gültigen Zeichen in eckige Klammern gesetzt werden.
+  ```python
+  findall(r"H[au]nd", "Hand Hund Hend")
+  ```
+  Auch die Angabe eines Zeichenbereichs sowie der Ausschluss von Zeichen sind möglich:
+  ```python
+  findall(r"H[a-t]nne", "Hanne Henne Hunne")  # alle Zeichen von a bis t
+  findall(r"H[^e]nne", "Hanne Henne Hunne")   # alle Zeichen außer e
+  ```
+  Python kennt außerdem eine Reihe von vordefinierten Zeichenklassen, z.B. `\d` (alle Ziffern des Dezimalsystems) und `\w` (alle alphanumerischen Zeichen inkl. Unterstrich).
+- *Quantoren* nach einem Zeichen geben an, wie oft dieses Zeichen auftreten darf.
+  ```python
+  target = "bt bat baat baaat baaaat baaaaaaaaat"
+  findall(r"ba*t", target)     # beliebig oft
+  findall(r"ba+t", target)     # mindestens einmal
+  findall(r"ba?t", target)     # keinmal oder einmal
+  findall(r"ba{3}t", target)   # genau 3-mal
+  findall(r"ba{2,}t", target)  # 2-mal oder öfter
+  findall(r"ba{,3}t", target)  # höchstens 3-mal
+  findall(r"ba{2,4}t", target) # 2- bis 4-mal
+  ```
+- *Alternativen* suchen nach zwei verschiedenen Zeichenketten.
+  ```python
+  findall(r"eins|zwei", "eins zwei drei")
+  ```
+- *Anker* legen fest, dass ein regulärer Ausdruck nur am Anfang oder Ende eines Strings gefunden werden darf:
+  ```python
+  findall(r"^a..", "auf dem Haus")  # Verankerung am Beginn
+  findall(r"a..$", "auf dem Haus")  # Verankerung am Ende
+  ```
+- *Gruppen* werden durch runde Klammern um ein oder mehrere Zeichen gebildet. Gruppen bilden Einheiten, die z.B. mit einem Quantor versehen werden können. Außerdem können wir über Gruppen bestimmte Teile eines Treffers extrahieren:
+  ```python
+  findall(r"Tier: (.+) (.+)", "Tier: Mus musculus")
+  ```
+
+
 ## Objektorientierte Programmierung
 
 Die objektorientierte Programmierung (OOP) zählt zu den von Python unterstützten Programmierparadigmen. Wenngleich ein Kurs über OOP unzählige Stunden füllen könnte, beschränken wir uns hier auf eine pragmatische Herangehensweise und stellen uns ein Programm als eine Sammlung von *Objekten* vor, die miteinander kommunizieren. Jedes Objekt besitzt
@@ -343,3 +396,22 @@ Innerhalb des eingerückten Anweisungskörpers ist nun das Objekt (`f`) definier
 
 Massenzahlen aus Tabelle einlesen
 finally
+
+
+#### Aufgabe 2.5 (3 P)
+
+Implementieren Sie eine Funktion `find_sites`, welche die Anzahl an N-Glykosylierungsstellen in einer Proteinsequenz zählt.
+- Die Funktion wird mit einem Parameter aufgerufen, der Proteinsequenz.
+- Die Funktion gibt die Anzahl der N-Glykosylierungsstellen zurück. Eine solche Stelle ist durch das folgende, vier Aminosäuren umfassende Sequenzmotif charakterisiert:
+  1. Asparagin
+  2. beliebige Aminosäure außer Prolin
+  3. Serin oder Threonin
+  4. beliebige Aminosäure außer Prolin
+
+Speichern Sie diese Funktion in der Datei `aufgabe_2_5.py`.
+
+Sie können die korrekte Funktionalität Ihres Programm anhand der folgenden Beispiele testen:
+```python
+find_sites("ALDTNYSFSSTEKNPSVRQLYIDFRKDLGWNATAEPKGYHANFCLGNATPIWSLDTQYS")  #> 2
+find_sites("MVHLTPEEKSAVTALWGKVNVSEVGGEALGRLLVVYPNNSNFFESNATTS")  #> 3
+```
