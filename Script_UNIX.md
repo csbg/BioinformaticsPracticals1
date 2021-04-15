@@ -600,6 +600,21 @@ do
   x=$(( $x + 1 )) # syntax to add a number to x
 done
 ```
+
+Importantly, the loop is ONE construct. Thus when entering `while [ $x -le 5 ]`, the terminal expects additional information, in particular `do [...] done`. While waiting for additional input, the terminal will start lines with `>`. Keep entering the `do`, etc in those lines. The final results will look like this:
+```
+[user]@corso:~$ while [ $x -le 5 ]
+> do
+> echo "Welcome $x times"
+> x=$(( $x + 1 ))
+> done
+Welcome 1 times
+Welcome 2 times
+Welcome 3 times
+Welcome 4 times
+Welcome 5 times
+```
+
 Try to make the above loop count to 10. Or from 10 to 5. 
 
 Here are different ways to compare numbers. Assume variable a holds 10 and variable b holds 20 then:
