@@ -645,11 +645,34 @@ Now we will combine the above variables and loopes to test all guides in file gR
 - Store all results (not just the top 30 coming from head -30) of each guide into a file that is named: `results_${guide}.txt`. Place all files into a new folder "day4" - ideally already within the loop.
 - Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?
 
+UPDATE:
+The above exercise does not produce the desired results (it produces 0 matches for almost all guides as they are too long). To fix this, use an updated file of gRNAs instead in the following exercises. You can copy the corrected file to your home directory using this command:
+```bash
+cp /home/nfortelny/gRNAs_CORRECTED.txt ~/
+```
+
+To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using `guide=[...]`
+```bash
+echo $guide
+pattern="seq:[ACTG]*${guide}"
+echo $pattern
+gunzip -c GRCh38_reformatted.gz | grep $pattern | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' | sort | uniq
+```
+
+Place the above in the loop that iterates throught the gRNA file. 
+```bash
+while read guide; do
+  echo $guide
+done <gRNAs_CORRECTED.txt
+```
+Remember: you need to save the result of the last line (`gunzip ... | uniq`) to a file `results_${guide}.txt`.
+
+
 ### Comparing files
 
 Have a look at the files we generated.
 ```bash
-cd ~/day5
+cd ~/day4
 ls results_*.txt
 ls -l results_*.txt
 head results_*.txt
@@ -658,16 +681,16 @@ wc -l results_*.txt
 
 Now let's compare results in a pairwise manner. The command `comm` will provide the gene symbols unique to one or the other file, plus the intersection of both.
 ```bash
-cd ~/day5
-comm results_ATCGCGGC.txt results_ATCCCAGC.txt
-comm -12 results_ATCGCGGC.txt results_ATCCCAGC.txt
+cd ~/day4
+comm results_AAGTTGGC.txt results_GCCATACA.txt
+comm -12 results_AAGTTGGC.txt results_GCCATACA.txt
 ```
 
 The count of genes in the overlap (intersection) can be stored in a new variable. To store results of an expression in a new variable, place the expression into parenthesis `x=$()`.
 ```bash
-guide1=ATCGCGGC
-guide2=ATCCCAGC
-overlap=$(comm -12 results_ATCGCGGC.txt results_ATCCCAGC.txt | wc -l)
+guide1=AAGTTGGC
+guide2=GCCATACA
+overlap=$(comm -12 day4/results_${guide1}.txt day4/results_${guide2}.txt | wc -l)
 echo "$guide1 $guide2 $overlap"
 ```
 
@@ -677,7 +700,7 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 
 - Use one loop (iterating through all guides) within another loop (also iterating through all guides) to compare the overlap between all pairs of guides
 - Use the "comm" command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
-- "Manually" check results, for example comparing to the example above ("ATCGCGGC" vs "ATCCCAGC")
+- "Manually" check results, for example comparing to the example above ("AAGTTGGC" vs "GCCATACA")
 
 END OF DAY 4
 
