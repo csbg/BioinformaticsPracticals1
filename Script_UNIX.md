@@ -688,6 +688,7 @@ comm -12 results_AAGTTGGC.txt results_GCCATACA.txt
 
 The count of genes in the overlap (intersection) can be stored in a new variable. To store results of an expression in a new variable, place the expression into parenthesis `x=$()`.
 ```bash
+cd ~/
 guide1=AAGTTGGC
 guide2=GCCATACA
 overlap=$(comm -12 day4/results_${guide1}.txt day4/results_${guide2}.txt | wc -l)
