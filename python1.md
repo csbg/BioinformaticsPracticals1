@@ -284,7 +284,7 @@ Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser 
 
 
 
-#### Aufgabe 1.2 (1 P)
+#### Aufgabe 1.2 (2 P)
 
 Schreiben Sie ein Python-Programm, dass die folgenden Anweisungen nacheinander ausführt. Speichern Sie das Programm unter `aufgabe_1_2.py`.
 1. Speichere die ganze Zahl 32 in der Variable `z` und die Gleitkommazahl 2.5 in der Variable `a`.
@@ -322,7 +322,7 @@ False
 Es ist egal, ob Ihr Programm etwas in den Eingabezeilen schreibt (z.B. „Dividend“ in der ersten Zeile). Wichtig ist lediglich, dass in der letzten Zeile der Ausgabe ein einziger Boolescher Wert steht, der richtig berechnet wurde.
 
 
-#### Aufgabe 1.4 (2 P)
+#### Aufgabe 1.4 (3 P)
 
 Schreiben Sie ein Programm `aufgabe_1_4.py`, welches vier Kommandozeilenargumente einliest. (Diese Argumente werden im Folgenden als `dna`, `x`, `a` und `e` bezeichnet.) Das erste Argument ist ein beliebig langer String, der eine DNA-Sequenz darstellt. Die Argumente zwei bis vier sind jeweils ein Integer. Das Programm soll anschließend zwei Zeilen ausgeben:
 - In der ersten Zeile steht die `x`-te Base von links in `dna`.

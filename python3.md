@@ -345,6 +345,7 @@ Speichern Sie alle Dateien, die Sie in Kurseinheit 3 erstellen müssen, im Ordne
 #### Aufgabe 3.1 (3 P)
 
 Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python3` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
+- `codon_table.csv`
 - `simple_protein.py`
 - `some_lines.txt`
 
@@ -424,30 +425,7 @@ print(insulin_B.get_mw(disulfides=1))
 
 
 
-#### Aufgabe 3.3 (2 P)
-
-Implementieren Sie eine Funktion `count_sites`, welche die Anzahl an N-Glykosylierungsstellen in einer Proteinsequenz zählt.
-- Die Funktion wird mit einem Parameter aufgerufen (der Proteinsequenz).
-- Die Funktion gibt die Anzahl der N-Glykosylierungsstellen zurück. Eine solche Stelle ist durch das folgende, vier Aminosäuren umfassende Sequenzmotif charakterisiert:
-  1. Asparagin
-  2. beliebige Aminosäure außer Prolin
-  3. Serin oder Threonin
-  4. beliebige Aminosäure außer Prolin
-
-Speichern Sie diese Funktion in der Datei `aufgabe_3_3.py`.
-
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
-```python
-print(count_sites("ALDTNYSFSSTEKNPSVRQLYIDFRKDLGWNATAEPKGYHANFCLGNATPIWSLDTQYS"))
-#> 2
-
-print(count_sites("MVHLTPEEKSAVTALWGKVNVSEVGGEALGRLLVVYPNNSNFFESNATTS"))
-#> 3
-```
-
-
-
-#### Aufgabe 3.4 (3 P)
+#### Aufgabe 3.3 (3 P)
 
 Implementieren Sie eine Funktion `read_masses`, die eine Tabelle von Atommassen einliest.
 - Die Funktion hat einen Parameter, der den Namen der Tabellendatei angibt.
@@ -462,7 +440,7 @@ Implementieren Sie eine Funktion `read_masses`, die eine Tabelle von Atommassen 
   Jede Zeile umfasst also zwei durch Kommas getrennte Felder, nämlich das Elementsymbol und die durchschnittliche Atommasse. Daher können Sie jede Zeile mit einem regulären Ausdruck verarbeiten, der zwei Gruppen enthält.
 - Die Funktion soll ein Dict zurückgeben; Elementsymbole und zugehörige Atommasse bilden die Schlüssel-Wert-Paare.
 
-Speichern Sie diese Funktion in der Datei `aufgabe_3_4.py`.
+Speichern Sie diese Funktion in der Datei `aufgabe_3_3.py`.
 
 Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```python
@@ -479,15 +457,15 @@ print(2 * m["H"] + m["O"])
 
 
 
-#### Aufgabe 3.5 (3 P)
+#### Aufgabe 3.4 (3 P)
 
 Implementieren Sie eine Funktion `calculate_mass`, die die Masse einer chemischen Formel berechnet. Die Funktion wird mit einem String aufgerufen, der die Formel enthält (z.B. `"C6 H12 O6"` oder `"C Cl4"`), und gibt die Masse der Formel als Float zurück.
 
 Hinweise:
 - Extrahieren Sie die einzelnen Elementsymbole und ihre Anzahl über einen regulären Ausdruck mit zwei Gruppen. Die erste Gruppe beinhaltet jedenfalls einen Großbuchstaben und ggf. zusätzlich einen Kleinbuchstaben. Die zweite Gruppe enthält beliebig viele Ziffern.
-- Greifen Sie auf Ihre Lösung zu Aufgabe 3.4 zurück, um ein Dict mit Atommassen zu erhalten. Sie können selbst erstellte Python-Dateien genauso wie Module der Standardbibliothek via `import` einbinden (`from aufgabe_3_4 import read_masses`).
+- Greifen Sie auf Ihre Lösung zu Aufgabe 3.3 zurück, um ein Dict mit Atommassen zu erhalten. Sie können selbst erstellte Python-Dateien genauso wie Module der Standardbibliothek via `import` einbinden (`from aufgabe_3_3 import read_masses`).
 
-Speichern Sie diese Funktion in der Datei `aufgabe_3_5.py`.
+Speichern Sie diese Funktion in der Datei `aufgabe_3_4.py`.
 
 Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```python
