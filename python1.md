@@ -15,6 +15,8 @@
 
 ## Datentypen und Operatoren
 
+Um Python zu verwenden, loggen Sie sich bitte wieder mittels `ssh` auf die Corso ein; dort sind alle erforderlichen Progamme installiert.
+
 Führen Sie die folgenden Anweisungen zunächst im interaktiven Modus aus. Versuchen Sie, das Ergebnis jeder Anweisung zu verstehen. Bitte zögern Sie nicht, sich bei Schwierigkeiten an Ihren Kursleiter zu wenden.
 
 
