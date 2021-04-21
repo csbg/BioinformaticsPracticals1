@@ -342,7 +342,7 @@ Speichern Sie alle Dateien, die Sie in Kurseinheit 3 erstellen müssen, im Ordne
 
 
 
-#### Aufgabe 3.1 (3 P)
+#### Aufgabe 3.1 (4 P)
 
 Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python3` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
 - `codon_table.csv`
@@ -350,7 +350,7 @@ Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser 
 - `some_lines.txt`
 
 
-#### Aufgabe 3.2 (4 P)
+#### Aufgabe 3.2 (6 P)
 
 Erstellen Sie eine Klasse `Protein` mit den folgenden Eigenschaften:
 - Der Konstruktor wird mit den Argumenten `name`, `uniprot_id` und `sequence` aufgerufen, die in gleichnamigen Attributen gespeichert werden sollen.
@@ -425,7 +425,7 @@ print(insulin_B.get_mw(disulfides=1))
 
 
 
-#### Aufgabe 3.3 (3 P)
+#### Aufgabe 3.3 (6 P)
 
 Implementieren Sie eine Funktion `read_masses`, die eine Tabelle von Atommassen einliest.
 - Die Funktion hat einen Parameter, der den Namen der Tabellendatei angibt.
@@ -457,7 +457,7 @@ print(2 * m["H"] + m["O"])
 
 
 
-#### Aufgabe 3.4 (3 P)
+#### Aufgabe 3.4 (4 P)
 
 Implementieren Sie eine Funktion `calculate_mass`, die die Masse einer chemischen Formel berechnet. Die Funktion wird mit einem String aufgerufen, der die Formel enthält (z.B. `"C6 H12 O6"` oder `"C Cl4"`), und gibt die Masse der Formel als Float zurück.
 

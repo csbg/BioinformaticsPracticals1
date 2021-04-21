@@ -7,4 +7,3 @@ For the corresponding course at the University of Salzburg
   - [Kurseinheit 1](python1.md)
   - [Kurseinheit 2](python2.md)
   - [Kurseinheit 3](python3.md)
-  - [Kurseinheit 4](python4.md)

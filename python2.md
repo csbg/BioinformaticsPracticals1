@@ -437,7 +437,7 @@ Speichern Sie alle Dateien, die Sie in Kurseinheit 2 erstellen müssen, im Ordne
 
 
 
-#### Aufgabe 2.1 (3 P)
+#### Aufgabe 2.1 (4 P)
 
 Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python2` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
 - `test_sign.py`
@@ -445,7 +445,7 @@ Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser 
 
 
 
-#### Aufgabe 2.2 (3 P)
+#### Aufgabe 2.2 (4 P)
 
 Implementieren Sie eine Funktion `get_charge`, die überprüft, ob eine Aminosäure positiv geladen (z.B. Arginin), negativ geladen (z.B. Aspartat), oder neutral ist (z.B. Valin).
 - Die Funktion soll mit einem Argument aufgerufen werden, das die Aminosäure als Ein-Buchstaben-Code angibt. Nur die 21 eukaryotischen proteinogenen Aminosäuren sollen berücksichtigt werden.
@@ -470,7 +470,7 @@ print(get_charge("foo"))
 ```
 
 
-#### Aufgabe 2.3 (3 P)
+#### Aufgabe 2.3 (4 P)
 
 Schreiben Sie eine Funktion `count_bases`, die die Anzahl an Purin- und Pyrimidinbasen in einer DNA- oder RNA-Sequenz zählt.
 - Der erste Parameter `sequences` ist erforderlich. Er wird eine Liste mit beliebig vielen Strings erhalten, von denen jeder eine Sequenz darstellt.
@@ -489,7 +489,7 @@ print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purine=False))
 ```
 
 
-#### Aufgabe 2.4 (3 P)
+#### Aufgabe 2.4 (4 P)
 
 Wenn Sie regelmäßig programmieren, werden Sie unweigerlich an den Punkt kommen, an dem Sie fremde Pakete verwenden und in der jeweiligen Dokumentation nachschlagen müssen. Dies werden wir in dieser Aufgabe üben.
 
@@ -515,7 +515,7 @@ print(make_sequence(15, rna=True, count_base="C"))
 
 
 
-#### Aufgabe 2.5 (3 P)
+#### Aufgabe 2.5 (4 P)
 
 In dieser Aufgabe entwerfen Sie ein Programm `aufgabe_2_5.py`, welches die Ähnlichkeit zweier Gewebeproben anhand ihrer exprimierten Gene berechnet.
 - Das Programm soll zwei Kommandozeilenargumente `genes1` und `genes2` verarbeiten.
