@@ -484,7 +484,7 @@ Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Be
 print(count_bases(["ACCGGGTTTT", "TTAAAGGGGCCCCC"], True))
 #> 11
 
-print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purines=False))
+print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purine=False))
 #> 12
 ```
 
