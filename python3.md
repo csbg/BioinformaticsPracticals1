@@ -457,7 +457,7 @@ print(2 * m["H"] + m["O"])
 
 
 
-#### Aufgabe 3.4 (4 P)
+#### Aufgabe 3.4 (5 P)
 
 Implementieren Sie eine Funktion `calculate_mass`, die die Masse einer chemischen Formel berechnet. Die Funktion wird mit einem String aufgerufen, der die Formel enthält (z.B. `"C6 H12 O6"` oder `"C Cl4"`), und gibt die Masse der Formel als Float zurück.
 
