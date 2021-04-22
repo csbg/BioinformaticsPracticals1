@@ -527,17 +527,17 @@ In dieser Aufgabe entwerfen Sie ein Programm `aufgabe_2_5.py`, welches die Ähnl
 
 Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```
-$ python aufgabe_2_5.py RAB5C;PITX2;ZNF222;LMTK2;LMTK2 RAB5C;PABPC4;ZNF222;PKN1;PTMA
+$ python aufgabe_2_5.py "RAB5C;PITX2;ZNF222;LMTK2;LMTK2" "RAB5C;PABPC4;ZNF222;PKN1;PTMA"
 4
 5
 0.2857142857142857
 
-$ python aufgabe_2_5.py THOC5;RAD23B;GPR31;PIRC85;PANO1 THOC5;ATP1A2;GPR31;THOC5
+$ python aufgabe_2_5.py "THOC5;RAD23B;GPR31;PIRC85;PANO1" "THOC5;ATP1A2;GPR31;THOC5"
 5
 3
 0.3333333333333333
 
-$ python aufgabe_2_5.py RAD23B RAD23B
+$ python aufgabe_2_5.py "RAD23B" "RAD23B"
 1
 1
 1.0
