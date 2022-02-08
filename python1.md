@@ -1,238 +1,244 @@
-# Kurseinheit 1
+# Unit 1
 
-## Inhalt
+## Contents
 
-- [Datentypen und Operatoren](#datentypen-und-operatoren)
-  - [Numerische Typen](#numerische-typen)
-  - [Boolescher Typ](#boolescher-typ)
-  - [Texttyp](#texttyp)
-  - [`None`-Typ](#none-typ)
-- [Interaktive Ein- und Ausgabe](#interaktive-ein--und-ausgabe)
-- [Kommandozeilenargumente](#kommandozeilenargumente)
-- [Aufgaben](#aufgaben)
-
-
-
-## Datentypen und Operatoren
-
-Um Python zu verwenden, loggen Sie sich bitte wieder mittels `ssh` auf die Corso ein; dort sind alle erforderlichen Progamme installiert.
-
-Führen Sie die folgenden Anweisungen zunächst im interaktiven Modus aus. Versuchen Sie, das Ergebnis jeder Anweisung zu verstehen. Bitte zögern Sie nicht, sich bei Schwierigkeiten an Ihren Kursleiter zu wenden.
+- [Data types and operators](#data-types-and-operators)
+  - [Numeric types](#numeric-types)
+  - [Boolean type](#boolean-type)
+  - [Text type](#text-type)
+  - [`None` type](#none-type)
+- [Input and output](#input-and-output)
+- [Command line arguments](#command-line-arguments)
+- [Exercises](#exercises)
 
 
-### Numerische Typen
 
-Numerische Typen werden verwendet, um Zahlen darzustellen.
+## Data types and operators
 
-```python
-42      # die ganze Zahl (integer) Zweiundvierzig
-3.1415  # eine Gleitkommazahl (float), die pi approximiert
-```
+To use Python, please connect to Corso via `ssh`; on this virtual machine, all required programs have been installed.
 
-Die Raute `#` leitet einen *Kommentar* ein: Python ignoriert alle darauf folgenden Zeichen bis zum Zeilenende. (Daher können Sie sämtliche Kommentare in den folgenden Beispielen ruhig weglassen, wenn Sie die Anweisungen in Python eingeben!)
+Execute the following statements in Python's interactive mode. Try to understand the result of each statement. If you encounter any difficulties, please do not hesitate to contact your course instructor.
 
-Zahlen lassen sich durch *arithmetische Operatoren* manipulieren:
 
+
+### Numeric types
+
+Numeric types represent numbers.
 
 ```python
-1 + 2    # Addition
-7 - 4    # Subtraktion
-5 * 6    # Multiplikation
-54 / 7   # Division
-10 % 4   # Modulo
+42      # the integer number fourty-two
+3.1415  # a decimal number (float) that approximates pi
 ```
 
-Der *Zuweisungsoperator* weist einem Wert einen Namen zu:
+The hash sign `#` indicates a *comment*: Python will ignore all remaining characters on the line. (Thus, you may readily omit all comments when you enter n the following code snippets into the Python interpreter!).
+
+Numbers may be manipulated via *arithmetic operators*:
+
+
+```python
+1 + 2    # addition
+7 - 4    # subtraction
+5 * 6    # multiplication
+54 / 7   # division
+10 % 4   # modulo – returns remainder
+```
+
+The *assignment operator* assigns a name to a value:
 
 ```python
 a = 343
 b = 14
 ```
 
-Nachdem ein Wert benannt wurde, kann der Name anstelle des Werts in einer Anweisung aufscheinen:
+Now, the name (also called *variable*) may be used instead of the value in any statement:
 
 ```python
 a
 a + b
 ```
 
-Variablennamen dürfen aus beliebigen Kombinationen von Buchstaben, Ziffern, und dem Unterstrich bestehen. Sie dürfen jedoch mit keiner Ziffer beginnen. Bestimmte Schlüsselwörter (z.B. `if`, `for`) dürfen nicht als Variablennamen verwendet werden.
+Variable names may comprise an arbitrary number of letters, digits, and underscores. However, a name must not start with a digit, and certain keywords (e.g., `if` and `for`) are disallowed as names.
 
 ```python
 x = 1            # ok
 first_value = 1  # ok
 number5 = 1      # ok
-2much = 1        # Syntaxfehler – Name beginnt mit einer Ziffer
-for = 1          # Syntaxfehler – for ist ein Schlüsselwort
+2much = 1        # syntax error – name starts with a digit
+for = 1          # syntax error – for is a keyword
 ```
 
-Die folgenden Anweisungen berechnen beispielsweise Umfang und Fläche eines Kreises mit dem Radius 5:
+Let's calculate the circumference and area of a circle with radius 5:
 
 ```python
+# do the math
 pi = 3.1415792
 radius = 5
 circumference = 2 * radius * pi
 area = (radius ** 2) * pi
 
-# Ergebnisse ausgeben
+# print results
 circumference
 area
 ```
 
-Wir beachten die Klammern in der Formel für den Umfang: Sie legen explizit fest, dass zuerst die Potenz und dann erst das Produkt berechnet werden soll. (In diesem Fall wäre die Potenz aber ohnehin zuerst berechnet worden – die Klammern sind also für Python überflüssig.)
-
-Klammern sind hingegen wichtig, wenn die normale *Operatorrangfolge* geändert werden soll.
+We added explicit parentheses around `radius ** 2` to indicate that Python should first calculate the power and then the product. (Actually, we could have omitted those parentheses, since the precedence of exponentiation is higher than the one of multiplication.) However, parentheses are required if the default *operator precedence* should be changed.
 
 ```python
-3 * 5 + 8  # gleichbedeutend mit (3 * 5) + 8
+3 * 5 + 8  # equivalent to (3 * 5) + 8
 3 * (5 + 8)
 ```
 
-Im Zweifelsfall empfiehlt es sich, lieber zu viele als zu wenige Klammern zu verwenden! Wir achten außerdem darauf, Leerzeichen sinnvoll einzusetzen (auch wenn sie von Python meist ignoriert werden):
+When in doubt, always use parentheses to structure your calculations! Moreover, never distract from the actual order of calculations by using spaces like
 
 ```python
-3  *  5+8  # hat die Addition hier vielleicht doch Vorrang?
+3  *  5+8  # might imply that 5 and 8 are added first
 ```
 
 
-### Boolescher Typ
+### Boolean type
 
-Der Boolesche Typ kennt nur zwei Werte: `True` (wahr) und `False` (falsch). Boolesche Typen sind häufig das Ergebnis von *Vergleichsoperatoren*:
-
-```python
-3 > 2    # größer als
-7 < 4    # kleiner als
-10 >= 8  # größer/gleich
-2 <= 2   # kleiner/gleich
-5 == 5   # gleich
-10 != 9  # ungleich
-```
-
-Boolesche Werte können durch *logische Operatoren* verknüpft werden:
+There are only two Boolean values: `True` and `False`. Boolean types typically arise when using *comparison operators*:
 
 ```python
-(2 < 3) and (15 / 4 > 1)  # Konjunktion; wahr, falls beide Operanden wahr sind
-(5 != 5) or (12 >= 13)    # Disjunktion; wahr, falls zumindest ein Operand wahr ist
-not (5 < 7)               # Negation, ändert True zu False und umgekehrt
+3 > 2    # greater than
+7 < 4    # less than
+10 >= 8  # greater than or equal
+2 <= 2   # less than or equal
+5 == 5   # equality
+10 != 9  # inequality
 ```
 
-
-### Texttyp
-
-Ein *String* (Zeichenkette) besteht aus einer Folge von Unicode-Zeichen, die in einfache oder doppelte Anführungszeichen eingeschlossen sind.
+*Logical operators* connect Boolean values to obtain new Booleans.
 
 ```python
-str_a = "ein String"
-str_b = 'auch ein String'
-str_c = "ein String mit 'einfachen' Anführungszeichen"
+(2 < 3) and (15 / 4 > 1)  # conjunction, true if both operands are true
+(5 != 5) or (12 >= 13)    # disjunction, true if at least one operand is true
+not (5 < 7)               # negation changes true to false and vice versa
 ```
 
-Python kennt auch mehrzeilige Strings, die in drei Anführungszeichen eingeschlossen sind.
+
+### Text type
+
+A *string* is a sequence of Unicode characters enclosed in single or double quotes.
 
 ```python
-"""ein
-mehr-
-zeiliger
-String"""
+str_a = "a string"
+str_b = 'also a string'
+str_c = "a string with 'single' quotes"
 ```
 
-Zwei Strings können durch den `+`-Operator verknüpft werden (sog. *Konkatenation*):
+You may also use multiline strings, which must be enclosed in triple quotes.
+
+```python
+'''a
+multi-
+line
+string'''
+```
+
+String *concatenation* is done via the `+` operator:
 
 ```python
 str_a + str_b
 ```
 
-Da ein String auch zu den Sequenztypen zählt (s. Kurseinheit 2), können wir daraus einzelne Zeichen oder Zeichenketten durch *Indizierung* gewinnen.
+Since strings are sequences of characters, you can access a single character within a string by *indexing*.
 
 ```python
 enzyme = "adenylyl cyclase"
-enzyme[0]    # erstes Zeichen
-enzyme[3]    # viertes Zeichen
-enzyme[-2]   # zweites Zeichen, vom Ende aus gezählt
-enzyme[2:8]  # Teilstring vom 3. Zeichen bis zum 8. Zeichen
+enzyme[0]    # first character
+enzyme[3]    # fourth Zeichen
+enzyme[-2]   # second character counting from the end of the string
+enzyme[2:8]  # substring from position 2 (included) to position 8 (excluded)
 ```
 
-Achtung:
-* Python beginnt bei der Zählung von Elementen mit null – das erste Zeichen in einem String hat folglich den Index 0 (sog. *zero-based indexing*).
-* In der letzten Zeile haben wir das sog. *Slicing* verwendet: `[Startindex : Endindex]`. Der Teilstring beginnt mit dem Zeichen beim Startindex und endet mit dem Zeichen *vor* (!) dem Endindex.
+Please note:
+* Python uses *zero-based indexing*, i.e., the first element has index `0`.
+* The last line above demonstrates *slicing* `[start index : end index]`, which yields a substring. The character at the start index is included, while the character at the end index is excluded (!).
 
-Sowohl Startindex als auch Endindex sind optional:
+Both start index and end index are optional:
 
 ```python
-enzyme[:4]   # Teilstring bis Index 4 (exklusive)
-enzyme[9:]   # Teilstring ab Index 9 (inklusive)
-enzyme[:]    # Kopie des gesamten Strings
-enzyme[-3:]  # Teilstring ab der 3. Position vom Ende aus
+enzyme[:4]   # substring up to position 4 4 (excluded)
+enzyme[9:]   # substring starting at position 9 (included)
+enzyme[:]    # a copy of the whole string
+enzyme[-3:]  # substring starting at position 3 counting from the end
 ```
 
 
-### `None`-Typ
+### `None` type
 
-Python kennt auch den Datentyp `None`, der das „Nichts“ explizit darstellt:
+Python also knows a `None` type, which explicitly denotes the “nothing”:
 
 ```python
-nichts = None
-print(nichts)
+nothing = None
+nothing
 ```
 
-Mit dem `is`-Operator können wir überprüfen, ob eine Variable `None` enthält (wir sollten dies *nicht* mithilfe eines Booleschen Vergleichs tun):
+The `is` operator checks whether a variable is `None` (do not use a Boolean comparison in this case):
 
 ```python
-nichts is None  # bevorzugte Variante
-nichts == None  # vermeiden
+nothing is None  # preferred
+nothing == None  # avoid
 ```
 
 
-## Interaktive Ein- und Ausgabe
+## Input and output
 
-Wir haben die `print()`-Funktion zur Ausgabe von Daten bereits im einleitenden Hallo-Welt-Beispiel kennen gelernt. Eine vergleichbare Funktion existiert zur Eingabe von Daten:
+Use the `print()` function to print arbitrary output to the screen.
+
+```python
+print("Hello world!")
+print(3 + 5)
+```
+
+By contrast, the `input()` function read values supplied by the user:
 
 ```python
 value = input("Please enter any value: ")
 value
 ```
 
-Nach dem Aufruf von `input()` wartet Python auf die Eingabe beliebig vieler Zeichen. Das Programm wird erst fortgeführt, nachdem die Eingabetaste gedrückt wurde.
+After calling `input()`, Python reads an arbitrary number of characters until the user presses Enter.
 
-Achtung: `input()` list stets einen String ein. Das folgende Programm wird also nicht funktionieren:
+Note that `input()` always reads a string. Thus, the following program will not work as expected:
 
 ```python
 number = input("Please enter a number: ")
-print(number + 10)  # Ein String und ein Integer können nicht addiert werden!
+print(number + 10)  # a string cannot be added to an integer!
 ```
 
-Falls wir den Eingabewert als Zahl verwenden wollen, müssen wir eine *Typkonvertierung* mittels `int()` oder `float()` durchführen und erhalten so einen numerischen Typ:
+If we plan to use the entered value for calculations, we must *convert* it to a numeric type via `int()` oder `float()`:
 
 ```python
-x = "10"  # x ist der String "10"
-x * 2     # Fehler!
+x = "10"  # x is the string "10"
+x * 2     # error!
 
-y = int(x)  # wandelt den String "10" in einen Integer 10 um
-y * 2       # funktioniert!
+y = int(x)  # convert the string "10" to an integer 10
+y * 2       # this works!
 
-a = float("2.3")  # a verweist nun auf die Gleitkommazahl 2.3
-a / 5.6           # funktioniert!
+a = float("2.3")  # a is now the float 2.3
+a / 5.6           # this works!
 ```
 
-
-Das folgende Programm berechnet beispielsweise die Summe zweier Zahlen, die vom Benutzer eingegeben werden. Speichern Sie diese Anweisungen in der Datei `produkt.py` und führen Sie die Datei mit Python aus (`python produkt.py`)!
+The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)!
 
 ```python
-print("Berechnung des Produkts zweier Zahlen")
+print("Calculate the product of two numbers")
 
-a = input("Erste Zahl: ")
+a = input("First number: ")
 a = float(a)
 
-b = input("Zweite Zahl: ")
+b = input("Second number: ")
 b = float(b)
 
-print("Das Ergebnis lautet", a * b)
+print("The result is", a * b)
 ```
 
 
-## Kommandozeilenargumente
+## Command line arguments
 
-Ein Python-Programm kann auch Werte von der Kommandozeile verarbeiten und funktioniert dann ähnlich wie die Shell-Befehle, die wir in der ersten Woche des Kurses kennengelernt haben. Um diese Funktionalität zu nutzen, müssen wir das Modul `sys` importieren (mehr zu Modulen in Kurseinheit 2). Wir erzeugen ein Python-Skript `argumente.py` mit dem folgenden Inhalt:
+A Python program may also process values supplied on the command line (similar to a shell command). To enable this functionality, we have to import the `sys` module (unit 2 explains modules in more detail). We create a Python script `arguments.py` containing the following lines:
 
 ```python
 from sys import argv
@@ -242,108 +248,110 @@ print(argv[0])
 print(argv[1:])
 ```
 
-Anschließend führen wir das Skript folgendermaßen aus:
+We then execute the script as follows:
 
 ```bash
-python argumente.py a 12 drittes_argument
+python arguments.py a 12 third_argument
 ```
 
-Anhand der Ausgabe erkennen wir:
-- Erste Zeile: `argv` ist eine *Liste* mit vier Elementen. (Der Listentyp wird in Kurseinheit 2 genauer behandelt. Vorerst genügt es uns zu wissen, dass wir auf einzelne Elemente zugreifen können – und das funktioniert genau wie bei Strings: Variablenname gefolgt vom Index in eckigen Klammern.)
-- Zweite Zeile: Das erste Element `argv[0]` enthält den Namen des aufgerufenen Skripts (`'argumente.py'`).
-- Dritte Zeile: Die verbleibenden Elemente `argv[1:]` enthalten die Kommandozeilenargumente in der angegebenen Reihenfolge.
+The output tells us:
+- First line: `argv` is a *list* with four elements. (The list type will be treated in unit 2. For now, you only need to know that you may access the elements of a list like characters in a string: Variable name followed by the index in brackets.)
+- Second line: The first element `argv[0]` contains the name of the script that was called (`'arguments.py'`).
+- Third line: The remaining elements `argv[1:]` contain the command line arguments in the given order.
 
-Unter Verwendung von Kommandozeilenargumenten können wir das Produkt zweier Zahlen also so berechnen:
+By using command line arguments, we may calculate the product of two numbers as shown below:
 
 ```python
 from sys import argv
 a = float(argv[1])
 b = float(argv[2])
-print("Das Ergebnis lautet", a * b)
+print("The result is", a * b)
 ```
 
-Wir speichern diese Befehle in  `produkt2.py` und führen das Programm aus:
+We store these statements in `product2.py` and execute the program:
 ```bash
-python produkt2.py 35 10
+python product2.py 35 10
 ```
 
 
 
-## Aufgaben
+## Exercises
 
-Jede Kurseinheit schließt mit einer Reihe von Aufgaben, die Sie selbstständig bearbeiten sollen. Ihre Lösungen bilden die Grundlage für die Beurteilung des Kurses. Bei jeder Aufgabe ist die maximale Anzahl von Punkten vermerkt, die für eine richtige Lösung vergeben werden.
+Each unit concludes with several exercises which you should solve on your own. Your solutions will be graded, and the scores will be used to obtain your final grade for the course. Next to each exercise, the maximum number of points for the correct solution is given.
 
-Speichern Sie alle Dateien, die Sie in Kurseinheit 1 erstellen müssen, im Ordner `python1` in Ihrem Home-Verzeichnis.
-
-
-
-#### Aufgabe 1.1 (3 P)
-
-Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python1` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
-- `produkt.py`
-- `argumente.py`
-- `produkt2.py`
+Store all files that you generate for unit 1 in the folder `python1` in your home directory.
 
 
 
-#### Aufgabe 1.2 (2 P)
+#### Exercise 1.1 (3 P)
 
-Schreiben Sie ein Python-Programm, dass die folgenden Anweisungen nacheinander ausführt. Speichern Sie das Programm unter `aufgabe_1_2.py`.
-1. Speichere die ganze Zahl 32 in der Variable `z` und die Gleitkommazahl 2.5 in der Variable `a`.
-2. Berechne das Produkt von `z` und `a` und speichere das Ergebnis in der Variable `b`.
-3. Dividiere `a` durch 8 und speichere das Ergebnis wiederum in `a`.
-4. Gib aus, ob `a` größer als `b` ist (hier soll das Program einen einzigen Booleschen Wert ausgeben.)
-5. Gib aus, ob die Summe von `z` und 11 ungleich 44 ist (auch hier soll das Programm einen einzigen Booleschen Wert ausgeben).
+You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python1` must contain the following files, which you have created in the course of this unit:
+- `product.py`
+- `arguments.py`
+- `product2.py`
 
 
 
-#### Aufgabe 1.3 (2 P)
+#### Exercise 1.2 (2 P)
 
-Schreiben Sie ein Programm `aufgabe_1_3.py`, das zur Eingabe dreier Zahlen auffordert und anschließend ausgibt, ob der Rest bei Division der ersten Zahl durch die zweite gleich der dritten Zahl ist. Ein Aufruf dieses Programms könnte z.B. folgendermaßen aussehen:
+Write a Python program that executes the following statements consecutively. Store the program in `exercise_1_2.py`.
+1. Store the integer 32 in the variable `z` and the float 2.5 in the variable `a`.
+2. Store the product of `z` and `a` in the variable `b`.
+3. Divide `a` by 8 and store the result in `a`.
+4. Tell me whether `a` is greater than `b` (here, the program should print a single Boolean value.)
+5. Tell me whether the sum of `z` and 11 is unequal to 44 (again, only print a single Boolean value).
+
+
+
+#### Exercise 1.3 (2 P)
+
+Write a program `exercise_1_3.py` that prompts the user to enter three numbers and then displays whether the division of the first number by the second number yields a remainder that is equal to the third number.
+
+An exemplary run of the program may yield the following output:
 
 ```
-$ python aufgabe_1_3.py
-Dividend: 10
-Divisor: 4
-Rest: 2
+$ python exercise_1_3.py
+dividend: 10
+divisor: 4
+remainder: 2
 True
 ```
 
-Die drei Werte 10, 4, und 2 wurden eingeben, das Programm gibt anschließend `True` zurück.
+The user entered the three values 10, 4, and 2; subsequently, the program printed `True`.
 
-Ein anderer Aufruf des Programms könnte so aussehen:
+A different run of the program may look like
 
 ```
-$ python aufgabe_1_3.py
-Dividend: 835
-Divisor: 111
-Rest: 20
+$ python exercise_1_3.py
+dividend: 835
+divisor: 111
+remainder: 20
 False
 ```
 
-Es ist egal, ob Ihr Programm etwas in den Eingabezeilen schreibt (z.B. „Dividend“ in der ersten Zeile). Wichtig ist lediglich, dass in der letzten Zeile der Ausgabe ein einziger Boolescher Wert steht, der richtig berechnet wurde.
+It does not matter whether you program prints anything in the input lines (such as “dividend:” above). However, it is important that the last printed line contains a single Boolean value that has been calculated correctly.
 
 
-#### Aufgabe 1.4 (3 P)
+#### Exercise 1.4 (3 P)
 
-Schreiben Sie ein Programm `aufgabe_1_4.py`, welches vier Kommandozeilenargumente einliest. (Diese Argumente werden im Folgenden als `dna`, `x`, `a` und `e` bezeichnet.) Das erste Argument ist ein beliebig langer String, der eine DNA-Sequenz darstellt. Die Argumente zwei bis vier sind jeweils ein Integer. Das Programm soll anschließend zwei Zeilen ausgeben:
-- In der ersten Zeile steht die `x`-te Base von links in `dna`.
-- In der zweiten Zeile steht jene Teilsequenz von `dna`, die zwei Basen vor der durch `a` angegebenen Stelle beginnt und an der durch `e` angegebenen Stelle endet.
+Write a program `exercise_1_4.py` that reads four command line arguments. (Below, these arguments are called `dna`, `x`, `a`, `e`.). The first argument is a string of arbitrary length which represents a DNA sequence. Arguments 2 to 4 are integers. The program should print two lines:
+- The first line contains the `x`-th base from the left in `dna`.
+- The second line contains the subsequence `dna` that starts two bases before the position given by `a` and ends at the position given by `e`.
 
-Die Zählung der Basen folgt dabei von Eins ausgehend (d.h. die erste Base in der DNA-Sequenz trägt auch tatsächlich die Nummer „1“).
+Bases are numbered starting from one (thus, the first base in the sequence is actually numbered “1”).
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
 
 ```
-                         x  a   e
-                         ↓  ↓   ↓
-$ python aufgabe_1_4.py AGCTATAGTAATCCAAT 2 5 9
+                          x  a   e
+                          ↓  ↓   ↓
+$ python exercise_1_4.py AGCTATAGTAATCCAAT 2 5 9
 G
 CTATAGT
 
-                              a     x      e
-                              ↓     ↓      ↓
-$ python aufgabe_1_4.py ATCTACGCGATATCGCGATAGCCGATGCTGACGACTGACTTGACG 13 7 20
+                               a     x      e
+                               ↓     ↓      ↓
+$ python exercise_1_4.py ATCTACGCGATATCGCGATAGCCGATGCTGACGACTGACTTGACG 13 7 20
 T
 ACGCGATATCGCGATA
 ```
