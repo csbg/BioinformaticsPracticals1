@@ -1,26 +1,26 @@
-# Kurseinheit 2
+# Unit 2
 
-## Inhalt
+## Contents
 
-- [Kontrollfluss](#kontrollfluss)
-  - [Funktionen](#funktionen)
-  - [Fallunterscheidungen und Verzweigungen](#fallunterscheidungen-und-verzweigungen)
-  - [Schleifen](#schleifen)
-    - [`while`-Schleifen](#while-schleifen)
-    - [`for`-Schleifen](#for-schleifen)
-  - [Modularisierung](#modularisierung)
-- [Datenstrukturen](#datenstrukturen)
-  - [Listen](#listen)
-  - [Tupel](#tupel)
-  - [Mengen](#mengen)
+- [Control flow](#control-flow)
+  - [Functions](#functions)
+  - [If statements](#if-statements)
+  - [Loops](#loops)
+    - [`while` loops](#while-loops)
+    - [`for` loops](#for-loops)
+  - [Modularization](#modularization)
+- [Data structures](#data-structures)
+  - [Lists](#lists)
+  - [Tuples](#tuples)
+  - [Sets](#sets)
   - [Dictionaries](#dictionaries)
-- [Aufgaben](#aufgaben)
+- [Exercises](#exercises)
 
 
 
-## Kontrollfluss
+## Control flow
 
-Python führt die Anweisungen in einem Skript der Reihe nach aus.
+The Python interpreter executes the statements in a Python script one by one, and after the last statement simply quits.
 
 ```python
 a = 4
@@ -30,38 +30,38 @@ mean = (a + b + c) / 3
 print(mean)
 ```
 
-Es ist offensichtlich, dass dieser grundlegende Kontrollfluss nur einfachste Berechnungen ermöglicht. Daher stellt Python eine Reihe von Möglichkeiten zur Verfügung, um den Kontrollfluss zu modifizieren.
+Evidently, this basic flow of control only allows you to write the most basic programs. Therefore, Python support compound statements that alter the control flow.
 
-*Hinweis:* Alle folgenden Beispiele können zwar im Python-Interpreter eingegeben werden. Gerade bei zusammengesetzten Anweisungen kann es aber umständlich sein, mehrere eingerückte Anweisungen im Anweisungskörper einzugeben. Daher ist es manchmal einfacher, ein kleines Python-Skript mit den Anweisungen eines Beispiels zu erstellen (z.B. `func_test.py`) und dieses Skript dann aufzurufen (z.B. `python func_test.py`).
+*Note:* You may run all of the following examples within the Python interpreter. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as `func_test.py`) and then run this script (e.g., `python func_test.py`).
 
 
-### Funktionen
 
-Eine Funktion wird folgendermaßen *aufgerufen*:
+### Functions
 
-- Funktionsname
-- linke runde Klammer
-- beliebig viele Argumente (passend zur Funktionsdefinition), die durch Kommas getrennt werden
-- rechte runde Klammer
+*Call* a function by writing
 
-Wir haben bereits `print()` kennen gelernt, ein Beispiel für eine *eingebaute Funktion*. Die Print-Funktion schreibt die Werte ihrer Argumente auf die Standardausgabe (stdout):
+- function name
+- left parenthesis
+- arguments separated by commas
+- right parenthesis
+
+We already encountered `print()`, a so-called *built-in function* that prints its argument(s) to the standard output (stdout).
 
 ```python
-print("Hallo, Welt!")
+print("Hello world!")
 ```
 
+*Define* a function by writing
 
-Eine Funktion wird folgendermaßen *definiert*:
+- keyword `def`
+- function name
+- left parenthesis
+- parameters separated by commas
+- right parenthesis
+- colon
+- indented statements (suite)
 
-- Schlüsselwort `def`
-- Funktionsname
-- linke runde Klammer
-- beliebig viele Parameter, die durch Kommas getrennt werden
-- rechte runde Klammer
-- Doppelpunkt
-- Funktionskörper eingerückt
-
-Hier definieren wir eine Funktion, die den Mittelwert dreier Zahlen berechnet:
+The following function calculates the mean of three numbers:
 
 ```python
 def mean_of_three(a, b, c):
@@ -72,44 +72,43 @@ m = mean_of_three(5, 8, 2)
 print(m)
 ```
 
-Eine Funktion kann einen oder mehrere Werte mittels der `return`-Anweisung zurückgeben. Im obigen Beispiel wird der Rückgabewert in der Variable `m` gespeichert.
-- Falls eine Funktion *mehrere* Werte zurückgeben soll, lautet die Syntax `return wert, wert2, wert3` usw. – die einzelnen Rückgabewerte werden durch Kommas getrennt.
-- Falls eine Funktion *keine* `return`-Anweisung enthält, gibt sie automatisch den Wert `None` zurück.
+A function may pass values to the caller by using the `return` statement. In the example above, Python assigns the return value to the variable `m`.
 
-Verdeutlichen wir uns gleich an dieser Stelle den Unterschied zwischen Parametern und Argumenten.
-- Ein *Parameter* (oder formaler Parameter) ist jener Teil der Funktionsdefinition, der angibt, welche Eingabewerte (Anzahl und evtl. auch Typ) eine Funkion erhalten kann.
-- Ein *Argument* ist jener Wert, der beim Funktionsaufruf tatsächlich an die Funktion übergeben wird. (Argumente werden auch als „tatsächliche Parameter“ bezeichnet; wir bevorzugen aber den Begriff „Argument“, um eine eindeutige Unterscheidung zu den Parametern zu treffen.)
+- A statement such as `return value1, value2, value3` tells a function to return *several* values.
+- A function that *lacks* a `return` statement implicitly returns `None`.
 
-Im Rahmen der Definition einer Funktion unterscheiden wir zwischen erforderlichen und optionalen Parametern:
-- Ein *erforderlicher Parameter* muss beim Funktionsaufruf zwingend einen Wert erhalten.
-- Ein *optionaler Parameter* kann beim Funktionsaufruf weggelassen werden. In diesem Fall erhält er den in der Funktionsdefinition vorgegebenen Standardwert.
+Before we delve into the details of defining and using functions, let us briefly review the difference between parameters and arguments:
+- A *parameter* (also called “formal parameter”) is part of the function definition and specifies the number (and sometimes also the type) of input values the function may receive.
+- An *argument* (also called “actual parameter”) is the value that is passed to a function when it is called.
 
-Unten implementieren wir eine Exponentialfunktion; der Parameter `exponent` ist erforderlich, `base` ist hingegen optional und hat den Standardwert 2.71828.
+When defining a function, we need to distinguish between required and optional parameters:
+- A *required parameter* must receive a value when the function is called.
+- An *optional parameter* may be omitted when the function is called. In this case, a default value that was specified in the function definition is assigned to the parameter.
+
+Below, we define an exponential function. The parameter `exponent` is required; by contrast, `base` is optional, with a default value of 2.71828.
 
 ```python
 def exp(exponent, base=2.71828):
     return base ** exponent
 
-print(exp(4))  # wird zu exp(4, 2.71828)
+print(exp(4))  # equal to exp(4, 2.71828)
 print(exp(4, 10))
 ```
 
-
-Im Rahmen des Aufrufs einer Funktion unterscheiden wir zwischen positionsbezogenen und Schlüsselwortargumenten.
-- Ein *positionsbezogenes Argument* wird beim Funktionsaufruf entsprechend seiner Stelle innerhalb der Klammern einem Parameter zugeordnet.
-- Ein *Schlüsselwortargument* wird beim Funktionsaufruf entsprechend seines Namens einem Parameter zugeordnet.
+When calling a function, we need to distinguish between positional and keyword arguments:
+- A *positional argument* is assigned to a parameter based on its position.
+- A *keyword argument* is assigned to a parameter based on its key.
 
 ```python
 print(exp(4, 10))                # 4 -> exponent, 10 -> base
 print(exp(base=10, exponent=4))  # 10 -> base, 4 -> exponent
 ```
 
-Wir weisen insbesondere auf den Unterschied zwischen einem optionalen Parameter und einem Schlüsselwortargument hin: Obwohl sie ähnlich aussehen, bewirken sie doch ganz Unterschiedliches!
 
 
-### Fallunterscheidungen und Verzweigungen
+### If statements
 
-Eine `if`-Anweisung führt ihren Anweisungskörper aus, falls die im Anwendungskopf abgefragte Bedingung eintritt:
+if statements will execute a block of code if and only if a condition is true:
 
 ```python
 n = -1
@@ -118,13 +117,13 @@ if n < 0:
     print(n, "is negative")
 ```
 
-Eine Fallunterscheidung wird folgendermaßen erzeugt:
-- Schlüsselwort `if`
-- Bedingung (ein Ausdruck, der einen Booleschen Wert ergibt)
-- Doppelpunkt
-- Anweisungskörper eingerückt
+Create an if statement by writing
+- keyword `if`
+- condition (an expression that yields a Boolean value)
+- colon
+- indented statements (suite)
 
-An einen `if`-Block kann sich ein `else`-Block unmittelbar anschließen. Anweisungen innerhalb dieses Blocks werden ausgeführt, falls die Bedingung *nicht wahr* ist:
+Python executes the code block following the if statement if the condition is true. If Python should also do something if the *condition is false*, you must add an `else` block:
 
 ```python
 n = 5
@@ -135,7 +134,7 @@ else:
     print(n, "is positive")
 ```
 
-Mehr als zwei Fallunterscheidungen lassen sich mithilfe von `elif`-Blöcken implementieren. Wir speichern den folgenden Funktion in der Datei `test_sign.py` und führen die Datei mit Python aus.
+`elif` blocks allow you to *chain* if statements, i.e., to test an arbitrary number of conditions and execute a distinct set of statements for each condition. Store the following code in `test_sign.py` and execute the file with Python:
 
 ```python
 def test_sign(n):
@@ -151,7 +150,7 @@ print(test_sign(-12))
 print(test_sign(0))
 ```
 
-`f" ... "` ist ein sog. *f-String* (genauer, ein *formatiertes Stringliteral*). Ein f-String verhält sich grundsätzlich wie ein normaler String. Allerdings wird jeder Teil in geschwungenen Klammern als Anweisung ausgeführt, und das Ergebnis der jeweiligen Anweisung wird in den String eingefügt:
+`f" ... "` is a so-called *f-string* (“formatted string literal”). An f-string behaves like a normal string, but each part enclosed in curly braces is interpreted as Python statement whose result is inserted into the string.
 
 ```python
 f"An addition: {2+3}"
@@ -159,102 +158,83 @@ f"An addition: {2+3}"
 
 
 
-### Schleifen
+### Loops
 
-#### `while`-Schleifen
+#### `while` loops
 
-Eine `while`-Schleife führt einen Codeblock solange aus, wie eine Bedingung wahr ist. Diese Schleife wird folgendermaßen erzeugt:
-- Schlüsselwort `while`
-- Bedingung (ein Ausdruck, der einen Booleschen Wert ergibt)
-- Doppelpunkt
-- Anweisungskörper eingerückt
+A `while` loop executes its suite as long as the given condition is true. Create such a loop by writing
+- keyword `while`
+- condition (an expression that yields a Boolean value)
+- colon
+- indented statements (suite)
 
-Die Syntax ist also recht ähnlich zur `if`-Anweisung, mit dem Unterschied, dass letztere nur einmal ausgeführt wird.
+Apparently, the syntax of the wile loop is quite similar to the if statement.
+Die Syntax ist also recht ähnlich zur `if`-Anweisung, mit dem Unterschied, dass letztere nur einmal ausgeführt wird. Store the following code in `calc_powers.py` and execute the file with Python:
 
 ```python
-i = 2
+i = 1
 
-while i < 1000:
+while i < 10000:
     i = i * 2
-    print("Neuer Wert:", i)
+    print(i)
 ```
 
-Die Bedingung ist üblicherweise so gestaltet, dass sie nach ein paar Aufrufen des Schleifenkörpers falsch wird. In der obigen Schleife wird z.B. die Variable `i` überprüft, die bei jedem Durchlauf des Schleifenkörpers einen neuen Wert erhält. Allerdings können auch unendliche Schleifen programmiert werden:
-
-```python
-while True:
-    print("Ich höre niemals auf!", i)
-```
-
-(Um diese Schleife zu unterbrechen, müssen wir mittels `Strg+C` nachhelfen!)
-
-Unendliche Schleifen können dennoch nützlich sein. Im folgenden Beispiel implementieren wir ein Ratespiel und speichern den Code in der Datei `guessing_game.py`.
-
-```python
-correct_answer = 5
-
-while True:
-    answer = input("Guess a number between 0 and 10: ")
-    if int(answer) == correct_answer:
-        break
-    else:
-        print("Wrong, try again.")
-
-print("Correct!")
-```
-
-Die `while`-Schleife wird so lange ausgeführt, bis die gesuchte Zahl erraten wurde. Die `break`-Anweisung beendet in diesem Fall die Schleife und lässt den Kontrollfluss zur ersten Anweisung nach dem Schleifenkörper springen.
+Typically, the condition will become false after several iterations of the loop body. Above, the variable `i` receives a new value whenever the loop body is run.
 
 
-#### `for`-Schleifen
 
-Die `for`-Schleife in Python ist eine sog. *iterative Schleife*: Sie führt ihren Anweisungskörper für jedes Element einer Sequenz aus und kann im Schleifenkörper auf das aktuelle Element zugreifen. Die `for`-Schleife wird folgendermaßen gebildet:
-- Schlüsselwort `for`
-- Schleifenvariable
-- Schlüsselwort `in`
-- iterierbares Objekt (z.B. String oder Liste)
-- Doppelpunkt
-- Anweisungskörper eingerückt
+#### `for` loops
+
+In Python, a `for` loop is a so-called *iterative loop*, since it executes the same code block once for each value in a sequence and may access the current element within the loop body.
+
+Create a for loop by writing
+
+- keyword `for`
+- loop variable
+- keyword `in`
+- iterable object (e.g., string or list)
+- colon
+- indented statements (suite)
 
 ```python
 for letter in "Python":
     print(letter)
 ```
 
-Die obige Schleife wird sechsmal durchlaufen, und die Schleifenvariable `letter` enthält nacheinander die einzelnen Zeichen des Strings (also die Werte `"P"`, `"y"`, `"t"`, `"h"`, `"o"` und `"n"`).
+The loop above is executed six times, and during each run, the loop variable `letter` contains a different character of the string `"Python"` (i.e., the values `"P"`, `"y"`, `"t"`, `"h"`, `"o"`, and `"n"`).
 
-In anderen Programmiersprachen wird `for` oft als *Zählschleife* verwendet, bei der die Anzahl an Wiederholungen bereits zu Beginn feststeht. Dies lässt sich in Python mithilfe von `range()` bewerkstelligen, wodurch eine Folge von Zahlen erzeugt wird. (Für Experten: Hier handelt es sich um keine Funktion, sondern um einen Datentyp; dies macht für unsere Zwecke aber keinen Unterschied.)
+Sometimes we wish to iterate over a long sequence of numbers. It would be cumbersome if we had to explicitly write a list containing the numbers from, say, 0 to 10000 – there must be a simpler approach, right? Indeed, there is the built-in `range()` function, which generates a sequence of numbers.
 
-Je nach Anzahl der Argumente liefert `range()`
-- eine Zahlenfolge von 0 bis zu einem Endwert (exklusive)
+Depending on the numbers of arguments passed to `range()`, it will return
+- a sequence of integers from 0 to a final value (excluded)
   ```python
   for i in range(10):
       print(i)  #> 0, 1, …, 9
   ```
-- eine Zahlenfolge von einem Startwert (inklusive) bis zu einem Endwert (exklusive)
+- a sequence of integers from an initial value (included) to a final value (excluded)
   ```python
   for i in range(2, 7):
       print(i)  #> 2, 3, 4, 5, 6
   ```
-- eine Zahlenfolge von Start- zu Endwert mit einer gegebenen Differenz zwischen den Folgegliedern:
+- a sequence of integers as above, using the third argument as step size:
   ```python
   for i in range(20, 3, -3):
       print(i)  #> 20, 17, 14, 11, 8, 5
   ```
 
 
-### Modularisierung
+### Modularization
 
-Modularisierung erlaubt es, Programmcode in mehrere Dateien aufzuteilen, von denen jede thematisch zusammenhängende Funktionen und Datentypen enthält. Dadurch lässt sich Code wiederverwenden, da eine Funktion
-- nur einmal in einem *Modul* (auch *Paket* genannt) implementiert werden muss
-- und dann von beliebig vielen anderen Programmen durch *Einbinden* dieses Moduls verwendet werden kann.
+Modular programming is a technique that allows to split code into several files, each of which contains related functions and data types. Thereby, code may easily be reused, since a function
+- has to be implemented only once in a *module* (also called *package*)
+- and then may be used by every program that *imports* this module.
 
-Ein Beispiel: In Python sind wichtige mathematische Funktionen in das Modul `math` ausgelagert, welches ein Bestandteil der Standardbibliothek ist. (Module der *Standardbibliothek* sind in jeder Python-Installation verfügbar; andere Module müssen eigens installiert werden.)
+For instance, the `math` module defines common mathematical functions. (`math` is part of the Python *standard library*, whose modules are available on each Python installation. Other modules must be installed by the user.)
 
-Wir binden ein Modul mit dem Schlüsselwort `import` ein. Dies erzeugt einen *Namensraum* mit dem gleichen Namen wie das Modul und erlaubt uns, folgendermaßen auf eine Funktion zuzugreifen:
-- Namensraum
-- Punkt
-- Funktionsname
+The keyword `import` imports a module and creates a *namespace* with the same name, which allows us to call a function from the module as follows:
+- namespace
+- dot
+- function name
 
 ```python
 import math
@@ -262,15 +242,15 @@ import math
 math.factorial(7)
 ```
 
-Wir können auch eine beliebige Bezeichnung für den Namensraum wählen:
+We also may change the name of the namespace:
 
 ```python
-import math as mathematik
+import math as mathematics
 
-mathematik.factorial(7)
+mathematics.factorial(7)
 ```
 
-Darüber hinaus lassen sich einzelne (oder sogar alle Funktionen) in den sog. *globalen Namensraum* importieren:
+Moreover, individual (or all) functions of a module may be imported into the *global namespace*:
 
 ```python
 from math import factorial
@@ -278,42 +258,42 @@ from math import factorial
 factorial(7)
 ```
 
-Aus Gründen der Übersicht ist es üblich, sämtliche `import`-Anweisungen an den Beginn einer Quellcodedatei zu stellen.
+To increase readability of your code, you should place all import statements at the top of your Python script.
 
 
 
-## Datenstrukturen
+## Data structures
 
-### Listen
+### Lists
 
-Listen gehören zu den *sequenziellen Datentypen*, welche mehrere gleichartige oder verschiedene Elemente in einer Struktur zusammenfassen. Eine Liste wird erzeugt, indem sämtliche Elemente in eckigen Klammern angeführt und durch Kommas getrennt werden. Hier definieren wir eine Liste mit den ersten acht Primzahlen:
+Lists belong to the class of *compound data types*, which serve as a “collection” of other data types. Lists are created by enclosing comma-separated elements in brackets. For instance, the following list comprises the first eight prime numbers:
 
 ```python
 primes = [2, 3, 5, 7, 11, 13, 17, 19]
 primes
 ```
 
-In Kurseinheit 1 haben wir bereits anhand von Strings gelernt, wie man auf einzelne Elemente mittels Indizierung oder Slicing zugreifen kann:
+Indexing and slicing work as explained for strings (see unit 1), returning a single element or a new list containing the sliced elements, respectively:
 
 ```python
 primes[3]
 primes[2:5]
 ```
 
-Die Liste zählt zu den *veränderbaren Datentypen*, daher können einzelne Elemente überschrieben werden:
+Since lists are *mutable*, you may change their elements:
 
 ```python
 primes[3] = 100
 primes
 ```
 
-Die eingebaute Funktion `len()` berechnet die Anzahl der Elemente einer Liste:
+The built-in function `len()` returns the number of elements in a list:
 
 ```python
 len(primes)
 ```
 
-Listen können außerdem beliebig tief verschachtelt werden („Liste von Listen“):
+The elements of a list may be lists themselves, which yields *nested lists*:
 
 ```python
 nested_list = [
@@ -324,7 +304,7 @@ nested_list = [
 nested_list
 ```
 
-Auch auf Elemente von verschachtelten Listen kann man über Indizierung oder Slicing zugreifen:
+Indexing and slicing also work for nested lists:
 
 ```python
 nested_list[1]
@@ -332,73 +312,74 @@ nested_list[1][2]
 nested_list[2][2:6]
 ```
 
-Da es sich bei Listen um Objekte handelt (mehr zu Objekten in Kurseinheit 3), besitzen sie besondere Funktionen (sog. *Methoden*), über die sie manipuliert werden können. Eine Methode wird ähnlich wie eine Funktion aufgerufen; da sie sich aber auf ein bestimmtes Objekt bezieht, lautet die Syntax folgendermaßen:
-- Objektname (Variable)
-- Punkt
-- Methodenname
-- linke Klammer usw. (s. Elemente des Funktionsaufrufs)
+Since lists are objects (see unit 3), they may be manipulated by special functions called *methods*. Methods are called like functions, but refer to a given object. Thus, the syntax for calling a method is as follows:
 
-Listen besitzen u.a. folgende Methoden (nach jedem Methodenaufruf überprüfen wir den Inhalt der Variable `bases`, um die Auswirkungen der Methode nachzuvollziehen!):
+- name of the object
+- period
+- the name of the method
+- left parenthesis etc. (like a function call)
+
+Here are some of the methods supported by lists (check the contents of `bases` after every statement!):
 
 ```python
 bases = ["A", "G", "X", "Y"]
-bases.append("Z")         # hängt ein Element an die Liste an
-del bases[2]              # löscht Element mit Index 2
-l = bases.pop()           # entfernt das letzte Element und gibt es zurück
-bases.extend(["T", "U"])  # hängt Elemente einer anderen Liste an
-bases.insert(1, "C")      # fügt das zweite Argument an der Position ein,
-                          # die durch das erste Argument gegeben ist
-bases.reverse()           # kehrt Reihenfolge der Elemente um
-bases.clear()             # löscht alle Elemente
+bases.append("Z")         # append an element to the list
+del bases[2]              # delete element with index 2
+l = bases.pop()           # remove the last element and return it
+bases.extend(["T", "U"])  # appends element from another list
+bases.insert(1, "C")      # insert the element given by the second argument
+                          # at the index given by the first argument
+bases.reverse()           # reverse order of elements
+bases.clear()             # delete all elements
 ```
 
 
-### Tupel
+### Tuples
 
-Tupel sind im Gegensatz zu Listen *unveränderlich* und besitzen daher keine Methoden, die ihren Inhalt verändern würden (wie `append()`). Im Folgenden probieren wir einige Funktionen und Methoden auf Tupel aus:
+Tuples are similar to lists, since they also represent a sequence of items. In contrast to lists, however, tuples are *immutable* – once you have created a tuple, you can't change it. Tuples support common list operations:
 
 ```python
 bases = ("A", "C", "C", "G", "T")
-"A" in bases      # überprüfe, ob der Tupel ein Element enthält
-bases[1:3]        # Slicing
-len(bases)        # Anzahl der Elemente
-min(bases)        # kleinstes Element
-max(bases)        # größtes Element
-bases.count("C")  # wie oft kommt ein Element vor?
-bases.index("G")  # welchen Index hat ein Element?
+"A" in bases      # check whether the tuple contains an element
+bases[1:3]        # slicing
+len(bases)        # number of elements
+min(bases)        # smallest element
+max(bases)        # largest element
+bases.count("C")  # count the number of a give element
+bases.index("G")  # find the index of a given element
 ```
 
 
-### Mengen
+### Sets
 
-Die *Menge* ist ein sequentieller Datentyp, der eine Menge im mathematischen Sinn darstellt. Mengen sind *ungeordnet* und existieren in einer veränderlichen (`set`) und nicht veränderlichen (`frozenset`) Variante. Wir erzeugen eine Menge, indem wir ihre Elemente innerhalb geschweifter Klammern nennen. Alternativ können wir einen anderen Sequenztyp (z.B. eine Liste) in eine Menge umwandeln:
+The *set* is a sequential data type that represents a mathematical set – thus, sets are *unordered*. Both mutable and immutable variants are available (`set` and `frozenset`, respectively). We create a set by placing their elements between curly braces, or by converting from another sequential type:
 
 ```python
-A = {2, 4, 5}        # Variante 1: direkt
-A1 = set([2, 4, 5])  # Variante 2: Konvertierung einer Liste
+A = {2, 4, 5}        # variant 1: direct
+A1 = set([2, 4, 5])  # variant 2: converting a list
 
-A == A1              # sind beide Mengen identisch?
+A == A1              # are these sets equivalent?
 ```
 
-Neben dem Hinzufügen und Entfernen von Elementen unterstützen Mengen auch die klassischen Mengenoperatoren:
+Besides adding and removing elements, you may also perform the classical set operations:
 
 ```python
 B = {1, 2, 3, 4, 5}
-B.discard(5)  # Element entfernen, falls vorhanden
-B.add(7)      # Element hinzufügen
-B.add(7)      # keine Änderung – jedes Element kann nur einmal vorkommen!
+B.discard(5)  # remove element if it exists
+B.add(7)      # add element
+B.add(7)      # no change – each element must be unique!
 
-A | B  # Vereinigung (ODER)
-A & B  # Schnitt (UND)
-A - B  # Differenz
-A ^ B  # symmetrische Differenz (XOR)
+A | B  # union (OR)
+A & B  # intersection (AND)
+A - B  # difference
+A ^ B  # symmetric difference (XOR)
 ```
 
 
 ### Dictionaries
 
-Ein Dictionary (kurz Dict; der deutsche Begriff „Wörterbuch“ ist hingegen nicht gebräuchlich) ist eine ungeordnete Sammlung von *Schlüssel-Wert-Paaren*. Die Schlüssel müssen einzigartig sein. Wir erzeugen ein Dict,
-- entweder, indem wir Schlüssel und Wert durch einen Doppelpunkt trennen und alle Schlüssel-Wert-Paare durch Kommas getrennt in geschweifte Klammern einschließen:
+Dictionaries (“dicts”) are unordered collections of *key-value pairs*, where keys have to be unique. Create a dict
+- either by separating key-value pairs by colons and enclosing comma-separated pairs with curly braces,
   ```python
   atom_names = {"C": "carbon",
                 "H": "hydrogen",
@@ -406,23 +387,24 @@ Ein Dictionary (kurz Dict; der deutsche Begriff „Wörterbuch“ ist hingegen n
   atom_names
   ```
 
-- oder, indem wir die eingebaute Funktion `dict()` verwenden und die Schlüssel-Wert-Paare als optionale Argumente angeben:
+- or by using the built-in function `dict()`, to which we supply the key-value-pairs as keyword arguments:
   ```python
-  atom_names = dict(C="carbon",
-                    H="hydrogen",
-                    N="nitrogen")
-  atom_names
+  atom_names_2 = dict(C="carbon",
+                      H="hydrogen",
+                      N="nitrogen")
+  atom_names_2
+  atom_names_2 == atom_names
   ```
 
-Typische Operationen auf Dicts sind Einfügen, Löschen, sowie – wohl am wichtigsten – Suchen:
+Typical dict operations include inserting, deleting, and – most importantly – searching:
 
 ```python
-atom_names["C"]             # suche den Wert des Schlüssels "S"
-atom_names["O"] = "oxygen"  # füge ein neues Paar ein
-del atom_names["H"]         # lösche das Paar mit dem Schlüssel "H"
+atom_names["C"]             # find the value associated with key "S"
+atom_names["O"] = "oxygen"  # insert a new key-value pair
+del atom_names["H"]         # delete the value associated with "H"
 ```
 
-Die Dict-Methode `items()` liefert eine Folge aller Schlüssel-Wert-Paare, wodurch wir ein Dict in einer `for`-Schleife verwenden können:
+You may iterate over all key-value pairs in a dict via the `.items()` method and a `for` loop:
 
 ```python
 for key, value in atom_names.items():
@@ -431,30 +413,31 @@ for key, value in atom_names.items():
 
 
 
-## Aufgaben
+## Exercises
 
-Speichern Sie alle Dateien, die Sie in Kurseinheit 2 erstellen müssen, im Ordner `python2` in Ihrem Home-Verzeichnis.
+Store all files that you generate for unit 2 in the folder `python2` in your home directory.
 
 
 
-#### Aufgabe 2.1 (4 P)
+#### Exercise 2.1 (4 P)
 
-Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python2` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
+You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python2` must contain the following files, which you have created in the course of this unit:
 - `test_sign.py`
-- `guessing_game.py`
+- `calc_powers.py`
 
 
 
-#### Aufgabe 2.2 (4 P)
+#### Exercise 2.2 (4 P)
 
-Implementieren Sie eine Funktion `get_charge`, die überprüft, ob eine Aminosäure positiv geladen (z.B. Arginin), negativ geladen (z.B. Aspartat), oder neutral ist (z.B. Valin).
-- Die Funktion soll mit einem Argument aufgerufen werden, das die Aminosäure als Ein-Buchstaben-Code angibt. Nur die 21 eukaryotischen proteinogenen Aminosäuren sollen berücksichtigt werden.
-- Je nach Ladung soll die Funktion einen der folgenden Strings zurückgeben: `"positive"`, `"negative"`, oder `"neutral"`.
-- Falls keine gültige Aminosäure angegeben wurde, soll die Funktion `"invalid input"` zurückgeben.
+Implement a function `get_charge` that checks whether an amino acid is positively charged (e.g., arginine), negatively charged (e.g., aspartate), or neutral (e.g., valine).
+- The function should be called with a single argument that specified the amino acid using its single-letter abbreviation. Only the 21 eukaryotic proteinogen amino acids should be considered.
+- Depending on the charge, the function should return one of the strings `"positive"`, `"negative"`, or `"neutral"`.
+- If the user does not supply a valid abbreviation, the function should return `"invalid input"`.
 
-Speichern Sie diese Funktion in der Datei `aufgabe_2_2.py`.
+Store the function in `exercise_2_2.py`.
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
+
 ```python
 print(get_charge("D"))
 #> "negative"
@@ -470,16 +453,17 @@ print(get_charge("foo"))
 ```
 
 
-#### Aufgabe 2.3 (4 P)
+#### Exercise 2.3 (4 P)
 
-Schreiben Sie eine Funktion `count_bases`, die die Anzahl an Purin- und Pyrimidinbasen in einer DNA- oder RNA-Sequenz zählt.
-- Der erste Parameter `sequences` ist erforderlich. Er wird eine Liste mit beliebig vielen Strings erhalten, von denen jeder eine Sequenz darstellt.
-- Der zweite Parameter `purine` ist optional und soll den Standardwert `True` haben. Wenn `purine` wahr ist, soll die Funktion die Anzahl an Purinen berechnen, ansonsten die Anzahl an Pyrimidinen.
-- Die Funktion soll eine einzige Zahl zurückgeben, d.h. die Summe aller Purine oder Pyrimidine in *allen* Sequenzen.
+Implement a function `count_bases` that counts the number of purine and pyrimidine bases in a DNA or RNA sequence.
+- The first parameter of the function should be called `sequence` and required. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.
+- The second parameter should be called `purine` and is optional, with a default value of `True`. If `purine` is true, the function should calculate the number of purines; otherwise, it should calculate the number of pyrimidines.
+- The function should return a single integer, i.e., the number of all purines/pyrimidines in *all* sequences.
 
-Speichern Sie diese Funktion in der Datei `aufgabe_2_3.py`.
+Store the function in `exercise_2_3.py`.
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
+
 ```python
 print(count_bases(["ACCGGGTTTT", "TTAAAGGGGCCCCC"], True))
 #> 11
@@ -489,21 +473,20 @@ print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purine=False))
 ```
 
 
-#### Aufgabe 2.4 (4 P)
+#### Exercise 2.4 (4 P)
 
-Wenn Sie regelmäßig programmieren, werden Sie unweigerlich an den Punkt kommen, an dem Sie fremde Pakete verwenden und in der jeweiligen Dokumentation nachschlagen müssen. Dies werden wir in dieser Aufgabe üben.
+If you code a lot, you will often use third-party packages and consult their documentation. This is what we will do in this exercise: Implement a function `make_sequence` that creates a random DNA or RNA sequence of a given length and calculates how often a given base appears in this sequence.
+- The first (required) parameter sets the sequence length.
+- The second (optional) parameter `rna` decides whether an RNA or DNA sequence should be created. This parameter has a Boolean type and is false by default.
+- The third (optional) parameter `count_base` names the base that should be counted (default: `"A"`).
+- The function should return two values: (1) A string representing the created sequence, and (2) how often the specified base appears.
 
-Schreiben Sie eine Funktion `make_sequence`, die eine zufällige DNA- oder RNA-Sequenz gegebener Länge erzeugt und berechnet, wie oft eine bestimmte Base in dieser Sequenz vorkommt.
-- Der erste (erforderliche) Parameter bestimmt die Länge der erzeugten Sequenz.
-- Der zweite (optionale) Parameter `rna` legt fest, ob eine DNA- oder RNA-Sequenz erzeugt werden soll. Dieser Parameter hat einen Booleschen Typ und soll standardmäßig falsch sein.
-- Der dritte (optionale) Parameter `count_base` gibt an, welche Base gezählt werden soll (Vorgabe: `"A"`).
-- Die Funktion soll zwei Werte zurückgeben: (1) Die erzeugte Sequenz als String, und (2) die Anzahl der gezählten Basen.
+Since the function should create the sequence randomly, you might consider to use the function `choices()` available in the `random` module. This module is part of the standard library – please read [documentation](https://docs.python.org/3/library/index.html). You will also need the string method `join()` to convert the value returned by `choices()` into a string. Since `string` is a built-in data tape, it is also documented in the standard library.
 
-Da die Sequenz zufällig erzeugt werden soll, werden Sie auf die Funktion `choices()` des Moduls `random` zurückgreifen müssen. Dieses Modul ist Teil der Standardbibliothek – bitte suchen Sie in der entsprechenden [Dokumentation](https://docs.python.org/3/library/index.html), wie die Funktion zu verwenden ist. Außerdem werden Sie die String-Methode `join()` brauchen, um den Rückgabewert von `choices()` in einen String umzuwandeln. Da Strings ein eingebauter Datentyp sind, sind sie ebenfalls in der Standardbibliothek dokumentiert.
+Store the function in `exercise_2_4.py`.
 
-Speichern Sie diese Funktion in der Datei `aufgabe_2_4.py`.
+You may check that your program works correctly by using the following exemplary calls:
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
 ```python
 random.seed(42)
 print(make_sequence(20, False, "A"))
@@ -515,29 +498,29 @@ print(make_sequence(15, rna=True, count_base="C"))
 
 
 
-#### Aufgabe 2.5 (4 P)
+#### Exercise 2.5 (4 P)
 
-In dieser Aufgabe entwerfen Sie ein Programm `aufgabe_2_5.py`, welches die Ähnlichkeit zweier Gewebeproben anhand ihrer exprimierten Gene berechnet.
-- Das Programm soll zwei Kommandozeilenargumente `genes1` und `genes2` verarbeiten.
-- Jedes Argument gibt die in einer Probe exprimierten Gene an; einzelne Gene sind dabei durch einen Strichpunkt getrennt (z.B. `GENE1;GENE2;GENE3;GENE4`). Est ist egal, ob ein Gen einmal oder öfter genannt wird. (Zur Verarbeitung der Argumente werden Sie die `split()`-Methode der Strings brauchen – s. [Dokumentation](https://docs.python.org/3/library/index.html).)
-- Das Programm soll drei Werte ausgeben, jeweils auf einer eigenen Zeile:
-  1. Die Anzahl der in der ersten Probe detektierten Gene;
-  2. die Anzahl der in der zweiten Probe detektierten Gene; und
-  3. die Ähnlichkeit der beiden Proben, welche durch den Jaccard-Koeffizienten gemessen wird. (Der [Jaccard-Koeffizient](https://de.wikipedia.org/wiki/Jaccard-Koeffizient) zweier Mengen entspricht der Größe der Schnittmenge geteilt durch die Größe der Vereinigungsmenge.)
+In this exercise, you will create a command line program that calculates the similarity of two tissue samples by means of their expressed genes.
+- The program should process two command line arguments `genes1` and `genes2`.
+- Each argument specifices the genes that are expressed in the respective sample. Individual genes should be separated by semicolons (e.g., `GENE1;GENE2;GENE3;GENE4`). It does not matter whether a gene appears more than once. (To process the arguments, the string method `split()`may be useful – see [documentation](https://docs.python.org/3/library/index.html).)
+- The program should return three values, each on a separate line:
+  1. the number of (unique) genes detected in the first sample
+  2. the number of (unique) genes detected in the second sample
+  3. the similarity of the samples, which is measured by the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index).
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
 ```
-$ python aufgabe_2_5.py "RAB5C;PITX2;ZNF222;LMTK2;LMTK2" "RAB5C;PABPC4;ZNF222;PKN1;PTMA"
+$ python exercise_2_5.py "RAB5C;PITX2;ZNF222;LMTK2;LMTK2" "RAB5C;PABPC4;ZNF222;PKN1;PTMA"
 4
 5
 0.2857142857142857
 
-$ python aufgabe_2_5.py "THOC5;RAD23B;GPR31;PIRC85;PANO1" "THOC5;ATP1A2;GPR31;THOC5"
+$ python exercise_2_5.py "THOC5;RAD23B;GPR31;PIRC85;PANO1" "THOC5;ATP1A2;GPR31;THOC5"
 5
 3
 0.3333333333333333
 
-$ python aufgabe_2_5.py "RAD23B" "RAD23B"
+$ python exercise_2_5.py "RAD23B" "RAD23B"
 1
 1
 1.0
