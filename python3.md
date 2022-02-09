@@ -1,37 +1,38 @@
 # Kurseinheit 3
 
-- [Objektorientierte Programmierung](#objektorientierte-programmierung)
-  - [Attribute und der Konstruktor](#attribute-und-der-konstruktor)
-  - [Methoden](#methoden)
-- [Reguläre Ausdrücke](#reguläre-ausdrücke)
-  - [Einführung](#einführung)
+- [Object-oriented programming](#object-oriented-programming)
+  - [Attributes and the init method](#attributes-and-the-init-method)
+  - [Methods](#methods)
+- [Regular expressions](#regular-expressions)
+  - [Introduction](#introduction)
   - [Syntax](#syntax)
-  - [Pattern-Objekte](#pattern-objekte)
-- [Lesen und Schreiben von Dateien](#lesen-und-schreiben-von-dateien)
-  - [Lesen einzelner Zeichen](#lesen-einzelner-zeichen)
-  - [Zeilenweises Lesen](#zeilenweises-lesen)
-  - [Schreiben](#schreiben)
-  - [Kontextobjekte](#kontextobjekte)
-- [Aufgaben](#aufgaben)
+  - [Pattern objects](#pattern-objects)
+- [Reading and writing files](#reading-and-writing-files)
+  - [How to read individual characters](#how-to-read-individual-characters)
+  - [How to read a file line by line](#how-to-read-a-file-line-by-line)
+  - [How to write to a file](#how-to-write-to-a-file)
+  - [Context objects](#context-objects)
+- [Exercises](#exercises)
 
 
 
-## Objektorientierte Programmierung
+## Object-oriented programming
 
-Die objektorientierte Programmierung (OOP) zählt zu den von Python unterstützten Programmierparadigmen. Wenngleich ein Kurs über OOP unzählige Stunden füllen könnte, beschränken wir uns hier auf eine pragmatische Herangehensweise und stellen uns ein Programm als eine Sammlung von *Objekten* vor, die miteinander kommunizieren. Jedes Objekt besitzt
-- *Attribute*, die seinen Zustant beschreiben, und
-- *Methoden*, die es erlauben, auf die Attribute zuzugreifen oder sie zu verändern.
+Python supports, amongst others, the object-oriented programming paradigm. While hundreds of books have been written on this paradigm, it is actually quite easy to grasp: Think of a program as a collection of *objects* that communicate with each other. Each object has
 
-Um ein Objekt erzeugen zu können, müssen wir zuerst eine Vorlage (*Klasse*) erstellen, die dann quasi als „Bauplan“ für einen beliebige Anzahl von Objekten verwendet werden kann. Das Erzeugen von Objekten nach der Vorlage einer Klasse heißt *Instanziierung*. Die aus einer Klasse erzeugten Objekte haben zwar die gleichen Attribute und Methoden, aber die Attribute speichern üblicherweise verschiedene Werte.
+- *attributes* describing its state, and
+- *methods* that allow to change these attributes.
 
-Um diese etwas abstrakten Konzepte zu veranschaulichen, werden wir eine Klasse implementieren, mit deren Hilfe wir Proteine beschreiben können. Unsere Implementierung bleibt zunächst sehr einfach. In den Aufgaben werden Sie aber Gelegenheit haben, die Klasse um zusätzliche Funktionalitäten zu erweitern.
+Before we can create an object, we first have to define a “blueprint” (*class*) for a certain type of object. Then, we may create one or more objects from this class via a process known as *instantiation*. Each of these objects will have the same set of attributes and methods, but the attributes will typically differ in their values.
 
-Wir speichern alle Anweisungen dieses Abschnitts (also die Klassendefinition) in einer Datei `simple_protein.py`.
+Since all those concepts may sound quite abstract at first, here's a comprehensive example. We will create a class that represents proteins. Our implementation remains simple, but you will have the opportunity to add functionality in the exercises.
+
+All statements of this section (i.e., the class definitions) should be stored in `simple_protein.py`.
 
 
-### Attribute und der Konstruktor
+### Attributes and the init method
 
-Ein Protein soll durch einen Namen und eine Aminosäuresequenz beschrieben werden. Daher benötigt eine Proteinklasse zumindest zwei Attribute:
+A protein is characterized by its name and amino acid sequence. Hence, the protein class needs at least two attributes:
 
 ```python
 class Protein:
@@ -40,15 +41,15 @@ class Protein:
         self.sequence = sequence
 ```
 
-Der obige Code definiert eine neue Klasse:
-- Schlüsselwort `class`
-- Klassenname (hier `Protein`)
-- Doppelpunkt
-- Anweisungskörper eingerückt (alle Anweisungen, die zur Klassendefinition gehören)
+The code above defines a new class:
+- keyword `class`
+- class name (here `Protein`)
+- colon
+- indented statements (suite)
 
-Wir entwerfen auch einen *Konstruktor* für die Klasse. Dabei handelt es sich um eine spezielle Methode (Funktion), die `__init__()` heißen muss und jedesmal aufgerufen wird, wenn ein Objekt erzeugt wird. Innerhalb des Konstruktors werden die Attribute `self.name` und `self.sequence` mit den an den Konstruktor übergebenen Werten initialisiert.
+We also define an *init method*, which must be named `__init__()` and is called by Python whenever a new object is instantiated from the class. In the body of the init method, we initialize the instance variables `self.name` and `self.sequence`. These variables store the name and sequence of an object and thereby completely describe its state.
 
-Wir erzeugen nun ein neues Objekt `ins_A` der Klasse `Protein`. Dazu rufen wir den Klassennamen wie eine Funktion auf und übergeben Werte an die Parameter des Konstruktors. Im Anschluss können wir auf die Attribute des Objekts `ins_A` zugreifen (Objektname – Punkt – Attributname).
+We create a new object `ins_A` of class `Protein`. To this end, we call the class name like a function and supply the arguments required by the init method. Once the object `ins_A` has been create, we may access its attributes (object name – dot – attribute name).
 
 ```python
 ins_A = Protein(name="insulin A chain", sequence="GIVEQCCTSICSLYQLENYCN")
@@ -57,15 +58,15 @@ print(ins_A.sequence)
 print(type(ins_A))
 ```
 
-Die eingebaute Funktion `type()` informiert uns darüber, von welcher Klasse `ins_A` abgeleitet wurde.
+The build-in function `type()` tells us the clas from which `ins_A` has been derived.
 
-Es stellt sich aber noch eine Frage: Wir haben den Konstruktor mit drei erforderlichen Parametern definiert, aber nur mit zwei Argumenten aufgerufen, und diese wurden offensichtlich den Parametern `name` und `sequence` zugeordnet. Aber was ist mit dem Parameter `self`? Jede Methode (also auch der Konstruktor) muss als ersten Parameter einen Verweis auf das Objekt enthalten, von dem aus sie aufgerufen wird. Dieser Parameter wird *nur* bei der Definition der Methode angegeben (und per Konvention als `self` bezeichnet), *nicht* aber beim Aufruf der Methode (er wird von Python quasi „automatisch“ ergänzt).
+You may wonder what happened to the first parameter (`self`) of `.__init__()`. Why did we only specify two arguments (which were obviously assigned to the parameters `name` und `sequence`) when we instantiated the insulin object? Each instance method must be defined with at least one parameter (commonly called `self`), which refers to the current instance. However, we *must not* pass an argument to this parameter when invoking the instance method – Python supplies the appropriate value “automatically”.
 
 
 
-### Methoden
+### Methods
 
-Fügen wir zu unserer Klasse eine Methode hinzu (es reicht, wenn wir in der Datei `simple_protein.py` die Definition von `mutate` in den Klassenkörper entsprechend eingerückt einfügen):
+Let's add a method to our class. (Simply insert the definition of `mutate()` into your file `simple_protein.py`. Mind the correct indentation level!)
 
 ```python
 class Protein:
@@ -73,11 +74,12 @@ class Protein:
         self.name = name
         self.sequence = sequence
 
+    # only add the following lines to your file
     def mutate(self, pos, residue):
         self.sequence = self.sequence[:pos] + residue + self.sequence[pos+1:]
 ```
 
-Die Methode `mutate()` erzeugt eine Punktmutation, indem sie die Aminosäure an der Stelle `pos` durch `residue` ersetzt.
+The method `mutate()` creates a point mutation by replacing the amino acid at position `pos` by `residue`.
 
 ```python
 ins_A = Protein("insulin A chain", "GIVEQCCTSICSLYQLENYCN")
@@ -87,112 +89,120 @@ ins_A.mutate(2, "W")
 print(ins_A.sequence)
 ```
 
-`mutate()` funktioniert wie erwartet: Die Methode hat die Aminosäure mit Index 2 (also jene an der dritten Position – Valin) durch Tryptophan ersetzt.
+`mutate()` works as expected: It changed the third residue (i.e., valine with index 2) to tryptophane.
 
-In den folgenden beiden Abschnitten werden wir Beispiele für Klassen kennen lernen, die in der Python-Standardbibliothek implementiert sind.
+In the following sections, we will learn about classes that are available from the standard library.
 
 
 
-## Reguläre Ausdrücke
+## Regular expressions
 
-### Einführung
+### Introduction
 
-Das Modul `re` (in der Standardbibliothek) implementiert Funktionen zur Verwendung regulärer Ausdrücke. Wie uns bereits aus dem Bash-Kurs bekannt ist, ist ein *regulärer Ausdruck* (regex) eine Zeichenkette, die ein Suchmuster definiert und somit Mengen anderer Zeichenketten beschreibt.
+The `re` module (from the standard library) implements functions to use regular expressions. As you might remember from the bash course, a *regular expression* (“regex”) is a string that defines a search pattern and thereby describes sets of other strings.
 
-Das Modul `re` ist sehr umfangreich und bietet eine Fülle an Varianten an, wie reguläre Ausdrücke vorbereitet und verwendet werden können. Wir beschränken uns auf einige wenige Funktionen und verweisen ansonsten auf die [Dokumentation](https://docs.python.org/3/library/re.html) und den Artikel [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html).
+The `re` module is quite comprehensive. Here, we only present some of its functions; for further information, please consult the [documentation](https://docs.python.org/3/library/re.html) and the article [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html).
 
-`findall()` sucht nach allen nicht-überlappenden Vorkommen eines regulären Ausdrucks (erstes Argument) in einem Suchstring (zweites Argument) und gibt alle Treffer als Liste zurück.
+`findall()` searches for all non-overlapping occurrences of a regular expression (first argument) in a string (second argument) and returns all matches as list.
 
 ```python
 from re import findall
 
-findall(r".ython", "Python oder Jython")
+findall(r".ython", "Python or rather Jython?")
 ```
 
-Es empfiehlt sich, den regulären Ausdruck mittels eines *Raw-Strings* zu definieren (ein String, vor dessen erstem Anführungszeichen ein `r` steht). Innerhalb eines Raw-Strings wird der Backslash *nicht* als Escape-Zeichen interpretiert, sondern (schlicht und einfach) als ein Backslash. Wir werden unten sehen, warum das für Regex nützlich ist.
+It is recommended to define the regular expression by using a *raw string* (i.e., a string that includes a `r` immediately left of the opening quotes.). Within a raw string, the backslash is not interpreted as escape character, but as an actual backslash. You will see below why this approach is advantageous.
+
 
 
 ### Syntax
 
-Die Syntax für reguläre Ausdrücke in Python ähnelt jener in Bash:
+Python's syntax for regular expressions is similar to the bash syntax:
 
-- Der Punkt `.` bezeichnet ein *beliebiges Zeichen* (s. Beispiel oben).
-- *Zeichenklassen* werden gebildet, indem die gültigen Zeichen in eckige Klammern gesetzt werden.
+- The dot `.` denotes an *arbitrary character)* (see example above).
+- *Character classes* are assembled by surrounding a list of characters in brackets.
   ```python
   findall(r"H[au]nd", "Hand Hund Hend")
   ```
-  Auch die Angabe eines Zeichenbereichs sowie der Ausschluss von Zeichen sind möglich:
+  You may also specify a range of characters …
   ```python
-  findall(r"H[a-t]nne", "Hanne Henne Hunne")  # alle Zeichen von a bis t
-  findall(r"H[^e]nne", "Hanne Henne Hunne")   # alle Zeichen außer e
+  findall(r"H[a-t]nne", "Hanne Henne Hunne")  # characters a to t
   ```
-  Python kennt außerdem eine Reihe von vordefinierten Zeichenklassen, z.B. `\d` (alle Ziffern des Dezimalsystems) und `\w` (alle alphanumerischen Zeichen inkl. Unterstrich). Hier sind die Raw-Strings nützlich, weil wir die Zeichenklassen wie angegeben (also nur mit einem einzigen Backslash) schreiben können.
-- *Quantoren* nach einem Zeichen geben an, wie oft dieses Zeichen auftreten darf.
+  … or exclude certain characters.
+  ```python
+  findall(r"H[^e]nne", "Hanne Henne Hunne")   # all characters except e
+  ```
+  Several predefined character classes are available, such as `\d` (all decimal numbers) and `\w` (all alphanumeric characters, including the underscore). If you want to use these classes, raw strings are particularly useful:
+  ```python
+  findall("\\d\\w", "this is 1a")  # many backslashes, right?
+  findall(r"\d\w", "this is 1a")   # better!
+  ```
+- *Quantifiers* following a character indicate how often this character may appear.
   ```python
   target = "bt bat baat baaat baaaat baaaaaaaaat"
-  findall(r"ba*t", target)     # beliebig oft
-  findall(r"ba+t", target)     # mindestens einmal
-  findall(r"ba?t", target)     # keinmal oder einmal
-  findall(r"ba{3}t", target)   # genau 3-mal
-  findall(r"ba{2,}t", target)  # 2-mal oder öfter
-  findall(r"ba{,3}t", target)  # höchstens 3-mal
-  findall(r"ba{2,4}t", target) # 2- bis 4-mal
+  findall(r"ba*t", target)     # zero or more times
+  findall(r"ba+t", target)     # one or more times
+  findall(r"ba?t", target)     # zero or once
+  findall(r"ba{3}t", target)   # exactly three times
+  findall(r"ba{2,}t", target)  # at least two times
+  findall(r"ba{,3}t", target)  # up to three times
+  findall(r"ba{2,4}t", target) # two to four times
   ```
-- *Alternativen* suchen nach zwei verschiedenen Zeichenketten.
+- *Alternatives* search for one of two different strings.
   ```python
-  findall(r"eins|zwei", "eins zwei drei")
+  findall(r"one|two", "one two three")
   ```
-- *Anker* legen fest, dass ein regulärer Ausdruck nur am Anfang oder Ende eines Strings gefunden werden darf:
+- *Anchors* restrict matches to the start or end of a string:
   ```python
-  findall(r"^a..", "auf dem Haus")  # Verankerung am Beginn
-  findall(r"a..$", "auf dem Haus")  # Verankerung am Ende
+  findall(r"^a..", "auf dem Haus")  # anchor at the start
+  findall(r"a..$", "auf dem Haus")  # anchor at the end
   ```
-- *Gruppen* werden durch runde Klammern um ein oder mehrere Zeichen gebildet. Gruppen bilden Einheiten, die z.B. mit einem Quantor versehen werden können. Außerdem können wir über Gruppen bestimmte Teile eines Treffers extrahieren:
+- *Groups* are created by parentheses surrounding one or more characters. Groups may be modified by a quantifier and allow to extract parts of a match:
   ```python
-  findall(r"Tier: (\w+) (\w+)", "ein Tier: Mus musculus (Maus)")
+  findall(r"animal: (\w+) (\w+)", "animal: Mus musculus (mouse)")
   ```
 
 
-### Pattern-Objekte
+### Pattern objects
 
-Funktionen wie `findall()` sind für einfache Anwendungsfälle nützlich. Sein ganzes Potential entfaltet das `re`-Modul allerdings, wenn wir aus einem regulären Ausdruck ein *Pattern*-Objekt erzeugen und dann die Methoden dieses Objekts verwenden.
+Functions like `findall()` are useful for simple searches. For more complex cases, we prefer to create a *pattern* object from a regular expression and then use its methods.
 
 ```python
 from re import compile
 
-p = compile(r"Tier: (\w+) (\w+)")
+p = compile(r"animal: (\w+) (\w+)")
 type(p)
-print(p.pattern)  # Attribut: Suchmuster
-print(p.groups)   # Attribut: Anzahl der Gruppen
+print(p.pattern)  # attribute: regex used for searching
+print(p.groups)   # attribute: number of groups
 ```
 
-Das Pattern-Objekt besitzt u.a. die Methode `search()`, die in einem String nach Treffern sucht und bei Erfolg ein *Match-Objekt* zurückgibt.
+The pattern object has a method `search()` that searches for matches in a string and returns a *match* object upon success.
 
 ```python
-m = p.search("ein Tier: Mus musculus (Maus)")
+m = p.search("animal: Mus musculus (mouse)")
 type(m)
 ```
 
-Das Match-Objekt kann nun ausgewertet werden:
+Let's have a closer look at the matc object:
 
 ```python
-m.groups()  # Tupel mit den gefundenen Gruppen
-m[0]        # gesamter Treffer
-m[1]        # erste Gruppe
-m.span()    # Start- und Endindex des gesamten Treffers
-m.start(2)  # Startindex der zweiten Gruppe
-m.end(1)    # Endindex der ersten Gruppe
+m.groups()  # tuple with found groups
+m[0]        # whole match
+m[1]        # first group
+m.span()    # start and end index of the whole match
+m.start(2)  # start index of the second group
+m.end(1)    # end index of the first group
 ```
 
 
 
-## Lesen und Schreiben von Dateien
+## Reading and writing files
 
-### Lesen einzelner Zeichen
+### How to read individual characters
 
-Mit der interaktiven Eingabe (`input()`), dem Auslesen von Kommandozeilenargumenten (`sys.argv`) sowie der `print()`-Funktion lassen sich bereits viele Fragen der Ein- und Ausgabe lösen. Allerdings muss ein Programm häufig auf derartig große Datenmengen zugreifen, dass eine manuelle Eingabe zu umständlich ist. Daher erlaubt Python, sowohl bereits vorhandene Dateien lesend zu öffnen, als auch neue Dateien zu erzeugen und mit Inhalten zu füllen.
+By reading user input via `input()` or from command line arguments (`sys.argv`) and by displaying output on the console (`print()`), a program may interact with the user. However, as soon as a program has to read large datasets, it it will become infeasible to enter those data manually. Thus, Python is able to read files existing files and to create new files and write contents to them.
 
-Wir kopieren die Datei `codon_table.csv` aus dem Home-Verzeichnis des `bioinfo1`-Benutzers in das Unterverzeichnis `python3` unseres Home-Verzeichnisses und betrachten die ersten fünf Zeilen:
+Please copy the file `codon_table.csv` from the folder `/resources` into the folder `python3` in your home directory and have a look at its first five lines:
 
 ```
 AAA,Lys,K,Lysine
@@ -202,35 +212,34 @@ AAT,Asn,N,Asparagine
 ACA,Thr,T,Threonine
 ```
 
-Diese Datei enthält offenbar eine Codon-Tabelle, in der jedem Basentriplet eine Aminosäure zugeordnet ist. Wir öffnen diese Datei mittels der eingebauten Funktion `open()`, welche ein Dateiobjekt zurückgibt:
+This file apparently represents a codon table, where an amino acid is specified for each base triplet. We open the file by using the build-in function `open()`, which returns a file object:
 
 ```python
 f = open("codon_table.csv", "r")
 f
 ```
+The second argument of `open()` sets the file access mode – here, we only want to **r**ead the file. Python treats an opened files as a *data stream*, i.e., a (one-dimensional) sequence of data (characters in our case) that can be accessed randomly.
 
-Das zweite Argument von `open()` legt den Zugriffsmodus auf die Datei fest – hier wollen wir lesend zugreifen. Python behandelt die geöffnete Datei als *Datenstrom*, also eine kontinuierliche (eindimensionale) Folge von Daten (hier: Zeichen), auf die im Fall einer Datei sogar an beliebiger Stelle zugegriffen werden kann.
-
-Python kann den Inhalt der Datei grundsätzlich wie folgt verarbeiten: Unmittelbar nach dem Öffnen steht die Leseposition auf dem ersten Zeichen (Index 0), wie uns die Methode `tell()` zeigt:
+Python may read from a file in the following manner: Immediately after a file has been opened, the current *stream position* points to the first character (index 0), as the method `tell()`, well, tells us:
 
 ```python
 f.tell()
 ```
 
-Wir lesen die ersten 30 Zeichen in die Variable `s` mittels der Methode `read()`:
+We read the first 30 characters via `read()` and store them in the variable `s`:
 
 ```python
 s = f.read(30)
 s
 ```
 
-Die ersten 30 Zeichen umfassen also die erste Zeile und einen Teil der zweiten Zeile. (Wir erkennen, dass innerhalb einer Zeile einzelne „Spalten“ durch Kommas getrennt werden. Bereits die Dateiendung hat darauf hingewiesen: csv = comma-separated values.) Nach dieser Leseoperation steht die Leseposition auf dem 31. Zeichen (Index 30):
+These 30 characters comprise the first line and part of the second line. After the reading operation, the stream position lies at the 31st character (index 30):
 
 ```python
 f.tell()
 ```
 
-Wir können nun z.B. auch auf Index 15 zurückgehen (Methode `seek()`) und 10 Zeichen einlesen oder auf Index 100 vorspringen und zwei Zeichen einlesen:
+We may, for example, go back to index 15 and read ten characters, or jump forward to index 100 and read two characters:
 
 ```python
 f.seek(15)
@@ -243,9 +252,9 @@ f.tell()
 ```
 
 
-### Zeilenweises Lesen
+### How to read a file line by line
 
-Während der freie Zugriff auf den Datenstrom seine Vorteile hat, wird diese Möglichkeit in vielen Fällen gar nicht benötigt. Textdateien sind aus *Zeilen* aufgebaut und werden daher normalerweise auch zeilenweise eingelesen (Methode `readline()`):
+In many cases, we will not need random access to the file. Since text files generally are composed of *lines*, they are usually read line by line (method `readline()`):
 
 ```python
 f.seek(0)
@@ -257,9 +266,9 @@ l2
 f.tell()
 ```
 
-Der String `l1` beinhaltet nun die erste Zeile der Datei, und `l2` beinhaltet die zweite Zeile (jeweils einschließlich des Zeilenendes `\n`); die Leseposition steht auf dem ersten Zeichen der 3. Zeile. Ein wichtiger Hinweis: Das Zeilenende wird leider nicht einheitlich gekennzeichnet. Während Linux das Steuerzeichen `\n` (line feed) verwendet, benutzt Windows `\r\n` (carriage return – line feed). (Um die Verwirrung komplett zu machen, haben ältere Mac-Betriebssysteme sogar `\r` verwendet.) Daher kann es zu Problemen kommen, wenn eine Textdatei unter Windows erstellt und unter Linux gelesen wird.
+The strings `l1` and `l2` now contain the first and second line of the file, respectively, including the end of line character `\n`. The stream position points to the first character in the third line. Note: Unfortunately, the end of a line is marked by different characters depending on the operation system. While Linux uses  `\n` (*line feed*), Windows uses `\r\n` (*carriage return* plus line feed), and older versions of operating systems on Mac even used `\r`. Thus, you may run into problems if you process a file that has been created in Windows on Linux.
 
-Wir müssen uns aber nicht durch wiederholten Aufruf von `readline()` Zeile um Zeile durch die Datei arbeiten – das geht auch einfacher: Ein Dateiobjekt ist zeilenweise iterierbar und kann z.B. in einer `for`-Schleife ausgelesen werden:
+Fortunately, we don't have to repeatedly call `readline()` to eventually read all files from: A file object may be iterated line by line, which facilitates reading within a `for` loop:
 
 ```python
 f.seek(0)
@@ -267,7 +276,7 @@ for line in f:
   print(line)
 ```
 
-Noch einfacher geht es, indem wir mit der Methode `readlines()` alle Zeilen in einer Liste speichern:
+Even more simply, we may save all lines in a list via `readlines()`:
 
 ```python
 f.seek(0)
@@ -275,47 +284,48 @@ all_lines = f.readlines()
 all_lines
 ```
 
-Wenn wir mit dem Lesen einer Datei fertig sind, dürfen wir nicht vergessen, die Datei auch wieder mit der Methode `close()` zu schließen:
+If we don't need a file any longer, we must close it:
 
 ```python
 f.close()
 ```
 
 
-### Schreiben
+### How to write to a file
 
-Damit wir Daten in eine Datei schreiben können, müssen wir sie im entsprechenden Modus öffnen (d.h., wir geben als zweites Argument von `open()` den String `"w"` an):
+In order to be able to write to a file, we have to open it with the respective access mode:
 
 ```python
 f = open("some_lines.txt", "w")
 ```
 
-Nun können wir in die Datei einzelne Strings mittels `write()` schreiben:
+Now the method `write()` allows us to write strings to the file:
 
 ```python
-f.write("Erste Zeile\n")
-f.write("Zweite Zeile\n")
+f.write("First line\n")
+f.write("Second line\n")
 ```
 
-Falls wir mehrere Strings in einer Liste schreiben wollen, können wir dies mittels der Methode `writelines()` tun. Achtung: Auch wenn der Methodenname etwas anderes vermuten lässt, schreibt Python die Listenelemente einfach nacheinander in die Datei, ohne die Zeilen durch Steuerzeichen zu trennen. Falls jeder String auf einer eigenen Zeile stehen soll, müssen wir die Steuerzeichen also explizit angeben:
+If we wish to write a collection of strings (e.g., a list of strings), the method `writelines()` allows us to do so. Attention: Python will write the list elements one after each other to the file, without inserting a new line character. Thus, if the list elements represent individual lines, we have to add the line end manually:
 
 ```python
-lines = ["drei\n", "vier\n", "fünf\n"]
+lines = ["three\n", "four\n", "five\n"]
 f.writelines(lines)
 ```
 
-Wenn wir fertig sind, müssen wir noch daran denken, die Datei zu schließen. Dies ist besonders wichtig, falls Inhalt in die Datei geschrieben haben. Es kann nämlich sein, dass Python die Schreiboperation nicht sofort nach Aufruf der `write()`- oder `writelines()`-Methode ausführt, sondern auf später verschiebt. `close()` stellt hingegen sicher, dass sämtliche noch fehlenden Daten in der Datei gespeichert werden.
+Once we are done, we have to close the file. This is especially important after we have written data to the file, since Python may postpone writing operations. `close()` ensures that any pending operations are finished.
 
 ```python
 f.close()
 ```
 
-Abschließend überzeugen wir uns auf der Kommandozeile mittels `cat`, dass wir die Daten wie gewünscht gespeichert haben.
+Finally, have a look at the created file (`cat`).
 
 
-### Kontextobjekte
 
-Der Zugriff auf Dateien wird über die Verwendung sog. *Kontextobjekte* vereinfacht. An Stelle der Anweisungen Öffnen – Lesen/Schreiben inkl. Ausnahmebehandlung – Schließen tritt die `with`-Anweisung:
+### Context objects
+
+*Context objects* make file access even simpler. Instead of opening, reading/writing, and closing, a `with` block is used:
 
 ```python
 with open("codon_table.csv", "r") as f:
@@ -325,47 +335,48 @@ for line in all_lines:
     print(line)
 ```
 
-Ein Kontextobjekt wird folgendermaßen erzeugt:
-- Schlüsselwort `with`
-- Funktion, die ein Kontextobjekt erzeugt (hier `open()`)
-- Schlüsselwort `as`
-- Name für das Kontextobjekt (hier : `f`)
-- Doppelpunkt
+Create a context object by writing
+- keyword `with`
+- function that returns a context object (here: `open()`)
+- keyword `as`
+- name for the context object (here: `f`)
+- colon
+- indented statements (suite)
 
-Innerhalb des eingerückten Anweisungskörpers ist nun das Objekt (`f`) definiert (hier: „die Datei offen“). Wenn der Kontrollfluss den Anweisungskörper verlässt, stellt Python sicher, dass das Kontextobjekt korrekt *deinitialisiert* wird. Im Fall eines Dateiobjekts bedeutet das: Schreibe ggf. alle noch fehlenden Daten und schließe die Datei.
-
-
-
-## Aufgaben
-
-Speichern Sie alle Dateien, die Sie in Kurseinheit 3 erstellen müssen, im Ordner `python3` in Ihrem Home-Verzeichnis.
+Within the suite, the context object is defined (in our example, the open file is available for reading). As soon as the control flow exits the suite, Python makes sure that the context object is *deinitialized* (in the case of files, any pending writing operations are executed, and the file is closed).
 
 
 
-#### Aufgabe 3.1 (4 P)
+## Exercises
 
-Diese Aufgabe haben Sie erfolgreich gelöst, wenn Sie die Code-Beispiele dieser Kurseinheit durchgearbeitet haben. Achten Sie darauf, dass sich im Ordner `python3` die folgenden Dateien befinden, die Sie im Rahmen der Übungen erstellt haben:
+Store all files that you generate for unit 3 in the folder `python3` in your home directory.
+
+
+
+#### Exercise 3.1 (4 P)
+
+You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python3` must contain the following files, which you have created in the course of this unit:
 - `codon_table.csv`
 - `simple_protein.py`
 - `some_lines.txt`
 
 
-#### Aufgabe 3.2 (6 P)
+#### Exercise 3.2 (6 P)
 
-Erstellen Sie eine Klasse `Protein` mit den folgenden Eigenschaften:
-- Der Konstruktor wird mit den Argumenten `name`, `uniprot_id` und `sequence` aufgerufen, die in gleichnamigen Attributen gespeichert werden sollen.
-- Die Methode `get_length` gibt die Länge des Proteins (Anzahl der Aminosäuren) zurück.
-- Die Methode `contains` hat einen Parameter `peptide` und gibt `True` zurück, falls die Proteinsequenz die durch `peptide` gegebene Zeichenkette enthält.
-- Die Methode `get_mw` gibt die Molekülmasse des Proteins zurück. Diese Methode hat einen optionalen Parameter `disulfides`, mit dem die Anzahl an Disulfidbrücken angegeben wird.
+Create a class `Protein` with the following properties:
+- The init method requires the arguments `name`, `uniprot_id`, and `sequence`, which are stored in attributes of the same name.
+- The method `get_length` returns the number of amino acids in the protein.
+- The method `contains` has one parameter `peptide` and returns `True` if the protein sequence contains the given `peptide` sequence.
+- The method `get_mw` returns the molecular weight of the protein. The method has an optional parameter `disulfides` that specifies the number of disulfide bridges.
 
-Die Molekülmasse eines Proteins wird mit der folgenden Formel berechnet:
+The molecular weight of a protein is given by the following formula
 ```
-Summe der Massen der einzelnen Reste
-+ Masse eines Wassermoleküls
-- 2 * Masse von Wasserstoff * Anzahl der Disulfidbrücken
+sum of the masses of the amino acid residues
++ mass of a water molecule
+- 2 * mass of hydrogen * number of disulfide bridges
 ```
 
-Bitte verwenden Sie folgende Massen:
+Please use the following masses:
 ```python
 AA_MASS = dict(
     G=57.05132,
@@ -394,9 +405,10 @@ WATER_MASS = 18.01528
 H_MASS = 1.00784
 ```
 
-Speichern Sie diese Klasse in der Datei `aufgabe_3_2.py`.
+Store the class in `exercise_3_2.py`.
 
-Sie können die korrekte Funktionalität Ihrer Klasse anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
+
 ```python
 galanin = Protein("Galanin", "P22466", "GWTLNSAGYLLGPHAVGNHRSFSDKNGLTS")
 print(type(galanin))
@@ -425,11 +437,11 @@ print(insulin_B.get_mw(disulfides=1))
 
 
 
-#### Aufgabe 3.3 (6 P)
+#### Exercise 3.3 (6 P)
 
-Implementieren Sie eine Funktion `read_masses`, die eine Tabelle von Atommassen einliest.
-- Die Funktion hat einen Parameter, der den Namen der Tabellendatei angibt.
-- Bei der Tabelle handelt es sich um eine CSV-Datei (`average_mass.csv` im Home-Verzeichnis des `bioinfo1`-Benutzers), deren ersten fünf Zeilen folgendermaßen aussehen:
+Implement a function `read_masses` which reads a table of atomic weights.
+- The function has a single parameter, which receives the name of the file containing the table.
+- A table in CSV format is provided (`/resources/average_mass.csv`), whose first five lines read
   ```
   H,1.008
   He,4.0026
@@ -437,12 +449,13 @@ Implementieren Sie eine Funktion `read_masses`, die eine Tabelle von Atommassen 
   Be,9.0122
   B,10.81
   ```
-  Jede Zeile umfasst also zwei durch Kommas getrennte Felder, nämlich das Elementsymbol und die durchschnittliche Atommasse. Daher können Sie jede Zeile mit einem regulären Ausdruck verarbeiten, der zwei Gruppen enthält.
-- Die Funktion soll ein Dict zurückgeben; Elementsymbole und zugehörige Atommasse bilden die Schlüssel-Wert-Paare.
+  Each line contains two records separated by a comma: The element symbol and the average atomic mass. Therefore, you may process each line with a regular expression containing two groups.
+- The function should return a dict, where element symbols and masses are the key-value pairs.
 
-Speichern Sie diese Funktion in der Datei `aufgabe_3_3.py`.
+Store the function in `exercise_3_3.py`.
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
+
 ```python
 m = read_masses("average_mass.csv")
 print(m["N"])
@@ -457,17 +470,18 @@ print(2 * m["H"] + m["O"])
 
 
 
-#### Aufgabe 3.4 (5 P)
+#### Exercise 3.4 (5 P)
 
-Implementieren Sie eine Funktion `calculate_mass`, die die Masse einer chemischen Formel berechnet. Die Funktion wird mit einem String aufgerufen, der die Formel enthält (z.B. `"C6 H12 O6"` oder `"C Cl4"`), und gibt die Masse der Formel als Float zurück.
+Implement a function `calculate_mass`, which calculates the mass of a chemical compound. The funcion is called with a string that contains the molecular formula (e.g., `"C6 H12 O6"` or `"C Cl4"`) and returns the mass as a float.
 
-Hinweise:
-- Extrahieren Sie die einzelnen Elementsymbole und ihre Anzahl über einen regulären Ausdruck mit zwei Gruppen. Die erste Gruppe beinhaltet jedenfalls einen Großbuchstaben und ggf. zusätzlich einen Kleinbuchstaben. Die zweite Gruppe enthält beliebig viele Ziffern.
-- Greifen Sie auf Ihre Lösung zu Aufgabe 3.3 zurück, um ein Dict mit Atommassen zu erhalten. Sie können selbst erstellte Python-Dateien genauso wie Module der Standardbibliothek via `import` einbinden (`from aufgabe_3_3 import read_masses`).
+Hints:
+- Extract individual element symbols and their counts via a regular expression containing two groups. The first group should match one uppercase letter followed by an optional lowercase letter. The second group should match any number of digits.
+- Reuse your solution for exercise 3.3, which should provide a dict containing atomic masses. You may import Python files like any module (e.g., `from exercise_3_3 import read_masses`).
 
-Speichern Sie diese Funktion in der Datei `aufgabe_3_4.py`.
+Store the function in `exercise_3_4.py`.
 
-Sie können die korrekte Funktionalität Ihres Programms anhand der folgenden Beispiele testen:
+You may check that your program works correctly by using the following exemplary calls:
+
 ```python
 print(calculate_mass("C6 H12 O6"))
 #> 180.156
