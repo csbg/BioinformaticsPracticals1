@@ -45,11 +45,11 @@ The code above defines a new class:
 - keyword `class`
 - class name (here `Protein`)
 - colon
-- indented statements (suite)
+- indented statements (suite, class body)
 
 We also define an *init method*, which must be named `__init__()` and is called by Python whenever a new object is instantiated from the class. In the body of the init method, we initialize the instance variables `self.name` and `self.sequence`. These variables store the name and sequence of an object and thereby completely describe its state.
 
-We create a new object `ins_A` of class `Protein`. To this end, we call the class name like a function and supply the arguments required by the init method. Once the object `ins_A` has been create, we may access its attributes (object name – dot – attribute name).
+We create a new object `ins_A` of class `Protein`. To this end, we call the class name like a function and supply the arguments required by the init method. Once the object `ins_A` has been created, we may access its attributes (object name – dot – attribute name).
 
 ```python
 ins_A = Protein(name="insulin A chain", sequence="GIVEQCCTSICSLYQLENYCN")
@@ -58,9 +58,9 @@ print(ins_A.sequence)
 print(type(ins_A))
 ```
 
-The build-in function `type()` tells us the clas from which `ins_A` has been derived.
+The built-in function `type()` tells us the class from which `ins_A` has been derived.
 
-You may wonder what happened to the first parameter (`self`) of `.__init__()`. Why did we only specify two arguments (which were obviously assigned to the parameters `name` und `sequence`) when we instantiated the insulin object? Each instance method must be defined with at least one parameter (commonly called `self`), which refers to the current instance. However, we *must not* pass an argument to this parameter when invoking the instance method – Python supplies the appropriate value “automatically”.
+You may wonder what happened to the first parameter (`self`) of `__init__()`. Why did we only specify two arguments (which were obviously assigned to the parameters `name` und `sequence`) when we instantiated the insulin object? Each instance method must be defined with at least one parameter (commonly called `self`), which refers to the current instance. However, we *must not* pass an argument to this parameter when invoking the instance method – Python supplies the appropriate value “automatically”.
 
 
 
@@ -99,7 +99,7 @@ In the following sections, we will learn about classes that are available from t
 
 ### Introduction
 
-The `re` module (from the standard library) implements functions to use regular expressions. As you might remember from the bash course, a *regular expression* (“regex”) is a string that defines a search pattern and thereby describes sets of other strings.
+The `re` module (from the standard library) implements classes and functions for handling regular expressions. As you might remember from the bash course, a *regular expression* (“regex”) is a string that defines a search pattern and thereby describes sets of other strings.
 
 The `re` module is quite comprehensive. Here, we only present some of its functions; for further information, please consult the [documentation](https://docs.python.org/3/library/re.html) and the article [Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html).
 
@@ -111,7 +111,7 @@ from re import findall
 findall(r".ython", "Python or rather Jython?")
 ```
 
-It is recommended to define the regular expression by using a *raw string* (i.e., a string that includes a `r` immediately left of the opening quotes.). Within a raw string, the backslash is not interpreted as escape character, but as an actual backslash. You will see below why this approach is advantageous.
+It is recommended to define the regular expression by using a *raw string* (i.e., a string that includes a `r` immediately left of the opening quote). Within a raw string, the backslash is not interpreted as escape character, but as an actual backslash. You will see below why this approach is advantageous.
 
 
 
@@ -119,7 +119,7 @@ It is recommended to define the regular expression by using a *raw string* (i.e.
 
 Python's syntax for regular expressions is similar to the bash syntax:
 
-- The dot `.` denotes an *arbitrary character)* (see example above).
+- The dot `.` denotes an *arbitrary character* (see example above).
 - *Character classes* are assembled by surrounding a list of characters in brackets.
   ```python
   findall(r"H[au]nd", "Hand Hund Hend")
@@ -183,7 +183,7 @@ m = p.search("animal: Mus musculus (mouse)")
 type(m)
 ```
 
-Let's have a closer look at the matc object:
+Let's have a closer look at the match object:
 
 ```python
 m.groups()  # tuple with found groups
@@ -212,13 +212,13 @@ AAT,Asn,N,Asparagine
 ACA,Thr,T,Threonine
 ```
 
-This file apparently represents a codon table, where an amino acid is specified for each base triplet. We open the file by using the build-in function `open()`, which returns a file object:
+This file apparently represents a codon table, where an amino acid is specified for each base triplet. We open the file by using the built-in function `open()`, which returns a file object:
 
 ```python
 f = open("codon_table.csv", "r")
 f
 ```
-The second argument of `open()` sets the file access mode – here, we only want to **r**ead the file. Python treats an opened files as a *data stream*, i.e., a (one-dimensional) sequence of data (characters in our case) that can be accessed randomly.
+The second argument of `open()` sets the file access mode – here, we only want to **r**ead the file. Python treats an opened file as a *data stream*, i.e., a (one-dimensional) sequence of data (in our case, characters) that can be accessed randomly.
 
 Python may read from a file in the following manner: Immediately after a file has been opened, the current *stream position* points to the first character (index 0), as the method `tell()`, well, tells us:
 
@@ -306,7 +306,7 @@ f.write("First line\n")
 f.write("Second line\n")
 ```
 
-If we wish to write a collection of strings (e.g., a list of strings), the method `writelines()` allows us to do so. Attention: Python will write the list elements one after each other to the file, without inserting a new line character. Thus, if the list elements represent individual lines, we have to add the line end manually:
+If we wish to write a collection of strings (e.g., a list of strings), the method `writelines()` allows us to do so. Attention: Python will write the list elements one after each other to the file, without inserting a new line character. Thus, if the list elements represent individual lines, we have to add an explicit newline character to the list elements:
 
 ```python
 lines = ["three\n", "four\n", "five\n"]
@@ -472,7 +472,7 @@ print(2 * m["H"] + m["O"])
 
 #### Exercise 3.4 (5 P)
 
-Implement a function `calculate_mass`, which calculates the mass of a chemical compound. The funcion is called with a string that contains the molecular formula (e.g., `"C6 H12 O6"` or `"C Cl4"`) and returns the mass as a float.
+Implement a function `calculate_mass`, which calculates the mass of a chemical compound. The function is called with a string that contains the molecular formula (e.g., `"C6 H12 O6"` or `"C Cl4"`) and returns the mass as a float.
 
 Hints:
 - Extract individual element symbols and their counts via a regular expression containing two groups. The first group should match one uppercase letter followed by an optional lowercase letter. The second group should match any number of digits.

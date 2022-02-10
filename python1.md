@@ -26,11 +26,11 @@ Execute the following statements in Python's interactive mode. Try to understand
 Numeric types represent numbers.
 
 ```python
-42      # the integer number fourty-two
+42      # the integer number forty-two
 3.1415  # a decimal number (float) that approximates pi
 ```
 
-The hash sign `#` indicates a *comment*: Python will ignore all remaining characters on the line. (Thus, you may readily omit all comments when you enter n the following code snippets into the Python interpreter!).
+The hash sign `#` starts a *comment*, so Python will ignore all remaining characters on the line. (Thus, you may omit all comments when you enter the following code snippets into the Python interpreter!).
 
 Numbers may be manipulated via *arithmetic operators*:
 
@@ -81,7 +81,7 @@ circumference
 area
 ```
 
-We added explicit parentheses around `radius ** 2` to indicate that Python should first calculate the power and then the product. (Actually, we could have omitted those parentheses, since the precedence of exponentiation is higher than the one of multiplication.) However, parentheses are required if the default *operator precedence* should be changed.
+We added explicit parentheses around `radius ** 2` to indicate that Python should first calculate the power and then the product. (Actually, we could have omitted these parentheses, since the precedence of exponentiation is higher than the one of multiplication.) However, parentheses are required if the default *operator precedence* should be changed.
 
 ```python
 3 * 5 + 8  # equivalent to (3 * 5) + 8
@@ -147,7 +147,7 @@ Since strings are sequences of characters, you can access a single character wit
 ```python
 enzyme = "adenylyl cyclase"
 enzyme[0]    # first character
-enzyme[3]    # fourth Zeichen
+enzyme[3]    # fourth character
 enzyme[-2]   # second character counting from the end of the string
 enzyme[2:8]  # substring from position 2 (included) to position 8 (excluded)
 ```
@@ -159,7 +159,7 @@ Please note:
 Both start index and end index are optional:
 
 ```python
-enzyme[:4]   # substring up to position 4 4 (excluded)
+enzyme[:4]   # substring up to position 4 (excluded)
 enzyme[9:]   # substring starting at position 9 (included)
 enzyme[:]    # a copy of the whole string
 enzyme[-3:]  # substring starting at position 3 counting from the end
@@ -175,7 +175,7 @@ nothing = None
 nothing
 ```
 
-The `is` operator checks whether a variable is `None` (do not use a Boolean comparison in this case):
+The `is` operator checks whether a variable is `None` (do not use a comparison operator in this case):
 
 ```python
 nothing is None  # preferred
@@ -185,14 +185,14 @@ nothing == None  # avoid
 
 ## Input and output
 
-Use the `print()` function to print arbitrary output to the screen.
+Use the `print()` function to display output on the screen.
 
 ```python
 print("Hello world!")
 print(3 + 5)
 ```
 
-By contrast, the `input()` function read values supplied by the user:
+By contrast, the `input()` function reads values supplied by the user:
 
 ```python
 value = input("Please enter any value: ")
@@ -208,7 +208,7 @@ number = input("Please enter a number: ")
 print(number + 10)  # a string cannot be added to an integer!
 ```
 
-If we plan to use the entered value for calculations, we must *convert* it to a numeric type via `int()` oder `float()`:
+If we plan to use the entered value for calculations, we must *convert* it to a numeric type via `int()` or `float()`:
 
 ```python
 x = "10"  # x is the string "10"
@@ -254,10 +254,10 @@ We then execute the script as follows:
 python arguments.py a 12 third_argument
 ```
 
-The output tells us:
-- First line: `argv` is a *list* with four elements. (The list type will be treated in unit 2. For now, you only need to know that you may access the elements of a list like characters in a string: Variable name followed by the index in brackets.)
-- Second line: The first element `argv[0]` contains the name of the script that was called (`'arguments.py'`).
-- Third line: The remaining elements `argv[1:]` contain the command line arguments in the given order.
+The program prints three lines that tell us:
+1. `argv` is a *list* with four elements. (The list type will be treated in unit 2. For now, you only need to know that you may access the elements of a list like characters in a string: Variable name followed by the index in brackets.)
+2. The first element `argv[0]` contains the name of the script that was called (`'arguments.py'`).
+3. The remaining elements `argv[1:]` contain the command line arguments in the given order.
 
 By using command line arguments, we may calculate the product of two numbers as shown below:
 
@@ -268,7 +268,8 @@ b = float(argv[2])
 print("The result is", a * b)
 ```
 
-We store these statements in `product2.py` and execute the program:
+Store these statements in `product2.py` and execute the program:
+
 ```bash
 python product2.py 35 10
 ```
@@ -277,7 +278,7 @@ python product2.py 35 10
 
 ## Exercises
 
-Each unit concludes with several exercises which you should solve on your own. Your solutions will be graded, and the scores will be used to obtain your final grade for the course. Next to each exercise, the maximum number of points for the correct solution is given.
+Each unit concludes with several exercises which you should solve on your own. Your solutions will be graded, and the scores will be used to obtain your final grade for the course. The maximum number of points for the correct solution of each exercise is indicated.
 
 Store all files that you generate for unit 1 in the folder `python1` in your home directory.
 
@@ -298,8 +299,8 @@ Write a Python program that executes the following statements consecutively. Sto
 1. Store the integer 32 in the variable `z` and the float 2.5 in the variable `a`.
 2. Store the product of `z` and `a` in the variable `b`.
 3. Divide `a` by 8 and store the result in `a`.
-4. Tell me whether `a` is greater than `b` (here, the program should print a single Boolean value.)
-5. Tell me whether the sum of `z` and 11 is unequal to 44 (again, only print a single Boolean value).
+4. Show whether `a` is greater than `b` (here, the program should print a single Boolean value.)
+5. Show whether the sum of `z` and 11 is unequal to 44 (again, only print a single Boolean value).
 
 
 
@@ -329,14 +330,14 @@ remainder: 20
 False
 ```
 
-It does not matter whether you program prints anything in the input lines (such as “dividend:” above). However, it is important that the last printed line contains a single Boolean value that has been calculated correctly.
+It does not matter whether your program prints anything in the input lines (such as “dividend:” above). However, it is important that the last printed line contains a single Boolean value that has been calculated correctly.
 
 
 #### Exercise 1.4 (3 P)
 
 Write a program `exercise_1_4.py` that reads four command line arguments. (Below, these arguments are called `dna`, `x`, `a`, `e`.). The first argument is a string of arbitrary length which represents a DNA sequence. Arguments 2 to 4 are integers. The program should print two lines:
 - The first line contains the `x`-th base from the left in `dna`.
-- The second line contains the subsequence `dna` that starts two bases before the position given by `a` and ends at the position given by `e`.
+- The second line contains the subsequence of `dna` that starts two bases before the position given by `a` and ends at the position given by `e`.
 
 Bases are numbered starting from one (thus, the first base in the sequence is actually numbered “1”).
 

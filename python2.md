@@ -20,7 +20,7 @@
 
 ## Control flow
 
-The Python interpreter executes the statements in a Python script one by one, and after the last statement simply quits.
+The Python interpreter executes the statements in a Python script one by one, and quits after the last statement.
 
 ```python
 a = 4
@@ -30,9 +30,9 @@ mean = (a + b + c) / 3
 print(mean)
 ```
 
-Evidently, this basic flow of control only allows you to write the most basic programs. Therefore, Python support compound statements that alter the control flow.
+Evidently, this basic flow of control only allows you to write the most basic programs. Therefore, Python supports compound statements that alter the control flow.
 
-*Note:* You may run all of the following examples within the Python interpreter. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as `func_test.py`) and then run this script (e.g., `python func_test.py`).
+*Note:* You may run all of the following examples in interactive mode. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as `func_test.py`) and then run this script (e.g., `python func_test.py`).
 
 
 
@@ -77,7 +77,7 @@ A function may pass values to the caller by using the `return` statement. In the
 - A statement such as `return value1, value2, value3` tells a function to return *several* values.
 - A function that *lacks* a `return` statement implicitly returns `None`.
 
-Before we delve into the details of defining and using functions, let us briefly review the difference between parameters and arguments:
+In order to correctly use functions, we need to understand the difference between parameters and arguments:
 - A *parameter* (also called “formal parameter”) is part of the function definition and specifies the number (and sometimes also the type) of input values the function may receive.
 - An *argument* (also called “actual parameter”) is the value that is passed to a function when it is called.
 
@@ -166,10 +166,9 @@ A `while` loop executes its suite as long as the given condition is true. Create
 - keyword `while`
 - condition (an expression that yields a Boolean value)
 - colon
-- indented statements (suite)
+- indented statements (suite, loop body)
 
-Apparently, the syntax of the wile loop is quite similar to the if statement.
-Die Syntax ist also recht ähnlich zur `if`-Anweisung, mit dem Unterschied, dass letztere nur einmal ausgeführt wird. Store the following code in `calc_powers.py` and execute the file with Python:
+Store the following code in `calc_powers.py` and execute the file with Python:
 
 ```python
 i = 1
@@ -194,7 +193,7 @@ Create a for loop by writing
 - keyword `in`
 - iterable object (e.g., string or list)
 - colon
-- indented statements (suite)
+- indented statements (suite, loop body)
 
 ```python
 for letter in "Python":
@@ -242,7 +241,7 @@ import math
 math.factorial(7)
 ```
 
-We also may change the name of the namespace:
+We also may select a different name for the namespace upon importing:
 
 ```python
 import math as mathematics
@@ -326,7 +325,7 @@ bases = ["A", "G", "X", "Y"]
 bases.append("Z")         # append an element to the list
 del bases[2]              # delete element with index 2
 l = bases.pop()           # remove the last element and return it
-bases.extend(["T", "U"])  # appends element from another list
+bases.extend(["T", "U"])  # appends elements from another list
 bases.insert(1, "C")      # insert the element given by the second argument
                           # at the index given by the first argument
 bases.reverse()           # reverse order of elements
@@ -345,7 +344,7 @@ bases[1:3]        # slicing
 len(bases)        # number of elements
 min(bases)        # smallest element
 max(bases)        # largest element
-bases.count("C")  # count the number of a give element
+bases.count("C")  # count the number of a given element
 bases.index("G")  # find the index of a given element
 ```
 
@@ -367,11 +366,12 @@ Besides adding and removing elements, you may also perform the classical set ope
 B = {1, 2, 3, 4, 5}
 B.discard(5)  # remove element if it exists
 B.add(7)      # add element
-B.add(7)      # no change – each element must be unique!
+B.add(7)      # set does not change – each element must be unique!
 
 A | B  # union (OR)
 A & B  # intersection (AND)
 A - B  # difference
+B - A  # note that the difference is not commutative
 A ^ B  # symmetric difference (XOR)
 ```
 
@@ -381,17 +381,13 @@ A ^ B  # symmetric difference (XOR)
 Dictionaries (“dicts”) are unordered collections of *key-value pairs*, where keys have to be unique. Create a dict
 - either by separating key-value pairs by colons and enclosing comma-separated pairs with curly braces,
   ```python
-  atom_names = {"C": "carbon",
-                "H": "hydrogen",
-                "N": "nitrogen"}
+  atom_names = {"C": "carbon", "H": "hydrogen", "N": "nitrogen"}
   atom_names
   ```
 
 - or by using the built-in function `dict()`, to which we supply the key-value-pairs as keyword arguments:
   ```python
-  atom_names_2 = dict(C="carbon",
-                      H="hydrogen",
-                      N="nitrogen")
+  atom_names_2 = dict(C="carbon", H="hydrogen", N="nitrogen")
   atom_names_2
   atom_names_2 == atom_names
   ```
@@ -430,7 +426,7 @@ You have successfully solved this exercise as soon as you have worked through th
 #### Exercise 2.2 (4 P)
 
 Implement a function `get_charge` that checks whether an amino acid is positively charged (e.g., arginine), negatively charged (e.g., aspartate), or neutral (e.g., valine).
-- The function should be called with a single argument that specified the amino acid using its single-letter abbreviation. Only the 21 eukaryotic proteinogen amino acids should be considered.
+- The function should be called with a single argument that specifies the amino acid using its single-letter abbreviation. Only the 21 eukaryotic proteinogenic amino acids should be considered.
 - Depending on the charge, the function should return one of the strings `"positive"`, `"negative"`, or `"neutral"`.
 - If the user does not supply a valid abbreviation, the function should return `"invalid input"`.
 
@@ -456,7 +452,7 @@ print(get_charge("foo"))
 #### Exercise 2.3 (4 P)
 
 Implement a function `count_bases` that counts the number of purine and pyrimidine bases in a DNA or RNA sequence.
-- The first parameter of the function should be called `sequence` and required. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.
+- The first parameter of the function should be called `sequence` and is required. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.
 - The second parameter should be called `purine` and is optional, with a default value of `True`. If `purine` is true, the function should calculate the number of purines; otherwise, it should calculate the number of pyrimidines.
 - The function should return a single integer, i.e., the number of all purines/pyrimidines in *all* sequences.
 
@@ -481,7 +477,7 @@ If you code a lot, you will often use third-party packages and consult their doc
 - The third (optional) parameter `count_base` names the base that should be counted (default: `"A"`).
 - The function should return two values: (1) A string representing the created sequence, and (2) how often the specified base appears.
 
-Since the function should create the sequence randomly, you might consider to use the function `choices()` available in the `random` module. This module is part of the standard library – please read [documentation](https://docs.python.org/3/library/index.html). You will also need the string method `join()` to convert the value returned by `choices()` into a string. Since `string` is a built-in data tape, it is also documented in the standard library.
+Since the function should create the sequence randomly, you might consider to use the function `choices()` available in the `random` module. This module is part of the standard library – please read the [documentation](https://docs.python.org/3/library/index.html). You will also need the string method `join()` to convert the value returned by `choices()` into a string. Since `string` is a built-in data type, it is also documented in the standard library.
 
 Store the function in `exercise_2_4.py`.
 
