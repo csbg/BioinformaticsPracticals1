@@ -300,7 +300,7 @@ ls -al
 
 ### Zipped files
 
-Now let's download all human gene sequences from Ensembl.
+Now let's download all human gene sequences from Ensembl. Download the file to your home directory.
 ```bash
 man wget
 wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.GRCh38.cds.all.fa.gz
@@ -501,7 +501,7 @@ The argument `s/([ACTG]*)$/seq:\1/g` for sed is quite complicated, let's break i
 - in summary, the expression matches any number of the letters A, C, T, and G at the end of the line, stores them, and then write "seq:" and places the sequence behind it
 
 
-We developed the above approach on the first 30 lines. Now run it an the full file. This may take a couple of minutes. The "gzip" command will compress the results. The `>` will store it in a new file "GRCh38_reformatted.gz".
+We developed the above approach on the first 30 lines. Now run it an the full file. This may take a couple of minutes. The "gzip" command will compress the results. The `>` will store it in a new file "GRCh38_reformatted.gz". The reformatted file should end up in your home directory.
 ```bash
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > GRCh38_reformatted.gz
 ```
