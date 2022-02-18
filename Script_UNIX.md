@@ -28,8 +28,7 @@
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
-# Connecting to the cluster
-(Day 1)
+# Connecting to the cluster (Day 1)
 The command ssh lets you connect to the cluster. Note: you will need VPN active to be able to connect.
 ```bash
 ssh [username]@corso.came.sbg.ac.at
@@ -98,12 +97,10 @@ Take a look at the files with content
 head day1/*
 ```
 
-# END OF DAY 1
 
 ---------------
 
-# Files and file systems
-(Day 2)
+# Files and file systems (Day 2)
 
 ### Navigate the file system
 First, let's clean up
@@ -219,11 +216,11 @@ man mv
 man cp
 
 # now try it:
-mv /home/bioinfo1/gRNAs.txt ~/
-cp /home/bioinfo1/gRNAs.txt ~/
+mv /resources/week1/gRNAs.txt ~/
+cp /resources/week1/gRNAs.txt ~/
 
 # Why does mv not work? Look at file permissions:
-ls -l /home/bioinfo1/gRNAs.txt
+ls -l /resources/week1/gRNAs.txt
 ls -l ~/gRNAs.txt
 ```
 
@@ -245,7 +242,7 @@ Copy the file gRNAs.txt from your home directory into the folder "day2". Then re
 
 ### Editing in nano
 
-Now add a line at the end of the file "gRNAs.txt" that is located in your home directory, adding the gRNA sequence "ACTGACTG". To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.
+Now add a line at the end of the file "gRNAs.txt" that is located in your home directory, adding the gRNA sequence "ACTGACTG". Use the "nano" editor for this purpose. To quit the nano-editor you need too press Ctrl+X. Then type Y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.
 ```bash
 nano gRNAs.txt
 ```
@@ -378,12 +375,10 @@ Create a folder called "day2" in your home. Next place the following files into 
 - Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Megabytes into the file "size.txt".
 
 
-# END OF DAY 2
 
 ---------------
 
-# Patterns and regular expressions
-(Day 3)
+# Patterns and regular expressions(Day 3)
 
 ### File pattern matches
 
@@ -410,7 +405,7 @@ Match anything that doesn't match one of the patterns (extglob) --> | !(patterns
 
 ### Simple regular expressions
 
-Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. Note: The file "sample" needs to be copied over from the home directory of user "bioinfo".
+Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. Note: The file "sample" needs to be copied to your HOME directory from the directory /resources/week1.
 ```bash
 cat sample
 grep ^a sample
@@ -479,31 +474,35 @@ Remind ourselves of how this file looks like:
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500
 ```
 
-The ">" separates different entries and entries should remain each on one line, see here: https://en.wikipedia.org/wiki/FASTA_format. Next we will remove all newline characters, except for the newline characters followed by ">". To remove the newline characters, we will use the "sed" command.
+In the original format, the ">" separates different entries and sequences are in the lines below the line with ">", see here: https://en.wikipedia.org/wiki/FASTA_format. 
+First, we will remove newline characters that separate the sequences. To remove the newline characters, we will use the "sed" command.
 ```bash
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g'
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -zE 's/([ACTG])\n([ACTG])/\1\2/g'
 ```
+Let breack this up:
 
-Next, we will place "seq:" in front of the DNA-sequence of each line. 
-```bash
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g'
-```
-
-The argument `s/([ACTG]*)$/seq:\1/g` for sed is quite complicated, let's break it up:
-
-- `s/x/y/g` means we substitute `x` by `y`
 - `s///` tells sed to substitute
 - `s///g` tells sed to substitue globally - replacing each occurance of `x`
-- `([ACTG]*)` matches any number of the four letters A, C, T, and G. The brackets `()` tell the regex to *store* the match for later (see `\1` below)
-- `$` matches the end of the line, telling the regex that the `([ACTG]*)` has to be at the end of the line (our DNA sequences)
-- `seq:` is simply the text we want to insert
-- `\1` is going to be replaced by the match to `([ACTG]*)` stored. Therefore, here it will be replaced by the DNA sequence
-- in summary, the expression matches any number of the letters A, C, T, and G at the end of the line, stores them, and then write "seq:" and places the sequence behind it
+- `s/x/y/g` means we substitute `x` by `y`
+- `([ACTG])` matches any of the four letters A, C, T, and G. The brackets `()` tell the regex to *store* the match for later (see `\1` and `\2` below). If we want to use this *storing* we need to use `sed -E`.
+- `\n` matches the newline
+- `\1` is going to be replaced by the first match within the first brackets `()`. Therefore, here it will be replaced by the nucleotide before the new line.
+- `\2` is going to be replaced by the second match within the second brackets `()`. Therefore, here it will be replaced by the nucleotide after the new line.
+- So ultimately the nulceotide before and after the newline are stored, and then they are written again but without the newline.
 
-
-We developed the above approach on the first 30 lines. Now run it an the full file. This may take a couple of minutes. The "gzip" command will compress the results. The `>` will store it in a new file "GRCh38_reformatted.gz". The reformatted file should end up in your home directory.
+Next, we will remove the newline character that separates the sequence from the line with the entry information, which starts with `>`, and replace it with ` seq:`.
 ```bash
-gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -z 's/\n[^>]/ /g' | sed -E 's/([ACTG]*)$/seq:\1/g' | gzip > GRCh38_reformatted.gz
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -zE 's/([ACTG])\n([ACTG])/\1\2/g' | sed -z 's/\n[^>]/ seq:/g'
+```
+
+Explanation:
+
+- `[^>]` means to NOT match `>`
+- `\n[^>]` replaces all newline characters that are NOT before a `>`
+
+We developed the above approach on the first lines. Now run it an the full file. This may take a couple of minutes. The "gzip" command will compress the results. The `>` will store it in a new file "GRCh38_reformatted.gz". The reformatted file should end up in your home directory.
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -zE 's/([ACTG])\n([ACTG])/\1\2/g' | sed -z 's/\n[^>]/ seq:/g' | gzip > GRCh38_reformatted.gz
 ```
 
 Explore the generated file.
@@ -561,12 +560,10 @@ Create the following files in the folder "day3":
 - Write the count of unique genes whose symbol starts with "RPL" into the file count_RPL.txt
 - Write the count of all unique protein coding genes into the file count_protein_coding.txt
 
-# END OF DAY 3
 
 ---------------
 
-# Loops and variables
-(Day 4)
+# Loops and variables (Day 4)
 
 ### Variables
 
@@ -634,7 +631,7 @@ We can also loop through the content of a file.
 ```bash
 while read p; do
   echo "$p"
-done <gRNAs.txt
+done < gRNAs.txt
 ```
 
 #### Exercise
@@ -645,12 +642,6 @@ Now we will combine the above variables and loopes to test all guides in file gR
 - Place this function into the loop that iterates through the file gRNAs.txt, using the while loop iterating through the file.
 - Store all results (not just the top 30 coming from head -30) of each guide into a file that is named: `results_${guide}.txt`. Place all files into a new folder "day4" - ideally already within the loop.
 - Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?
-
-UPDATE:
-The above exercise does not produce the desired results (it produces 0 matches for almost all guides as they are too long). To fix this, use an updated file of gRNAs instead in the following exercises. You can copy the corrected file to your home directory using this command:
-```bash
-cp /home/nfortelny/gRNAs_CORRECTED.txt ~/
-```
 
 To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using `guide=[...]`
 ```bash
@@ -664,7 +655,7 @@ Place the above in the loop that iterates throught the gRNA file.
 ```bash
 while read guide; do
   echo $guide
-done <gRNAs_CORRECTED.txt
+done < gRNAs.txt
 ```
 Remember: you need to save the result of the last line (`gunzip ... | uniq`) to a file `results_${guide}.txt`.
 
