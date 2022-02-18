@@ -98,8 +98,8 @@ Take a look at the files with content
 head day1/*
 ```
 
+---------------
 END OF DAY 1
-
 ---------------
 
 # Files and file systems
@@ -377,8 +377,8 @@ Create a folder called "day2" in your home. Next place the following files into 
 - Write the 31th to 35th line of Homo_sapiens.GRCh38.cds.all.fa.gz into the file "lines2.txt".
 - Store the size of Homo_sapiens.GRCh38.cds.all.fa.gz in Megabytes into the file "size.txt".
 
+---------------
 END OF DAY 2
-
 ---------------
 
 # Patterns and regular expressions
@@ -478,7 +478,7 @@ Remind ourselves of how this file looks like:
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500
 ```
 
-Next we will remove all newline characters, except for the newline characters followed by ">". The ">" separates different entries and entries should remain each on one line. To remove the newline characters, we will use the "sed" command.
+The ">" separates different entries and entries should remain each on one line, see here: https://en.wikipedia.org/wiki/FASTA_format. Next we will remove all newline characters, except for the newline characters followed by ">". To remove the newline characters, we will use the "sed" command.
 ```bash
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -z 's/\n[^>]/ /g'
 ```
@@ -560,8 +560,8 @@ Create the following files in the folder "day3":
 - Write the count of unique genes whose symbol starts with "RPL" into the file count_RPL.txt
 - Write the count of all unique protein coding genes into the file count_protein_coding.txt
 
+---------------
 END OF DAY 3
-
 ---------------
 
 # Loops and variables
@@ -703,8 +703,8 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 - Use the "comm" command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
 - "Manually" check results, for example comparing to the example above ("AAGTTGGC" vs "GCCATACA")
 
+---------------
 END OF DAY 4
-
 ---------------
 
 # Useful links
