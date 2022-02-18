@@ -1,15 +1,15 @@
 # CONTENTS
-- [Connecting to the cluster](#connecting-to-the-cluster)
-- [Files and file systems](#files-and-file-systems)
+- [Connecting to the cluster (Day 1)](#connecting-to-the-cluster--day-1-)
+- [Files and file systems (Day 2)](#files-and-file-systems--day-2-)
     + [Navigate the file system](#navigate-the-file-system)
       - [Exercises](#exercises)
     + [Getting files](#getting-files)
       - [Exercises](#exercises-1)
     + [Editing in nano](#editing-in-nano)
     + [Zipped files](#zipped-files)
-    + [Piping](#piping)
+    + [Pipes](#pipes)
       - [Exercises](#exercises-2)
-- [Patterns and regular expressions](#patterns-and-regular-expressions)
+- [Patterns and regular expressions(Day 3)](#patterns-and-regular-expressions-day-3-)
     + [File pattern matches](#file-pattern-matches)
     + [Simple regular expressions](#simple-regular-expressions)
     + [Checking the nucleotides in the Ensembl fasta file](#checking-the-nucleotides-in-the-ensembl-fasta-file)
@@ -17,12 +17,13 @@
     + [Reformatting the Ensembl fasta file](#reformatting-the-ensembl-fasta-file)
     + [Identifying gRNA matches](#identifying-grna-matches)
       - [Exercises](#exercises-4)
-- [Loops and variables](#loops-and-variables)
+- [Loops and variables (Day 4)](#loops-and-variables--day-4-)
     + [Variables](#variables)
     + [Loops](#loops)
       - [Exercise](#exercise)
     + [Comparing files](#comparing-files)
       - [Exercise](#exercise-1)
+- [END OF DAY 4](#end-of-day-4)
 - [Useful links](#useful-links)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -638,7 +639,7 @@ done < gRNAs.txt
 
 Now we will combine the above variables and loopes to test all guides in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so:
 
-- Use the function above (under "variables") that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
+- Use the code above (under "variables") that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
 - Place this function into the loop that iterates through the file gRNAs.txt, using the while loop iterating through the file.
 - Store all results (not just the top 30 coming from head -30) of each guide into a file that is named: `results_${guide}.txt`. Place all files into a new folder "day4" - ideally already within the loop.
 - Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?
@@ -691,7 +692,7 @@ echo "$guide1 $guide2 $overlap"
 
 Now we will compare each pair of guides to test the overlap of genes. Place the result in the folder "day4":
 
-- Use one loop (iterating through all guides) within another loop (also iterating through all guides) to compare the overlap between all pairs of guides
+- Use one loop (iterating through all guides) within second loop (also iterating through all guides) to compare the overlap between all pairs of guides
 - Use the "comm" command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
 - "Manually" check results, for example comparing to the example above ("AAGTTGGC" vs "GCCATACA")
 
