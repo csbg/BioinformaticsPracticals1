@@ -616,11 +616,6 @@ Welcome 5 times
 
 Try to make the above loop count to 10. Or from 10 to 5.
 
-You can also use nano to write the code above into a file (for example here: script.sh) and then use the following to execute it:
-```bash
-bash script.sh
-```
-
 Here are different ways to compare numbers. Assume variable a holds 10 and variable b holds 20 then:
 
 Operator | Description | Example
@@ -632,6 +627,10 @@ Operator | Description | Example
 -ge | Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true. | [ $a -ge $b ] is not true.
 -le | Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true. | [ $a -le $b ] is true.
 
+You can also use nano to write the code above into a file (for example here: script.sh) and then use the following to execute it:
+```bash
+bash script.sh
+```
 
 We can also loop through the content of a file.
 ```bash
