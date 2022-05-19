@@ -614,7 +614,12 @@ Welcome 4 times
 Welcome 5 times
 ```
 
-Try to make the above loop count to 10. Or from 10 to 5. 
+Try to make the above loop count to 10. Or from 10 to 5.
+
+You can also use nano to write the code above into a file (for example here: script.sh) and then use the following to execute it:
+```bash
+bash script.sh
+```
 
 Here are different ways to compare numbers. Assume variable a holds 10 and variable b holds 20 then:
 
