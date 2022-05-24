@@ -221,7 +221,7 @@ a = float("2.3")  # a is now the float 2.3
 a / 5.6           # this works!
 ```
 
-The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)!
+The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)! (To do so: exit the python console by typing `exit()` or the key combination `Ctrl-D`, then open and edit the file in a text editor such as nano)
 
 ```python
 print("Calculate the product of two numbers")
