@@ -304,6 +304,17 @@ man wget
 wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
 
+If the above fails, then you can also copy the file from the resources folder into you HOME directory.
+``` bash
+cp /resources/week1/Homo_sapiens.GRCh38.cds.all.fa.gz ~/
+```
+
+To make sure you have the entire file properly downloaded, compare the MD5 hash of the file. MD5 hash functions are a compact digital fingerprint of a file. The MD5 hash of the file should be "b16d46bf09c3b8b7909624f1e6c414ce".
+``` bash 
+md5sum ~/Homo_sapiens.GRCh38.cds.all.fa.gz
+md5sum /resources/week1/Homo_sapiens.GRCh38.cds.all.fa.gz
+```
+
 How large is this file?
 ```bash
 du *
@@ -641,14 +652,14 @@ done < gRNAs.txt
 
 #### Exercise
 
-Now we will combine the above variables and loopes to test all guides in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so:
+Now we will combine the above variables and loopes to test all guides in file gRNAs.txt against all DNA sequences in GRCh38_reformatted.gz. To do so you need the following steps (also see the hints below):
 
 - Use the code above (under "variables") that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
 - Place this function into the loop that iterates through the file gRNAs.txt, using the while loop iterating through the file.
 - Store all results (not just the top 30 coming from head -30) of each guide into a file that is named: `results_${guide}.txt`. Place all files into a new folder "day4" - ideally already within the loop.
 - Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?
 
-To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using `guide=[...]`
+Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using `guide=[...]`
 ```bash
 echo $guide
 pattern="seq:[ACTG]*${guide}"
