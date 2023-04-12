@@ -1,20 +1,6 @@
-# Kurseinheit 3
-
-- [Object-oriented programming](#object-oriented-programming)
-  - [Attributes and the init method](#attributes-and-the-init-method)
-  - [Methods](#methods)
-- [Regular expressions](#regular-expressions)
-  - [Introduction](#introduction)
-  - [Syntax](#syntax)
-  - [Pattern objects](#pattern-objects)
-- [Reading and writing files](#reading-and-writing-files)
-  - [How to read individual characters](#how-to-read-individual-characters)
-  - [How to read a file line by line](#how-to-read-a-file-line-by-line)
-  - [How to write to a file](#how-to-write-to-a-file)
-  - [Context objects](#context-objects)
-- [Exercises](#exercises)
-
-
+---
+title: Python Unit 3
+---
 
 ## Object-oriented programming
 
@@ -42,6 +28,7 @@ class Protein:
 ```
 
 The code above defines a new class:
+
 - keyword `class`
 - class name (here `Protein`)
 - colon
@@ -49,7 +36,7 @@ The code above defines a new class:
 
 We also define an *init method*, which must be named `__init__()` and is called by Python whenever a new object is instantiated from the class. In the body of the init method, we initialize the instance variables `self.name` and `self.sequence`. These variables store the name and sequence of an object and thereby completely describe its state.
 
-We create a new object `ins_A` of class `Protein`. To this end, we call the class name like a function and supply the arguments required by the init method. Once the object `ins_A` has been created, we may access its attributes (object name – dot – attribute name).
+We create a new object `ins_A` of class `Protein`. To this end, we call the class name like a function and supply the arguments required by the init method. Once the object `ins_A` has been created, we may access its attributes (`[object name].[attribute name]`).
 
 ```python
 ins_A = Protein(name="insulin A chain", sequence="GIVEQCCTSICSLYQLENYCN")
@@ -204,7 +191,7 @@ By reading user input via `input()` or from command line arguments (`sys.argv`) 
 
 Please copy the file `codon_table.csv` from the folder `/resources/week2` into the folder `python3` in your home directory and have a look at its first five lines:
 
-```
+```default
 AAA,Lys,K,Lysine
 AAC,Asn,N,Asparagine
 AAG,Lys,K,Lysine
@@ -353,23 +340,26 @@ Store all files that you generate for unit 3 in the folder `python3` in your hom
 
 
 
-#### Exercise 3.1 (4 P)
+### Exercise 3.1 (4 P)
 
 You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python3` must contain the following files, which you have created in the course of this unit:
+
 - `codon_table.csv`
 - `simple_protein.py`
 - `some_lines.txt`
 
 
-#### Exercise 3.2 (6 P)
+### Exercise 3.2 (6 P)
 
 Create a class `Protein` with the following properties:
+
 - The init method requires the arguments `name`, `uniprot_id`, and `sequence`, which are stored in attributes of the same name.
 - The method `get_length` returns the number of amino acids in the protein.
 - The method `contains` has one parameter `peptide` and returns `True` if the protein sequence contains the given `peptide` sequence.
 - The method `get_mw` returns the molecular weight of the protein. The method has an optional parameter `disulfides` that specifies the number of disulfide bridges.
 
-The molecular weight of a protein is given by the following formula
+The molecular weight of a protein is given by the following formula:
+
 ```
 sum of the masses of the amino acid residues
 + mass of a water molecule
@@ -377,6 +367,7 @@ sum of the masses of the amino acid residues
 ```
 
 Please use the following masses:
+
 ```python
 AA_MASS = dict(
     G=57.05132,
@@ -437,9 +428,10 @@ print(insulin_B.get_mw(disulfides=1))
 
 
 
-#### Exercise 3.3 (6 P)
+### Exercise 3.3 (6 P)
 
 Implement a function `read_masses` which reads a table of atomic weights.
+
 - The function has a single parameter, which receives the name of the file containing the table.
 - A table in CSV format is provided (`/resources/week2/average_mass.csv`), whose first five lines read
   ```
@@ -470,11 +462,12 @@ print(2 * m["H"] + m["O"])
 
 
 
-#### Exercise 3.4 (5 P)
+### Exercise 3.4 (5 P)
 
 Implement a function `calculate_mass`, which calculates the mass of a chemical compound. The function is called with a string that contains the molecular formula (e.g., `"C6 H12 O6"` or `"C Cl4"`) and returns the mass as a float.
 
 Hints:
+
 - Extract individual element symbols and their counts via a regular expression containing two groups. The first group should match one uppercase letter followed by an optional lowercase letter. The second group should match any number of digits.
 - Reuse your solution for exercise 3.3, which should provide a dict containing atomic masses. You may import Python files like any module (e.g., `from exercise_3_3 import read_masses`).
 

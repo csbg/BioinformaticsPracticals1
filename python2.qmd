@@ -1,22 +1,6 @@
-# Unit 2
-
-## Contents
-
-- [Control flow](#control-flow)
-  - [Functions](#functions)
-  - [If statements](#if-statements)
-  - [Loops](#loops)
-    - [`while` loops](#while-loops)
-    - [`for` loops](#for-loops)
-  - [Modularization](#modularization)
-- [Data structures](#data-structures)
-  - [Lists](#lists)
-  - [Tuples](#tuples)
-  - [Sets](#sets)
-  - [Dictionaries](#dictionaries)
-- [Exercises](#exercises)
-
-
+---
+title: Python Unit 2
+---
 
 ## Control flow
 
@@ -78,10 +62,12 @@ A function may pass values to the caller by using the `return` statement. In the
 - A function that *lacks* a `return` statement implicitly returns `None`.
 
 In order to correctly use functions, we need to understand the difference between parameters and arguments:
+
 - A *parameter* (also called “formal parameter”) is part of the function definition and specifies the number (and sometimes also the type) of input values the function may receive.
 - An *argument* (also called “actual parameter”) is the value that is passed to a function when it is called.
 
 When defining a function, we need to distinguish between required and optional parameters:
+
 - A *required parameter* must receive a value when the function is called.
 - An *optional parameter* may be omitted when the function is called. In this case, a default value that was specified in the function definition is assigned to the parameter.
 
@@ -96,6 +82,7 @@ print(exp(4, 10))
 ```
 
 When calling a function, we need to distinguish between positional and keyword arguments:
+
 - A *positional argument* is assigned to a parameter based on its position.
 - A *keyword argument* is assigned to a parameter based on its key.
 
@@ -118,6 +105,7 @@ if n < 0:
 ```
 
 Create an if statement by writing
+
 - keyword `if`
 - condition (an expression that yields a Boolean value)
 - colon
@@ -163,6 +151,7 @@ f"An addition: {2+3}"
 #### `while` loops
 
 A `while` loop executes its suite as long as the given condition is true. Create such a loop by writing
+
 - keyword `while`
 - condition (an expression that yields a Boolean value)
 - colon
@@ -204,7 +193,8 @@ The loop above is executed six times, and during each run, the loop variable `le
 
 Sometimes we wish to iterate over a long sequence of numbers. It would be cumbersome if we had to explicitly write a list containing the numbers from, say, 0 to 10000 – there must be a simpler approach, right? Indeed, there is the built-in `range()` function, which generates a sequence of numbers.
 
-Depending on the numbers of arguments passed to `range()`, it will return
+Depending on the numbers of arguments passed to `range()`, it will return4
+
 - a sequence of integers from 0 to a final value (excluded)
   ```python
   for i in range(10):
@@ -225,14 +215,16 @@ Depending on the numbers of arguments passed to `range()`, it will return
 ### Modularization
 
 Modular programming is a technique that allows to split code into several files, each of which contains related functions and data types. Thereby, code may easily be reused, since a function
+
 - has to be implemented only once in a *module* (also called *package*)
 - and then may be used by every program that *imports* this module.
 
 For instance, the `math` module defines common mathematical functions. (`math` is part of the Python *standard library*, whose modules are available on each Python installation. Other modules must be installed by the user.)
 
 The keyword `import` imports a module and creates a *namespace* with the same name, which allows us to call a function from the module as follows:
+
 - namespace
-- dot
+- `.`
 - function name
 
 ```python
@@ -386,6 +378,7 @@ A ^ B  # symmetric difference (XOR)
 ### Dictionaries
 
 Dictionaries (“dicts”) are unordered collections of *key-value pairs*, where keys have to be unique. Create a dict
+
 - either by separating key-value pairs by colons and enclosing comma-separated pairs with curly braces,
   ```python
   atom_names = {"C": "carbon", "H": "hydrogen", "N": "nitrogen"}
@@ -422,17 +415,19 @@ Store all files that you generate for unit 2 in the folder `python2` in your hom
 
 
 
-#### Exercise 2.1 (4 P)
+### Exercise 2.1 (4 P)
 
 You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python2` must contain the following files, which you have created in the course of this unit:
+
 - `test_sign.py`
 - `calc_powers.py`
 
 
 
-#### Exercise 2.2 (4 P)
+### Exercise 2.2 (4 P)
 
 Implement a function `get_charge` that checks whether an amino acid is positively charged (e.g., arginine), negatively charged (e.g., aspartate), or neutral (e.g., valine).
+
 - The function should be called with a single argument that specifies the amino acid using its single-letter abbreviation. Only the 21 eukaryotic proteinogenic amino acids should be considered.
 - Depending on the charge, the function should return one of the strings `"positive"`, `"negative"`, or `"neutral"`.
 - If the user does not supply a valid abbreviation, the function should return `"invalid input"`.
@@ -456,9 +451,10 @@ print(get_charge("foo"))
 ```
 
 
-#### Exercise 2.3 (4 P)
+### Exercise 2.3 (4 P)
 
 Implement a function `count_bases` that counts the number of purine and pyrimidine bases in a DNA or RNA sequence.
+
 - The first parameter of the function should be called `sequence` and is required. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.
 - The second parameter should be called `purine` and is optional, with a default value of `True`. If `purine` is true, the function should calculate the number of purines; otherwise, it should calculate the number of pyrimidines.
 - The function should return a single integer, i.e., the number of all purines/pyrimidines in *all* sequences.
@@ -476,9 +472,10 @@ print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purine=False))
 ```
 
 
-#### Exercise 2.4 (4 P)
+### Exercise 2.4 (4 P)
 
 If you code a lot, you will often use third-party packages and consult their documentation. This is what we will do in this exercise: Implement a function `make_sequence` that creates a random DNA or RNA sequence of a given length and calculates how often a given base appears in this sequence.
+
 - The first (required) parameter sets the sequence length.
 - The second (optional) parameter `rna` decides whether an RNA or DNA sequence should be created. This parameter has a Boolean type and is false by default.
 - The third (optional) parameter `count_base` names the base that should be counted (default: `"A"`).
@@ -501,9 +498,10 @@ print(make_sequence(15, rna=True, count_base="C"))
 
 
 
-#### Exercise 2.5 (4 P)
+### Exercise 2.5 (4 P)
 
 In this exercise, you will create a command line program that calculates the similarity of two tissue samples by means of their expressed genes.
+
 - The program should process two command line arguments `genes1` and `genes2`.
 - Each argument specifices the genes that are expressed in the respective sample. Individual genes should be separated by semicolons (e.g., `GENE1;GENE2;GENE3;GENE4`). It does not matter whether a gene appears more than once. (To process the arguments, the string method `split()`may be useful – see [documentation](https://docs.python.org/3/library/index.html).)
 - The program should return three values, each on a separate line:
@@ -512,7 +510,8 @@ In this exercise, you will create a command line program that calculates the sim
   3. the similarity of the samples, which is measured by the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index).
 
 You may check that your program works correctly by using the following exemplary calls:
-```
+
+```default
 $ python exercise_2_5.py "RAB5C;PITX2;ZNF222;LMTK2;LMTK2" "RAB5C;PABPC4;ZNF222;PKN1;PTMA"
 4
 5

@@ -1,0 +1,7 @@
+---
+title: "Bioinformatics Practicals I"
+---
+
+Modern Life Sciences rely on various computer programs to analyze large biological datasets. The next generation of biologists thus requires basic expertise with high-performance computing, software tools, and automated application of analyses.
+
+In this practical, you will learn to interact with operating systems through commands in an HPC environment as well as basics of programming in a scripting language.
