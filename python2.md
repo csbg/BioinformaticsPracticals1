@@ -332,6 +332,13 @@ bases.reverse()           # reverse order of elements
 bases.clear()             # delete all elements
 ```
 
+Importantly, you may iterate over a list via a `for` loop:
+
+```python
+for p in primes:
+  print(p)
+```
+
 
 ### Tuples
 
