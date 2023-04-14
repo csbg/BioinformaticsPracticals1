@@ -9,6 +9,7 @@ website:
       - python1.qmd
       - python2.qmd
       - python3.qmd
+      - python4.qmd
 
 format:
   html:

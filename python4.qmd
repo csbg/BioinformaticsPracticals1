@@ -1,0 +1,483 @@
+---
+title: Python Unit 4
+---
+
+## NumPy
+
+The n-dimensional *array* is the central data structure of NumPy. It may represent vectors (one dimension), matrices (two dimensions), and tensors (three and more dimensions). In addition, NumPy provides a tremendous number of functions and methods for manipulating arrays and performing calculations involving them. The implementation of NumPy is highly efficient, facilitating arrays that contain millions of elements.
+
+Usually, the NumPy module is imported into a namespace `np`:
+
+```python
+import numpy as np
+```
+
+
+### Create an array
+
+There are various ways to create an array:
+
+- from other data structures (lists, dicts, …)
+- via a function (e.g., `np.zeros()`)
+- by reading data from a file
+
+```python
+some_numbers = [1, 4, 2, 5, 7]
+a = np.array(some_numbers)  # create array from list
+a
+
+b = np.arange(24)
+b
+
+c = np.zeros((3, 5))  
+c
+```
+
+`np.arange()` takes the same parameters as the `range()` function. `np.zeros()` creates an array containing zeros. The tuple `(3, 5)`, which is passed as argument to this function, specifies the *shape* of the array, i.e., the number of elements in each dimension (called *axes* in NumPy). Here, the array contains three rows and five columns.
+
+We may query basic properties of the array via the following attribues:
+
+```python
+c.ndim   # number of axes (dimensions)
+c.size   # number of elements
+c.shape  # shape
+```
+The shape of an array may be changed. For instance, a vector may be converted into a matrix, as long as the number of elements remains constant. Thus, we may convert the vector `b` (24 elements) to a 6x4 matrix or a 3x8 matrix, but not to a 5x5 matrix:
+
+```python
+b.reshape((6, 4))   # ok
+b.reshape((3, -1))  # ok; -1 -> automatically determine the required size
+b.reshape((5, 5))   # error
+```
+
+Importantly, calling an array method returns a *new* array – the original object remains unchanged.
+
+```python
+b2 = b.reshape((6, 4))
+b2  # new 6x4 array
+b   # old 24x1 array
+```
+
+
+
+### Indexing and slicing
+
+Indexing and slicing return single elements or parts of an array. Remember that Python uses zero-based indexing, and that values are optional for the slicing operator.
+
+```python
+d = np.arange(12).reshape((4, 3))
+d
+
+d[0, 0]  # element in the first row and first column
+d[2, 1]  # element in the third row and second column
+
+d[0]       # first row
+d[-1]      # last row
+d[1:, :2]  # from the second row (inclusive) to the third column (exclusive)
+d[:, 0]    # all rows, first column
+d[::2]     # every second row
+```
+
+
+
+### Basic operations
+
+Arrays provide vector arithmetics, e.g., element-wise addition and multiplication, as well as the scalar product:
+
+```python
+x = np.array([0, 1, 2, 10, 100])
+y = np.array([3, 8, 12, 5, 13])
+
+x + y
+x * y
+np.dot(x, y)
+```
+
+Here is a selection of array methods for calculations:
+
+```python
+x.min()   # minimum value
+x.max()   # maximum value
+y.sum()   # sum of values
+y.prod()  # product of all values
+y.mean()  # mean of all values
+```
+
+Interestingly, calculations may involve arrays of different shapes. For example, the scalar value $x = 10$ can be multiplied by the vector $y = (4, 1, 7)$ by using a technique called *broadcasting*. The smaller array is “broadcast” across the larger array so that they have compatible shapes. 
+
+```python
+x = np.array(10)
+y = np.array([4, 1, 7])
+x * y  # x is extended to [10, 10, 10] before multiplication
+```
+
+Broadcasting also works in higher dimensions.
+
+
+### Reading and writing
+
+NumPy provides several ways to store the contents of an array in a file. `save()` creates a binary file in NPY format, while `savetxt()` creates a human-readable text file.
+
+```python
+p = np.arange(10, 32, 3).reshape((4, 2))
+np.save("my_array.npy", p)
+np.savetxt("my_array.txt", p)
+```
+
+For each of these file formats, there are also reading functions:
+
+```python
+np.load("my_array.npy")
+np.loadtxt("my_array.txt")
+
+```
+
+
+## Pandas
+
+### Create a DataFrame
+
+Pandas builds upon NumPy arrays and provides data structures for comprehensive data analyses: `Series` (a one-dimensional array with an index) and `DataFrame` (a two-dimensional tabular structure). Each row of a DataFrame represents an observation, while each of its columns describes a variable (property) of these observations.
+
+Usually, the Pandas module is imported into a namespace `pd`:
+
+```python
+import pandas as pd
+```
+
+Pandas provides several possibilities to create a `DataFrame` object, e.g., from nested lists or dicts, whose keys become column names:
+
+```python
+nested_list = [["a", 2, True],
+               ["b", 5, True],
+               ["c", 8, False]]
+pd.DataFrame(nested_list)
+
+my_dict = dict(A=["a", "b", "c"],
+               B=[2, 5, 8],
+               C=[True, True, False])
+pd.DataFrame(my_dict)
+```
+
+Importantly, a DataFrame may be created by reading a file containing tabular data, such as a file in [CSV format](https://en.wikipedia.org/wiki/Comma-separated_values). Copy the file `amino_acids.csv` from `/resources/week2` into a subfolder `python4` in your home directory and look at its first five lines:
+
+
+```default
+code,abbreviation,name,chem1,chem2,chem3,abundance,pi
+A,Ala,alanine,nonpolar,methylene,aliphatic,8.84,6.0
+C,Cys,cysteine,polar,sulfur,aliphatic,1.24,5.0
+D,Asp,aspartic acid,negative,methylene,aliphatic,5.39,3.0
+E,Glu,glutamic acid,negative,methylene,aliphatic,6.24,3.2
+```
+
+Obviously, this file collects chemical properties of the proteinogenic amino acids. Thus, each line describes an amino acid (= observation); each column contains data on one property (= variable), e.g., single letter code or isoelectric point.
+
+Read the contents of this file via `pd.read_csv()`:
+
+```python
+df = pd.read_csv("amino_acids.csv")
+df
+```
+
+Notably, `read_csv()` has more than 50 optional parameters, which allow to adjust almost any aspect of the reading process. The CSV format has never been standardized, and many dialects of CSV files can be found in the wild.
+
+
+### DataFrame properties
+
+Let's investigate the DataFrame we just created:
+
+```python
+df.head()   # these methods work
+df.tail()   # similar to the bash commands
+
+df.index    # (row) index
+df.columns  # column index (names)
+df.values   # values of the elements – a NumPy array
+
+df.size     # number of elements
+df.shape    # number of rows and columns
+```
+
+Calculate descriptive statistics for the numeric columns:
+
+```python
+df.median()  # median
+df.mean()    # mean
+df.std()     # standard deviation
+```
+
+Calling a method of a DataFrame returns a new object; the original DataFrame remains unchanged.
+
+
+### Selecting data
+
+Pandas provides several ways to select parts of a DataFrame, such as:
+
+- select columns via indexing with a string
+  ```python
+  df["code"]                 # selecting a single column returns a Series
+  df[["name", "abundance"]]  # selecting several columns returns a DataFrame 
+  ```
+
+- select rows by slicing with integers
+  ```python
+  df[:4]   # rows with index 0 to 3
+  df[2:6]  # rows with index 2 to 5
+  ```
+
+- select rows with Booleans
+  ```python
+  df[df["pi"] > 7]  # selects all rows with basic amino acids
+  ```
+  The statement above consists of three parts:
+  1. Select column `pi` (isoelectric point).
+     ```python
+     df["pi"]
+     ```
+  2. Check each value in this column if it is greater than 7. (Note that the scalar value 7 is broadcast along the vector representing the column.)
+    ```python
+    df["pi"] > 7
+    ```
+  3. Select those rows in `df` where comparison (2) is true.
+
+- label-based indexing via the `.loc` attribute
+  ```python
+  df.loc[2, "code"]            # element in the third row and column "code"
+  df.loc[3:6, "code":"chem1"]  # elements in rows four to seven
+                               # and columns "code" to "chem1"
+  ```
+  (Note: In contrast to all other slicing operations we have encountered, slicing within `.loc` also includes the end element!)
+
+
+- position-based indexing via the `.iloc` attribute
+  ```python
+  df.iloc[4]          # row with index 4
+  df.iloc[:, 4]       # column with index 4
+  df.iloc[10:13, :4]  # rows with index 10 to 12, columns with index 0 to 3
+  ```
+
+Whenever we select a single column of a DataFrame, Python returns a `Series` object. This class also implements a range of methods, e.g., 
+
+```python
+abundance = df["abundance"]  # a Series
+abundance.sum()              # sum of the values in the Series
+
+pI = df["pi"]  # another Series
+pI.mean()      # mean of the values in the latter Series
+```
+
+
+
+### Modifying data
+
+In the previous section, we learned how to select parts of a DataFrame via the index. Thus, it may be useful to convert a column of the DataFrame to a *new index*, which is done via the `set_index()` method:
+
+```python
+df = df.set_index("abbreviation")
+df
+
+df.loc["Ala"]  # select the column describing alanine
+```
+
+By contrast, the row index may be converted back to a column:
+
+```python
+df = df.reset_index()
+df
+```
+
+A DataFrame can be *sorted* based on the values in a row index, column index, or column. Keyword arguments of the respective method allow to configure the sort.
+
+```python
+df = df.set_index("abbreviation")
+df.sort_index()                        # sort by row index
+df.sort_index(axis=1)                  # sort by column index, i.e.,
+                                       # order columns by their name
+
+df.sort_values("abundance")            # sort ascending by "abundance"
+df.sort_values("pi", ascending=False)  # sort descending by "pi"
+```
+
+You may add and remove columns:
+
+```python
+df["new_col"] = 3                # add a new column "new_col"
+df                               # the scalar 3 is broadcast
+
+df = df.drop("new_col", axis=1)  # remove the column; axis=1 specifies
+df                               # that we want to remove a column
+```
+
+
+### Joins
+
+Pandas allows to combine several DataFrames by a so-called *join*. In order to explain how joins work, load the table with amino acid data:
+
+```python
+df_left = pd.read_csv("amino_acids.csv")
+df_left
+```
+
+Also load a second CSV file (available in `/resources/week2`):
+
+```python
+df_right = pd.read_csv("amino_acids_chemdata.csv")
+df_right
+```
+
+This second table lacks information on several amino acids (such as glycine) and describes two additional compounds “X” and “Z”.
+
+A join is a binary operation and thus requires two operands, which are usually called “left table” and “right table”. In each table, one or several columns are denoted as keys that are compared for joining. In the examples below, column `code` represents the key.
+
+The `merge()` method allows to perform the following join types:
+
+- The *left join* uses all observations (rows) of the left table and adds information from the right table if the latter contains an observation with matching values in the key columns. 
+  ```python
+  df_left.merge(df_right, how="left", on="code")
+  ```
+  The resulting DataFrame contains 20 rows (i.e., the same number as the left table) and 17 columns (i.e., seven more as the left table – those were added from the right table). The right table contained data, e.g., for key `"A"`; therefore, data in its columns `flexibility`, `i_vdw` etc. were added to these columns in the resulting DataFrame. By contrast, the right table did not contain data for key `"F"`. Therefore, columns in the left table were filled with `NaN` for this key. (`NaN` means “not a number” and represents missing values in Pandas.)
+
+- The *right join* works similar to the left join, but the roles of the left and right table are swapped:
+  ```python
+  df_left.merge(df_right, how="right", on="code")
+  ```
+
+- The *inner join* only retains observations whose key exists in both the left and right table:
+  ```python
+  df_left.merge(df_right, how="inner", on="code")
+  ```
+- The *outer join* retains observations whose key exists in at least one table:
+  ```python
+  df_outer = df_left.merge(df_right, how="outer", on="code")
+  df_outer
+  ```
+
+
+### Saving tables
+
+The method `to_csv()` saves the contents of a DataFrame into a CSV file:
+
+```python
+df_outer.to_csv("joined.csv")
+```
+
+Similar to the function for reading CSV files, `to_csv()` can be modified by many parameters.
+
+
+
+## Exercises
+
+Store all files that you generate for unit 4 in the folder `python4` in your home directory.
+
+
+
+### Exercise 4.1 (3 P)
+
+You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python4` must contain the following files, which you have created in the course of this unit:
+
+- `my_array.npz`
+- `my_array.txt`
+- `amino_acids.csv`
+- `amino_acids_chemdata.csv`
+- `joined.csv`
+
+
+
+### Exercise 4.2 (3 P)
+
+Implement a function `is_normal` that checks whether two columns of a matrix are orthogonal to each other.
+
+- The function should be called with three parameters:
+  1. the name of a file that contains a numeric matrix and can be read via `np.loadtxt()`
+  2. index of one column that should be checked
+  3. index of another column
+- The function returns a Boolean value.
+- Two vectors are orthogonal to each other if their scalar product is zero.
+- Be careful when you check whether the calculated scalar product is zero. Generally, one should never compare two floats via the equality operator (`==`). Rather, use the function `isclose()` provided by the `math` module.
+
+Store the function in `exercise_4_2.py`.
+
+You may check that your program works correctly by using the following exemplary calls (`vectors.txt` is available in `/resources/week2`):
+
+
+```python
+# compares the vectors [1 0 0 0 0] and [0 0 1 0 0]
+print(is_normal("vectors.txt", 0, 2))  
+#> True
+
+# compares the vectors [3 -2 7 0 1] and [0 0 1 0 0]
+print(is_normal("vectors.txt", 1, 2))
+#> False
+
+# compares the vectors [5 0 -2 8 -1] and [3 -2 7 0 1]
+print(is_normal("vectors.txt", 4, 1))
+#> True
+```
+
+
+### Exercise 4.3 (4 P)
+
+Implement a function `translate()` that translates a DNA sequence into a protein sequence and calculates the isoelectric point of the latter.
+
+While there are many ways to implement such a function, please adhere to the following specifications:
+
+- The function has a single parameter, which receives the DNA sequence as string. You may assume that the length of the string is divisible by three.
+- Within the function, first create a DataFrame with one column containing codons of the DNA sequence. There are several ways to split the sequence into codons, e.g., via a for loop or by using the `wrap()` function from the [`textwrap`](https://docs.python.org/3/library/textwrap.html) module.
+- Load the CSV files `amino_acids.csv` (in your `python4` folder) and `codon_table_small.csv` (in `/resources/week2`) as DataFrames.
+- Join the three DataFrames. Think about the type of joins, their order, and which columns should be used as keys.
+- The function must return two values:
+  1. a string containing the protein sequence (you will have to apply the string method `join()` to one of the columns of the join result)
+  2. a float giving the mean isoelectric point of the protein sequence (see above)
+
+Store the function in `exercise_4_3.py`.
+
+You may check that your program works correctly by using the following exemplary calls:
+
+```python
+print(translate("AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGATCACTGTCCTTCTGCCA"))
+#> ('SPPGQAASEEAIKQITVLLP', 5.869999999999999)
+
+print(translate("TGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACC"))
+#> ('CASCPCWRCWPSGDLT', 5.824999999999999)
+```
+
+
+### Exercise 4.4 (3 P)
+
+You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (`/resources/week2/data_ugly.csv`). Alas, when you have a closer look at the CSV file, you note that it looks completely strange (only the first ten rows are shown below):
+
+
+```default
+# column 1: single-letter code
+# column 2: name
+# column 3: is the amino acid charged?
+# column 4: isoelectric point
+# column 5: for debugging
+A;alanine;nope;6_0;-1
+C;cysteine;nope;5_0;-1
+D;aspartic acid;sure;3_0;-1
+E;glutamic acid;sure;3_2;-1
+F;phenylalanine;nope;5_5;-1
+```
+
+You realize that there are several problems in this file:
+
+- Columns are separated by semicolons (`;`).
+- There is no row with column names. Instead, the first five rows apparently contain comments that start with a hash sigh (`#`) and explain the contents of each column.
+- The third column describes whether an amino acid is charged or not. Although you expected this column to contain Boolean values, the database labeled charged amino acids with “sure” and uncharged amino acids with “nope”.
+- The fourth column contains the isoelectric point. For unknown reasons, however, the underscore (`_`) is used as decimal separator!
+- The fifth column contains useless information and thus should be omitted.
+
+Fortunately, you remember that Pandas’ `read_csv()` function may be configured via optional parameters. Thus, you assume that this function may even load this terrible CSV file. Consult the [documentation](https://pandas.pydata.org/docs/) which parameters you will need to load the CSV file so that it looks as follows:
+
+```default
+>>> df
+   code           name  charged    pi
+0     A        alanine    False   6.0
+1     C       cysteine    False   5.0
+2     D  aspartic acid     True   3.0
+3     E  glutamic acid     True   3.2
+4     F  phenylalanine    False   5.5
+```
+
+Store your code in `exercise_4_4.py` and save the correctly formatted DataFrame to `data_tidy.csv`.
