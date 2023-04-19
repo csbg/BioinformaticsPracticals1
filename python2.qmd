@@ -415,7 +415,7 @@ Store all files that you generate for unit 2 in the folder `python2` in your hom
 
 
 
-### Exercise 2.1 (4 P)
+### Exercise 2.1 (3 P)
 
 You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python2` must contain the following files, which you have created in the course of this unit:
 
@@ -424,7 +424,7 @@ You have successfully solved this exercise as soon as you have worked through th
 
 
 
-### Exercise 2.2 (4 P)
+### Exercise 2.2 (3 P)
 
 Implement a function `get_charge` that checks whether an amino acid is positively charged (e.g., arginine), negatively charged (e.g., aspartate), or neutral (e.g., valine).
 
@@ -451,7 +451,7 @@ print(get_charge("foo"))
 ```
 
 
-### Exercise 2.3 (4 P)
+### Exercise 2.3 (3 P)
 
 Implement a function `count_bases` that counts the number of purine and pyrimidine bases in a DNA or RNA sequence.
 
@@ -472,7 +472,7 @@ print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purine=False))
 ```
 
 
-### Exercise 2.4 (4 P)
+### Exercise 2.4 (3 P)
 
 If you code a lot, you will often use third-party packages and consult their documentation. This is what we will do in this exercise: Implement a function `make_sequence` that creates a random DNA or RNA sequence of a given length and calculates how often a given base appears in this sequence.
 
@@ -498,7 +498,7 @@ print(make_sequence(15, rna=True, count_base="C"))
 
 
 
-### Exercise 2.5 (4 P)
+### Exercise 2.5 (3 P)
 
 In this exercise, you will create a command line program that calculates the similarity of two tissue samples by means of their expressed genes.
 

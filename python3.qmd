@@ -340,7 +340,7 @@ Store all files that you generate for unit 3 in the folder `python3` in your hom
 
 
 
-### Exercise 3.1 (4 P)
+### Exercise 3.1 (3 P)
 
 You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python3` must contain the following files, which you have created in the course of this unit:
 
@@ -349,7 +349,7 @@ You have successfully solved this exercise as soon as you have worked through th
 - `some_lines.txt`
 
 
-### Exercise 3.2 (6 P)
+### Exercise 3.2 (4 P)
 
 Create a class `Protein` with the following properties:
 
@@ -428,7 +428,7 @@ print(insulin_B.get_mw(disulfides=1))
 
 
 
-### Exercise 3.3 (6 P)
+### Exercise 3.3 (3 P)
 
 Implement a function `read_masses` which reads a table of atomic weights.
 
@@ -462,7 +462,7 @@ print(2 * m["H"] + m["O"])
 
 
 
-### Exercise 3.4 (5 P)
+### Exercise 3.4 (3 P)
 
 Implement a function `calculate_mass`, which calculates the mass of a chemical compound. The function is called with a string that contains the molecular formula (e.g., `"C6 H12 O6"` or `"C Cl4"`) and returns the mass as a float.
 
