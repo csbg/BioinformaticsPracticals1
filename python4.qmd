@@ -1,5 +1,7 @@
 ---
 title: Python Unit 4
+execute: 
+  enabled: false
 ---
 
 ## NumPy

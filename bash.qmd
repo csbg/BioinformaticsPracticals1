@@ -1,5 +1,7 @@
 ---
 title: Bash
+execute: 
+  enabled: false
 ---
 
 ## Connecting to the cluster (Day 1)

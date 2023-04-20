@@ -1,5 +1,7 @@
 ---
 title: Python Unit 1
+execute: 
+  enabled: false
 ---
 
 ## Data types and operators
