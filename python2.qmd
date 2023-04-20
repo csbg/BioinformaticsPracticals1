@@ -16,10 +16,11 @@ mean = (a + b + c) / 3
 print(mean)
 ```
 
-Evidently, this basic flow of control only allows you to write the most basic programs. Therefore, Python supports compound statements that alter the control flow.
+Evidently, this basic flow of control only allows you to write the most simple programs. Therefore, Python supports compound statements that alter the control flow.
 
-*Note:* You may run all of the following examples in interactive mode. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as `func_test.py`) and then run this script (e.g., `python func_test.py`).
-
+:::{.callout-note}
+You may run all of the following examples in interactive mode. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as `func_test.py`) and then run this script (e.g., `python func_test.py`).
+:::
 
 
 ### Functions
@@ -124,7 +125,29 @@ else:
     print(n, "is positive")
 ```
 
-`elif` blocks allow you to *chain* if statements, i.e., to test an arbitrary number of conditions and execute a distinct set of statements for each condition. Store the following code in `test_sign.py` and execute the file with Python:
+`elif` blocks allow you to *chain* if statements, i.e., to test an arbitrary number of conditions and execute a distinct set of statements for each condition. Thus, our final if statement, which also checks whether a provided number is zero, is:
+
+```python
+if n < 0:
+    print(n, "is negative")
+elif n > 0:
+    print(n, "is positive")
+else:
+    print(n, "is zero")
+```
+
+:::{.callout-note #example-function-with-if}
+#### Example
+Let's put the if statement which we developed above into a function. This will allow us to test several numbers for their sign. We will replace the `print()` statements with `return`, since our function should not print its result, but rather return it.
+
+The function will format the result by means of an *f-string* (“formatted string literal”). An f-string is written as `f" ... "`. It behaves like a normal string, but each part enclosed in curly braces `{}` is interpreted as Python statement whose result is inserted into the string.
+
+```python
+f"An addition: {2+3}"
+#> 'An addition: 5' 
+```
+
+Store the following code in `test_sign.py` and execute the file with Python:
 
 ```python
 def test_sign(n):
@@ -139,13 +162,7 @@ print(test_sign(102))
 print(test_sign(-12))
 print(test_sign(0))
 ```
-
-`f" ... "` is a so-called *f-string* (“formatted string literal”). An f-string behaves like a normal string, but each part enclosed in curly braces is interpreted as Python statement whose result is inserted into the string.
-
-```python
-f"An addition: {2+3}"
-```
-
+:::
 
 
 ### Loops
@@ -193,24 +210,43 @@ for letter in "Python":
 
 The loop above is executed six times, and during each run, the loop variable `letter` contains a different character of the string `"Python"` (i.e., the values `"P"`, `"y"`, `"t"`, `"h"`, `"o"`, and `"n"`).
 
+:::{.callout-note #example-counter}
+#### Example
+
+A common theme is to iterate over a list and store some information on each list element for later. Below, we initialize a *counter variable* with zero. We then iterate over a list of numbers and add each element to the counter variable. After the loop has finished, this variable therefore contains the sum of all numbers in the list.
+
+```python
+counter = 0
+
+for n in [1, 5, 13, 9, 4]:
+    counter = counter + n
+
+print(counter)
+#> 32
+```
+:::
+
 Sometimes we wish to iterate over a long sequence of numbers. It would be cumbersome if we had to explicitly write a list containing the numbers from, say, 0 to 10000 – there must be a simpler approach, right? Indeed, there is the built-in `range()` function, which generates a sequence of numbers.
 
-Depending on the numbers of arguments passed to `range()`, it will return4
+Depending on the numbers of arguments passed to `range()`, it will return
 
 - a sequence of integers from 0 to a final value (excluded)
   ```python
   for i in range(10):
-      print(i)  #> 0, 1, …, 9
+      print(i)
+  #> 0, 1, …, 9
   ```
 - a sequence of integers from an initial value (included) to a final value (excluded)
   ```python
   for i in range(2, 7):
-      print(i)  #> 2, 3, 4, 5, 6
+      print(i)
+  #> 2, 3, 4, 5, 6
   ```
 - a sequence of integers as above, using the third argument as step size:
   ```python
   for i in range(20, 3, -3):
-      print(i)  #> 20, 17, 14, 11, 8, 5
+      print(i)
+  #> 20, 17, 14, 11, 8, 5
   ```
 
 
@@ -266,7 +302,7 @@ primes = [2, 3, 5, 7, 11, 13, 17, 19]
 primes
 ```
 
-Indexing and slicing work as explained for strings (see unit 1), returning a single element or a new list containing the sliced elements, respectively:
+Indexing and slicing work [as explained for strings](python1.qmd#text-type), returning a single element or a new list containing the sliced elements, respectively:
 
 ```python
 primes[3]
@@ -284,6 +320,13 @@ The built-in function `len()` returns the number of elements in a list:
 
 ```python
 len(primes)
+```
+
+Importantly, you may iterate over a list via a `for` loop:
+
+```python
+for p in primes:
+    print(p)
 ```
 
 The elements of a list may be lists themselves, which yields *nested lists*:
@@ -305,11 +348,11 @@ nested_list[1][2]
 nested_list[2][2:6]
 ```
 
-Since lists are objects (see unit 3), they may be manipulated by special functions called *methods*. Methods are called like functions, but refer to a given object. Thus, the syntax for calling a method is as follows:
+Since lists are [objects](python3.qmd#object-oriented-programming), they may be manipulated by special functions called *methods*. Methods are called like functions, but refer to a given object. Thus, the syntax for calling a method is as follows:
 
 - name of the object
-- period
-- the name of the method
+- `.`
+- name of the method
 - left parenthesis etc. (like a function call)
 
 Here are some of the methods supported by lists (check the contents of `bases` after every statement!):
@@ -324,13 +367,6 @@ bases.insert(1, "C")      # insert the element given by the second argument
                           # at the index given by the first argument
 bases.reverse()           # reverse order of elements
 bases.clear()             # delete all elements
-```
-
-Importantly, you may iterate over a list via a `for` loop:
-
-```python
-for p in primes:
-  print(p)
 ```
 
 
@@ -452,26 +488,36 @@ print(get_charge("foo"))
 #> "invalid input"
 ```
 
+:::{.callout-tip collapse="true"}
+You have [learned](#example-function-with-if) how to put an if statement into a function. In the section on [tuples](#tuples), you checked whether a tuple contained a given element. A similar test will be required for the if statement in this exercise.
+:::
+
 
 ### Exercise 2.3 (3 P)
 
-Implement a function `count_bases` that counts the number of purine and pyrimidine bases in a DNA or RNA sequence.
+Implement a function `get_average_gc` that calculates the average GC-content of several DNA or RNA sequences.
 
-- The first parameter of the function should be called `sequence` and is required. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.
-- The second parameter should be called `purine` and is optional, with a default value of `True`. If `purine` is true, the function should calculate the number of purines; otherwise, it should calculate the number of pyrimidines.
-- The function should return a single integer, i.e., the number of all purines/pyrimidines in *all* sequences.
+- The function should be called with a single argument. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.
+- The function should return a single number, i.e., the average GC-content across all sequences.
 
 Store the function in `exercise_2_3.py`.
 
 You may check that your program works correctly by using the following exemplary calls:
 
 ```python
-print(count_bases(["ACCGGGTTTT", "TTAAAGGGGCCCCC"], True))
-#> 11
+print(get_average_gc(["CGACCACATTAATGGACTAC", "CTTGGATTATCACCCCCGTC"]))
+#> 0.5
 
-print(count_bases(["AA", "UUUU", "G", "CCCCCCCC"], purine=False))
-#> 12
+print(get_average_gc(["CCACCGAGACGCCAG", "CGGCCTCCCGAC", "GCCCGGGCCCGCGGGGGT"]))
+#> 0.837037037037037
 ```
+
+:::{.callout-tip collapse="true"}
+- Use a [for loop](#for-loops) to iterate over the strings in the list.
+- You will need a [counter variable](#example-counter).
+- `s.count("X")` counts the number of times the character `"X"` appears in the string stored in `s`.
+- The `len()` function also works on strings.
+:::
 
 
 ### Exercise 2.4 (3 P)
@@ -498,6 +544,16 @@ print(make_sequence(15, rna=True, count_base="C"))
 #> ('UGCAUCAAUGUGGUC', 3)
 ```
 
+:::{.callout-tip collapse="true"}
+- Exactly follow the specification of function parameters and return values:
+  - Should a parameter have a certain name?
+  - If a parameter is optional, what is its default value?
+  - How many values should the function return?
+  
+  See the [functions](#functions) section for details.
+- Remember how to [import](#modularization) a function from a module.
+:::
+
 
 
 ### Exercise 2.5 (3 P)
@@ -505,8 +561,8 @@ print(make_sequence(15, rna=True, count_base="C"))
 In this exercise, you will create a command line program that calculates the similarity of two tissue samples by means of their expressed genes.
 
 - The program should process two command line arguments `genes1` and `genes2`.
-- Each argument specifices the genes that are expressed in the respective sample. Individual genes should be separated by semicolons (e.g., `GENE1;GENE2;GENE3;GENE4`). It does not matter whether a gene appears more than once. (To process the arguments, the string method `split()`may be useful – see [documentation](https://docs.python.org/3/library/index.html).)
-- The program should return three values, each on a separate line:
+- Each argument specifices the genes that are expressed in the respective sample. Individual genes should be separated by semicolons (e.g., `GENE1;GENE2;GENE3;GENE4`). It does not matter whether a gene appears more than once.
+- The program should print three values, each on a separate line:
   1. the number of (unique) genes detected in the first sample
   2. the number of (unique) genes detected in the second sample
   3. the similarity of the samples, which is measured by the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index).
@@ -529,3 +585,9 @@ $ python exercise_2_5.py "RAD23B" "RAD23B"
 1
 1.0
 ```
+
+:::{.callout-tip collapse="true"}
+- Your program has to process [command line arguments](python1.qmd#command-line-arguments).
+- To split each argument into individual genes, the string method `split()`may be useful – see [documentation](https://docs.python.org/3/library/index.html).
+- Consult the [sets](#sets) section on set creation from lists and calculation of union and intersection.
+:::

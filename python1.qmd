@@ -79,7 +79,11 @@ We added explicit parentheses around `radius ** 2` to indicate that Python shoul
 3 * (5 + 8)
 ```
 
-When in doubt, always use parentheses to structure your calculations! Moreover, never distract from the actual order of calculations by using spaces like
+:::{.callout-warning}
+When in doubt, always use parentheses to structure your calculations!
+:::
+
+Moreover, never distract from the actual order of calculations by using spaces like
 
 ```python
 3  *  5+8  # might imply that 5 and 8 are added first
@@ -140,15 +144,19 @@ enzyme = "adenylyl cyclase"
 enzyme[0]    # first character
 enzyme[3]    # fourth character
 enzyme[-2]   # second character counting from the end of the string
+```
+
+::: {.callout-warning}
+Python uses *zero-based indexing*, i.e., the first element has index `0`.
+:::
+
+*Slicing* extracts a substring, i.e., several characters from a string:
+
+```python
 enzyme[2:8]  # substring from position 2 (included) to position 8 (excluded)
 ```
 
-Please note:
-
-- Python uses *zero-based indexing*, i.e., the first element has index `0`.
-- The last line above demonstrates *slicing* `[start index : end index]`, which yields a substring. The character at the start index is included, while the character at the end index is excluded (!).
-
-Both start index and end index are optional:
+When using the slicing syntax `[start index : end index]`, the character at the start index is included, while the character at the end index is excluded (!). Both start index and end index are optional:
 
 ```python
 enzyme[:4]   # substring up to position 4 (excluded)
@@ -213,6 +221,8 @@ a = float("2.3")  # a is now the float 2.3
 a / 5.6           # this works!
 ```
 
+::: {.callout-note #example-input}
+#### Example
 The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)! (To do so: exit the python console by typing `exit()` or the key combination `Ctrl-D`, then open and edit the file in a text editor such as nano)
 
 ```python
@@ -226,6 +236,7 @@ b = float(b)
 
 print("The result is", a * b)
 ```
+:::
 
 
 ## Command line arguments
@@ -252,6 +263,9 @@ The program prints three lines that tell us:
 2. The first element `argv[0]` contains the name of the script that was called (`'arguments.py'`).
 3. The remaining elements `argv[1:]` contain the command line arguments in the given order.
 
+
+::: {.callout-note #example-argv}
+#### Example
 By using command line arguments, we may calculate the product of two numbers as shown below:
 
 ```python
@@ -266,7 +280,7 @@ Store these statements in `product2.py` and execute the program:
 ```bash
 python product2.py 35 10
 ```
-
+:::
 
 
 ## Exercises
@@ -294,8 +308,12 @@ Write a Python program that executes the following statements consecutively. Sto
 1. Store the integer 32 in the variable `z` and the float 2.5 in the variable `a`.
 2. Store the product of `z` and `a` in the variable `b`.
 3. Divide `a` by 8 and store the result in `a`.
-4. Show whether `a` is greater than `b` (here, the program should print a single Boolean value.)
-5. Show whether the sum of `z` and 11 is unequal to 44 (again, only print a single Boolean value).
+4. Print whether `a` is greater than `b` (here, the program should print a single Boolean value.)
+5. Print whether the sum of `z` and 11 is unequal to 44 (again, only print a single Boolean value).
+
+:::{.callout-tip collapse="true"}
+See section [Data types and operators](#data-types-and-operators).
+:::
 
 
 
@@ -327,6 +345,10 @@ False
 
 It does not matter whether your program prints anything in the input lines (such as “dividend:” above). However, it is important that the last printed line contains a single Boolean value that has been calculated correctly.
 
+:::{.callout-tip collapse="true"}
+See [this example](#example-input).
+:::
+
 
 ### Exercise 1.4 (3 P)
 
@@ -352,3 +374,7 @@ $ python exercise_1_4.py ATCTACGCGATATCGCGATAGCCGATGCTGACGACTGACTTGACG 13 7 20
 T
 ACGCGATATCGCGATA
 ```
+
+:::{.callout-tip collapse="true"}
+See [this example](#example-argv) and the section on [string indexing and slicing](#text-type).
+:::
