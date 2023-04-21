@@ -49,7 +49,9 @@ print(type(ins_A))
 
 The built-in function `type()` tells us the class from which `ins_A` has been derived.
 
+:::{.callout-important}
 You may wonder what happened to the first parameter (`self`) of `__init__()`. Why did we only specify two arguments (which were obviously assigned to the parameters `name` und `sequence`) when we instantiated the insulin object? Each instance method must be defined with at least one parameter (commonly called `self`), which refers to the current instance. However, we *must not* pass an argument to this parameter when invoking the instance method – Python supplies the appropriate value “automatically”.
+:::
 
 
 
@@ -150,6 +152,26 @@ Python's syntax for regular expressions is similar to the bash syntax:
   ```python
   findall(r"animal: (\w+) (\w+)", "animal: Mus musculus (mouse)")
   ```
+
+:::{.callout-note #example-findall}
+#### Example
+
+In the code below, we extract all codes that start with the character `2` from a string. The resulting list contains three elements, each of which is a tuple with two strings representing the first and second matched group, respectively. Of course, we can interate over the list of matches.
+
+
+```python
+codes = "1a3, 1b4, 2c5, 2d6, 2e7, 3f8, 3g9"
+codes_starting_with_two = re.findall(r"(2.)(.)", codes)
+codes_starting_with_two
+#> [('2c', '5'), ('2d', '6'), ('2e', '7')]
+
+for code in codes_starting_with_two:
+    print(code[1])
+#> 5
+#> 6
+#> 7
+```
+:::
 
 
 ### Pattern objects
@@ -372,26 +394,10 @@ Please use the following masses:
 
 ```python
 AA_MASS = dict(
-    G=57.05132,
-    A=71.0779,
-    S=87.0773,
-    P=97.11518,
-    V=99.13106,
-    T=101.10388,
-    C=103.1429,
-    L=113.15764,
-    I=113.15764,
-    N=114.10264,
-    D=115.0874,
-    Q=128.12922,
-    K=128.17228,
-    E=129.11398,
-    M=131.19606,
-    H=137.13928,
-    F=147.17386,
-    R=156.18568,
-    Y=163.17326,
-    W=186.2099
+    G=57.05132, A=71.0779, S=87.0773, P=97.11518, V=99.13106,
+    T=101.10388, C=103.1429, L=113.15764, I=113.15764, N=114.10264,
+    D=115.0874, Q=128.12922, K=128.17228, E=129.11398, M=131.19606,
+    H=137.13928, F=147.17386, R=156.18568, Y=163.17326, W=186.2099
 )
 
 WATER_MASS = 18.01528
@@ -428,6 +434,11 @@ print(insulin_B.get_mw(disulfides=1))
 #> 3427.9056799999994
 ```
 
+:::{.callout-tip collapse="true"}
+- You may build upon the `Protein` class we defined above. The [init method](#attributes-and-the-init-method) has to define three attributes.
+- You have also learned how to implement [methods](#methods). Think about the number of parameters, required vs optional, and the return value – these decisions are the same as for [function design](python2.qmd#functions).
+- In `get_mw()`, you likely will need a [counter variable](python2.qmd#example-counter) and have to [access dict values](python2.qmd#dictionaries).
+:::
 
 
 ### Exercise 3.3 (3 P)
@@ -462,6 +473,12 @@ print(2 * m["H"] + m["O"])
 #> 18.015
 ```
 
+:::{.callout-tip collapse="true"}
+- You will have to [open](#how-to-read-a-file-line-by-line) the file and read its contents.
+- The regex for parsing each line will contain two [groups](#pattern-objects) that capture the element and weight, respectively.
+- Combine your knowledge on [counter variables](python2.qmd#example-counter) and [dicts](python2.qmd#dictionaries).
+:::
+
 
 
 ### Exercise 3.4 (3 P)
@@ -471,7 +488,17 @@ Implement a function `calculate_mass`, which calculates the mass of a chemical c
 Hints:
 
 - Extract individual element symbols and their counts via a regular expression containing two groups. The first group should match one uppercase letter followed by an optional lowercase letter. The second group should match any number of digits.
-- Reuse your solution for exercise 3.3, which should provide a dict containing atomic masses. You may import Python files like any module (e.g., `from exercise_3_3 import read_masses`).
+
+Please use the following masses:
+
+```python
+MASSES = dict(
+    H=1.008, He=4.0026, Li=6.94, Be=9.0122, B=10.81,
+    C=12.011, N=14.007, O=15.999, F=18.998, Ne=20.18,
+    Na=22.99, Mg=24.305, Al=26.982, Si=28.085, P=30.974,
+    S=32.06, Cl=35.45, Ar=39.948, K=39.098, Ca=40.078
+)
+```
 
 Store the function in `exercise_3_4.py`.
 
@@ -487,3 +514,9 @@ print(calculate_mass("H2 O"))
 print(calculate_mass("C34 H46 Cl N3 O10"))
 #> 692.203
 ```
+
+:::{.callout-tip collapse="true"}
+- For designing the regex to extract individual elements and their counts, think about how they are written: Each element starts with one uppercase letter, followed by one optional lowercase letter. The count has an arbitrary number of digits (i.e., it may also be missing, which indicates a count of 1).
+You will have to [open](#how-to-read-a-file-line-by-line) the file and read its contents.
+- You will have to [iterate](#example-findall) over `findall()` results.
+:::

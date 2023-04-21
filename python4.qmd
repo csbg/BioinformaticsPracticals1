@@ -51,14 +51,15 @@ b.reshape((6, 4))   # ok
 b.reshape((3, -1))  # ok; -1 -> automatically determine the required size
 b.reshape((5, 5))   # error
 ```
-
-Importantly, calling an array method returns a *new* array – the original object remains unchanged.
+:::{.callout-important}
+Calling an array method returns a *new* array – the original object remains unchanged.
 
 ```python
 b2 = b.reshape((6, 4))
 b2  # new 6x4 array
 b   # old 24x1 array
 ```
+:::
 
 
 
@@ -84,7 +85,7 @@ d[::2]     # every second row
 
 ### Basic operations
 
-Arrays provide vector arithmetics, e.g., element-wise addition and multiplication, as well as the scalar product:
+Arrays facilitate vector arithmetics, e.g., element-wise addition and multiplication, as well as the scalar product:
 
 ```python
 x = np.array([0, 1, 2, 10, 100])
@@ -95,12 +96,12 @@ x * y
 np.dot(x, y)
 ```
 
-Here is a selection of array methods for calculations:
+Here is a selection of methods for numeric arrays:
 
 ```python
 x.min()   # minimum value
 x.max()   # maximum value
-y.sum()   # sum of values
+y.sum()   # sum of all values
 y.prod()  # product of all values
 y.mean()  # mean of all values
 ```
@@ -113,7 +114,11 @@ y = np.array([4, 1, 7])
 x * y  # x is extended to [10, 10, 10] before multiplication
 ```
 
-Broadcasting also works in higher dimensions.
+Broadcasting also works in higher dimensions:
+
+```python
+np.array([(1, 2), (3, 4), (5, 6)]) + np.array([10, 100])
+```
 
 
 ### Reading and writing
@@ -122,6 +127,8 @@ NumPy provides several ways to store the contents of an array in a file. `save()
 
 ```python
 p = np.arange(10, 32, 3).reshape((4, 2))
+p
+
 np.save("my_array.npy", p)
 np.savetxt("my_array.txt", p)
 ```
@@ -150,15 +157,15 @@ import pandas as pd
 Pandas provides several possibilities to create a `DataFrame` object, e.g., from nested lists or dicts, whose keys become column names:
 
 ```python
-nested_list = [["a", 2, True],
-               ["b", 5, True],
-               ["c", 8, False]]
-pd.DataFrame(nested_list)
+data_list = [["a", 2, True],
+             ["b", 5, True],
+             ["c", 8, False]]
+pd.DataFrame(data_list)
 
-my_dict = dict(A=["a", "b", "c"],
-               B=[2, 5, 8],
-               C=[True, True, False])
-pd.DataFrame(my_dict)
+data_dict = dict(A=["a", "b", "c"],
+                 B=[2, 5, 8],
+                 C=[True, True, False])
+pd.DataFrame(data_dict)
 ```
 
 Importantly, a DataFrame may be created by reading a file containing tabular data, such as a file in [CSV format](https://en.wikipedia.org/wiki/Comma-separated_values). Copy the file `amino_acids.csv` from `/resources/week2` into a subfolder `python4` in your home directory and look at its first five lines:
@@ -181,7 +188,9 @@ df = pd.read_csv("amino_acids.csv")
 df
 ```
 
-Notably, `read_csv()` has more than 50 optional parameters, which allow to adjust almost any aspect of the reading process. The CSV format has never been standardized, and many dialects of CSV files can be found in the wild.
+:::{.callout-important}
+`read_csv()` has more than 50 optional parameters, which can adjust almost any aspect of the reading process. Thereby, it supports a plethora of CSV dialects that can be found in the wild, since the CSV format has never been standardized.
+:::
 
 
 ### DataFrame properties
@@ -208,26 +217,28 @@ df.mean()    # mean
 df.std()     # standard deviation
 ```
 
+:::{.callout-important}
 Calling a method of a DataFrame returns a new object; the original DataFrame remains unchanged.
+:::
 
 
 ### Selecting data
 
 Pandas provides several ways to select parts of a DataFrame, such as:
 
-- select columns via indexing with a string
+- select columns via *indexing with a string*
   ```python
   df["code"]                 # selecting a single column returns a Series
   df[["name", "abundance"]]  # selecting several columns returns a DataFrame 
   ```
 
-- select rows by slicing with integers
+- select rows by *slicing with integers*
   ```python
   df[:4]   # rows with index 0 to 3
   df[2:6]  # rows with index 2 to 5
   ```
 
-- select rows with Booleans
+- select rows with *Booleans*
   ```python
   df[df["pi"] > 7]  # selects all rows with basic amino acids
   ```
@@ -237,21 +248,24 @@ Pandas provides several ways to select parts of a DataFrame, such as:
      df["pi"]
      ```
   2. Check each value in this column if it is greater than 7. (Note that the scalar value 7 is broadcast along the vector representing the column.)
-    ```python
-    df["pi"] > 7
-    ```
+     ```python
+     df["pi"] > 7
+     ```
   3. Select those rows in `df` where comparison (2) is true.
 
-- label-based indexing via the `.loc` attribute
+- *label-based indexing* via the `.loc` attribute
   ```python
   df.loc[2, "code"]            # element in the third row and column "code"
   df.loc[3:6, "code":"chem1"]  # elements in rows four to seven
                                # and columns "code" to "chem1"
   ```
-  (Note: In contrast to all other slicing operations we have encountered, slicing within `.loc` also includes the end element!)
+  
+  :::{.callout-warning}
+  In contrast to all other slicing operations we have encountered, slicing within `.loc` also includes the end element.
+  :::
 
 
-- position-based indexing via the `.iloc` attribute
+- *position-based indexing* via the `.iloc` attribute
   ```python
   df.iloc[4]          # row with index 4
   df.iloc[:, 4]       # column with index 4
@@ -377,7 +391,7 @@ Store all files that you generate for unit 4 in the folder `python4` in your hom
 
 You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python4` must contain the following files, which you have created in the course of this unit:
 
-- `my_array.npz`
+- `my_array.npy`
 - `my_array.txt`
 - `amino_acids.csv`
 - `amino_acids_chemdata.csv`
@@ -416,6 +430,10 @@ print(is_normal("vectors.txt", 4, 1))
 #> True
 ```
 
+:::{.callout-tip collapse="true"}
+- See above how to [read](#reading-and-writing) an array from a file and [slice](#indexing-and-slicing) it. Calculation of the [dot product](#basic-operations) is also explained above.
+:::
+
 
 ### Exercise 4.3 (4 P)
 
@@ -423,7 +441,7 @@ Implement a function `translate()` that translates a DNA sequence into a protein
 
 While there are many ways to implement such a function, please adhere to the following specifications:
 
-- The function has a single parameter, which receives the DNA sequence as string. You may assume that the length of the string is divisible by three.
+- The function has a single parameter, which receives the DNA sequence as string. You may assume that the length of the string is always divisible by three.
 - Within the function, first create a DataFrame with one column containing codons of the DNA sequence. There are several ways to split the sequence into codons, e.g., via a for loop or by using the `wrap()` function from the [`textwrap`](https://docs.python.org/3/library/textwrap.html) module.
 - Load the CSV files `amino_acids.csv` (in your `python4` folder) and `codon_table_small.csv` (in `/resources/week2`) as DataFrames.
 - Join the three DataFrames. Think about the type of joins, their order, and which columns should be used as keys.
@@ -443,10 +461,14 @@ print(translate("TGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACC"))
 #> ('CASCPCWRCWPSGDLT', 5.824999999999999)
 ```
 
+:::{.callout-tip collapse="true"}
+- See above how to [create](#create-a-dataframe) a DataFrame from a dict or from a CSV file, and how [joins](#joins) works. Also remember how to write a function that [returns two values](python2.qmd#functions).
+:::
+
 
 ### Exercise 4.4 (3 P)
 
-You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (`/resources/week2/data_ugly.csv`). Alas, when you have a closer look at the CSV file, you note that it looks completely strange (only the first ten rows are shown below):
+You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (`/resources/week2/data_ugly.csv`). Alas, when you have a closer look at the CSV file, you note that it looks *somewhat* strange (only the first ten rows are shown below):
 
 
 ```default
@@ -462,18 +484,17 @@ E;glutamic acid;sure;3_2;-1
 F;phenylalanine;nope;5_5;-1
 ```
 
-You realize that there are several problems in this file:
+You identify several problems in this file:
 
 - Columns are separated by semicolons (`;`).
 - There is no row with column names. Instead, the first five rows apparently contain comments that start with a hash sigh (`#`) and explain the contents of each column.
-- The third column describes whether an amino acid is charged or not. Although you expected this column to contain Boolean values, the database labeled charged amino acids with “sure” and uncharged amino acids with “nope”.
+- The third column describes whether an amino acid is charged or not. Although you expected this column to contain Boolean values, the database labeled charged amino acids with `sure` and uncharged amino acids with `nope`.
 - The fourth column contains the isoelectric point. For unknown reasons, however, the underscore (`_`) is used as decimal separator!
 - The fifth column contains useless information and thus should be omitted.
 
-Fortunately, you remember that Pandas’ `read_csv()` function may be configured via optional parameters. Thus, you assume that this function may even load this terrible CSV file. Consult the [documentation](https://pandas.pydata.org/docs/) which parameters you will need to load the CSV file so that it looks as follows:
+Fortunately, you remember that Pandas’ `read_csv()` function may be configured via optional parameters. Thus, you assume that this function may even be able to load this terrible CSV file. The loaded file should look as follows (only the top five rows are shown):
 
 ```default
->>> df
    code           name  charged    pi
 0     A        alanine    False   6.0
 1     C       cysteine    False   5.0
@@ -482,4 +503,10 @@ Fortunately, you remember that Pandas’ `read_csv()` function may be configured
 4     F  phenylalanine    False   5.5
 ```
 
-Store your code in `exercise_4_4.py` and save the correctly formatted DataFrame to `data_tidy.csv`.
+Implement a function `load_data()` that has a single parameter (the name of the input file) and returns the correctly formatted dataframe. In addition, your code should save the correctly formatted DataFrame to `data_tidy.csv`.
+
+Store your code in `exercise_4_4.py`.
+
+:::{.callout-tip collapse="true"}
+- Consult the [Pandas documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) to learn which arguments you will need to specify.
+:::
