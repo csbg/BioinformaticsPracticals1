@@ -198,11 +198,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-2.1-4-p" id="toc-exercise-2.1-4-p" class="nav-link" data-scroll-target="#exercise-2.1-4-p">Exercise 2.1 (4 P)</a></li>
-  <li><a href="#exercise-2.2-4-p" id="toc-exercise-2.2-4-p" class="nav-link" data-scroll-target="#exercise-2.2-4-p">Exercise 2.2 (4 P)</a></li>
-  <li><a href="#exercise-2.3-4-p" id="toc-exercise-2.3-4-p" class="nav-link" data-scroll-target="#exercise-2.3-4-p">Exercise 2.3 (4 P)</a></li>
-  <li><a href="#exercise-2.4-4-p" id="toc-exercise-2.4-4-p" class="nav-link" data-scroll-target="#exercise-2.4-4-p">Exercise 2.4 (4 P)</a></li>
-  <li><a href="#exercise-2.5-4-p" id="toc-exercise-2.5-4-p" class="nav-link" data-scroll-target="#exercise-2.5-4-p">Exercise 2.5 (4 P)</a></li>
+  <li><a href="#exercise-2.1-3-p" id="toc-exercise-2.1-3-p" class="nav-link" data-scroll-target="#exercise-2.1-3-p">Exercise 2.1 (3 P)</a></li>
+  <li><a href="#exercise-2.2-3-p" id="toc-exercise-2.2-3-p" class="nav-link" data-scroll-target="#exercise-2.2-3-p">Exercise 2.2 (3 P)</a></li>
+  <li><a href="#exercise-2.3-3-p" id="toc-exercise-2.3-3-p" class="nav-link" data-scroll-target="#exercise-2.3-3-p">Exercise 2.3 (3 P)</a></li>
+  <li><a href="#exercise-2.4-3-p" id="toc-exercise-2.4-3-p" class="nav-link" data-scroll-target="#exercise-2.4-3-p">Exercise 2.4 (3 P)</a></li>
+  <li><a href="#exercise-2.5-3-p" id="toc-exercise-2.5-3-p" class="nav-link" data-scroll-target="#exercise-2.5-3-p">Exercise 2.5 (3 P)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,8 +235,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> (a <span class="op">+</span> b <span class="op">+</span> c) <span class="op">/</span> <span class="dv">3</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Evidently, this basic flow of control only allows you to write the most basic programs. Therefore, Python supports compound statements that alter the control flow.</p>
-<p><em>Note:</em> You may run all of the following examples in interactive mode. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as <code>func_test.py</code>) and then run this script (e.g., <code>python func_test.py</code>).</p>
+<p>Evidently, this basic flow of control only allows you to write the most simple programs. Therefore, Python supports compound statements that alter the control flow.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may run all of the following examples in interactive mode. However, if you are writing a compound statement, entering several indented lines may be tedious. Thus, you might prefer to create one Python script per example (such as <code>func_test.py</code>) and then run this script (e.g., <code>python func_test.py</code>).</p>
+</div>
+</div>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
 <p><em>Call</em> a function by writing</p>
@@ -315,20 +327,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, <span class="st">"is negative"</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, <span class="st">"is positive"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>elif</code> blocks allow you to <em>chain</em> if statements, i.e., to test an arbitrary number of conditions and execute a distinct set of statements for each condition. Store the following code in <code>test_sign.py</code> and execute the file with Python:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_sign(n):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is negative"</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> n <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is positive"</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is zero"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_sign(<span class="dv">102</span>))</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_sign(<span class="op">-</span><span class="dv">12</span>))</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_sign(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>f" ... "</code> is a so-called <em>f-string</em> (“formatted string literal”). An f-string behaves like a normal string, but each part enclosed in curly braces is interpreted as Python statement whose result is inserted into the string.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"An addition: </span><span class="sc">{</span><span class="dv">2</span><span class="op">+</span><span class="dv">3</span><span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>elif</code> blocks allow you to <em>chain</em> if statements, i.e., to test an arbitrary number of conditions and execute a distinct set of statements for each condition. Thus, our final if statement, which also checks whether a provided number is zero, is:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, <span class="st">"is negative"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> n <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, <span class="st">"is positive"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, <span class="st">"is zero"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="example-function-with-if" class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example
+</div>
+</div>
+<div id="example-function-with-if" class="callout-body-container callout-body">
+<p>Let’s put the if statement which we developed above into a function. This will allow us to test several numbers for their sign. We will replace the <code>print()</code> statements with <code>return</code>, since our function should not print its result, but rather return it.</p>
+<p>The function will format the result by means of an <em>f-string</em> (“formatted string literal”). An f-string is written as <code>f" ... "</code>. It behaves like a normal string, but each part enclosed in curly braces <code>{}</code> is interpreted as Python statement whose result is inserted into the string.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"An addition: </span><span class="sc">{</span><span class="dv">2</span><span class="op">+</span><span class="dv">3</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 'An addition: 5' </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Store the following code in <code>test_sign.py</code> and execute the file with Python:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_sign(n):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is negative"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> n <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is positive"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is zero"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_sign(<span class="dv">102</span>))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_sign(<span class="op">-</span><span class="dv">12</span>))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_sign(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 <section id="loops" class="level3">
 <h3 class="anchored" data-anchor-id="loops">Loops</h3>
@@ -342,11 +375,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>indented statements (suite, loop body)</li>
 </ul>
 <p>Store the following code in <code>calc_powers.py</code> and execute the file with Python:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10000</span>:</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10000</span>:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Typically, the condition will become false after several iterations of the loop body. Above, the variable <code>i</code> receives a new value whenever the loop body is run.</p>
 </section>
 <section id="for-loops" class="level4">
@@ -361,21 +394,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>colon</li>
 <li>indented statements (suite, loop body)</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> <span class="st">"Python"</span>:</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> <span class="st">"Python"</span>:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The loop above is executed six times, and during each run, the loop variable <code>letter</code> contains a different character of the string <code>"Python"</code> (i.e., the values <code>"P"</code>, <code>"y"</code>, <code>"t"</code>, <code>"h"</code>, <code>"o"</code>, and <code>"n"</code>).</p>
+<div id="example-counter" class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example
+</div>
+</div>
+<div id="example-counter" class="callout-body-container callout-body">
+<p>A common theme is to iterate over a list and store some information on each list element for later. Below, we initialize a <em>counter variable</em> with zero. We then iterate over a list of numbers and add each element to the counter variable. After the loop has finished, this variable therefore contains the sum of all numbers in the list.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">4</span>]:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> counter <span class="op">+</span> n</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counter)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <p>Sometimes we wish to iterate over a long sequence of numbers. It would be cumbersome if we had to explicitly write a list containing the numbers from, say, 0 to 10000 – there must be a simpler approach, right? Indeed, there is the built-in <code>range()</code> function, which generates a sequence of numbers.</p>
-<p>Depending on the numbers of arguments passed to <code>range()</code>, it will return4</p>
+<p>Depending on the numbers of arguments passed to <code>range()</code>, it will return</p>
 <ul>
 <li><p>a sequence of integers from 0 to a final value (excluded)</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)  <span class="co">#&gt; 0, 1, …, 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0, 1, …, 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>a sequence of integers from an initial value (included) to a final value (excluded)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">7</span>):</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)  <span class="co">#&gt; 2, 3, 4, 5, 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">7</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2, 3, 4, 5, 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>a sequence of integers as above, using the third argument as step size:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>):</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)  <span class="co">#&gt; 20, 17, 14, 11, 8, 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20, 17, 14, 11, 8, 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 </section>
@@ -393,17 +449,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>.</code></li>
 <li>function name</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We also may select a different name for the namespace upon importing:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> mathematics</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mathematics.factorial(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Moreover, individual (or all) functions of a module may be imported into the <em>global namespace</em>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> factorial</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>factorial(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We also may select a different name for the namespace upon importing:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> mathematics</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mathematics.factorial(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Moreover, individual (or all) functions of a module may be imported into the <em>global namespace</em>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> factorial</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>factorial(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To increase readability of your code, you should place all import statements at the top of your Python script.</p>
 </section>
 </section>
@@ -412,113 +468,113 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="lists" class="level3">
 <h3 class="anchored" data-anchor-id="lists">Lists</h3>
 <p>Lists belong to the class of <em>compound data types</em>, which serve as a “collection” of other data types. Lists are created by enclosing comma-separated elements in brackets. For instance, the following list comprises the first eight prime numbers:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>primes <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>]</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>primes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Indexing and slicing work as explained for strings (see unit 1), returning a single element or a new list containing the sliced elements, respectively:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>primes[<span class="dv">3</span>]</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>primes[<span class="dv">2</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Since lists are <em>mutable</em>, you may change their elements:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>primes[<span class="dv">3</span>] <span class="op">=</span> <span class="dv">100</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>primes <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>primes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Indexing and slicing work <a href="./python1.html#text-type">as explained for strings</a>, returning a single element or a new list containing the sliced elements, respectively:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>primes[<span class="dv">3</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>primes[<span class="dv">2</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Since lists are <em>mutable</em>, you may change their elements:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>primes[<span class="dv">3</span>] <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>primes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The built-in function <code>len()</code> returns the number of elements in a list:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(primes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(primes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Importantly, you may iterate over a list via a <code>for</code> loop:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> primes:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The elements of a list may be lists themselves, which yields <em>nested lists</em>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>nested_list <span class="op">=</span> [</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">5</span>],</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>nested_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>nested_list <span class="op">=</span> [</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>nested_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Indexing and slicing also work for nested lists:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>nested_list[<span class="dv">1</span>]</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>nested_list[<span class="dv">1</span>][<span class="dv">2</span>]</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>nested_list[<span class="dv">2</span>][<span class="dv">2</span>:<span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Since lists are objects (see unit 3), they may be manipulated by special functions called <em>methods</em>. Methods are called like functions, but refer to a given object. Thus, the syntax for calling a method is as follows:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>nested_list[<span class="dv">1</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>nested_list[<span class="dv">1</span>][<span class="dv">2</span>]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>nested_list[<span class="dv">2</span>][<span class="dv">2</span>:<span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Since lists are <a href="./python3.html#object-oriented-programming">objects</a>, they may be manipulated by special functions called <em>methods</em>. Methods are called like functions, but refer to a given object. Thus, the syntax for calling a method is as follows:</p>
 <ul>
 <li>name of the object</li>
-<li>period</li>
-<li>the name of the method</li>
+<li><code>.</code></li>
+<li>name of the method</li>
 <li>left parenthesis etc. (like a function call)</li>
 </ul>
 <p>Here are some of the methods supported by lists (check the contents of <code>bases</code> after every statement!):</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bases <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"G"</span>, <span class="st">"X"</span>, <span class="st">"Y"</span>]</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>bases.append(<span class="st">"Z"</span>)         <span class="co"># append an element to the list</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> bases[<span class="dv">2</span>]              <span class="co"># delete element with index 2</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> bases.pop()           <span class="co"># remove the last element and return it</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>bases.extend([<span class="st">"T"</span>, <span class="st">"U"</span>])  <span class="co"># appends elements from another list</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>bases.insert(<span class="dv">1</span>, <span class="st">"C"</span>)      <span class="co"># insert the element given by the second argument</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># at the index given by the first argument</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>bases.reverse()           <span class="co"># reverse order of elements</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>bases.clear()             <span class="co"># delete all elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Importantly, you may iterate over a list via a <code>for</code> loop:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> primes:</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bases <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"G"</span>, <span class="st">"X"</span>, <span class="st">"Y"</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>bases.append(<span class="st">"Z"</span>)         <span class="co"># append an element to the list</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> bases[<span class="dv">2</span>]              <span class="co"># delete element with index 2</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> bases.pop()           <span class="co"># remove the last element and return it</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>bases.extend([<span class="st">"T"</span>, <span class="st">"U"</span>])  <span class="co"># appends elements from another list</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>bases.insert(<span class="dv">1</span>, <span class="st">"C"</span>)      <span class="co"># insert the element given by the second argument</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># at the index given by the first argument</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>bases.reverse()           <span class="co"># reverse order of elements</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>bases.clear()             <span class="co"># delete all elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tuples" class="level3">
 <h3 class="anchored" data-anchor-id="tuples">Tuples</h3>
 <p>Tuples are similar to lists, since they also represent a sequence of items. In contrast to lists, however, tuples are <em>immutable</em> – once you have created a tuple, you can’t change it. Tuples support common list operations:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>bases <span class="op">=</span> (<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">"A"</span> <span class="kw">in</span> bases      <span class="co"># check whether the tuple contains an element</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>bases[<span class="dv">1</span>:<span class="dv">3</span>]        <span class="co"># slicing</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(bases)        <span class="co"># number of elements</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(bases)        <span class="co"># smallest element</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(bases)        <span class="co"># largest element</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>bases.count(<span class="st">"C"</span>)  <span class="co"># count the number of a given element</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>bases.index(<span class="st">"G"</span>)  <span class="co"># find the index of a given element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>bases <span class="op">=</span> (<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">"A"</span> <span class="kw">in</span> bases      <span class="co"># check whether the tuple contains an element</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>bases[<span class="dv">1</span>:<span class="dv">3</span>]        <span class="co"># slicing</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(bases)        <span class="co"># number of elements</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(bases)        <span class="co"># smallest element</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(bases)        <span class="co"># largest element</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>bases.count(<span class="st">"C"</span>)  <span class="co"># count the number of a given element</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>bases.index(<span class="st">"G"</span>)  <span class="co"># find the index of a given element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sets" class="level3">
 <h3 class="anchored" data-anchor-id="sets">Sets</h3>
 <p>The <em>set</em> is a sequential data type that represents a mathematical set – thus, sets are <em>unordered</em>. Both mutable and immutable variants are available (<code>set</code> and <code>frozenset</code>, respectively). We create a set by placing their elements between curly braces, or by converting from another sequential type:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>}        <span class="co"># variant 1: direct</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> <span class="bu">set</span>([<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>])  <span class="co"># variant 2: converting a list</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">==</span> A1              <span class="co"># are these sets equivalent?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>}        <span class="co"># variant 1: direct</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> <span class="bu">set</span>([<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>])  <span class="co"># variant 2: converting a list</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">==</span> A1              <span class="co"># are these sets equivalent?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Besides adding and removing elements, you may also perform the classical set operations:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>}</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>B.discard(<span class="dv">5</span>)  <span class="co"># remove element if it exists</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>B.add(<span class="dv">7</span>)      <span class="co"># add element</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>B.add(<span class="dv">7</span>)      <span class="co"># set does not change – each element must be unique!</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">|</span> B  <span class="co"># union (OR)</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>A <span class="op">&amp;</span> B  <span class="co"># intersection (AND)</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>A <span class="op">-</span> B  <span class="co"># difference</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>B <span class="op">-</span> A  <span class="co"># note that the difference is not commutative</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>A <span class="op">^</span> B  <span class="co"># symmetric difference (XOR)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>}</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>B.discard(<span class="dv">5</span>)  <span class="co"># remove element if it exists</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>B.add(<span class="dv">7</span>)      <span class="co"># add element</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>B.add(<span class="dv">7</span>)      <span class="co"># set does not change – each element must be unique!</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">|</span> B  <span class="co"># union (OR)</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>A <span class="op">&amp;</span> B  <span class="co"># intersection (AND)</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>A <span class="op">-</span> B  <span class="co"># difference</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>B <span class="op">-</span> A  <span class="co"># note that the difference is not commutative</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>A <span class="op">^</span> B  <span class="co"># symmetric difference (XOR)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dictionaries" class="level3">
 <h3 class="anchored" data-anchor-id="dictionaries">Dictionaries</h3>
 <p>Dictionaries (“dicts”) are unordered collections of <em>key-value pairs</em>, where keys have to be unique. Create a dict</p>
 <ul>
 <li><p>either by separating key-value pairs by colons and enclosing comma-separated pairs with curly braces,</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>atom_names <span class="op">=</span> {<span class="st">"C"</span>: <span class="st">"carbon"</span>, <span class="st">"H"</span>: <span class="st">"hydrogen"</span>, <span class="st">"N"</span>: <span class="st">"nitrogen"</span>}</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>atom_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>atom_names <span class="op">=</span> {<span class="st">"C"</span>: <span class="st">"carbon"</span>, <span class="st">"H"</span>: <span class="st">"hydrogen"</span>, <span class="st">"N"</span>: <span class="st">"nitrogen"</span>}</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>atom_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>or by using the built-in function <code>dict()</code>, to which we supply the key-value-pairs as keyword arguments:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>atom_names_2 <span class="op">=</span> <span class="bu">dict</span>(C<span class="op">=</span><span class="st">"carbon"</span>, H<span class="op">=</span><span class="st">"hydrogen"</span>, N<span class="op">=</span><span class="st">"nitrogen"</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>atom_names_2</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>atom_names_2 <span class="op">==</span> atom_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>atom_names_2 <span class="op">=</span> <span class="bu">dict</span>(C<span class="op">=</span><span class="st">"carbon"</span>, H<span class="op">=</span><span class="st">"hydrogen"</span>, N<span class="op">=</span><span class="st">"nitrogen"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>atom_names_2</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>atom_names_2 <span class="op">==</span> atom_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>Typical dict operations include inserting, deleting, and – most importantly – searching:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>atom_names[<span class="st">"C"</span>]             <span class="co"># find the value associated with key "S"</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>atom_names[<span class="st">"O"</span>] <span class="op">=</span> <span class="st">"oxygen"</span>  <span class="co"># insert a new key-value pair</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> atom_names[<span class="st">"H"</span>]         <span class="co"># delete the value associated with "H"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>atom_names[<span class="st">"C"</span>]             <span class="co"># find the value associated with key "S"</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>atom_names[<span class="st">"O"</span>] <span class="op">=</span> <span class="st">"oxygen"</span>  <span class="co"># insert a new key-value pair</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> atom_names[<span class="st">"H"</span>]         <span class="co"># delete the value associated with "H"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You may iterate over all key-value pairs in a dict via the <code>.items()</code> method and a <code>for</code> loop:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> atom_names.items():</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> atom_names.items():</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <p>Store all files that you generate for unit 2 in the folder <code>python2</code> in your home directory.</p>
-<section id="exercise-2.1-4-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2.1-4-p">Exercise 2.1 (4 P)</h3>
+<section id="exercise-2.1-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2.1-3-p">Exercise 2.1 (3 P)</h3>
 <p>You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder <code>python2</code> must contain the following files, which you have created in the course of this unit:</p>
 <ul>
 <li><code>test_sign.py</code></li>
 <li><code>calc_powers.py</code></li>
 </ul>
 </section>
-<section id="exercise-2.2-4-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2.2-4-p">Exercise 2.2 (4 P)</h3>
+<section id="exercise-2.2-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2.2-3-p">Exercise 2.2 (3 P)</h3>
 <p>Implement a function <code>get_charge</code> that checks whether an amino acid is positively charged (e.g., arginine), negatively charged (e.g., aspartate), or neutral (e.g., valine).</p>
 <ul>
 <li>The function should be called with a single argument that specifies the amino acid using its single-letter abbreviation. Only the 21 eukaryotic proteinogenic amino acids should be considered.</li>
@@ -527,36 +583,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Store the function in <code>exercise_2_2.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"D"</span>))</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "negative"</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"F"</span>))</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "neutral"</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"H"</span>))</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "positive"</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"foo"</span>))</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "invalid input"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"D"</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "negative"</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"F"</span>))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "neutral"</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"H"</span>))</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "positive"</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_charge(<span class="st">"foo"</span>))</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "invalid input"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You have <a href="#example-function-with-if">learned</a> how to put an if statement into a function. In the section on <a href="#tuples">tuples</a>, you checked whether a tuple contained a given element. A similar test will be required for the if statement in this exercise.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="exercise-2.3-4-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2.3-4-p">Exercise 2.3 (4 P)</h3>
-<p>Implement a function <code>count_bases</code> that counts the number of purine and pyrimidine bases in a DNA or RNA sequence.</p>
+<section id="exercise-2.3-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2.3-3-p">Exercise 2.3 (3 P)</h3>
+<p>Implement a function <code>get_average_gc</code> that calculates the average GC-content of several DNA or RNA sequences.</p>
 <ul>
-<li>The first parameter of the function should be called <code>sequence</code> and is required. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.</li>
-<li>The second parameter should be called <code>purine</code> and is optional, with a default value of <code>True</code>. If <code>purine</code> is true, the function should calculate the number of purines; otherwise, it should calculate the number of pyrimidines.</li>
-<li>The function should return a single integer, i.e., the number of all purines/pyrimidines in <em>all</em> sequences.</li>
+<li>The function should be called with a single argument. It will receive a list containing an arbitrary number of strings, each of which represents a nucleotide sequence.</li>
+<li>The function should return a single number, i.e., the average GC-content across all sequences.</li>
 </ul>
 <p>Store the function in <code>exercise_2_3.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_bases([<span class="st">"ACCGGGTTTT"</span>, <span class="st">"TTAAAGGGGCCCCC"</span>], <span class="va">True</span>))</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_bases([<span class="st">"AA"</span>, <span class="st">"UUUU"</span>, <span class="st">"G"</span>, <span class="st">"CCCCCCCC"</span>], purine<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_average_gc([<span class="st">"CGACCACATTAATGGACTAC"</span>, <span class="st">"CTTGGATTATCACCCCCGTC"</span>]))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.5</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_average_gc([<span class="st">"CCACCGAGACGCCAG"</span>, <span class="st">"CGGCCTCCCGAC"</span>, <span class="st">"GCCCGGGCCCGCGGGGGT"</span>]))</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.837037037037037</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use a <a href="#for-loops">for loop</a> to iterate over the strings in the list.</li>
+<li>You will need a <a href="#example-counter">counter variable</a>.</li>
+<li><code>s.count("X")</code> counts the number of times the character <code>"X"</code> appears in the string stored in <code>s</code>.</li>
+<li>The <code>len()</code> function also works on strings.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="exercise-2.4-4-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2.4-4-p">Exercise 2.4 (4 P)</h3>
+<section id="exercise-2.4-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2.4-3-p">Exercise 2.4 (3 P)</h3>
 <p>If you code a lot, you will often use third-party packages and consult their documentation. This is what we will do in this exercise: Implement a function <code>make_sequence</code> that creates a random DNA or RNA sequence of a given length and calculates how often a given base appears in this sequence.</p>
 <ul>
 <li>The first (required) parameter sets the sequence length.</li>
@@ -567,20 +659,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Since the function should create the sequence randomly, you might consider to use the function <code>choices()</code> available in the <code>random</code> module. This module is part of the standard library – please read the <a href="https://docs.python.org/3/library/index.html">documentation</a>. You will also need the string method <code>join()</code> to convert the value returned by <code>choices()</code> into a string. Since <code>string</code> is a built-in data type, it is also documented in the standard library.</p>
 <p>Store the function in <code>exercise_2_4.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(make_sequence(<span class="dv">20</span>, <span class="va">False</span>, <span class="st">"A"</span>))</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('GACAGGTACAAGAAGGAGTA', 9)</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(make_sequence(<span class="dv">15</span>, rna<span class="op">=</span><span class="va">True</span>, count_base<span class="op">=</span><span class="st">"C"</span>))</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('UGCAUCAAUGUGGUC', 3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(make_sequence(<span class="dv">20</span>, <span class="va">False</span>, <span class="st">"A"</span>))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('GACAGGTACAAGAAGGAGTA', 9)</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(make_sequence(<span class="dv">15</span>, rna<span class="op">=</span><span class="va">True</span>, count_base<span class="op">=</span><span class="st">"C"</span>))</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('UGCAUCAAUGUGGUC', 3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Exactly follow the specification of function parameters and return values:
+<ul>
+<li>Should a parameter have a certain name?</li>
+<li>If a parameter is optional, what is its default value?</li>
+<li>How many values should the function return?</li>
+</ul>
+See the <a href="#functions">functions</a> section for details.</li>
+<li>Remember how to <a href="#modularization">import</a> a function from a module.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="exercise-2.5-4-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2.5-4-p">Exercise 2.5 (4 P)</h3>
+<section id="exercise-2.5-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2.5-3-p">Exercise 2.5 (3 P)</h3>
 <p>In this exercise, you will create a command line program that calculates the similarity of two tissue samples by means of their expressed genes.</p>
 <ul>
 <li>The program should process two command line arguments <code>genes1</code> and <code>genes2</code>.</li>
-<li>Each argument specifices the genes that are expressed in the respective sample. Individual genes should be separated by semicolons (e.g., <code>GENE1;GENE2;GENE3;GENE4</code>). It does not matter whether a gene appears more than once. (To process the arguments, the string method <code>split()</code>may be useful – see <a href="https://docs.python.org/3/library/index.html">documentation</a>.)</li>
-<li>The program should return three values, each on a separate line:
+<li>Each argument specifices the genes that are expressed in the respective sample. Individual genes should be separated by semicolons (e.g., <code>GENE1;GENE2;GENE3;GENE4</code>). It does not matter whether a gene appears more than once.</li>
+<li>The program should print three values, each on a separate line:
 <ol type="1">
 <li>the number of (unique) genes detected in the first sample</li>
 <li>the number of (unique) genes detected in the second sample</li>
@@ -588,20 +705,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol></li>
 </ul>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>$ python exercise_2_5.py "RAB5C;PITX2;ZNF222;LMTK2;LMTK2" "RAB5C;PABPC4;ZNF222;PKN1;PTMA"</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>4</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>5</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>0.2857142857142857</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>$ python exercise_2_5.py "THOC5;RAD23B;GPR31;PIRC85;PANO1" "THOC5;ATP1A2;GPR31;THOC5"</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>5</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>3</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>0.3333333333333333</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>$ python exercise_2_5.py "RAD23B" "RAD23B"</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>1</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>1</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>$ python exercise_2_5.py "RAB5C;PITX2;ZNF222;LMTK2;LMTK2" "RAB5C;PABPC4;ZNF222;PKN1;PTMA"</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>4</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>5</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>0.2857142857142857</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>$ python exercise_2_5.py "THOC5;RAD23B;GPR31;PIRC85;PANO1" "THOC5;ATP1A2;GPR31;THOC5"</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>5</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>3</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>0.3333333333333333</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>$ python exercise_2_5.py "RAD23B" "RAD23B"</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>1</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>1</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Your program has to process <a href="./python1.html#command-line-arguments">command line arguments</a>.</li>
+<li>To split each argument into individual genes, the string method <code>split()</code>may be useful – see <a href="https://docs.python.org/3/library/index.html">documentation</a>.</li>
+<li>Consult the <a href="#sets">sets</a> section on set creation from lists and calculation of union and intersection.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>

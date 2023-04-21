@@ -260,10 +260,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>b.reshape((<span class="dv">6</span>, <span class="dv">4</span>))   <span class="co"># ok</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b.reshape((<span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>))  <span class="co"># ok; -1 -&gt; automatically determine the required size</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b.reshape((<span class="dv">5</span>, <span class="dv">5</span>))   <span class="co"># error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Importantly, calling an array method returns a <em>new</em> array – the original object remains unchanged.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calling an array method returns a <em>new</em> array – the original object remains unchanged.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>b2 <span class="op">=</span> b.reshape((<span class="dv">6</span>, <span class="dv">4</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b2  <span class="co"># new 6x4 array</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b   <span class="co"># old 24x1 array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 <section id="indexing-and-slicing" class="level3">
 <h3 class="anchored" data-anchor-id="indexing-and-slicing">Indexing and slicing</h3>
@@ -282,34 +294,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="basic-operations" class="level3">
 <h3 class="anchored" data-anchor-id="basic-operations">Basic operations</h3>
-<p>Arrays provide vector arithmetics, e.g., element-wise addition and multiplication, as well as the scalar product:</p>
+<p>Arrays facilitate vector arithmetics, e.g., element-wise addition and multiplication, as well as the scalar product:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">100</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">13</span>])</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> y</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>np.dot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here is a selection of array methods for calculations:</p>
+<p>Here is a selection of methods for numeric arrays:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x.<span class="bu">min</span>()   <span class="co"># minimum value</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x.<span class="bu">max</span>()   <span class="co"># maximum value</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>y.<span class="bu">sum</span>()   <span class="co"># sum of values</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>y.<span class="bu">sum</span>()   <span class="co"># sum of all values</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>y.prod()  <span class="co"># product of all values</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>y.mean()  <span class="co"># mean of all values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Interestingly, calculations may involve arrays of different shapes. For example, the scalar value <span class="math inline">\(x = 10\)</span> can be multiplied by the vector <span class="math inline">\(y = (4, 1, 7)\)</span> by using a technique called <em>broadcasting</em>. The smaller array is “broadcast” across the larger array so that they have compatible shapes.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array(<span class="dv">10</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">7</span>])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> y  <span class="co"># x is extended to [10, 10, 10] before multiplication</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Broadcasting also works in higher dimensions.</p>
+<p>Broadcasting also works in higher dimensions:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.array([(<span class="dv">1</span>, <span class="dv">2</span>), (<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">5</span>, <span class="dv">6</span>)]) <span class="op">+</span> np.array([<span class="dv">10</span>, <span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="reading-and-writing" class="level3">
 <h3 class="anchored" data-anchor-id="reading-and-writing">Reading and writing</h3>
 <p>NumPy provides several ways to store the contents of an array in a file. <code>save()</code> creates a binary file in NPY format, while <code>savetxt()</code> creates a human-readable text file.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.arange(<span class="dv">10</span>, <span class="dv">32</span>, <span class="dv">3</span>).reshape((<span class="dv">4</span>, <span class="dv">2</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>np.save(<span class="st">"my_array.npy"</span>, p)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"my_array.txt"</span>, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.arange(<span class="dv">10</span>, <span class="dv">32</span>, <span class="dv">3</span>).reshape((<span class="dv">4</span>, <span class="dv">2</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>np.save(<span class="st">"my_array.npy"</span>, p)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"my_array.txt"</span>, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For each of these file formats, there are also reading functions:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.load(<span class="st">"my_array.npy"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.loadtxt(<span class="st">"my_array.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>np.load(<span class="st">"my_array.npy"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>np.loadtxt(<span class="st">"my_array.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="pandas" class="level2">
@@ -318,139 +333,173 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="create-a-dataframe">Create a DataFrame</h3>
 <p>Pandas builds upon NumPy arrays and provides data structures for comprehensive data analyses: <code>Series</code> (a one-dimensional array with an index) and <code>DataFrame</code> (a two-dimensional tabular structure). Each row of a DataFrame represents an observation, while each of its columns describes a variable (property) of these observations.</p>
 <p>Usually, the Pandas module is imported into a namespace <code>pd</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pandas provides several possibilities to create a <code>DataFrame</code> object, e.g., from nested lists or dicts, whose keys become column names:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nested_list <span class="op">=</span> [[<span class="st">"a"</span>, <span class="dv">2</span>, <span class="va">True</span>],</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>               [<span class="st">"b"</span>, <span class="dv">5</span>, <span class="va">True</span>],</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>               [<span class="st">"c"</span>, <span class="dv">8</span>, <span class="va">False</span>]]</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(nested_list)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>my_dict <span class="op">=</span> <span class="bu">dict</span>(A<span class="op">=</span>[<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>],</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>               B<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>],</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>               C<span class="op">=</span>[<span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>])</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(my_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_list <span class="op">=</span> [[<span class="st">"a"</span>, <span class="dv">2</span>, <span class="va">True</span>],</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>             [<span class="st">"b"</span>, <span class="dv">5</span>, <span class="va">True</span>],</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>             [<span class="st">"c"</span>, <span class="dv">8</span>, <span class="va">False</span>]]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(data_list)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>data_dict <span class="op">=</span> <span class="bu">dict</span>(A<span class="op">=</span>[<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>],</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                 B<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>],</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                 C<span class="op">=</span>[<span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>])</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(data_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Importantly, a DataFrame may be created by reading a file containing tabular data, such as a file in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV format</a>. Copy the file <code>amino_acids.csv</code> from <code>/resources/week2</code> into a subfolder <code>python4</code> in your home directory and look at its first five lines:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>code,abbreviation,name,chem1,chem2,chem3,abundance,pi</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A,Ala,alanine,nonpolar,methylene,aliphatic,8.84,6.0</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>C,Cys,cysteine,polar,sulfur,aliphatic,1.24,5.0</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>D,Asp,aspartic acid,negative,methylene,aliphatic,5.39,3.0</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>E,Glu,glutamic acid,negative,methylene,aliphatic,6.24,3.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>code,abbreviation,name,chem1,chem2,chem3,abundance,pi</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>A,Ala,alanine,nonpolar,methylene,aliphatic,8.84,6.0</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>C,Cys,cysteine,polar,sulfur,aliphatic,1.24,5.0</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>D,Asp,aspartic acid,negative,methylene,aliphatic,5.39,3.0</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>E,Glu,glutamic acid,negative,methylene,aliphatic,6.24,3.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Obviously, this file collects chemical properties of the proteinogenic amino acids. Thus, each line describes an amino acid (= observation); each column contains data on one property (= variable), e.g., single letter code or isoelectric point.</p>
 <p>Read the contents of this file via <code>pd.read_csv()</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"amino_acids.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Notably, <code>read_csv()</code> has more than 50 optional parameters, which allow to adjust almost any aspect of the reading process. The CSV format has never been standardized, and many dialects of CSV files can be found in the wild.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"amino_acids.csv"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>read_csv()</code> has more than 50 optional parameters, which can adjust almost any aspect of the reading process. Thereby, it supports a plethora of CSV dialects that can be found in the wild, since the CSV format has never been standardized.</p>
+</div>
+</div>
 </section>
 <section id="dataframe-properties" class="level3">
 <h3 class="anchored" data-anchor-id="dataframe-properties">DataFrame properties</h3>
 <p>Let’s investigate the DataFrame we just created:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.head()   <span class="co"># these methods work</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df.tail()   <span class="co"># similar to the bash commands</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>df.index    <span class="co"># (row) index</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>df.columns  <span class="co"># column index (names)</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>df.values   <span class="co"># values of the elements – a NumPy array</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>df.size     <span class="co"># number of elements</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>df.shape    <span class="co"># number of rows and columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.head()   <span class="co"># these methods work</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df.tail()   <span class="co"># similar to the bash commands</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df.index    <span class="co"># (row) index</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df.columns  <span class="co"># column index (names)</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>df.values   <span class="co"># values of the elements – a NumPy array</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df.size     <span class="co"># number of elements</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df.shape    <span class="co"># number of rows and columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Calculate descriptive statistics for the numeric columns:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.median()  <span class="co"># median</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df.mean()    <span class="co"># mean</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df.std()     <span class="co"># standard deviation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.median()  <span class="co"># median</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df.mean()    <span class="co"># mean</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df.std()     <span class="co"># standard deviation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Calling a method of a DataFrame returns a new object; the original DataFrame remains unchanged.</p>
+</div>
+</div>
 </section>
 <section id="selecting-data" class="level3">
 <h3 class="anchored" data-anchor-id="selecting-data">Selecting data</h3>
 <p>Pandas provides several ways to select parts of a DataFrame, such as:</p>
 <ul>
-<li><p>select columns via indexing with a string</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"code"</span>]                 <span class="co"># selecting a single column returns a Series</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"name"</span>, <span class="st">"abundance"</span>]]  <span class="co"># selecting several columns returns a DataFrame </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>select rows by slicing with integers</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[:<span class="dv">4</span>]   <span class="co"># rows with index 0 to 3</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">2</span>:<span class="dv">6</span>]  <span class="co"># rows with index 2 to 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>select rows with Booleans</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">"pi"</span>] <span class="op">&gt;</span> <span class="dv">7</span>]  <span class="co"># selects all rows with basic amino acids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><p>select columns via <em>indexing with a string</em></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"code"</span>]                 <span class="co"># selecting a single column returns a Series</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"name"</span>, <span class="st">"abundance"</span>]]  <span class="co"># selecting several columns returns a DataFrame </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>select rows by <em>slicing with integers</em></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df[:<span class="dv">4</span>]   <span class="co"># rows with index 0 to 3</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">2</span>:<span class="dv">6</span>]  <span class="co"># rows with index 2 to 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>select rows with <em>Booleans</em></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">"pi"</span>] <span class="op">&gt;</span> <span class="dv">7</span>]  <span class="co"># selects all rows with basic amino acids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The statement above consists of three parts:</p>
 <ol type="1">
 <li><p>Select column <code>pi</code> (isoelectric point).</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"pi"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Check each value in this column if it is greater than 7. (Note that the scalar value 7 is broadcast along the vector representing the column.)</p></li>
-</ol>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"pi"</span>] <span class="op">&gt;</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li>Select those rows in <code>df</code> where comparison (2) is true.</li>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"pi"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Check each value in this column if it is greater than 7. (Note that the scalar value 7 is broadcast along the vector representing the column.)</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"pi"</span>] <span class="op">&gt;</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Select those rows in <code>df</code> where comparison (2) is true.</p></li>
 </ol></li>
-<li><p>label-based indexing via the <code>.loc</code> attribute</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">2</span>, <span class="st">"code"</span>]            <span class="co"># element in the third row and column "code"</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">3</span>:<span class="dv">6</span>, <span class="st">"code"</span>:<span class="st">"chem1"</span>]  <span class="co"># elements in rows four to seven</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                             <span class="co"># and columns "code" to "chem1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(Note: In contrast to all other slicing operations we have encountered, slicing within <code>.loc</code> also includes the end element!)</p></li>
-<li><p>position-based indexing via the <code>.iloc</code> attribute</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">4</span>]          <span class="co"># row with index 4</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df.iloc[:, <span class="dv">4</span>]       <span class="co"># column with index 4</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">10</span>:<span class="dv">13</span>, :<span class="dv">4</span>]  <span class="co"># rows with index 10 to 12, columns with index 0 to 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>label-based indexing</em> via the <code>.loc</code> attribute</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">2</span>, <span class="st">"code"</span>]            <span class="co"># element in the third row and column "code"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">3</span>:<span class="dv">6</span>, <span class="st">"code"</span>:<span class="st">"chem1"</span>]  <span class="co"># elements in rows four to seven</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                             <span class="co"># and columns "code" to "chem1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In contrast to all other slicing operations we have encountered, slicing within <code>.loc</code> also includes the end element.</p>
+</div>
+</div></li>
+<li><p><em>position-based indexing</em> via the <code>.iloc</code> attribute</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">4</span>]          <span class="co"># row with index 4</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df.iloc[:, <span class="dv">4</span>]       <span class="co"># column with index 4</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">10</span>:<span class="dv">13</span>, :<span class="dv">4</span>]  <span class="co"># rows with index 10 to 12, columns with index 0 to 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>Whenever we select a single column of a DataFrame, Python returns a <code>Series</code> object. This class also implements a range of methods, e.g.,</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>abundance <span class="op">=</span> df[<span class="st">"abundance"</span>]  <span class="co"># a Series</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>abundance.<span class="bu">sum</span>()              <span class="co"># sum of the values in the Series</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>pI <span class="op">=</span> df[<span class="st">"pi"</span>]  <span class="co"># another Series</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>pI.mean()      <span class="co"># mean of the values in the latter Series</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>abundance <span class="op">=</span> df[<span class="st">"abundance"</span>]  <span class="co"># a Series</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>abundance.<span class="bu">sum</span>()              <span class="co"># sum of the values in the Series</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>pI <span class="op">=</span> df[<span class="st">"pi"</span>]  <span class="co"># another Series</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>pI.mean()      <span class="co"># mean of the values in the latter Series</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modifying-data" class="level3">
 <h3 class="anchored" data-anchor-id="modifying-data">Modifying data</h3>
 <p>In the previous section, we learned how to select parts of a DataFrame via the index. Thus, it may be useful to convert a column of the DataFrame to a <em>new index</em>, which is done via the <code>set_index()</code> method:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">"abbreviation"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="st">"Ala"</span>]  <span class="co"># select the column describing alanine</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">"abbreviation"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="st">"Ala"</span>]  <span class="co"># select the column describing alanine</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>By contrast, the row index may be converted back to a column:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.reset_index()</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.reset_index()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A DataFrame can be <em>sorted</em> based on the values in a row index, column index, or column. Keyword arguments of the respective method allow to configure the sort.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">"abbreviation"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df.sort_index()                        <span class="co"># sort by row index</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df.sort_index(axis<span class="op">=</span><span class="dv">1</span>)                  <span class="co"># sort by column index, i.e.,</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="co"># order columns by their name</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>df.sort_values(<span class="st">"abundance"</span>)            <span class="co"># sort ascending by "abundance"</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>df.sort_values(<span class="st">"pi"</span>, ascending<span class="op">=</span><span class="va">False</span>)  <span class="co"># sort descending by "pi"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">"abbreviation"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>df.sort_index()                        <span class="co"># sort by row index</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>df.sort_index(axis<span class="op">=</span><span class="dv">1</span>)                  <span class="co"># sort by column index, i.e.,</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="co"># order columns by their name</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>df.sort_values(<span class="st">"abundance"</span>)            <span class="co"># sort ascending by "abundance"</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>df.sort_values(<span class="st">"pi"</span>, ascending<span class="op">=</span><span class="va">False</span>)  <span class="co"># sort descending by "pi"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You may add and remove columns:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_col"</span>] <span class="op">=</span> <span class="dv">3</span>                <span class="co"># add a new column "new_col"</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>df                               <span class="co"># the scalar 3 is broadcast</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">"new_col"</span>, axis<span class="op">=</span><span class="dv">1</span>)  <span class="co"># remove the column; axis=1 specifies</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>df                               <span class="co"># that we want to remove a column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_col"</span>] <span class="op">=</span> <span class="dv">3</span>                <span class="co"># add a new column "new_col"</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df                               <span class="co"># the scalar 3 is broadcast</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">"new_col"</span>, axis<span class="op">=</span><span class="dv">1</span>)  <span class="co"># remove the column; axis=1 specifies</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>df                               <span class="co"># that we want to remove a column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="joins" class="level3">
 <h3 class="anchored" data-anchor-id="joins">Joins</h3>
 <p>Pandas allows to combine several DataFrames by a so-called <em>join</em>. In order to explain how joins work, load the table with amino acid data:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_left <span class="op">=</span> pd.read_csv(<span class="st">"amino_acids.csv"</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df_left</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_left <span class="op">=</span> pd.read_csv(<span class="st">"amino_acids.csv"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df_left</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Also load a second CSV file (available in <code>/resources/week2</code>):</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_right <span class="op">=</span> pd.read_csv(<span class="st">"amino_acids_chemdata.csv"</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df_right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_right <span class="op">=</span> pd.read_csv(<span class="st">"amino_acids_chemdata.csv"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df_right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This second table lacks information on several amino acids (such as glycine) and describes two additional compounds “X” and “Z”.</p>
 <p>A join is a binary operation and thus requires two operands, which are usually called “left table” and “right table”. In each table, one or several columns are denoted as keys that are compared for joining. In the examples below, column <code>code</code> represents the key.</p>
 <p>The <code>merge()</code> method allows to perform the following join types:</p>
 <ul>
 <li><p>The <em>left join</em> uses all observations (rows) of the left table and adds information from the right table if the latter contains an observation with matching values in the key columns.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_left.merge(df_right, how<span class="op">=</span><span class="st">"left"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_left.merge(df_right, how<span class="op">=</span><span class="st">"left"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The resulting DataFrame contains 20 rows (i.e., the same number as the left table) and 17 columns (i.e., seven more as the left table – those were added from the right table). The right table contained data, e.g., for key <code>"A"</code>; therefore, data in its columns <code>flexibility</code>, <code>i_vdw</code> etc. were added to these columns in the resulting DataFrame. By contrast, the right table did not contain data for key <code>"F"</code>. Therefore, columns in the left table were filled with <code>NaN</code> for this key. (<code>NaN</code> means “not a number” and represents missing values in Pandas.)</p></li>
 <li><p>The <em>right join</em> works similar to the left join, but the roles of the left and right table are swapped:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_left.merge(df_right, how<span class="op">=</span><span class="st">"right"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df_left.merge(df_right, how<span class="op">=</span><span class="st">"right"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>The <em>inner join</em> only retains observations whose key exists in both the left and right table:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df_left.merge(df_right, how<span class="op">=</span><span class="st">"inner"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_left.merge(df_right, how<span class="op">=</span><span class="st">"inner"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>The <em>outer join</em> retains observations whose key exists in at least one table:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_outer <span class="op">=</span> df_left.merge(df_right, how<span class="op">=</span><span class="st">"outer"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df_outer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_outer <span class="op">=</span> df_left.merge(df_right, how<span class="op">=</span><span class="st">"outer"</span>, on<span class="op">=</span><span class="st">"code"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df_outer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="saving-tables" class="level3">
 <h3 class="anchored" data-anchor-id="saving-tables">Saving tables</h3>
 <p>The method <code>to_csv()</code> saves the contents of a DataFrame into a CSV file:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_outer.to_csv(<span class="st">"joined.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_outer.to_csv(<span class="st">"joined.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Similar to the function for reading CSV files, <code>to_csv()</code> can be modified by many parameters.</p>
 </section>
 </section>
@@ -461,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="exercise-4.1-3-p">Exercise 4.1 (3 P)</h3>
 <p>You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder <code>python4</code> must contain the following files, which you have created in the course of this unit:</p>
 <ul>
-<li><code>my_array.npz</code></li>
+<li><code>my_array.npy</code></li>
 <li><code>my_array.txt</code></li>
 <li><code>amino_acids.csv</code></li>
 <li><code>amino_acids_chemdata.csv</code></li>
@@ -484,24 +533,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Store the function in <code>exercise_4_2.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls (<code>vectors.txt</code> is available in <code>/resources/week2</code>):</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the vectors [1 0 0 0 0] and [0 0 1 0 0]</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_normal(<span class="st">"vectors.txt"</span>, <span class="dv">0</span>, <span class="dv">2</span>))  </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the vectors [3 -2 7 0 1] and [0 0 1 0 0]</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_normal(<span class="st">"vectors.txt"</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the vectors [5 0 -2 8 -1] and [3 -2 7 0 1]</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_normal(<span class="st">"vectors.txt"</span>, <span class="dv">4</span>, <span class="dv">1</span>))</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the vectors [1 0 0 0 0] and [0 0 1 0 0]</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_normal(<span class="st">"vectors.txt"</span>, <span class="dv">0</span>, <span class="dv">2</span>))  </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the vectors [3 -2 7 0 1] and [0 0 1 0 0]</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_normal(<span class="st">"vectors.txt"</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the vectors [5 0 -2 8 -1] and [3 -2 7 0 1]</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_normal(<span class="st">"vectors.txt"</span>, <span class="dv">4</span>, <span class="dv">1</span>))</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>See above how to <a href="#reading-and-writing">read</a> an array from a file and <a href="#indexing-and-slicing">slice</a> it. Calculation of the <a href="#basic-operations">dot product</a> is also explained above.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-4.3-4-p" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4.3-4-p">Exercise 4.3 (4 P)</h3>
 <p>Implement a function <code>translate()</code> that translates a DNA sequence into a protein sequence and calculates the isoelectric point of the latter.</p>
 <p>While there are many ways to implement such a function, please adhere to the following specifications:</p>
 <ul>
-<li>The function has a single parameter, which receives the DNA sequence as string. You may assume that the length of the string is divisible by three.</li>
+<li>The function has a single parameter, which receives the DNA sequence as string. You may assume that the length of the string is always divisible by three.</li>
 <li>Within the function, first create a DataFrame with one column containing codons of the DNA sequence. There are several ways to split the sequence into codons, e.g., via a for loop or by using the <code>wrap()</code> function from the <a href="https://docs.python.org/3/library/textwrap.html"><code>textwrap</code></a> module.</li>
 <li>Load the CSV files <code>amino_acids.csv</code> (in your <code>python4</code> folder) and <code>codon_table_small.csv</code> (in <code>/resources/week2</code>) as DataFrames.</li>
 <li>Join the three DataFrames. Think about the type of joins, their order, and which columns should be used as keys.</li>
@@ -513,42 +580,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Store the function in <code>exercise_4_3.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(translate(<span class="st">"AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGATCACTGTCCTTCTGCCA"</span>))</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('SPPGQAASEEAIKQITVLLP', 5.869999999999999)</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(translate(<span class="st">"TGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACC"</span>))</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('CASCPCWRCWPSGDLT', 5.824999999999999)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(translate(<span class="st">"AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGATCACTGTCCTTCTGCCA"</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('SPPGQAASEEAIKQITVLLP', 5.869999999999999)</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(translate(<span class="st">"TGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACC"</span>))</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ('CASCPCWRCWPSGDLT', 5.824999999999999)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>See above how to <a href="#create-a-dataframe">create</a> a DataFrame from a dict or from a CSV file, and how <a href="#joins">joins</a> works. Also remember how to write a function that <a href="./python2.html#functions">returns two values</a>.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-4.4-3-p" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4.4-3-p">Exercise 4.4 (3 P)</h3>
-<p>You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (<code>/resources/week2/data_ugly.csv</code>). Alas, when you have a closer look at the CSV file, you note that it looks completely strange (only the first ten rows are shown below):</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a># column 1: single-letter code</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a># column 2: name</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a># column 3: is the amino acid charged?</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a># column 4: isoelectric point</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a># column 5: for debugging</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>A;alanine;nope;6_0;-1</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>C;cysteine;nope;5_0;-1</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>D;aspartic acid;sure;3_0;-1</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>E;glutamic acid;sure;3_2;-1</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>F;phenylalanine;nope;5_5;-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You realize that there are several problems in this file:</p>
+<p>You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (<code>/resources/week2/data_ugly.csv</code>). Alas, when you have a closer look at the CSV file, you note that it looks <em>somewhat</em> strange (only the first ten rows are shown below):</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a># column 1: single-letter code</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a># column 2: name</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a># column 3: is the amino acid charged?</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a># column 4: isoelectric point</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a># column 5: for debugging</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>A;alanine;nope;6_0;-1</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>C;cysteine;nope;5_0;-1</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>D;aspartic acid;sure;3_0;-1</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>E;glutamic acid;sure;3_2;-1</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>F;phenylalanine;nope;5_5;-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You identify several problems in this file:</p>
 <ul>
 <li>Columns are separated by semicolons (<code>;</code>).</li>
 <li>There is no row with column names. Instead, the first five rows apparently contain comments that start with a hash sigh (<code>#</code>) and explain the contents of each column.</li>
-<li>The third column describes whether an amino acid is charged or not. Although you expected this column to contain Boolean values, the database labeled charged amino acids with “sure” and uncharged amino acids with “nope”.</li>
+<li>The third column describes whether an amino acid is charged or not. Although you expected this column to contain Boolean values, the database labeled charged amino acids with <code>sure</code> and uncharged amino acids with <code>nope</code>.</li>
 <li>The fourth column contains the isoelectric point. For unknown reasons, however, the underscore (<code>_</code>) is used as decimal separator!</li>
 <li>The fifth column contains useless information and thus should be omitted.</li>
 </ul>
-<p>Fortunately, you remember that Pandas’ <code>read_csv()</code> function may be configured via optional parameters. Thus, you assume that this function may even load this terrible CSV file. Consult the <a href="https://pandas.pydata.org/docs/">documentation</a> which parameters you will need to load the CSV file so that it looks as follows:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>&gt;&gt;&gt; df</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>   code           name  charged    pi</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>0     A        alanine    False   6.0</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>1     C       cysteine    False   5.0</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>2     D  aspartic acid     True   3.0</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>3     E  glutamic acid     True   3.2</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>4     F  phenylalanine    False   5.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Store your code in <code>exercise_4_4.py</code> and save the correctly formatted DataFrame to <code>data_tidy.csv</code>.</p>
+<p>Fortunately, you remember that Pandas’ <code>read_csv()</code> function may be configured via optional parameters. Thus, you assume that this function may even be able to load this terrible CSV file. The loaded file should look as follows (only the top five rows are shown):</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>   code           name  charged    pi</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>0     A        alanine    False   6.0</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>1     C       cysteine    False   5.0</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>2     D  aspartic acid     True   3.0</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>3     E  glutamic acid     True   3.2</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>4     F  phenylalanine    False   5.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Implement a function <code>load_data()</code> that has a single parameter (the name of the input file) and returns the correctly formatted dataframe. In addition, your code should save the correctly formatted DataFrame to <code>data_tidy.csv</code>.</p>
+<p>Store your code in <code>exercise_4_4.py</code>.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Consult the <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">Pandas documentation</a> to learn which arguments you will need to specify.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>

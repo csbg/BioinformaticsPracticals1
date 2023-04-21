@@ -202,10 +202,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-3.1-4-p" id="toc-exercise-3.1-4-p" class="nav-link" data-scroll-target="#exercise-3.1-4-p">Exercise 3.1 (4 P)</a></li>
-  <li><a href="#exercise-3.2-6-p" id="toc-exercise-3.2-6-p" class="nav-link" data-scroll-target="#exercise-3.2-6-p">Exercise 3.2 (6 P)</a></li>
-  <li><a href="#exercise-3.3-6-p" id="toc-exercise-3.3-6-p" class="nav-link" data-scroll-target="#exercise-3.3-6-p">Exercise 3.3 (6 P)</a></li>
-  <li><a href="#exercise-3.4-5-p" id="toc-exercise-3.4-5-p" class="nav-link" data-scroll-target="#exercise-3.4-5-p">Exercise 3.4 (5 P)</a></li>
+  <li><a href="#exercise-3.1-3-p" id="toc-exercise-3.1-3-p" class="nav-link" data-scroll-target="#exercise-3.1-3-p">Exercise 3.1 (3 P)</a></li>
+  <li><a href="#exercise-3.2-4-p" id="toc-exercise-3.2-4-p" class="nav-link" data-scroll-target="#exercise-3.2-4-p">Exercise 3.2 (4 P)</a></li>
+  <li><a href="#exercise-3.3-3-p" id="toc-exercise-3.3-3-p" class="nav-link" data-scroll-target="#exercise-3.3-3-p">Exercise 3.3 (3 P)</a></li>
+  <li><a href="#exercise-3.4-3-p" id="toc-exercise-3.4-3-p" class="nav-link" data-scroll-target="#exercise-3.4-3-p">Exercise 3.4 (3 P)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,7 +261,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ins_A.sequence)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(ins_A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The built-in function <code>type()</code> tells us the class from which <code>ins_A</code> has been derived.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You may wonder what happened to the first parameter (<code>self</code>) of <code>__init__()</code>. Why did we only specify two arguments (which were obviously assigned to the parameters <code>name</code> und <code>sequence</code>) when we instantiated the insulin object? Each instance method must be defined with at least one parameter (commonly called <code>self</code>), which refers to the current instance. However, we <em>must not</em> pass an argument to this parameter when invoking the instance method – Python supplies the appropriate value “automatically”.</p>
+</div>
+</div>
 </section>
 <section id="methods" class="level3">
 <h3 class="anchored" data-anchor-id="methods">Methods</h3>
@@ -327,26 +339,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><em>Groups</em> are created by parentheses surrounding one or more characters. Groups may be modified by a quantifier and allow to extract parts of a match:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>findall(<span class="vs">r"animal: (\w+) (\w+)"</span>, <span class="st">"animal: Mus musculus (mouse)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
+<div id="example-findall" class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example
+</div>
+</div>
+<div id="example-findall" class="callout-body-container callout-body">
+<p>In the code below, we extract all codes that start with the character <code>2</code> from a string. The resulting list contains three elements, each of which is a tuple with two strings representing the first and second matched group, respectively. Of course, we can interate over the list of matches.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>codes <span class="op">=</span> <span class="st">"1a3, 1b4, 2c5, 2d6, 2e7, 3f8, 3g9"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>codes_starting_with_two <span class="op">=</span> re.findall(<span class="vs">r"(2.)(.)"</span>, codes)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>codes_starting_with_two</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [('2c', '5'), ('2d', '6'), ('2e', '7')]</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> code <span class="kw">in</span> codes_starting_with_two:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(code[<span class="dv">1</span>])</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 <section id="pattern-objects" class="level3">
 <h3 class="anchored" data-anchor-id="pattern-objects">Pattern objects</h3>
 <p>Functions like <code>findall()</code> are useful for simple searches. For more complex cases, we prefer to create a <em>pattern</em> object from a regular expression and then use its methods.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> re <span class="im">import</span> <span class="bu">compile</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="bu">compile</span>(<span class="vs">r"animal: (\w+) (\w+)"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(p)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p.pattern)  <span class="co"># attribute: regex used for searching</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p.groups)   <span class="co"># attribute: number of groups</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> re <span class="im">import</span> <span class="bu">compile</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="bu">compile</span>(<span class="vs">r"animal: (\w+) (\w+)"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(p)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p.pattern)  <span class="co"># attribute: regex used for searching</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p.groups)   <span class="co"># attribute: number of groups</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The pattern object has a method <code>search()</code> that searches for matches in a string and returns a <em>match</em> object upon success.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> p.search(<span class="st">"animal: Mus musculus (mouse)"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> p.search(<span class="st">"animal: Mus musculus (mouse)"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s have a closer look at the match object:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m.groups()  <span class="co"># tuple with found groups</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">0</span>]        <span class="co"># whole match</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">1</span>]        <span class="co"># first group</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>m.span()    <span class="co"># start and end index of the whole match</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>m.start(<span class="dv">2</span>)  <span class="co"># start index of the second group</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>m.end(<span class="dv">1</span>)    <span class="co"># end index of the first group</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>m.groups()  <span class="co"># tuple with found groups</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">0</span>]        <span class="co"># whole match</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">1</span>]        <span class="co"># first group</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>m.span()    <span class="co"># start and end index of the whole match</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>m.start(<span class="dv">2</span>)  <span class="co"># start index of the second group</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>m.end(<span class="dv">1</span>)    <span class="co"># end index of the first group</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="reading-and-writing-files" class="level2">
@@ -355,75 +390,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="how-to-read-individual-characters">How to read individual characters</h3>
 <p>By reading user input via <code>input()</code> or from command line arguments (<code>sys.argv</code>) and by displaying output on the console (<code>print()</code>), a program may interact with the user. However, as soon as a program has to read large datasets, it it will become infeasible to enter those data manually. Thus, Python is able to read files existing files and to create new files and write contents to them.</p>
 <p>Please copy the file <code>codon_table.csv</code> from the folder <code>/resources/week2</code> into the folder <code>python3</code> in your home directory and have a look at its first five lines:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>AAA,Lys,K,Lysine</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>AAC,Asn,N,Asparagine</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>AAG,Lys,K,Lysine</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>AAT,Asn,N,Asparagine</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ACA,Thr,T,Threonine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>AAA,Lys,K,Lysine</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>AAC,Asn,N,Asparagine</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>AAG,Lys,K,Lysine</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>AAT,Asn,N,Asparagine</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ACA,Thr,T,Threonine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This file apparently represents a codon table, where an amino acid is specified for each base triplet. We open the file by using the built-in function <code>open()</code>, which returns a file object:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"codon_table.csv"</span>, <span class="st">"r"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"codon_table.csv"</span>, <span class="st">"r"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The second argument of <code>open()</code> sets the file access mode – here, we only want to <strong>r</strong>ead the file. Python treats an opened file as a <em>data stream</em>, i.e., a (one-dimensional) sequence of data (in our case, characters) that can be accessed randomly.</p>
 <p>Python may read from a file in the following manner: Immediately after a file has been opened, the current <em>stream position</em> points to the first character (index 0), as the method <code>tell()</code>, well, tells us:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We read the first 30 characters via <code>read()</code> and store them in the variable <code>s</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> f.read(<span class="dv">30</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> f.read(<span class="dv">30</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These 30 characters comprise the first line and part of the second line. After the reading operation, the stream position lies at the 31st character (index 30):</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We may, for example, go back to index 15 and read ten characters, or jump forward to index 100 and read two characters:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">15</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>f.read(<span class="dv">10</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>f.tell()</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">100</span>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>f.read(<span class="dv">2</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">15</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>f.read(<span class="dv">10</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>f.tell()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">100</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>f.read(<span class="dv">2</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-to-read-a-file-line-by-line" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-read-a-file-line-by-line">How to read a file line by line</h3>
 <p>In many cases, we will not need random access to the file. Since text files generally are composed of <em>lines</em>, they are usually read line by line (method <code>readline()</code>):</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">0</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> f.readline()</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>l1</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> f.readline()</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>l2</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">0</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> f.readline()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>l1</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> f.readline()</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>l2</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>f.tell()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The strings <code>l1</code> and <code>l2</code> now contain the first and second line of the file, respectively, including the end of line character <code>\n</code>. The stream position points to the first character in the third line. Note: Unfortunately, the end of a line is marked by different characters depending on the operation system. While Linux uses <code>\n</code> (<em>line feed</em>), Windows uses <code>\r\n</code> (<em>carriage return</em> plus line feed), and older versions of operating systems on Mac even used <code>\r</code>. Thus, you may run into problems if you process a file that has been created in Windows on Linux.</p>
 <p>Fortunately, we don’t have to repeatedly call <code>readline()</code> to eventually read all files from: A file object may be iterated line by line, which facilitates reading within a <code>for</code> loop:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">0</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> f:</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(line)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Even more simply, we may save all lines in a list via <code>readlines()</code>:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">0</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>all_lines <span class="op">=</span> f.readlines()</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>all_lines</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> f:</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(line)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Even more simply, we may save all lines in a list via <code>readlines()</code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>f.seek(<span class="dv">0</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>all_lines <span class="op">=</span> f.readlines()</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>all_lines</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we don’t need a file any longer, we must close it:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-to-write-to-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-write-to-a-file">How to write to a file</h3>
 <p>In order to be able to write to a file, we have to open it with the respective access mode:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"some_lines.txt"</span>, <span class="st">"w"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"some_lines.txt"</span>, <span class="st">"w"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now the method <code>write()</code> allows us to write strings to the file:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>f.write(<span class="st">"First line</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>f.write(<span class="st">"Second line</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>f.write(<span class="st">"First line</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>f.write(<span class="st">"Second line</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we wish to write a collection of strings (e.g., a list of strings), the method <code>writelines()</code> allows us to do so. Attention: Python will write the list elements one after each other to the file, without inserting a new line character. Thus, if the list elements represent individual lines, we have to add an explicit newline character to the list elements:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> [<span class="st">"three</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"four</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"five</span><span class="ch">\n</span><span class="st">"</span>]</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>f.writelines(lines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> [<span class="st">"three</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"four</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"five</span><span class="ch">\n</span><span class="st">"</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>f.writelines(lines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once we are done, we have to close the file. This is especially important after we have written data to the file, since Python may postpone writing operations. <code>close()</code> ensures that any pending operations are finished.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, have a look at the created file (<code>cat</code>).</p>
 </section>
 <section id="context-objects" class="level3">
 <h3 class="anchored" data-anchor-id="context-objects">Context objects</h3>
 <p><em>Context objects</em> make file access even simpler. Instead of opening, reading/writing, and closing, a <code>with</code> block is used:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"codon_table.csv"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    all_lines <span class="op">=</span> f.readlines()</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> all_lines:</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(line)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"codon_table.csv"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    all_lines <span class="op">=</span> f.readlines()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> all_lines:</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(line)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Create a context object by writing - keyword <code>with</code> - function that returns a context object (here: <code>open()</code>) - keyword <code>as</code> - name for the context object (here: <code>f</code>) - colon - indented statements (suite)</p>
 <p>Within the suite, the context object is defined (in our example, the open file is available for reading). As soon as the control flow exits the suite, Python makes sure that the context object is <em>deinitialized</em> (in the case of files, any pending writing operations are executed, and the file is closed).</p>
 </section>
@@ -431,8 +466,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <p>Store all files that you generate for unit 3 in the folder <code>python3</code> in your home directory.</p>
-<section id="exercise-3.1-4-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1-4-p">Exercise 3.1 (4 P)</h3>
+<section id="exercise-3.1-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.1-3-p">Exercise 3.1 (3 P)</h3>
 <p>You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder <code>python3</code> must contain the following files, which you have created in the course of this unit:</p>
 <ul>
 <li><code>codon_table.csv</code></li>
@@ -440,8 +475,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>some_lines.txt</code></li>
 </ul>
 </section>
-<section id="exercise-3.2-6-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.2-6-p">Exercise 3.2 (6 P)</h3>
+<section id="exercise-3.2-4-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.2-4-p">Exercise 3.2 (4 P)</h3>
 <p>Create a class <code>Protein</code> with the following properties:</p>
 <ul>
 <li>The init method requires the arguments <code>name</code>, <code>uniprot_id</code>, and <code>sequence</code>, which are stored in attributes of the same name.</li>
@@ -454,59 +489,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 + mass of a water molecule
 - 2 * mass of hydrogen * number of disulfide bridges</code></pre>
 <p>Please use the following masses:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>AA_MASS <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    G<span class="op">=</span><span class="fl">57.05132</span>,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    A<span class="op">=</span><span class="fl">71.0779</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    S<span class="op">=</span><span class="fl">87.0773</span>,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    P<span class="op">=</span><span class="fl">97.11518</span>,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    V<span class="op">=</span><span class="fl">99.13106</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    T<span class="op">=</span><span class="fl">101.10388</span>,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    C<span class="op">=</span><span class="fl">103.1429</span>,</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    L<span class="op">=</span><span class="fl">113.15764</span>,</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    I<span class="op">=</span><span class="fl">113.15764</span>,</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    N<span class="op">=</span><span class="fl">114.10264</span>,</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    D<span class="op">=</span><span class="fl">115.0874</span>,</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    Q<span class="op">=</span><span class="fl">128.12922</span>,</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    K<span class="op">=</span><span class="fl">128.17228</span>,</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    E<span class="op">=</span><span class="fl">129.11398</span>,</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    M<span class="op">=</span><span class="fl">131.19606</span>,</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    H<span class="op">=</span><span class="fl">137.13928</span>,</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    F<span class="op">=</span><span class="fl">147.17386</span>,</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    R<span class="op">=</span><span class="fl">156.18568</span>,</span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    Y<span class="op">=</span><span class="fl">163.17326</span>,</span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    W<span class="op">=</span><span class="fl">186.2099</span></span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>WATER_MASS <span class="op">=</span> <span class="fl">18.01528</span></span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>H_MASS <span class="op">=</span> <span class="fl">1.00784</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>AA_MASS <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    G<span class="op">=</span><span class="fl">57.05132</span>, A<span class="op">=</span><span class="fl">71.0779</span>, S<span class="op">=</span><span class="fl">87.0773</span>, P<span class="op">=</span><span class="fl">97.11518</span>, V<span class="op">=</span><span class="fl">99.13106</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    T<span class="op">=</span><span class="fl">101.10388</span>, C<span class="op">=</span><span class="fl">103.1429</span>, L<span class="op">=</span><span class="fl">113.15764</span>, I<span class="op">=</span><span class="fl">113.15764</span>, N<span class="op">=</span><span class="fl">114.10264</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    D<span class="op">=</span><span class="fl">115.0874</span>, Q<span class="op">=</span><span class="fl">128.12922</span>, K<span class="op">=</span><span class="fl">128.17228</span>, E<span class="op">=</span><span class="fl">129.11398</span>, M<span class="op">=</span><span class="fl">131.19606</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    H<span class="op">=</span><span class="fl">137.13928</span>, F<span class="op">=</span><span class="fl">147.17386</span>, R<span class="op">=</span><span class="fl">156.18568</span>, Y<span class="op">=</span><span class="fl">163.17326</span>, W<span class="op">=</span><span class="fl">186.2099</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>WATER_MASS <span class="op">=</span> <span class="fl">18.01528</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>H_MASS <span class="op">=</span> <span class="fl">1.00784</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Store the class in <code>exercise_3_2.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>galanin <span class="op">=</span> Protein(<span class="st">"Galanin"</span>, <span class="st">"P22466"</span>, <span class="st">"GWTLNSAGYLLGPHAVGNHRSFSDKNGLTS"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(galanin))</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class '__main__.Protein'&gt;</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(galanin.get_length())</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(galanin.contains(<span class="st">"CGSHLV"</span>))</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(galanin.get_mw())</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3157.4102999999996</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>insulin_B <span class="op">=</span> Protein(<span class="st">"Insulin B chain"</span>, <span class="st">"P01308"</span>, <span class="st">"FVNQHLCGSHLVEALYLVCGERGFFYTPKT"</span>)</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insulin_B.get_length())</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30</span></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insulin_B.contains(<span class="st">"CGSHLV"</span>))</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insulin_B.get_mw(disulfides<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3427.9056799999994</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>galanin <span class="op">=</span> Protein(<span class="st">"Galanin"</span>, <span class="st">"P22466"</span>, <span class="st">"GWTLNSAGYLLGPHAVGNHRSFSDKNGLTS"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(galanin))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class '__main__.Protein'&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(galanin.get_length())</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(galanin.contains(<span class="st">"CGSHLV"</span>))</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(galanin.get_mw())</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3157.4102999999996</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>insulin_B <span class="op">=</span> Protein(<span class="st">"Insulin B chain"</span>, <span class="st">"P01308"</span>, <span class="st">"FVNQHLCGSHLVEALYLVCGERGFFYTPKT"</span>)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insulin_B.get_length())</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insulin_B.contains(<span class="st">"CGSHLV"</span>))</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insulin_B.get_mw(disulfides<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3427.9056799999994</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>You may build upon the <code>Protein</code> class we defined above. The <a href="#attributes-and-the-init-method">init method</a> has to define three attributes.</li>
+<li>You have also learned how to implement <a href="#methods">methods</a>. Think about the number of parameters, required vs optional, and the return value – these decisions are the same as for <a href="./python2.html#functions">function design</a>.</li>
+<li>In <code>get_mw()</code>, you likely will need a <a href="./python2.html#example-counter">counter variable</a> and have to <a href="./python2.html#dictionaries">access dict values</a>.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="exercise-3.3-6-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.3-6-p">Exercise 3.3 (6 P)</h3>
+<section id="exercise-3.3-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.3-3-p">Exercise 3.3 (3 P)</h3>
 <p>Implement a function <code>read_masses</code> which reads a table of atomic weights.</p>
 <ul>
 <li><p>The function has a single parameter, which receives the name of the file containing the table.</p></li>
@@ -521,34 +560,79 @@ B,10.81</code></pre>
 </ul>
 <p>Store the function in <code>exercise_3_3.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> read_masses(<span class="st">"average_mass.csv"</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m[<span class="st">"N"</span>])</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14.007</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m[<span class="st">"S"</span>])</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32.06</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">*</span> m[<span class="st">"H"</span>] <span class="op">+</span> m[<span class="st">"O"</span>])</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18.015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> read_masses(<span class="st">"average_mass.csv"</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m[<span class="st">"N"</span>])</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14.007</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m[<span class="st">"S"</span>])</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32.06</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">*</span> m[<span class="st">"H"</span>] <span class="op">+</span> m[<span class="st">"O"</span>])</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18.015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>You will have to <a href="#how-to-read-a-file-line-by-line">open</a> the file and read its contents.</li>
+<li>The regex for parsing each line will contain two <a href="#pattern-objects">groups</a> that capture the element and weight, respectively.</li>
+<li>Combine your knowledge on <a href="./python2.html#example-counter">counter variables</a> and <a href="./python2.html#dictionaries">dicts</a>.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="exercise-3.4-5-p" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.4-5-p">Exercise 3.4 (5 P)</h3>
+<section id="exercise-3.4-3-p" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.4-3-p">Exercise 3.4 (3 P)</h3>
 <p>Implement a function <code>calculate_mass</code>, which calculates the mass of a chemical compound. The function is called with a string that contains the molecular formula (e.g., <code>"C6 H12 O6"</code> or <code>"C Cl4"</code>) and returns the mass as a float.</p>
 <p>Hints:</p>
 <ul>
 <li>Extract individual element symbols and their counts via a regular expression containing two groups. The first group should match one uppercase letter followed by an optional lowercase letter. The second group should match any number of digits.</li>
-<li>Reuse your solution for exercise 3.3, which should provide a dict containing atomic masses. You may import Python files like any module (e.g., <code>from exercise_3_3 import read_masses</code>).</li>
 </ul>
+<p>Please use the following masses:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>MASSES <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    H<span class="op">=</span><span class="fl">1.008</span>, He<span class="op">=</span><span class="fl">4.0026</span>, Li<span class="op">=</span><span class="fl">6.94</span>, Be<span class="op">=</span><span class="fl">9.0122</span>, B<span class="op">=</span><span class="fl">10.81</span>,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    C<span class="op">=</span><span class="fl">12.011</span>, N<span class="op">=</span><span class="fl">14.007</span>, O<span class="op">=</span><span class="fl">15.999</span>, F<span class="op">=</span><span class="fl">18.998</span>, Ne<span class="op">=</span><span class="fl">20.18</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    Na<span class="op">=</span><span class="fl">22.99</span>, Mg<span class="op">=</span><span class="fl">24.305</span>, Al<span class="op">=</span><span class="fl">26.982</span>, Si<span class="op">=</span><span class="fl">28.085</span>, P<span class="op">=</span><span class="fl">30.974</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    S<span class="op">=</span><span class="fl">32.06</span>, Cl<span class="op">=</span><span class="fl">35.45</span>, Ar<span class="op">=</span><span class="fl">39.948</span>, K<span class="op">=</span><span class="fl">39.098</span>, Ca<span class="op">=</span><span class="fl">40.078</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Store the function in <code>exercise_3_4.py</code>.</p>
 <p>You may check that your program works correctly by using the following exemplary calls:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_mass(<span class="st">"C6 H12 O6"</span>))</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 180.156</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_mass(<span class="st">"H2 O"</span>))</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18.015</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_mass(<span class="st">"C34 H46 Cl N3 O10"</span>))</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 692.203</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_mass(<span class="st">"C6 H12 O6"</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 180.156</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_mass(<span class="st">"H2 O"</span>))</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18.015</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_mass(<span class="st">"C34 H46 Cl N3 O10"</span>))</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 692.203</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>For designing the regex to extract individual elements and their counts, think about how they are written: Each element starts with one uppercase letter, followed by one optional lowercase letter. The count has an arbitrary number of digits (i.e., it may also be missing, which indicates a count of 1). You will have to <a href="#how-to-read-a-file-line-by-line">open</a> the file and read its contents.</li>
+<li>You will have to <a href="#example-findall">iterate</a> over <code>findall()</code> results.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
