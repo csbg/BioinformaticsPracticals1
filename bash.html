@@ -295,36 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> day2/test/folder</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Change permissions in a file created in the above folder.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> day2/test/folder/test.txt</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 711 day2/test/folder/test.txt</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 722 day2/test/folder/test.txt</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 733 day2/test/folder/test.txt</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 744 day2/test/folder/test.txt</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 day2/test/folder/test.txt</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 766 day2/test/folder/test.txt</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 777 day2/test/folder/test.txt</span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 700 day2/test/folder/test.txt</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> chmod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The following table outlines permissions in chmod (<a href="https://en.wikipedia.org/wiki/Chmod" class="uri">https://en.wikipedia.org/wiki/Chmod</a>).</p>
+<p>Change permissions in a file created in the above folder. We will use the <code>chmod</code> command (<a href="https://en.wikipedia.org/wiki/Chmod" class="uri">https://en.wikipedia.org/wiki/Chmod</a>). This command uses three digits between 0 and 7 to set the permissions of (i) the user, (ii) the group, and (iii) everyone else. The digit defines the permission, as explained in the following table.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -385,6 +356,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p>Now create a test file. Then we will change permissions with <code>chmod</code> and look at them with <code>ls -l</code>. Rund these lines one by one and understand the output.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the file</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> day2/test/folder/test.txt</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Change permissions</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 711 day2/test/folder/test.txt</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 722 day2/test/folder/test.txt</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 733 day2/test/folder/test.txt</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 744 day2/test/folder/test.txt</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 day2/test/folder/test.txt</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 766 day2/test/folder/test.txt</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 777 day2/test/folder/test.txt</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 700 day2/test/folder/test.txt</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day2/test/folder</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> chmod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="exercises" class="level4">
 <h4 class="anchored" data-anchor-id="exercises">Exercises</h4>
 <ul>
@@ -431,7 +433,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="editing-in-nano" class="level3">
 <h3 class="anchored" data-anchor-id="editing-in-nano">Editing in nano</h3>
 <p>Now add a line at the end of the file <code>gRNAs.txt</code> that is located in your home directory, adding the gRNA sequence “ACTGACTG”. Use the <code>nano</code> editor for this purpose. To quit the nano-editor you need to press Ctrl+X. Then type y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> gRNAs.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Nano commands:</p>
 <table class="table">
 <thead>
@@ -499,8 +500,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> gRNAs.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now use nano to modify the shell to make things prettier. To do so change the file <code>.bash_profile</code>. This file contains settings for each user (the naming is just by convention). It starts with a <code>.</code>, which for Linux means the file is hidden.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.bash_profile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.bash_profile</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This creates the file and also opens it in nano</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Add the following lines to <code>.bash_profile</code> in nano, then exit the file and save it - see the commands above.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-x</span> /usr/bin/dircolors <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">test</span> <span class="at">-r</span> ~/.dircolors <span class="kw">&amp;&amp;</span> <span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="fu">dircolors</span> <span class="at">-b</span> ~/.dircolors<span class="va">)</span><span class="st">"</span> <span class="kw">||</span> <span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="fu">dircolors</span> <span class="at">-b</span><span class="va">)</span><span class="st">"</span></span>
@@ -514,6 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Also, notice the difference in <code>ls</code> commands to show hidden files (like <code>.bash_profile</code>).</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note: If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.</p>
 </section>
 <section id="zipped-files" class="level3">
 <h3 class="anchored" data-anchor-id="zipped-files">Zipped files</h3>
@@ -898,12 +902,17 @@ Welcome 5 times</code></pre>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> gRNAs.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="exercise" class="level4">
 <h4 class="anchored" data-anchor-id="exercise">Exercise</h4>
-<p>Now we will combine the above variables and loopes to test all guides in file <code>gRNAs.txt</code> against all DNA sequences in <code>GRCh38_reformatted.gz</code>. To do so you need the following steps (also see the hints below):</p>
+<p>Now we will combine the above variables and loopes to test all guides in file <code>gRNAs.txt</code> against all DNA sequences in <code>GRCh38_reformatted.gz</code>. To do so you need the following steps (also see the hints below!!!):</p>
 <ul>
 <li>Use the code above (under <a href="#variables">Variables</a>) that matches guides against DNA sequences and extracts gene symbols for matched sequences.</li>
-<li>Place this function into the loop that iterates through the file <code>gRNAs.txt</code>, using the while loop iterating through the file.</li>
-<li>Store all results (not just the top 30 coming from <code>head -30</code>) of each guide into a file that is named <code>results_${guide}.txt</code>. Place all files into a new folder <code>day4</code> - ideally already within the loop.</li>
-<li>Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?</li>
+<li>Place this function into the loop that iterates through the file <code>gRNAs.txt</code>, using the while loop shown above that iterates through a file.</li>
+<li>Store all matches (not just the top 30 coming from <code>head -30</code>) of each guide into a file that is named <code>results_${guide}.txt</code>. Place all files into a new folder <code>day4</code> - ideally already within the loop.</li>
+<li>Double-check the results by hand (no points).
+<ul>
+<li>How many files did you just create?</li>
+<li>Look at one of the created files. Is the content what you would expect?</li>
+<li>When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?</li>
+</ul></li>
 </ul>
 <p>Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using <code>guide=[...]</code></p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$guide</span></span>
@@ -941,7 +950,12 @@ Welcome 5 times</code></pre>
 <ul>
 <li>Use one loop (iterating through all guides) within a second loop (also iterating through all guides) to compare the overlap between all pairs of guides.</li>
 <li>Use the <code>comm</code> command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named <code>overlap_${guide1}_${guide2}.txt</code>.</li>
-<li>“Manually” check results, for example comparing to the example above (“AAGTTGGC” vs “GCCATACA”).</li>
+<li>“Manually” check results (no points):
+<ul>
+<li>How many files did you create? How many did you expect to create?</li>
+<li>Look at one of the created files. Is the content what you would expect?</li>
+<li>Compare individual examples (for example “AAGTTGGC” vs “GCCATACA”). Did you get the right overlap?</li>
+</ul></li>
 </ul>
 </section>
 </section>
