@@ -141,12 +141,27 @@ mkdir -p day2/test/folder
 pwd
 ```
 
-Change permissions in a file created in the above folder.
+Change permissions in a file created in the above folder. We will use the `chmod` command (<https://en.wikipedia.org/wiki/Chmod>). This command uses three digits between 0 and 7 to set the permissions of (i) the user, (ii) the group, and (iii) everyone else. The digit defines the permission, as explained in the following table.
+
+x | Permission | rwx | Binary
+--- | --- | --- | ---
+7 | read, write and execute | `rwx` | 111
+6 | read and write | `rw-` | 110
+5 | read and execute | `r-x` | 101
+4 | read only | `r--` | 100
+3 | write and execute | `-wx` | 011
+2 | write only | `-w-` | 010
+1 | execute only | `--x` | 001
+0 | none | `---` | 000
+
+Now create a test file. Then we will change permissions with `chmod` and look at them with `ls -l`. Rund these lines one by one and understand the output.
 
 ```bash
+# Create the file
 touch day2/test/folder/test.txt
 ls -l day2/test/folder
 
+# Change permissions
 chmod 711 day2/test/folder/test.txt
 ls -l day2/test/folder
 
@@ -174,18 +189,6 @@ ls -l day2/test/folder
 man chmod
 ```
 
-The following table outlines permissions in chmod (<https://en.wikipedia.org/wiki/Chmod>).
-
-x | Permission | rwx | Binary
---- | --- | --- | ---
-7 | read, write and execute | `rwx` | 111
-6 | read and write | `rw-` | 110
-5 | read and execute | `r-x` | 101
-4 | read only | `r--` | 100
-3 | write and execute | `-wx` | 011
-2 | write only | `-w-` | 010
-1 | execute only | `--x` | 001
-0 | none | `---` | 000
 
 #### Exercises
 
@@ -244,10 +247,6 @@ Copy the file `gRNAs.txt` from your home directory into the folder `day2`. Then 
 
 Now add a line at the end of the file `gRNAs.txt` that is located in your home directory, adding the gRNA sequence "ACTGACTG". Use the `nano` editor for this purpose. To quit the nano-editor you need to press Ctrl+X. Then type y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.
 
-```bash
-nano gRNAs.txt
-```
-
 Nano commands:
 
 Command | Function
@@ -267,10 +266,15 @@ ctrl+w | find matching word
 alt+w | find next match
 ctrl+\ | find and replace
 
+```bash
+nano gRNAs.txt
+```
+
 Now use nano to modify the shell to make things prettier. To do so change the file `.bash_profile`. This file contains settings for each user (the naming is just by convention). It starts with a `.`, which for Linux means the file is hidden. 
 
 ```bash
 nano ~/.bash_profile
+# This creates the file and also opens it in nano
 ```
 
 Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above.
@@ -297,6 +301,8 @@ Also, notice the difference in `ls` commands to show hidden files (like `.bash_p
 ls -l
 ls -al
 ```
+
+Note: If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.
 
 
 
@@ -700,12 +706,15 @@ done < gRNAs.txt
 
 #### Exercise
 
-Now we will combine the above variables and loopes to test all guides in file `gRNAs.txt` against all DNA sequences in `GRCh38_reformatted.gz`. To do so you need the following steps (also see the hints below):
+Now we will combine the above variables and loopes to test all guides in file `gRNAs.txt` against all DNA sequences in `GRCh38_reformatted.gz`. To do so you need the following steps (also see the hints below!!!):
 
 - Use the code above (under [Variables](#variables)) that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
-- Place this function into the loop that iterates through the file `gRNAs.txt`, using the while loop iterating through the file.
-- Store all results (not just the top 30 coming from `head -30`) of each guide into a file that is named `results_${guide}.txt`. Place all files into a new folder `day4` - ideally already within the loop.
-- Check a few examples by hand. Do you get the right genes? Do you get the correct number of genes for the guides?
+- Place this function into the loop that iterates through the file `gRNAs.txt`, using the while loop shown above that iterates through a file.
+- Store all matches (not just the top 30 coming from `head -30`) of each guide into a file that is named `results_${guide}.txt`. Place all files into a new folder `day4` - ideally already within the loop.
+- Double-check the results by hand (no points).
+	- How many files did you just create?
+	- Look at one of the created files. Is the content what you would expect?
+	- When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?
 
 Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using `guide=[...]`
 
@@ -763,7 +772,11 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 
 - Use one loop (iterating through all guides) within a second loop (also iterating through all guides) to compare the overlap between all pairs of guides.
 - Use the `comm` command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
-- "Manually" check results, for example comparing to the example above ("AAGTTGGC" vs "GCCATACA").
+- "Manually" check results (no points):
+	- How many files did you create? How many did you expect to create?
+	- Look at one of the created files. Is the content what you would expect?
+	- Compare individual examples (for example "AAGTTGGC" vs "GCCATACA"). Did you get the right overlap?
+	
 
 
 
