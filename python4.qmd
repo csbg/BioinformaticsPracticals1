@@ -168,7 +168,7 @@ data_dict = dict(A=["a", "b", "c"],
 pd.DataFrame(data_dict)
 ```
 
-Importantly, a DataFrame may be created by reading a file containing tabular data, such as a file in [CSV format](https://en.wikipedia.org/wiki/Comma-separated_values). Copy the file `amino_acids.csv` from `/resources/week2` into a subfolder `python4` in your home directory and look at its first five lines:
+Importantly, a DataFrame may be created by reading a file containing tabular data, such as a file in [CSV format](https://en.wikipedia.org/wiki/Comma-separated_values). Copy the file `amino_acids.csv` from `/resources/python` into a subfolder `python4` in your home directory and look at its first five lines:
 
 
 ```default
@@ -334,7 +334,7 @@ df_left = pd.read_csv("amino_acids.csv")
 df_left
 ```
 
-Also load a second CSV file (available in `/resources/week2`):
+Also load a second CSV file (available in `/resources/python`):
 
 ```python
 df_right = pd.read_csv("amino_acids_chemdata.csv")
@@ -413,7 +413,7 @@ Implement a function `is_normal` that checks whether two columns of a matrix are
 
 Store the function in `exercise_4_2.py`.
 
-You may check that your program works correctly by using the following exemplary calls (`vectors.txt` is available in `/resources/week2`):
+You may check that your program works correctly by using the following exemplary calls (`vectors.txt` is available in `/resources/python`):
 
 
 ```python
@@ -443,7 +443,7 @@ While there are many ways to implement such a function, please adhere to the fol
 
 - The function has a single parameter, which receives the DNA sequence as string. You may assume that the length of the string is always divisible by three.
 - Within the function, first create a DataFrame with one column containing codons of the DNA sequence. There are several ways to split the sequence into codons, e.g., via a for loop or by using the `wrap()` function from the [`textwrap`](https://docs.python.org/3/library/textwrap.html) module.
-- Load the CSV files `amino_acids.csv` (in your `python4` folder) and `codon_table_small.csv` (in `/resources/week2`) as DataFrames.
+- Load the CSV files `amino_acids.csv` (in your `python4` folder) and `codon_table_small.csv` (in `/resources/python`) as DataFrames.
 - Join the three DataFrames. Think about the type of joins, their order, and which columns should be used as keys.
 - The function must return two values:
   1. a string containing the protein sequence (you will have to apply the string method `join()` to one of the columns of the join result)
@@ -468,7 +468,7 @@ print(translate("TGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACC"))
 
 ### Exercise 4.4 (3 P)
 
-You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (`/resources/week2/data_ugly.csv`). Alas, when you have a closer look at the CSV file, you note that it looks *somewhat* strange (only the first ten rows are shown below):
+You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (`/resources/python/data_ugly.csv`). Alas, when you have a closer look at the CSV file, you note that it looks *somewhat* strange (only the first ten rows are shown below):
 
 
 ```default

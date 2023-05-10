@@ -213,7 +213,7 @@ m.end(1)    # end index of the first group
 
 By reading user input via `input()` or from command line arguments (`sys.argv`) and by displaying output on the console (`print()`), a program may interact with the user. However, as soon as a program has to read large datasets, it it will become infeasible to enter those data manually. Thus, Python is able to read files existing files and to create new files and write contents to them.
 
-Please copy the file `codon_table.csv` from the folder `/resources/week2` into the folder `python3` in your home directory and have a look at its first five lines:
+Please copy the file `codon_table.csv` from the folder `/resources/python` into the folder `python3` in your home directory and have a look at its first five lines:
 
 ```default
 AAA,Lys,K,Lysine
@@ -446,7 +446,7 @@ print(insulin_B.get_mw(disulfides=1))
 Implement a function `read_masses` which reads a table of atomic weights.
 
 - The function has a single parameter, which receives the name of the file containing the table.
-- A table in CSV format is provided (`/resources/week2/average_mass.csv`), whose first five lines read
+- A table in CSV format is provided (`/resources/python/average_mass.csv`), whose first five lines read
   ```
   H,1.008
   He,4.0026

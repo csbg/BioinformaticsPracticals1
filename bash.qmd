@@ -214,11 +214,11 @@ man mv
 man cp
 
 # now try it:
-mv /resources/week1/gRNAs.txt ~/
-cp /resources/week1/gRNAs.txt ~/
+mv /resources/bash/gRNAs.txt ~/
+cp /resources/bash/gRNAs.txt ~/
 
 # Why does mv not work? Look at file permissions:
-ls -l /resources/week1/gRNAs.txt
+ls -l /resources/bash/gRNAs.txt
 ls -l ~/gRNAs.txt
 ```
 
@@ -312,14 +312,14 @@ wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.
 If the above fails, then you can also copy the file from the resources folder into you home directory.
 
 ``` bash
-cp /resources/week1/Homo_sapiens.GRCh38.cds.all.fa.gz ~/
+cp /resources/bash/Homo_sapiens.GRCh38.cds.all.fa.gz ~/
 ```
 
 To make sure you have the entire file properly downloaded, compare the MD5 hash of the file. MD5 hash functions are a compact digital fingerprint of a file. The MD5 hash of the file should be `b16d46bf09c3b8b7909624f1e6c414ce`.
 
 ``` bash 
 md5sum ~/Homo_sapiens.GRCh38.cds.all.fa.gz
-md5sum /resources/week1/Homo_sapiens.GRCh38.cds.all.fa.gz
+md5sum /resources/bash/Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
 
 How large is this file?
@@ -439,7 +439,7 @@ Match anything that doesn't match one of the patterns (extglob) | `!`(patterns)
 
 ### Simple regular expressions
 
-Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. Note: The file `sample` needs to be copied to your home directory from the directory `/resources/week1`.
+Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. Note: The file `sample` needs to be copied to your home directory from the directory `/resources/bash`.
 
 ```bash
 cat sample
