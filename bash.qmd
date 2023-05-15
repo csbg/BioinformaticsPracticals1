@@ -51,6 +51,7 @@ List content of the directory again:
 ```bash
 ls
 ls -l
+ls -l day1/
 ```
 
 What does mkdir do? Bring up the manual (press "q" to exit the manual).
@@ -74,9 +75,10 @@ List files again.
 ```bash
 ls
 ls -l
+ls -l day1/
 ```
 
-Take a look at the files with content.
+Take a look at the file content.
 
 ```bash
 head day1/*
