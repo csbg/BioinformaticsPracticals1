@@ -33,6 +33,10 @@ ls
 ls -l
 ```
 
+:::{.callout-warning}
+Do not confuse the lowercase letter `l` (as used in `ls -l`) with the number `1`.
+:::
+
 You can clear the terminal by typing
 
 ```bash
