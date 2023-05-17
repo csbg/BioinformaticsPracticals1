@@ -218,13 +218,13 @@ pwd
 Obtain the list of gRNAs.
 
 ```bash
-# move or copy?
+# look at the man pages of the following commands – what is their purpose?
 man mv
 man cp
 
-# now try it:
-mv /resources/bash/gRNAs.txt ~/
-cp /resources/bash/gRNAs.txt ~/
+# now try it
+mv /resources/bash/gRNAs.txt ~/  # this will not work
+cp /resources/bash/gRNAs.txt ~/  # this works
 
 # Why does mv not work? Look at file permissions:
 ls -l /resources/bash/gRNAs.txt
@@ -243,6 +243,11 @@ more gRNAs.txt
 # Count the number of lines
 wc -l gRNAs.txt
 ```
+
+::: {.callout-tip}
+You may be used to a workflow where you first copy a file (e.g., Ctrl+C), then go to the destination folder, and paste it there (e.g., Ctrl+V). By contrast, the copy command `cp` does both the copying *and* pasting.
+:::
+
 
 #### Exercises
 
@@ -334,11 +339,13 @@ md5sum ~/Homo_sapiens.GRCh38.cds.all.fa.gz
 md5sum /resources/bash/Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
 
-How large is this file?
+Use the `du` command to determine the file size.
 
 ```bash
-du *
-du -sh *
+du Homo_sapiens.GRCh38.cds.all.fa.gz
+
+# the -h argument displays the file size in a human-readable format
+du -h Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
 
 Have a look at this file.
@@ -414,7 +421,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 
 #### Exercises
 
-Create a folder called `day2` in your home. Next place the following files into the folder `day2`, using pipes:
+Place the following files into the folder `~/day2`, using pipes:
 
 - Store the number of lines of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lineNumber.txt`.
 - Write the first 15 lines of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lines1.txt`.
