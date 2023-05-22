@@ -915,7 +915,7 @@ Welcome 5 times</code></pre>
 <li>When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?</li>
 </ul></li>
 </ul>
-<p>Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using <code>guide=[...]</code></p>
+<p>Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: In the following code black, the guide needs to be defined first using <code>guide=[...]</code>. In this exercise, you don’t define the guide - it should be defined by the loop.</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$guide</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="va">pattern</span><span class="op">=</span><span class="st">"seq:[ACTG]*</span><span class="va">${guide}</span><span class="st">"</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$pattern</span></span>
