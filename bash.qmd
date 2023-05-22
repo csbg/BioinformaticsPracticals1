@@ -729,7 +729,7 @@ Now we will combine the above variables and loopes to test all guides in file `g
 	- Look at one of the created files. Is the content what you would expect?
 	- When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?
 
-Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: The guide needs to be defined first using `guide=[...]`
+Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: In the following code black, the guide needs to be defined first using `guide=[...]`. In this exercise, you don't define the guide - it should be defined by the loop.
 
 ```bash
 echo $guide
