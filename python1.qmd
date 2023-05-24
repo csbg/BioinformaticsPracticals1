@@ -30,6 +30,7 @@ Numbers may be manipulated via *arithmetic operators*:
 1 + 2    # addition
 7 - 4    # subtraction
 5 * 6    # multiplication
+5 ** 2	 # exponentiation ("5 to the power of 2")
 54 / 7   # division
 10 % 4   # modulo – returns remainder
 ```
@@ -212,10 +213,11 @@ If we plan to use the entered value for calculations, we must *convert* it to a 
 
 ```python
 x = "10"  # x is the string "10"
-x * 2     # error!
+x * 2     # unexpected behavior!!
+"abc" * 3 # you can multiple strings with integers!
 
 y = int(x)  # convert the string "10" to an integer 10
-y * 2       # this works!
+y * 2       # this works as expected
 
 a = float("2.3")  # a is now the float 2.3
 a / 5.6           # this works!
@@ -223,7 +225,7 @@ a / 5.6           # this works!
 
 ::: {.callout-note #example-input}
 #### Example
-The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)! (To do so: exit the python console by typing `exit()` or the key combination `Ctrl-D`, then open and edit the file in a text editor such as nano)
+The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)! (To do so: exit the python console by typing `exit()` or the key combination `Ctrl-D` (`Ctrl` is `Strg` on a German keyboard), then open and edit the file in a text editor such as nano)
 
 ```python
 print("Calculate the product of two numbers")
