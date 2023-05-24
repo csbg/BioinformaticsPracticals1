@@ -54,8 +54,8 @@ mkdir day1
 List content of the directory again:
 ```bash
 ls
-ls -l
-ls -l day1/
+ls -l					# This shows you the home directory (and the day1 folder that is within the home directory)
+ls -l day1/		# This shows you the content of the day1 folder
 ```
 
 What does mkdir do? Bring up the manual (press "q" to exit the manual).
@@ -288,7 +288,7 @@ nano ~/.bash_profile
 # This creates the file and also opens it in nano
 ```
 
-Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above.
+Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above. Note: Depending on your system, it may be difficult to copy and paste text into nano. You can also use the text editor that comes with MobaXterm, where copy/pasting should work.
 
 ```bash
 if [ -x /usr/bin/dircolors ]; then
