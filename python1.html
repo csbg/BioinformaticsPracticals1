@@ -206,8 +206,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span>    <span class="co"># addition</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">-</span> <span class="dv">4</span>    <span class="co"># subtraction</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">*</span> <span class="dv">6</span>    <span class="co"># multiplication</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">54</span> <span class="op">/</span> <span class="dv">7</span>   <span class="co"># division</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">%</span> <span class="dv">4</span>   <span class="co"># modulo – returns remainder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">**</span> <span class="dv">2</span>   <span class="co"># exponentiation ("5 to the power of 2")</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">54</span> <span class="op">/</span> <span class="dv">7</span>   <span class="co"># division</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">%</span> <span class="dv">4</span>   <span class="co"># modulo – returns remainder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <em>assignment operator</em> assigns a name to a value:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">343</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">14</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -326,13 +327,14 @@ Warning
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(number <span class="op">+</span> <span class="dv">10</span>)  <span class="co"># a string cannot be added to an integer!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we plan to use the entered value for calculations, we must <em>convert</em> it to a numeric type via <code>int()</code> or <code>float()</code>:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"10"</span>  <span class="co"># x is the string "10"</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span>     <span class="co"># error!</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">int</span>(x)  <span class="co"># convert the string "10" to an integer 10</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">*</span> <span class="dv">2</span>       <span class="co"># this works!</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="st">"2.3"</span>)  <span class="co"># a is now the float 2.3</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">/</span> <span class="fl">5.6</span>           <span class="co"># this works!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span>     <span class="co"># unexpected behavior!!</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">"abc"</span> <span class="op">*</span> <span class="dv">3</span> <span class="co"># you can multiple strings with integers!</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">int</span>(x)  <span class="co"># convert the string "10" to an integer 10</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">*</span> <span class="dv">2</span>       <span class="co"># this works as expected</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="st">"2.3"</span>)  <span class="co"># a is now the float 2.3</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>a <span class="op">/</span> <span class="fl">5.6</span>           <span class="co"># this works!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="example-input" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -343,7 +345,7 @@ Example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file <code>product.py</code> and execute this file with Python (<code>python product.py</code>)! (To do so: exit the python console by typing <code>exit()</code> or the key combination <code>Ctrl-D</code>, then open and edit the file in a text editor such as nano)</p>
+<p>The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file <code>product.py</code> and execute this file with Python (<code>python product.py</code>)! (To do so: exit the python console by typing <code>exit()</code> or the key combination <code>Ctrl-D</code> (<code>Ctrl</code> is <code>Strg</code> on a German keyboard), then open and edit the file in a text editor such as nano)</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calculate the product of two numbers"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">input</span>(<span class="st">"First number: "</span>)</span>
