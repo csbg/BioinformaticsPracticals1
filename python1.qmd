@@ -154,16 +154,22 @@ Python uses *zero-based indexing*, i.e., the first element has index `0`.
 *Slicing* extracts a substring, i.e., several characters from a string:
 
 ```python
-enzyme[2:8]  # substring from position 2 (included) to position 8 (excluded)
+enzyme[2:8]  # substring from the character at index 2
+             # (i.e., the 3rd character from the left)
+             # to the character before (!) index 8
+             # (i.e., the 8th character from the left)
 ```
 
-When using the slicing syntax `[start index : end index]`, the character at the start index is included, while the character at the end index is excluded (!). Both start index and end index are optional:
+When using the slicing syntax `[start index : end index]`, the character at the start index is included, while the character at the end index is *excluded* (!).
+
+Both start index and end index are optional:
 
 ```python
-enzyme[:4]   # substring up to position 4 (excluded)
-enzyme[9:]   # substring starting at position 9 (included)
+enzyme[:4]   # substring up to index 3 (remember: the character
+             # at the end index is NOT included!)
+enzyme[9:]   # substring starting at index 9
 enzyme[:]    # a copy of the whole string
-enzyme[-3:]  # substring starting at position 3 counting from the end
+enzyme[-3:]  # substring starting at index 3 counting from the right
 ```
 
 
@@ -212,15 +218,19 @@ print(number + 10)  # a string cannot be added to an integer!
 If we plan to use the entered value for calculations, we must *convert* it to a numeric type via `int()` or `float()`:
 
 ```python
-x = "10"  # x is the string "10"
-x * 2     # unexpected behavior!!
-"abc" * 3 # you can multiple strings with integers!
-
+x = "10"    # x contains the string "10"
 y = int(x)  # convert the string "10" to an integer 10
 y * 2       # this works as expected
 
 a = float("2.3")  # a is now the float 2.3
-a / 5.6           # this works!
+a / 5.6           # this works as expected
+```
+
+Note, however, that you can apparently “multiply” a string with an integer. In this case, Python returns a new string that contains the original string n times (where n is the value of the integer).
+
+```python
+x * 2     # what happens here?!
+"abc" * 3 # another example
 ```
 
 ::: {.callout-note #example-input}
