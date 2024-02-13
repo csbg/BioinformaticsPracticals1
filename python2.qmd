@@ -343,9 +343,9 @@ nested_list
 Indexing and slicing also work for nested lists:
 
 ```python
-nested_list[1]
-nested_list[1][2]
-nested_list[2][2:6]
+nested_list[2]
+nested_list[2][1]
+nested_list[2][1:3]
 ```
 
 Since lists are [objects](python3.qmd#object-oriented-programming), they may be manipulated by special functions called *methods*. Methods are called like functions, but refer to a given object. Thus, the syntax for calling a method is as follows:
