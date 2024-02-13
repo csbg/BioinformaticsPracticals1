@@ -1,1 +1,1 @@
-Sitemap: https://github.com/csbg/BioinformaticsPracticals1/sitemap.xml
+Sitemap: https://csbg.github.io/BioinformaticsPracticals1/sitemap.xml
