@@ -21,7 +21,7 @@ passwd
 
 Now we are connected to the cluster. In the following we will explore this file system. Details will be explored in the next lecture of this course. For now, just execute the commands and see if you can make sense of the results.
 
-The cluster has a file system like any computer. Currently you are in your home directory. The current "path" is shown by the following command
+The cluster has a file system like any computer. Currently you are in your home directory. The current "path" is shown by the following command:
 
 ```bash
 pwd
@@ -34,7 +34,7 @@ ls -l
 ```
 
 :::{.callout-warning}
-Do not confuse the lowercase letter `l` (as used in `ls -l`) with the number `1`.
+Do not confuse the lowercase letter `l` (as used in `ls -l`) with the number `1` ("one").
 :::
 
 You can clear the terminal by typing
@@ -58,6 +58,10 @@ ls -l					# This shows you the home directory (and the day1 folder that is withi
 ls -l day1/		# This shows you the content of the day1 folder
 ```
 
+::: {.callout-tip}
+Note: "folder" and "directory" mean the same thing.
+:::
+
 What does mkdir do? Bring up the manual (press "q" to exit the manual).
 
 ```bash
@@ -68,10 +72,10 @@ Now create some files. There are many ways to create a file.
 
 ```bash
 # Create an empty file in directory "day1"
-touch day1/touch.txt
+touch day1/this_file_is_empty.txt
 
 # Write the text "abcdefgh" in a file.
-echo "abcdefgh"  > day1/echo.txt
+echo "abcdefgh"  > day1/letters.txt
 ```
 
 List files again.
@@ -106,6 +110,10 @@ cd ~/
 ls -l
 pwd
 ```
+
+::: {.callout-tip}
+The "tilde" sign `~` is very useful. For names of special symbols (to google them), see the list at the bottom of this page.
+:::
 
 Go to the folder with all home directories (absolute path).
 
@@ -143,7 +151,7 @@ Let's create another folder (relative path - from your home directory). What doe
 
 ```bash
 pwd
-mkdir -p day2/test/folder
+mkdir -p day2/documents/texts
 pwd
 ```
 
@@ -164,33 +172,33 @@ Now create a test file. Then we will change permissions with `chmod` and look at
 
 ```bash
 # Create the file
-touch day2/test/folder/test.txt
-ls -l day2/test/folder
+echo "Hello!" > day2/greeting.txt
+ls -l day2
 
 # Change permissions
-chmod 711 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 711 day2/greeting.txt
+ls -l day2
 
-chmod 722 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 722 day2/greeting.txt
+ls -l day2
 
-chmod 733 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 733 day2/greeting.txt
+ls -l day2
 
-chmod 744 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 744 day2/greeting.txt
+ls -l day2
 
-chmod 755 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 755 day2/greeting.txt
+ls -l day2
 
-chmod 766 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 766 day2/greeting.txt
+ls -l day2
 
-chmod 777 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 777 day2/greeting.txt
+ls -l day2
 
-chmod 700 day2/test/folder/test.txt
-ls -l day2/test/folder
+chmod 700 day2/greeting.txt
+ls -l day2
 
 man chmod
 ```
@@ -198,7 +206,7 @@ man chmod
 
 #### Exercises
 
-- Create a new folder called `test2` within in the folder `~/day2`.
+- Create a new folder called `secrets` within in the folder `~/day2`.
 - Enable full access to this folder for the owner of the folder, read access for the group, and no access for others
 
 
@@ -791,6 +799,12 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 	- Compare individual examples (for example "AAGTTGGC" vs "GCCATACA"). Did you get the right overlap?
 	
 
+## Names of special symbols
+- The `(` is called a parenthesis
+- The `[` is called a bracket or "squared bracket"
+- The `{` is called a brace "curly bracket"
+- The `~` is called "tilde"
+- The `*` is called the "asterisk"
 
 
 ## Useful links
