@@ -6,14 +6,20 @@ execute:
 
 ## Connecting to the cluster (Day 1)
 
-The command ssh lets you connect to the cluster. Note: you will need VPN active to be able to connect.
+The command ssh lets you connect to the cluster. You will need VPN active to be able to connect if you are not using the university LAN or "eduroam" WLAN (when you are working from home).
 
 ```bash
 ssh [username]@corso.came.sbg.ac.at
 # For example:
 ssh nfortelny@corso.came.sbg.ac.at
 ```
-Next you will change your password. Make sure to remember this password which you will you throughout this course.
+
+::: {.callout-tip}
+You will see a number of different commands over the next days. The key commands are listed at the [bottom of this page](#commands).
+:::
+
+
+Next you will change your password. Make sure to remember this password, which you will you throughout this course.
 
 ```bash
 passwd
@@ -33,7 +39,7 @@ ls
 ls -l
 ```
 
-:::{.callout-warning}
+::: {.callout-tip}
 Do not confuse the lowercase letter `l` (as used in `ls -l`) with the number `1` ("one").
 :::
 
@@ -54,15 +60,15 @@ mkdir day1
 List content of the directory again:
 ```bash
 ls
-ls -l					# This shows you the home directory (and the day1 folder that is within the home directory)
-ls -l day1/		# This shows you the content of the day1 folder
+ls -l					# This shows you the home directory (and the day1 directory that is within the home directory)
+ls -l day1/		# This shows you the content of the day1 directory
 ```
 
 ::: {.callout-tip}
-Note: "folder" and "directory" mean the same thing.
+Note: `folder` and `directory` mean the same thing. We will use `directory` from now on.
 :::
 
-What does mkdir do? Bring up the manual (press "q" to exit the manual).
+What does `mkdir` do? Bring up the manual (press `q` to exit the manual).
 
 ```bash
 man mkdir
@@ -112,10 +118,10 @@ pwd
 ```
 
 ::: {.callout-tip}
-The "tilde" sign `~` is very useful. For names of special symbols (to google them), see the list at the bottom of this page.
+The "tilde" sign `~` is very useful. The names of special symbols are listed at the [bottom of this page](#special-symbols).
 :::
 
-Go to the folder with all home directories (absolute path).
+Go to the directory `/home` (absolute path), which contains the home directories of all users.
 
 ```bash
 cd /home
@@ -139,7 +145,7 @@ ls -l
 pwd
 ```
 
-Go back one level (relative path - from the `day1` folder).
+Go back one level (relative path - from the `day1` directory).
 
 ```bash
 cd ../
@@ -147,7 +153,7 @@ ls -l
 pwd
 ```
 
-Let's create another folder (relative path - from your home directory). What does the `-p` stand for?
+Let's create another directory (relative path - from your home directory). What does the `-p` stand for?
 
 ```bash
 pwd
@@ -155,7 +161,7 @@ mkdir -p day2/documents/texts
 pwd
 ```
 
-Change permissions in a file created in the above folder. We will use the `chmod` command (<https://en.wikipedia.org/wiki/Chmod>). This command uses three digits between 0 and 7 to set the permissions of (i) the user, (ii) the group, and (iii) everyone else. The digit defines the permission, as explained in the following table.
+Change permissions in a file created in the above directory. We will use the `chmod` command (<https://en.wikipedia.org/wiki/Chmod>). This command uses three digits between 0 and 7 to set the permissions of (i) the user, (ii) the group, and (iii) everyone else. The digit defines the permission, as explained in the following table.
 
 x | Permission | rwx | Binary
 --- | --- | --- | ---
@@ -206,8 +212,8 @@ man chmod
 
 #### Exercises
 
-- Create a new folder called `secrets` within in the folder `~/day2`.
-- Enable full access to this folder for the owner of the folder, read access for the group, and no access for others
+- Create a new directory called `secrets` within in the directory `~/day2`.
+- Enable full access to this directory for the owner of the directory, read access for the group, and no access for others
 
 
 ### Getting files
@@ -253,13 +259,13 @@ wc -l gRNAs.txt
 ```
 
 ::: {.callout-tip}
-You may be used to a workflow where you first copy a file (e.g., Ctrl+C), then go to the destination folder, and paste it there (e.g., Ctrl+V). By contrast, the copy command `cp` does both the copying *and* pasting.
+You may be used to a workflow where you first copy a file (e.g., Ctrl+C), then go to the destination directory, and paste it there (e.g., Ctrl+V). By contrast, the copy command `cp` does both the copying *and* pasting.
 :::
 
 
 #### Exercises
 
-Copy the file `gRNAs.txt` from your home directory into the folder `day2`. Then rename the copied file in this folder to `gRNAs_exercise.txt`.
+Copy the file `gRNAs.txt` from your home directory into the directory `day2`. Then rename the copied file in this directory to `gRNAs_exercise.txt`.
 
 
 ### Editing in nano
@@ -296,7 +302,11 @@ nano ~/.bash_profile
 # This creates the file and also opens it in nano
 ```
 
-Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above. Note: Depending on your system, it may be difficult to copy and paste text into nano. You can also use the text editor that comes with MobaXterm, where copy/pasting should work.
+Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above. 
+
+::: {.callout-tip}
+Depending on your system, it may be difficult to copy and paste text into nano. If copy/pasting doesn't work in nano, you can also use the text editor that comes with MobaXterm, where copy/pasting should work.
+:::
 
 ```bash
 if [ -x /usr/bin/dircolors ]; then
@@ -321,7 +331,9 @@ ls -l
 ls -al
 ```
 
-Note: If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.
+::: {.callout-tip}
+If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.
+:::
 
 
 
@@ -334,7 +346,7 @@ man wget
 wget http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/cds/Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
 
-If the above fails, then you can also copy the file from the resources folder into you home directory.
+If the above fails, then you can also copy the file from the resources directory into you home directory.
 
 ``` bash
 cp /resources/bash/Homo_sapiens.GRCh38.cds.all.fa.gz ~/
@@ -429,7 +441,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 
 #### Exercises
 
-Place the following files into the folder `~/day2`, using pipes:
+Place the following files into the directory `~/day2`, using pipes:
 
 - Store the number of lines of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lineNumber.txt`.
 - Write the first 15 lines of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lines1.txt`.
@@ -466,7 +478,12 @@ Match anything that doesn't match one of the patterns (extglob) | `!`(patterns)
 
 ### Simple regular expressions
 
-Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture. Note: The file `sample` needs to be copied to your home directory from the directory `/resources/bash`.
+Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture.
+
+::: {.callout-tip}
+The file `sample` needs to be copied to your home directory from the directory `/resources/bash`.
+:::
+
 
 ```bash
 cat sample
@@ -530,9 +547,9 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\
 
 #### Exercises
 
-- Create a folder `day3` in your home directory.
+- Create a directory `day3` in your home directory.
 - Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file `Homo_sapiens.GRCh38.cds.all.fa.gz`.
-- Store each number in a file called `nt_A.txt`, `nt_C.txt`,... in the folder `day3`.
+- Store each number in a file called `nt_A.txt`, `nt_C.txt`,... in the directory `day3`.
 
 ### Reformatting the Ensembl fasta file
 
@@ -630,7 +647,7 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_sy
 
 #### Exercises
 
-Create the following files in the folder `day3`:
+Create the following files in the directory `day3`:
 
 - Extract all entries with sequences matching the guide "GCGGTTTC" in the file `guideMatch_GCGGTTTC.txt`.
 - Write the count of entries with sequences starting with "TGC" into the file `count_TGC.txt`.
@@ -731,13 +748,15 @@ Now we will combine the above variables and loopes to test all guides in file `g
 
 - Use the code above (under [Variables](#variables)) that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
 - Place this function into the loop that iterates through the file `gRNAs.txt`, using the while loop shown above that iterates through a file.
-- Store all matches (not just the top 30 coming from `head -30`) of each guide into a file that is named `results_${guide}.txt`. Place all files into a new folder `day4` - ideally already within the loop.
+- Store all matches (not just the top 30 coming from `head -30`) of each guide into a file that is named `results_${guide}.txt`. Place all files into a new directory `day4` - ideally already within the loop.
 - Double-check the results by hand (no points).
 	- How many files did you just create?
 	- Look at one of the created files. Is the content what you would expect?
 	- When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?
 
-Hint: To complete the exercise, you can use the following code to extract genes for one guide. Note: In the following code black, the guide needs to be defined first using `guide=[...]`. In this exercise, you don't define the guide - it should be defined by the loop.
+::: {.callout-tip}
+Hint: To complete the exercise, you can use the following code to extract genes for one guide. In this code, the guide needs to be defined first using `guide=[...]`. However, when placing this code block inside of the loop, you don't define the guide - it is defined by the loop.
+:::
 
 ```bash
 echo $guide
@@ -754,7 +773,9 @@ while read guide; do
 done < gRNAs.txt
 ```
 
+::: {.callout-tip}
 Remember: you need to save the result of the last line (`gunzip ... | uniq`) to a file `results_${guide}.txt`.
+:::
 
 
 ### Comparing files
@@ -789,7 +810,7 @@ echo "$guide1 $guide2 $overlap"
 
 #### Exercise
 
-Now we will compare each pair of guides to test the overlap of genes. Place the result in the folder `day4`:
+Now we will compare each pair of guides to test the overlap of genes. Place the result in the directory `day4`:
 
 - Use one loop (iterating through all guides) within a second loop (also iterating through all guides) to compare the overlap between all pairs of guides.
 - Use the `comm` command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
@@ -799,12 +820,52 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 	- Compare individual examples (for example "AAGTTGGC" vs "GCCATACA"). Did you get the right overlap?
 	
 
-## Names of special symbols
-- The `(` is called a parenthesis
-- The `[` is called a bracket or "squared bracket"
-- The `{` is called a brace "curly bracket"
-- The `~` is called "tilde"
-- The `*` is called the "asterisk"
+## Special symbols
+- The `(` is called a `parenthesis`
+- The `[` is called a `squared bracket` (sometimes only `bracket`)
+- The `{` is called a `curly bracket` (sometimes only `brace`)
+- The `~` is called a `tilde`
+- The `*` is called an `asterisk`
+
+
+## Commands
+Command | function
+--- | ---
+**basics** |  
+ssh | connect to server
+man | show manual of a command
+|
+**directories** |
+mkdir | create directory
+cd | change directory
+pwd | show current path
+ls	| list files in path
+|
+**files** |
+cp | copy file
+mv | move file
+wc -l | count lines in file
+touch | create empty file
+chmod | change permissions of file
+|
+**file content** |
+head | look at the first lines of a file
+tail | look at the last lines of a file
+less | scroll through a file
+cat | print entire file
+|
+**zip** |
+gunzip | unzip a file
+gzip | zip a file
+zless | scroll through a zipped file
+|
+**regexp** |
+grep | extract regular expressions
+sed | replace text
+|
+**sort** |
+sort | sort the lines in a file alphabetically
+uniq | remove duplicated lines
 
 
 ## Useful links
