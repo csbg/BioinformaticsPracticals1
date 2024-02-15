@@ -4,6 +4,40 @@ execute:
   enabled: false
 ---
 
+## How to run Python
+
+You will use Python in two different modes:
+
+Interactive mode
+: When on the shell, start Python by entering
+
+```bash
+python
+```
+
+This will display a message similar to
+
+```
+Python 3.10.2 (main, Jan 15 2022, 19:56:27)
+[GCC 11.1.0] on linux
+Type "help", "copyright", "credits" or "license"
+for more information.
+>>>
+```
+
+and allow you to enter Python code next to the signs `>>>` line by line. Each line of code will be executed as soon as you press Enter.
+
+Script mode
+: Write Python commands into a text file (e.g., by using nano to create a file `my_program.py`). Then, while on the shell, pass the name of this file to the `python` command as argument:
+
+```bash
+python my_program.py
+```
+
+This makes Python execute the code stored in the file.
+
+
+
 ## Data types and operators
 
 To use Python, please connect to Corso via `ssh`; on this virtual machine, all required programs have been installed.
