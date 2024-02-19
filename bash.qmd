@@ -305,7 +305,7 @@ nano ~/.bash_profile
 Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above. 
 
 ::: {.callout-tip}
-Depending on your system, it may be difficult to copy and paste text into nano. If copy/pasting doesn't work in nano, you can also use the text editor that comes with MobaXterm, where copy/pasting should work.
+If you are using MobaXterm and are having issues with copy/pasting into nano, you can also use the text editor that comes with MobaXterm, where copy/pasting should work.
 :::
 
 ```bash
