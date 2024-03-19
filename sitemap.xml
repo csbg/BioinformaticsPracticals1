@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://csbg.github.io/BioinformaticsPracticals1/python3.html</loc>
-    <lastmod>2024-02-19T09:22:22.615Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csbg.github.io/BioinformaticsPracticals1/index.html</loc>
-    <lastmod>2024-02-19T09:22:22.615Z</lastmod>
-  </url>
-  <url>
     <loc>https://csbg.github.io/BioinformaticsPracticals1/python4.html</loc>
-    <lastmod>2024-02-19T09:22:22.615Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csbg.github.io/BioinformaticsPracticals1/bash.html</loc>
-    <lastmod>2024-02-19T09:22:22.615Z</lastmod>
+    <lastmod>2024-03-19T12:52:37.336Z</lastmod>
   </url>
   <url>
     <loc>https://csbg.github.io/BioinformaticsPracticals1/python1.html</loc>
-    <lastmod>2024-02-19T09:22:22.615Z</lastmod>
+    <lastmod>2024-03-19T12:52:37.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csbg.github.io/BioinformaticsPracticals1/bash.html</loc>
+    <lastmod>2024-03-19T12:52:37.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csbg.github.io/BioinformaticsPracticals1/python3.html</loc>
+    <lastmod>2024-03-19T12:52:37.336Z</lastmod>
   </url>
   <url>
     <loc>https://csbg.github.io/BioinformaticsPracticals1/python2.html</loc>
-    <lastmod>2024-02-19T09:22:22.615Z</lastmod>
+    <lastmod>2024-03-19T12:52:37.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csbg.github.io/BioinformaticsPracticals1/index.html</loc>
+    <lastmod>2024-03-19T12:52:37.336Z</lastmod>
   </url>
 </urlset>
