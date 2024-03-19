@@ -161,7 +161,7 @@ In the code below, we extract all codes that start with the character `2` from a
 
 ```python
 codes = "1a3, 1b4, 2c5, 2d6, 2e7, 3f8, 3g9"
-codes_starting_with_two = re.findall(r"(2.)(.)", codes)
+codes_starting_with_two = findall(r"(2.)(.)", codes)
 codes_starting_with_two
 #> [('2c', '5'), ('2d', '6'), ('2e', '7')]
 
