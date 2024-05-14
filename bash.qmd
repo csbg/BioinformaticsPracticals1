@@ -305,7 +305,8 @@ nano ~/.bash_profile
 Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above. 
 
 ::: {.callout-tip}
-If you are using MobaXterm and are having issues with copy/pasting into nano, you can also use the text editor that comes with MobaXterm, where copy/pasting should work.
+In Windows PowerShell, copy/paste works best if you enable the option to do so via Ctrl+Shift+V, as shown below.
+![](images/powershell_paste.png)
 :::
 
 ```bash
