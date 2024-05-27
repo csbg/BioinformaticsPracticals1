@@ -567,6 +567,8 @@ In this exercise, you will create a command line program that calculates the sim
   2. the number of (unique) genes detected in the second sample
   3. the similarity of the samples, which is measured by the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index).
 
+Store the function in `exercise_2_5.py`.
+
 You may check that your program works correctly by using the following exemplary calls:
 
 ```default
