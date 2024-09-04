@@ -650,7 +650,7 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_sy
 
 Create the following files in the directory `day3`:
 
-- Extract all entries with sequences matching the guide "GCGGTTTC" in the file `guideMatch_GCGGTTTC.txt`.
+- Write all entries with sequences matching the guide "GCGGTTTC" into the file `guideMatch_GCGGTTTC.txt`.
 - Write the count of entries with sequences starting with "TGC" into the file `count_TGC.txt`.
 - Write the count of entries of gene "MMP2" into the file `count_MMP2.txt`. Note: Do not count genes MMP20, MMP21,...
 - Write the count of unique genes whose symbol starts with "RPL" into the file `count_RPL.txt`.
