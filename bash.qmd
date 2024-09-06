@@ -813,7 +813,7 @@ echo "$guide1 $guide2 $overlap"
 
 Now we will compare each pair of guides to test the overlap of genes. Place the result in the directory `day4`:
 
-- Use one loop (iterating through all guides) within a second loop (also iterating through all guides) to compare the overlap between all pairs of guides.
+- Use one loop (that iterates through all guides) within a second loop (that also iterates through all guides) to compare the overlap between all pairs of guides (thus, for simplicity, we will compare all pairs of guides also the overlap of each guide with itself).
 - Use the `comm` command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
 - "Manually" check results (no points):
 	- How many files did you create? How many did you expect to create?
