@@ -24,16 +24,24 @@ Type "help", "copyright", "credits" or "license"
 for more information.
 >>>
 ```
-
-and allow you to enter Python code next to the signs `>>>` line by line. Each line of code will be executed as soon as you press Enter.
+and allow you to enter Python code next to the signs `>>>` line by line. Each line of code will be executed as soon as you press Enter. For example:
+```python
+print("Hello from the interactive shell")
+```
 
 Script mode
-: Write Python commands into a text file (e.g., by using nano to create a file `my_program.py`). Then, while on the shell, pass the name of this file to the `python` command as argument:
-
+: Write Python commands into a text file (e.g., by using nano to create a file `my_program.py`). If you are still in the interactive mode: exit the python console by typing `exit()` or the key combination `Ctrl-D` (`Ctrl` is `Strg` on a German keyboard), then open and edit the file in a text editor such as nano. 
+```bash
+nano my_program.py
+```
+Then enter python code into the file. 
+```python
+print("Hello from the python script")
+```
+Then, exit nano to get back to the bash shell and pass the name of this file to the `python` command as argument:
 ```bash
 python my_program.py
 ```
-
 This makes Python execute the code stored in the file.
 
 
@@ -269,7 +277,7 @@ x * 2     # what happens here?!
 
 ::: {.callout-note #example-input}
 #### Example
-The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)! (To do so: exit the python console by typing `exit()` or the key combination `Ctrl-D` (`Ctrl` is `Strg` on a German keyboard), then open and edit the file in a text editor such as nano)
+The following program asks the user to enter two numbers and then calculates their product. Store these statements in the file `product.py` and execute this file with Python (`python product.py`)!
 
 ```python
 print("Calculate the product of two numbers")
