@@ -6,6 +6,7 @@ website:
   navbar:
     left:
       - bash.qmd
+      - bash_reference.qmd
       - python1.qmd
       - python2.qmd
       - python3.qmd

@@ -1,5 +1,5 @@
 ---
-title: Bash
+title: Bash exercises
 execute: 
   enabled: false
 ---
@@ -160,6 +160,8 @@ pwd
 mkdir -p day2/documents/texts
 pwd
 ```
+
+### Permissions
 
 Change permissions in a file created in the above directory. We will use the `chmod` command (<https://en.wikipedia.org/wiki/Chmod>). This command uses three digits between 0 and 7 to set the permissions of (i) the user, (ii) the group, and (iii) everyone else. The digit defines the permission, as explained in the following table.
 
@@ -822,51 +824,12 @@ Now we will compare each pair of guides to test the overlap of genes. Place the 
 	
 
 ## Special symbols
+
 - The `(` is called a `parenthesis`
 - The `[` is called a `squared bracket` (sometimes only `bracket`)
 - The `{` is called a `curly bracket` (sometimes only `brace`)
 - The `~` is called a `tilde`
 - The `*` is called an `asterisk`
-
-
-## Commands
-Command | function
---- | ---
-**basics** |  
-ssh | connect to server
-man | show manual of a command
-|
-**directories** |
-mkdir | create directory
-cd | change directory
-pwd | show current path
-ls	| list files in path
-|
-**files** |
-cp | copy file
-mv | move file
-wc -l | count lines in file
-touch | create empty file
-chmod | change permissions of file
-|
-**file content** |
-head | look at the first lines of a file
-tail | look at the last lines of a file
-less | scroll through a file
-cat | print entire file
-|
-**zip** |
-gunzip | unzip a file
-gzip | zip a file
-zless | scroll through a zipped file
-|
-**regexp** |
-grep | extract regular expressions
-sed | replace text
-|
-**sort** |
-sort | sort the lines in a file alphabetically
-uniq | remove duplicated lines
 
 
 ## Useful links
