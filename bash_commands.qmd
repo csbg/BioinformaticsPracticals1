@@ -1,0 +1,64 @@
+---
+title: Bash commands
+execute: 
+  enabled: false
+---
+
+## Commands
+
+- `ssh user@host`: connect to a server `host` with user `user`
+- `passwd`: change password
+- `pwd`: output the current working directory
+- `ls`: list directory contents
+  - `ls -l`: use a long listing format, i.e., one file/folder per line with additional information (permissions, owner, size, date modified)
+  - `ls -a`: show all files/folders (i.e., even those starting with .)
+- `clear`: clear the terminal
+- `mkdir`: create folder
+  - `mkdir -p`: also create parent folders
+- `man`: show the manual for a command
+- `touch`: change file timestamp; create empty file if it does not exist
+- `echo`: display a line of text
+- `head`: output the first lines of a file (by default, the first 10 lines)
+  - `head -5` or `head -n5`: print the first 5 lines
+- `cd`: change directory
+  - `cd ~`: go to your home folder
+  - `cd ..`: go to parent folder
+- `chmod`: change permissions
+- `mv`: move file/folder
+- `cp`: copy file or folder
+- `tail`: output the last lines of a file (by default, the last 10 lines)
+  - `tail -5` or `head -n5`: print the last 5 lines
+- `less`: display the contents of a file
+- `wc`: print newline, word, and byte counts for each file
+  - `wc -l`: only print the number of lines
+- `nano`: edit a text file
+- `source`: run bash commands stored in a text file
+- `wget`: download a file
+- `md5sum`: calculate the MD5 checksum of a file
+- `du`: calculate file size
+  - `du -h`: display file size in a human-readable format
+- `gunzip`: expand a file that has been compresse in GZ format; replaces the zipped file with the uncompressed file
+  - `gunzip -c`: write unzipped file contents to stdout
+- `cat`: show file contents on terminal
+- `grep`: find a regular expression in a text file
+  - `grep -E`: use extended regular expressions
+  - `grep -v`: invert sense of matching, select non-matching lines
+  - `grep -o`: print only the matched part of a line
+- `tr`: translate or delete characters
+  - `tr -d`: delete character
+- `sort`: sort lines in a text file
+- `uniq`: omit repeated lines of text
+- `sed`: filter and transform text
+  - `sed 's/foo/bar/g'`: substitute all occurrences of `foo` with `bar`; see [here](bash.html#reformatting-the-ensembl-fasta-file)
+- `comm`: compare two sorted files line by line
+  - `comm -12`: only output lines common to both files
+- `zless`: scroll through a zipped file
+- `gzip`: compress a file
+  
+## Important concepts
+
+- [permissions](bash.htm#navigate-the-file-system)
+- [pipes](bash.html#pipes)
+- [file pattern matches](bash.html#file-pattern-matches)
+- [regular expressions](bash.html#simple-regular-expressions)
+- [while loops](http://localhost:7393/bash.html#loops)
