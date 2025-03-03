@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bash – Bioinformatics Practicals I</title>
+<title>Bash exercises – Bioinformatics Practicals I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,12 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d75320580429fd03ccc14abf5aea7e44.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-03cff2e87a80ce85282700c0d3d2a4d3.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -126,7 +126,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./bash.html" aria-current="page"> 
-<span class="menu-text">Bash</span></a>
+<span class="menu-text">Bash exercises</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./bash_reference.html"> 
+<span class="menu-text">Bash reference</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./python1.html"> 
@@ -165,6 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#files-and-file-systems-day-2" id="toc-files-and-file-systems-day-2" class="nav-link" data-scroll-target="#files-and-file-systems-day-2">Files and file systems (Day 2)</a>
   <ul class="collapse">
   <li><a href="#navigate-the-file-system" id="toc-navigate-the-file-system" class="nav-link" data-scroll-target="#navigate-the-file-system">Navigate the file system</a></li>
+  <li><a href="#permissions" id="toc-permissions" class="nav-link" data-scroll-target="#permissions">Permissions</a></li>
   <li><a href="#getting-files" id="toc-getting-files" class="nav-link" data-scroll-target="#getting-files">Getting files</a></li>
   <li><a href="#editing-in-nano" id="toc-editing-in-nano" class="nav-link" data-scroll-target="#editing-in-nano">Editing in nano</a></li>
   <li><a href="#zipped-files" id="toc-zipped-files" class="nav-link" data-scroll-target="#zipped-files">Zipped files</a></li>
@@ -185,7 +190,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#comparing-files" id="toc-comparing-files" class="nav-link" data-scroll-target="#comparing-files">Comparing files</a></li>
   </ul></li>
   <li><a href="#special-symbols" id="toc-special-symbols" class="nav-link" data-scroll-target="#special-symbols">Special symbols</a></li>
-  <li><a href="#commands" id="toc-commands" class="nav-link" data-scroll-target="#commands">Commands</a></li>
   <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links</a></li>
   </ul>
 </nav>
@@ -195,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bash</h1>
+<h1 class="title">Bash exercises</h1>
 </div>
 
 
@@ -332,6 +336,9 @@ Tip
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> day2/documents/texts</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="permissions" class="level3">
+<h3 class="anchored" data-anchor-id="permissions">Permissions</h3>
 <p>Change permissions in a file created in the above directory. We will use the <code>chmod</code> command (<a href="https://en.wikipedia.org/wiki/Chmod" class="uri">https://en.wikipedia.org/wiki/Chmod</a>). This command uses three digits between 0 and 7 to set the permissions of (i) the user, (ii) the group, and (iii) everyone else. The digit defines the permission, as explained in the following table.</p>
 <table class="caption-top table">
 <thead>
@@ -1084,159 +1091,6 @@ Tip
 <li>The <code>*</code> is called an <code>asterisk</code></li>
 </ul>
 </section>
-<section id="commands" class="level2">
-<h2 class="anchored" data-anchor-id="commands">Commands</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>basics</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>ssh</td>
-<td>connect to server</td>
-</tr>
-<tr class="odd">
-<td>man</td>
-<td>show manual of a command</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>directories</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>mkdir</td>
-<td>create directory</td>
-</tr>
-<tr class="odd">
-<td>cd</td>
-<td>change directory</td>
-</tr>
-<tr class="even">
-<td>pwd</td>
-<td>show current path</td>
-</tr>
-<tr class="odd">
-<td>ls</td>
-<td>list files in path</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>files</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>cp</td>
-<td>copy file</td>
-</tr>
-<tr class="odd">
-<td>mv</td>
-<td>move file</td>
-</tr>
-<tr class="even">
-<td>wc -l</td>
-<td>count lines in file</td>
-</tr>
-<tr class="odd">
-<td>touch</td>
-<td>create empty file</td>
-</tr>
-<tr class="even">
-<td>chmod</td>
-<td>change permissions of file</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>file content</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>head</td>
-<td>look at the first lines of a file</td>
-</tr>
-<tr class="even">
-<td>tail</td>
-<td>look at the last lines of a file</td>
-</tr>
-<tr class="odd">
-<td>less</td>
-<td>scroll through a file</td>
-</tr>
-<tr class="even">
-<td>cat</td>
-<td>print entire file</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>zip</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>gunzip</td>
-<td>unzip a file</td>
-</tr>
-<tr class="even">
-<td>gzip</td>
-<td>zip a file</td>
-</tr>
-<tr class="odd">
-<td>zless</td>
-<td>scroll through a zipped file</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>regexp</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>grep</td>
-<td>extract regular expressions</td>
-</tr>
-<tr class="odd">
-<td>sed</td>
-<td>replace text</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>sort</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>sort</td>
-<td>sort the lines in a file alphabetically</td>
-</tr>
-<tr class="odd">
-<td>uniq</td>
-<td>remove duplicated lines</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="useful-links" class="level2">
 <h2 class="anchored" data-anchor-id="useful-links">Useful links</h2>
 <p>Linux for bioinformatics</p>
@@ -1486,8 +1340,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1598,7 +1450,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

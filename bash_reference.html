@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioinformatics Practicals I</title>
+<title>Bash reference – Bioinformatics Practicals I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Bash exercises</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bash_reference.html"> 
+    <a class="nav-link active" href="./bash_reference.html" aria-current="page"> 
 <span class="menu-text">Bash reference</span></a>
   </li>  
   <li class="nav-item">
@@ -126,15 +126,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#essential-commands" id="toc-essential-commands" class="nav-link active" data-scroll-target="#essential-commands">Essential commands</a></li>
+  <li><a href="#other-commands" id="toc-other-commands" class="nav-link" data-scroll-target="#other-commands">Other commands</a></li>
+  <li><a href="#important-concepts" id="toc-important-concepts" class="nav-link" data-scroll-target="#important-concepts">Important concepts</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bioinformatics Practicals I</h1>
+<h1 class="title">Bash reference</h1>
 </div>
 
 
@@ -151,10 +159,102 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Modern Life Sciences rely on various computer programs to analyze large biological datasets. The next generation of biologists thus requires basic expertise with high-performance computing, software tools, and automated application of analyses.</p>
-<p>In this practical, you will learn to interact with operating systems through commands in an HPC environment as well as basics of programming in a scripting language.</p>
+<section id="essential-commands" class="level2">
+<h2 class="anchored" data-anchor-id="essential-commands">Essential commands</h2>
+<p>Knowledge of these commands is required to pass both the exercises and exam.</p>
+<ul>
+<li><code>cat</code>: show file contents on terminal</li>
+<li><code>cd</code>: change directory
+<ul>
+<li><code>cd ~</code>: go to your home folder</li>
+<li><code>cd ..</code>: go to parent folder</li>
+</ul></li>
+<li><code>chmod</code>: change permissions</li>
+<li><code>comm</code>: compare two sorted files line by line
+<ul>
+<li><code>comm -12</code>: only output lines common to both files</li>
+</ul></li>
+<li><code>cp</code>: copy file/folder</li>
+<li><code>du</code>: calculate file size
+<ul>
+<li><code>du -h</code>: display file size in a human-readable format</li>
+</ul></li>
+<li><code>echo</code>: display a line of text</li>
+<li><code>grep</code>: find a regular expression in a text file
+<ul>
+<li><code>grep -E</code>: use extended regular expressions</li>
+<li><code>grep -v</code>: invert sense of matching, select non-matching lines</li>
+<li><code>grep -o</code>: print only the matched part of a line</li>
+</ul></li>
+<li><code>gunzip</code>: expand a file that has been compressed in GZ format; replaces the zipped file with the uncompressed file
+<ul>
+<li><code>gunzip -c</code>: write unzipped file contents to stdout (useful for piping)</li>
+</ul></li>
+<li><code>head</code>: output the first lines of a file (by default, the first 10 lines)
+<ul>
+<li><code>head -5</code> or <code>head -n5</code>: print the first 5 lines</li>
+</ul></li>
+<li><code>less</code>: display the contents of a file</li>
+<li><code>ls</code>: list directory contents
+<ul>
+<li><code>ls -l</code>: use a long listing format, i.e., one file/folder per line with additional information (permissions, owner, size, date modified)</li>
+<li><code>ls -a</code>: show all files/folders (i.e., even those starting with <code>.</code>)</li>
+</ul></li>
+<li><code>man</code>: show the manual for a command</li>
+<li><code>mkdir</code>: create folder
+<ul>
+<li><code>mkdir -p</code>: when creating nested folders, also create parent folders</li>
+</ul></li>
+<li><code>mv</code>: move file/folder</li>
+<li><code>nano</code>: edit a text file</li>
+<li><code>passwd</code>: change password</li>
+<li><code>pwd</code>: output the current working directory</li>
+<li><code>sed</code>: filter and transform text
+<ul>
+<li><code>sed 's/foo/bar/g'</code>: substitute all occurrences of <code>foo</code> with <code>bar</code> (<a href="bash.html#reformatting-the-ensembl-fasta-file">details</a>)</li>
+</ul></li>
+<li><code>sort</code>: sort lines in a text file</li>
+<li><code>ssh user@host</code>: connect to a server <code>host</code> with user <code>user</code></li>
+<li><code>tail</code>: output the last lines of a file (by default, the last 10 lines)
+<ul>
+<li><code>tail -5</code> or <code>tail -n5</code>: print the last 5 lines</li>
+</ul></li>
+<li><code>touch</code>: change file timestamp; create empty file if it does not exist</li>
+<li><code>uniq</code>: omit repeated lines of text</li>
+<li><code>wc</code>: print newline, word, and byte counts for each file
+<ul>
+<li><code>wc -l</code>: only print the number of lines</li>
+</ul></li>
+<li><code>wget</code>: download a file</li>
+</ul>
+</section>
+<section id="other-commands" class="level2">
+<h2 class="anchored" data-anchor-id="other-commands">Other commands</h2>
+<p>These commands are required for the exercises, but less important for the exam.</p>
+<ul>
+<li><code>clear</code>: clear the terminal</li>
+<li><code>gzip</code>: compress a file</li>
+<li><code>md5sum</code>: calculate the MD5 checksum of a file</li>
+<li><code>source</code>: run bash commands stored in a text file</li>
+<li><code>tr</code>: translate or delete characters
+<ul>
+<li><code>tr -d</code>: delete character</li>
+</ul></li>
+<li><code>zless</code>: scroll through a zipped file</li>
+</ul>
+</section>
+<section id="important-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="important-concepts">Important concepts</h2>
+<ul>
+<li><a href="bash.html#permissions">permissions</a></li>
+<li><a href="bash.html#pipes">pipes</a></li>
+<li><a href="bash.html#file-pattern-matches">file pattern matches</a></li>
+<li><a href="bash.html#simple-regular-expressions">regular expressions</a></li>
+<li><a href="bash.html#loops">while loops</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
