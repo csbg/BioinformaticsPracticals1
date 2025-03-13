@@ -387,7 +387,7 @@ Store all files that you generate for unit 4 in the folder `python4` in your hom
 
 For the exercises in Unit 4, you require files available under `/resources/python`. Copy those files in the folder `~/python4/` and write your scripts (and file imports), such that they can be run within the folder `~/python4/` (thus accessing and writing files without a preceeding path).
 
-### Exercise 4.1 (3 P)
+### Exercise 4.1 (1 P)
 
 You have successfully solved this exercise as soon as you have worked through this unit. In particular, the folder `python4` must contain the following files, which you have created in the course of this unit:
 
@@ -399,7 +399,7 @@ You have successfully solved this exercise as soon as you have worked through th
 
 
 
-### Exercise 4.2 (3 P)
+### Exercise 4.2 (2 P)
 
 Implement a function `is_normal` that checks whether two columns of a matrix are orthogonal to each other.
 
@@ -435,7 +435,7 @@ print(is_normal("vectors.txt", 4, 1))
 :::
 
 
-### Exercise 4.3 (4 P)
+### Exercise 4.3 (2 P)
 
 Implement a function `translate()` that translates a DNA sequence into a protein sequence and calculates the isoelectric point of the latter.
 
@@ -466,7 +466,7 @@ print(translate("TGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACC"))
 :::
 
 
-### Exercise 4.4 (3 P)
+### Exercise 4.4 (1 P)
 
 You have used an online database to collect several properties of amino acids and downloaded the results as CSV file (`/resources/python/data_ugly.csv`). Alas, when you have a closer look at the CSV file, you note that it looks *somewhat* strange (only the first ten rows are shown below):
 
