@@ -380,8 +380,8 @@ An exemplary run of the program may yield the following output:
 ```default
 $ python exercise_1_3.py
 dividend: 10
-divisor: 4
-remainder: 2
+divisor: 3
+remainder: 1
 True
 ```
 
