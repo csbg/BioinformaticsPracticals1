@@ -446,7 +446,7 @@ print(insulin_B.get_mw(disulfides=1))
 Implement a function `read_masses` which reads a table of atomic weights.
 
 - The function has a single parameter, which receives the name of the file containing the table.
-- A table in CSV format is provided (`/resources/python/average_mass.csv`), whose first five lines read
+- A table in CSV format is provided (`/resources/python/average_mass.csv`). Copy this file into your python3 folder. The first five lines of this file read
   ```
   H,1.008
   He,4.0026

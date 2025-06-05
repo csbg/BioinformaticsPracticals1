@@ -510,6 +510,8 @@ print(get_average_gc(["CGACCACATTAATGGACTAC", "CTTGGATTATCACCCCCGTC"]))
 
 print(get_average_gc(["CCACCGAGACGCCAG", "CGGCCTCCCGAC", "GCCCGGGCCCGCGGGGGT"]))
 #> 0.837037037037037
+# or
+#> 0.8444444444444444
 ```
 
 :::{.callout-tip collapse="true"}
