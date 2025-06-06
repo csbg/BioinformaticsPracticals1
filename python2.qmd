@@ -66,8 +66,8 @@ A function may pass values to the caller by using the `return` statement. In the
 
 In order to correctly use functions, we need to understand the difference between parameters and arguments:
 
-- A *parameter* (also called “formal parameter”) is part of the function definition and specifies the number (and sometimes also the type) of input values the function may receive.
-- An *argument* (also called “actual parameter”) is the value that is passed to a function when it is called.
+- A *parameter* (also called “formal parameter”) is part of the function definition and specifies the number (and sometimes also the type) of input values the function may receive (in the example above the parameters are `a`, `b`, and `c`).
+- An *argument* (also called “actual parameter”) is the value that is passed to a function when it is called (in the example above, the arguments are `5`, `8`, and `2`).
 
 When defining a function, we need to distinguish between required and optional parameters:
 
