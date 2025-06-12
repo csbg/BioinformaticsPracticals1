@@ -423,7 +423,7 @@ print(galanin.get_mw())
 #> 3157.4102999999996
 
 
-insulin_B = Protein("Insulin B chain", "P01308", "FVNQHLCGSHLVEALYLVCGERGFFYTPKT")
+insulin_B = Protein(name="Insulin B chain", uniprot_id="P01308", sequence="FVNQHLCGSHLVEALYLVCGERGFFYTPKT")
 print(insulin_B.get_length())
 #> 30
 
