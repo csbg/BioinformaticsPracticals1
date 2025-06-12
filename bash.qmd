@@ -98,6 +98,25 @@ Take a look at the file content.
 head day1/*
 ```
 
+### Treasure Game
+
+Next, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game:
+- list files and folders in your directory `ls`
+- change between directories `cd`
+- look at the content of a file `cat`
+
+Now you are ready to start. First, download the game:
+```
+cd ~/
+git clone https://github.com/tayssirgh/mozmoz-treasure.git
+cd mozmoz-treasure
+```
+
+Next, run the game:
+```
+chmod +x ./.welcome.sh
+./.welcome.sh
+```
 
 ## Files and file systems (Day 2)
 
@@ -212,7 +231,7 @@ man chmod
 ```
 
 
-#### Exercises
+### Exercise 2.1
 
 - Create a new directory called `secrets` within in the directory `~/day2`.
 - Enable full access to this directory for the owner of the directory, read access for the group, and no access for others
@@ -265,7 +284,7 @@ You may be used to a workflow where you first copy a file (e.g., Ctrl+C), then g
 :::
 
 
-#### Exercises
+### Exercise 2.2
 
 Copy the file `gRNAs.txt` from your home directory into the directory `day2`. Then rename the copied file in this directory to `gRNAs_exercise.txt`.
 
@@ -442,7 +461,7 @@ Now we can also count the number of lines in this file:
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 ```
 
-#### Exercises
+### Exercise 2.3
 
 Place the following files into the directory `~/day2`, using pipes:
 
@@ -548,7 +567,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq | wc -l
 ```
 
-#### Exercises
+### Exercise 3.1
 
 - Create a directory `day3` in your home directory.
 - Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file `Homo_sapiens.GRCh38.cds.all.fa.gz`.
@@ -648,7 +667,7 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_sy
 ```
 
 
-#### Exercises
+### Exercise 3.2
 
 Create the following files in the directory `day3`:
 
@@ -745,9 +764,9 @@ while read p; do
 done < gRNAs.txt
 ```
 
-#### Exercise
+### Exercise 4.1
 
-Now we will combine the above variables and loopes to test all guides in file `gRNAs.txt` against all DNA sequences in `GRCh38_reformatted.gz`. To do so you need the following steps (also see the hints below!!!):
+Now we will combine the above variables and loopes to test all guides in file `gRNAs.txt` against all DNA sequences in `GRCh38_reformatted.gz`. To do so you need the following steps (also see the hints below!):
 
 - Use the code above (under [Variables](#variables)) that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
 - Place this function into the loop that iterates through the file `gRNAs.txt`, using the while loop shown above that iterates through a file.
@@ -758,7 +777,7 @@ Now we will combine the above variables and loopes to test all guides in file `g
 	- When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?
 
 ::: {.callout-tip}
-Hint: To complete the exercise, you can use the following code to extract genes for one guide. In this code, the guide needs to be defined first using `guide=[...]`. However, when placing this code block inside of the loop, you don't define the guide - it is defined by the loop.
+Hint: To complete the exercise, you can use the following code to extract genes for one guide. In this code, the guide needs to be defined first using `guide=[...]`. However, when placing this code block inside of the loop, you don't define the guide in this way. Instead, it is defined by the loop.
 :::
 
 ```bash
@@ -811,7 +830,7 @@ overlap=$(comm -12 day4/results_${guide1}.txt day4/results_${guide2}.txt | wc -l
 echo "$guide1 $guide2 $overlap"
 ```
 
-#### Exercise
+### Exercise 4.2
 
 Now we will compare each pair of guides to test the overlap of genes. Place the result in the directory `day4`:
 
