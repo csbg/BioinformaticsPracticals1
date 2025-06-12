@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bash reference – Bioinformatics Practicals I</title>
+<title>Bash Unit 1 – Bioinformatics Practicals I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -247,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash_reference.html">Reference</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash1.html">Unit 1</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -292,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash1.html" class="sidebar-item-text sidebar-link">
+  <a href="./bash1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Unit 1</span></a>
   </div>
 </li>
@@ -316,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_reference.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bash_reference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reference</span></a>
   </div>
 </li>
@@ -367,16 +402,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#essential-commands" id="toc-essential-commands" class="nav-link active" data-scroll-target="#essential-commands">Essential commands</a></li>
-  <li><a href="#other-commands" id="toc-other-commands" class="nav-link" data-scroll-target="#other-commands">Other commands</a></li>
-  <li><a href="#important-concepts" id="toc-important-concepts" class="nav-link" data-scroll-target="#important-concepts">Important concepts</a></li>
-  <li><a href="#special-symbols" id="toc-special-symbols" class="nav-link" data-scroll-target="#special-symbols">Special symbols</a></li>
-  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links</a>
-  <ul class="collapse">
-  <li><a href="#linux-for-bioinformatics" id="toc-linux-for-bioinformatics" class="nav-link" data-scroll-target="#linux-for-bioinformatics">Linux for bioinformatics</a></li>
-  <li><a href="#general-linux-commands" id="toc-general-linux-commands" class="nav-link" data-scroll-target="#general-linux-commands">General linux commands</a></li>
-  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions">Regular expressions</a></li>
-  </ul></li>
+  <li><a href="#first-steps" id="toc-first-steps" class="nav-link active" data-scroll-target="#first-steps">First steps</a></li>
+  <li><a href="#treasure-game" id="toc-treasure-game" class="nav-link" data-scroll-target="#treasure-game">Treasure Game</a></li>
   </ul>
 </nav>
     </div>
@@ -384,9 +411,10 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash_reference.html">Reference</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash1.html">Unit 1</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bash reference</h1>
+<h1 class="title">Bash Unit 1</h1>
+<p class="subtitle lead">Connecting to the cluster</p>
 </div>
 
 
@@ -403,136 +431,95 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="essential-commands" class="level2">
-<h2 class="anchored" data-anchor-id="essential-commands">Essential commands</h2>
-<p>Knowledge of these commands is required to pass both the exercises and exam.</p>
-<ul>
-<li><code>cat</code>: show file contents on terminal</li>
-<li><code>cd</code>: change directory
-<ul>
-<li><code>cd ~</code>: go to your home folder</li>
-<li><code>cd ..</code>: go to parent folder</li>
-</ul></li>
-<li><code>chmod</code>: change permissions</li>
-<li><code>comm</code>: compare two sorted files line by line
-<ul>
-<li><code>comm -12</code>: only output lines common to both files</li>
-</ul></li>
-<li><code>cp</code>: copy file/folder</li>
-<li><code>du</code>: calculate file size
-<ul>
-<li><code>du -h</code>: display file size in a human-readable format</li>
-</ul></li>
-<li><code>echo</code>: display a line of text</li>
-<li><code>grep</code>: find a regular expression in a text file
-<ul>
-<li><code>grep -E</code>: use extended regular expressions</li>
-<li><code>grep -v</code>: invert sense of matching, select non-matching lines</li>
-<li><code>grep -o</code>: print only the matched part of a line</li>
-</ul></li>
-<li><code>gunzip</code>: expand a file that has been compressed in GZ format; replaces the zipped file with the uncompressed file
-<ul>
-<li><code>gunzip -c</code>: write unzipped file contents to stdout (useful for piping)</li>
-</ul></li>
-<li><code>head</code>: output the first lines of a file (by default, the first 10 lines)
-<ul>
-<li><code>head -5</code> or <code>head -n5</code>: print the first 5 lines</li>
-</ul></li>
-<li><code>less</code>: display the contents of a file</li>
-<li><code>ls</code>: list directory contents
-<ul>
-<li><code>ls -l</code>: use a long listing format, i.e., one file/folder per line with additional information (permissions, owner, size, date modified)</li>
-<li><code>ls -a</code>: show all files/folders (i.e., even those starting with <code>.</code>)</li>
-</ul></li>
-<li><code>man</code>: show the manual for a command</li>
-<li><code>mkdir</code>: create folder
-<ul>
-<li><code>mkdir -p</code>: when creating nested folders, also create parent folders</li>
-</ul></li>
-<li><code>mv</code>: move file/folder</li>
-<li><code>nano</code>: edit a text file</li>
-<li><code>passwd</code>: change password</li>
-<li><code>pwd</code>: output the current working directory</li>
-<li><code>sed</code>: filter and transform text
-<ul>
-<li><code>sed 's/foo/bar/g'</code>: substitute all occurrences of <code>foo</code> with <code>bar</code> (<a href="bash.html#reformatting-the-ensembl-fasta-file">details</a>)</li>
-</ul></li>
-<li><code>sort</code>: sort lines in a text file</li>
-<li><code>ssh user@host</code>: connect to a server <code>host</code> with user <code>user</code></li>
-<li><code>tail</code>: output the last lines of a file (by default, the last 10 lines)
-<ul>
-<li><code>tail -5</code> or <code>tail -n5</code>: print the last 5 lines</li>
-</ul></li>
-<li><code>touch</code>: change file timestamp; create empty file if it does not exist</li>
-<li><code>uniq</code>: omit repeated lines of text</li>
-<li><code>wc</code>: print newline, word, and byte counts for each file
-<ul>
-<li><code>wc -l</code>: only print the number of lines</li>
-</ul></li>
-<li><code>wget</code>: download a file</li>
-</ul>
+<section id="first-steps" class="level2">
+<h2 class="anchored" data-anchor-id="first-steps">First steps</h2>
+<p>The command ssh lets you connect to the cluster. You will need VPN active to be able to connect if you are not using the university LAN or “eduroam” WLAN (when you are working from home).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span>@corso.came.sbg.ac.at</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For example:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> nfortelny@corso.came.sbg.ac.at</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will see a number of different commands over the next days. The key commands are listed at the <a href="#commands">bottom of this page</a>.</p>
+</div>
+</div>
+<p>Next you will change your password. Make sure to remember this password, which you will you throughout this course.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we are connected to the cluster. In the following we will explore this file system. Details will be explored in the next lecture of this course. For now, just execute the commands and see if you can make sense of the results.</p>
+<p>The cluster has a file system like any computer. Currently you are in your home directory. The current “path” is shown by the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can list the content of your home directory using</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not confuse the lowercase letter <code>l</code> (as used in <code>ls -l</code>) with the number <code>1</code> (“one”).</p>
+</div>
+</div>
+<p>You can clear the terminal by typing</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, use the up- and down-arrows on your keyboard to look through the history of commands.</p>
+<p>Now create a directory:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> day1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>List content of the directory again:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span>                   <span class="co"># This shows you the home directory (and the day1 directory that is within the home directory)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day1/     <span class="co"># This shows you the content of the day1 directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note: <code>folder</code> and <code>directory</code> mean the same thing. We will use <code>directory</code> from now on.</p>
+</div>
+</div>
+<p>What does <code>mkdir</code> do? Bring up the manual (press <code>q</code> to exit the manual).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> mkdir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now create some files. There are many ways to create a file.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty file in directory "day1"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> day1/this_file_is_empty.txt</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write the text "abcdefgh" in a file.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"abcdefgh"</span>  <span class="op">&gt;</span> day1/letters.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>List files again.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day1/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Take a look at the file content.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> day1/<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="other-commands" class="level2">
-<h2 class="anchored" data-anchor-id="other-commands">Other commands</h2>
-<p>These commands are required for the exercises, but less important for the exam.</p>
-<ul>
-<li><code>clear</code>: clear the terminal</li>
-<li><code>gzip</code>: compress a file</li>
-<li><code>md5sum</code>: calculate the MD5 checksum of a file</li>
-<li><code>source</code>: run bash commands stored in a text file</li>
-<li><code>tr</code>: translate or delete characters
-<ul>
-<li><code>tr -d</code>: delete character</li>
-</ul></li>
-<li><code>zless</code>: scroll through a zipped file</li>
-</ul>
-</section>
-<section id="important-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="important-concepts">Important concepts</h2>
-<ul>
-<li><a href="bash.html#permissions">permissions</a></li>
-<li><a href="bash.html#pipes">pipes</a></li>
-<li><a href="bash.html#file-pattern-matches">file pattern matches</a></li>
-<li><a href="bash.html#simple-regular-expressions">regular expressions</a></li>
-<li><a href="bash.html#loops">while loops</a></li>
-</ul>
-</section>
-<section id="special-symbols" class="level2">
-<h2 class="anchored" data-anchor-id="special-symbols">Special symbols</h2>
-<ul>
-<li>The <code>(</code> is called a <code>parenthesis</code></li>
-<li>The <code>[</code> is called a <code>squared bracket</code> (sometimes only <code>bracket</code>)</li>
-<li>The <code>{</code> is called a <code>curly bracket</code> (sometimes only <code>brace</code>)</li>
-<li>The <code>~</code> is called a <code>tilde</code></li>
-<li>The <code>*</code> is called an <code>asterisk</code></li>
-</ul>
-</section>
-<section id="useful-links" class="level2">
-<h2 class="anchored" data-anchor-id="useful-links">Useful links</h2>
-<section id="linux-for-bioinformatics" class="level3">
-<h3 class="anchored" data-anchor-id="linux-for-bioinformatics">Linux for bioinformatics</h3>
-<ul>
-<li><a href="https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0" class="uri">https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0</a></li>
-<li><a href="https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0" class="uri">https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0</a></li>
-<li><a href="https://bioinformatics.uconn.edu/unix-basics/#" class="uri">https://bioinformatics.uconn.edu/unix-basics/#</a></li>
-<li><a href="https://decodebiology.github.io/bioinfotutorials/" class="uri">https://decodebiology.github.io/bioinfotutorials/</a></li>
-<li><a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/" class="uri">https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/</a></li>
-</ul>
-</section>
-<section id="general-linux-commands" class="level3">
-<h3 class="anchored" data-anchor-id="general-linux-commands">General linux commands</h3>
-<ul>
-<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" class="uri">https://www.thegeekstuff.com/2010/11/50-linux-commands/</a></li>
-</ul>
-</section>
-<section id="regular-expressions" class="level3">
-<h3 class="anchored" data-anchor-id="regular-expressions">Regular expressions</h3>
-<ul>
-<li><a href="https://www.guru99.com/linux-regular-expressions.html" class="uri">https://www.guru99.com/linux-regular-expressions.html</a></li>
-</ul>
+<section id="treasure-game" class="level2">
+<h2 class="anchored" data-anchor-id="treasure-game">Treasure Game</h2>
+<p>Next, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game: - list files and folders in your directory <code>ls</code> - change between directories <code>cd</code> - look at the content of a file <code>cat</code></p>
+<p>Now you are ready to start. First, download the game:</p>
+<pre><code>cd ~/
+git clone https://github.com/tayssirgh/mozmoz-treasure.git
+cd mozmoz-treasure</code></pre>
+<p>Next, run the game:</p>
+<pre><code>chmod +x ./.welcome.sh
+./.welcome.sh</code></pre>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

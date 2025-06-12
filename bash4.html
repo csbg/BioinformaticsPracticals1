@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bash reference – Bioinformatics Practicals I</title>
+<title>Bash Unit 4 – Bioinformatics Practicals I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -247,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash_reference.html">Reference</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash4.html">Unit 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -310,13 +345,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash4.html" class="sidebar-item-text sidebar-link">
+  <a href="./bash4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Unit 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_reference.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bash_reference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reference</span></a>
   </div>
 </li>
@@ -367,15 +402,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#essential-commands" id="toc-essential-commands" class="nav-link active" data-scroll-target="#essential-commands">Essential commands</a></li>
-  <li><a href="#other-commands" id="toc-other-commands" class="nav-link" data-scroll-target="#other-commands">Other commands</a></li>
-  <li><a href="#important-concepts" id="toc-important-concepts" class="nav-link" data-scroll-target="#important-concepts">Important concepts</a></li>
-  <li><a href="#special-symbols" id="toc-special-symbols" class="nav-link" data-scroll-target="#special-symbols">Special symbols</a></li>
-  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links</a>
+  <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a>
   <ul class="collapse">
-  <li><a href="#linux-for-bioinformatics" id="toc-linux-for-bioinformatics" class="nav-link" data-scroll-target="#linux-for-bioinformatics">Linux for bioinformatics</a></li>
-  <li><a href="#general-linux-commands" id="toc-general-linux-commands" class="nav-link" data-scroll-target="#general-linux-commands">General linux commands</a></li>
-  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions">Regular expressions</a></li>
+  <li><a href="#exercise-4.1" id="toc-exercise-4.1" class="nav-link" data-scroll-target="#exercise-4.1">Exercise 4.1</a></li>
+  </ul></li>
+  <li><a href="#comparing-files" id="toc-comparing-files" class="nav-link" data-scroll-target="#comparing-files">Comparing files</a>
+  <ul class="collapse">
+  <li><a href="#exercise-4.2" id="toc-exercise-4.2" class="nav-link" data-scroll-target="#exercise-4.2">Exercise 4.2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -384,9 +418,10 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash_reference.html">Reference</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash4.html">Unit 4</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bash reference</h1>
+<h1 class="title">Bash Unit 4</h1>
+<p class="subtitle lead">Loops and variables</p>
 </div>
 
 
@@ -403,132 +438,177 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="essential-commands" class="level2">
-<h2 class="anchored" data-anchor-id="essential-commands">Essential commands</h2>
-<p>Knowledge of these commands is required to pass both the exercises and exam.</p>
-<ul>
-<li><code>cat</code>: show file contents on terminal</li>
-<li><code>cd</code>: change directory
-<ul>
-<li><code>cd ~</code>: go to your home folder</li>
-<li><code>cd ..</code>: go to parent folder</li>
-</ul></li>
-<li><code>chmod</code>: change permissions</li>
-<li><code>comm</code>: compare two sorted files line by line
-<ul>
-<li><code>comm -12</code>: only output lines common to both files</li>
-</ul></li>
-<li><code>cp</code>: copy file/folder</li>
-<li><code>du</code>: calculate file size
-<ul>
-<li><code>du -h</code>: display file size in a human-readable format</li>
-</ul></li>
-<li><code>echo</code>: display a line of text</li>
-<li><code>grep</code>: find a regular expression in a text file
-<ul>
-<li><code>grep -E</code>: use extended regular expressions</li>
-<li><code>grep -v</code>: invert sense of matching, select non-matching lines</li>
-<li><code>grep -o</code>: print only the matched part of a line</li>
-</ul></li>
-<li><code>gunzip</code>: expand a file that has been compressed in GZ format; replaces the zipped file with the uncompressed file
-<ul>
-<li><code>gunzip -c</code>: write unzipped file contents to stdout (useful for piping)</li>
-</ul></li>
-<li><code>head</code>: output the first lines of a file (by default, the first 10 lines)
-<ul>
-<li><code>head -5</code> or <code>head -n5</code>: print the first 5 lines</li>
-</ul></li>
-<li><code>less</code>: display the contents of a file</li>
-<li><code>ls</code>: list directory contents
-<ul>
-<li><code>ls -l</code>: use a long listing format, i.e., one file/folder per line with additional information (permissions, owner, size, date modified)</li>
-<li><code>ls -a</code>: show all files/folders (i.e., even those starting with <code>.</code>)</li>
-</ul></li>
-<li><code>man</code>: show the manual for a command</li>
-<li><code>mkdir</code>: create folder
-<ul>
-<li><code>mkdir -p</code>: when creating nested folders, also create parent folders</li>
-</ul></li>
-<li><code>mv</code>: move file/folder</li>
-<li><code>nano</code>: edit a text file</li>
-<li><code>passwd</code>: change password</li>
-<li><code>pwd</code>: output the current working directory</li>
-<li><code>sed</code>: filter and transform text
-<ul>
-<li><code>sed 's/foo/bar/g'</code>: substitute all occurrences of <code>foo</code> with <code>bar</code> (<a href="bash.html#reformatting-the-ensembl-fasta-file">details</a>)</li>
-</ul></li>
-<li><code>sort</code>: sort lines in a text file</li>
-<li><code>ssh user@host</code>: connect to a server <code>host</code> with user <code>user</code></li>
-<li><code>tail</code>: output the last lines of a file (by default, the last 10 lines)
-<ul>
-<li><code>tail -5</code> or <code>tail -n5</code>: print the last 5 lines</li>
-</ul></li>
-<li><code>touch</code>: change file timestamp; create empty file if it does not exist</li>
-<li><code>uniq</code>: omit repeated lines of text</li>
-<li><code>wc</code>: print newline, word, and byte counts for each file
-<ul>
-<li><code>wc -l</code>: only print the number of lines</li>
-</ul></li>
-<li><code>wget</code>: download a file</li>
-</ul>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<p>Variables can hold information which can be passed to different programs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="st">"test variable"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$x</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$x</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/a//g'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we will write the gRNAs to test and the regexp patterns into variables.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">guide</span><span class="op">=</span>TTAAGACA</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$guide</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">pattern</span><span class="op">=</span><span class="st">"seq:[ACTG]*</span><span class="va">${guide}</span><span class="st">"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$pattern</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="va">$pattern</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="va">$pattern</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="other-commands" class="level2">
-<h2 class="anchored" data-anchor-id="other-commands">Other commands</h2>
-<p>These commands are required for the exercises, but less important for the exam.</p>
+<section id="loops" class="level2">
+<h2 class="anchored" data-anchor-id="loops">Loops</h2>
+<p>We will use <code>while</code> loops. They have the following syntax:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="ex">[condition]</span> do <span class="pp">[</span><span class="ss">something</span><span class="pp">]</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Different types of loops exist (<a href="https://ryanstutorials.net/bash-scripting-tutorial/bash-loops.php" class="uri">https://ryanstutorials.net/bash-scripting-tutorial/bash-loops.php</a>), but those are not important for this course.</p>
+<p>The following loop starts with x = 1. It then repeats printing “Welcome … times” and adding +1 to x, until x is greater than 5 (while x is lower or equal to 5 <code>$x -le 5</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span>1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$x</span> <span class="ot">-le</span> 5 <span class="bu">]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">"Welcome </span><span class="va">$x</span><span class="st"> times"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="va">x</span><span class="op">=</span><span class="va">$((</span> <span class="va">$x</span> <span class="op">+</span> <span class="dv">1</span> <span class="va">))</span> <span class="co"># syntax to add a number to x</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Importantly, the loop is ONE construct. Thus when entering <code>while [ $x -le 5 ]</code>, the terminal expects additional information, in particular <code>do [...] done</code>. While waiting for additional input, the terminal will start lines with <code>&gt;</code>. Keep entering the <code>do</code>, etc in those lines. The final results will look like this:</p>
+<pre><code>[user]@corso:~$ while [ $x -le 5 ]
+&gt; do
+&gt; echo "Welcome $x times"
+&gt; x=$(( $x + 1 ))
+&gt; done
+Welcome 1 times
+Welcome 2 times
+Welcome 3 times
+Welcome 4 times
+Welcome 5 times</code></pre>
+<p>Try to make the above loop count to 10. Or from 10 to 5.</p>
+<p>Here are different ways to compare numbers. Assume variable <code>a</code> holds 10 and variable <code>b</code> holds 20 then:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-eq</code></td>
+<td>Checks if the value of two operands are equal or not; if yes, then the condition becomes true.</td>
+<td><code>[ $a -eq $b ]</code> is not true.</td>
+</tr>
+<tr class="even">
+<td><code>-ne</code></td>
+<td>Checks if the value of two operands are equal or not; if values are not equal, then the condition becomes true.</td>
+<td><code>[ $a -ne $b ]</code> is true.</td>
+</tr>
+<tr class="odd">
+<td><code>-gt</code></td>
+<td>Checks if the value of left operand is greater than the value of right operand; if yes, then the condition becomes true.</td>
+<td><code>[ $a -gt $b ]</code> is not true.</td>
+</tr>
+<tr class="even">
+<td><code>-lt</code></td>
+<td>Checks if the value of left operand is less than the value of right operand; if yes, then the condition becomes true.</td>
+<td><code>[ $a -lt $b ]</code> is true.</td>
+</tr>
+<tr class="odd">
+<td><code>-ge</code></td>
+<td>Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true.</td>
+<td><code>[ $a -ge $b ]</code> is not true.</td>
+</tr>
+<tr class="even">
+<td><code>-le</code></td>
+<td>Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true.</td>
+<td><code>[ $a -le $b ]</code> is true.</td>
+</tr>
+</tbody>
+</table>
+<p>You can also use nano to write the code above into a file (for example here: <code>script.sh</code>) and then use the following to execute it:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can also loop through the content of a file.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">p</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">"</span><span class="va">$p</span><span class="st">"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> gRNAs.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="exercise-4.1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4.1">Exercise 4.1</h3>
+<p>Now we will combine the above variables and loopes to test all guides in file <code>gRNAs.txt</code> against all DNA sequences in <code>GRCh38_reformatted.gz</code>. To do so you need the following steps (also see the hints below!):</p>
 <ul>
-<li><code>clear</code>: clear the terminal</li>
-<li><code>gzip</code>: compress a file</li>
-<li><code>md5sum</code>: calculate the MD5 checksum of a file</li>
-<li><code>source</code>: run bash commands stored in a text file</li>
-<li><code>tr</code>: translate or delete characters
+<li>Use the code above (under <a href="#variables">Variables</a>) that matches guides against DNA sequences and extracts gene symbols for matched sequences.</li>
+<li>Place this function into the loop that iterates through the file <code>gRNAs.txt</code>, using the while loop shown above that iterates through a file.</li>
+<li>Store all matches (not just the top 30 coming from <code>head -30</code>) of each guide into a file that is named <code>results_${guide}.txt</code>. Place all files into a new directory <code>day4</code> - ideally already within the loop.</li>
+<li>Double-check the results by hand (no points).
 <ul>
-<li><code>tr -d</code>: delete character</li>
+<li>How many files did you just create?</li>
+<li>Look at one of the created files. Is the content what you would expect?</li>
+<li>When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?</li>
 </ul></li>
-<li><code>zless</code>: scroll through a zipped file</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hint: To complete the exercise, you can use the following code to extract genes for one guide. In this code, the guide needs to be defined first using <code>guide=[...]</code>. However, when placing this code block inside of the loop, you don’t define the guide in this way. Instead, it is defined by the loop.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$guide</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">pattern</span><span class="op">=</span><span class="st">"seq:[ACTG]*</span><span class="va">${guide}</span><span class="st">"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$pattern</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="va">$pattern</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Place the above in the loop that iterates throught the gRNA file.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">guide</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$guide</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> gRNAs.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember: you need to save the result of the last line (<code>gunzip ... | uniq</code>) to a file <code>results_${guide}.txt</code>.</p>
+</div>
+</div>
 </section>
-<section id="important-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="important-concepts">Important concepts</h2>
-<ul>
-<li><a href="bash.html#permissions">permissions</a></li>
-<li><a href="bash.html#pipes">pipes</a></li>
-<li><a href="bash.html#file-pattern-matches">file pattern matches</a></li>
-<li><a href="bash.html#simple-regular-expressions">regular expressions</a></li>
-<li><a href="bash.html#loops">while loops</a></li>
-</ul>
 </section>
-<section id="special-symbols" class="level2">
-<h2 class="anchored" data-anchor-id="special-symbols">Special symbols</h2>
+<section id="comparing-files" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-files">Comparing files</h2>
+<p>Have a look at the files we generated.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/day4</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> results_<span class="pp">*</span>.txt</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> results_<span class="pp">*</span>.txt</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> results_<span class="pp">*</span>.txt</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> results_<span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now let’s compare results in a pairwise manner. The command <code>comm</code> will provide the gene symbols unique to one or the other file, plus the intersection of both.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/day4</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">comm</span> results_AAGTTGGC.txt results_GCCATACA.txt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">comm</span> <span class="at">-12</span> results_AAGTTGGC.txt results_GCCATACA.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The count of genes in the overlap (intersection) can be stored in a new variable. To store results of an expression in a new variable, place the expression into parenthesis <code>x=$()</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="va">guide1</span><span class="op">=</span>AAGTTGGC</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="va">guide2</span><span class="op">=</span>GCCATACA</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="va">overlap</span><span class="op">=</span><span class="va">$(</span><span class="fu">comm</span> <span class="at">-12</span> day4/results_<span class="va">${guide1}</span>.txt day4/results_<span class="va">${guide2}</span>.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$guide1</span><span class="st"> </span><span class="va">$guide2</span><span class="st"> </span><span class="va">$overlap</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="exercise-4.2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4.2">Exercise 4.2</h3>
+<p>Now we will compare each pair of guides to test the overlap of genes. Place the result in the directory <code>day4</code>:</p>
 <ul>
-<li>The <code>(</code> is called a <code>parenthesis</code></li>
-<li>The <code>[</code> is called a <code>squared bracket</code> (sometimes only <code>bracket</code>)</li>
-<li>The <code>{</code> is called a <code>curly bracket</code> (sometimes only <code>brace</code>)</li>
-<li>The <code>~</code> is called a <code>tilde</code></li>
-<li>The <code>*</code> is called an <code>asterisk</code></li>
-</ul>
-</section>
-<section id="useful-links" class="level2">
-<h2 class="anchored" data-anchor-id="useful-links">Useful links</h2>
-<section id="linux-for-bioinformatics" class="level3">
-<h3 class="anchored" data-anchor-id="linux-for-bioinformatics">Linux for bioinformatics</h3>
+<li>Use one loop (that iterates through all guides) within a second loop (that also iterates through all guides) to compare the overlap between all pairs of guides (thus, for simplicity, we will compare all pairs of guides also the overlap of each guide with itself).</li>
+<li>Use the <code>comm</code> command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named <code>overlap_${guide1}_${guide2}.txt</code>.</li>
+<li>“Manually” check results (no points):
 <ul>
-<li><a href="https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0" class="uri">https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0</a></li>
-<li><a href="https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0" class="uri">https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0</a></li>
-<li><a href="https://bioinformatics.uconn.edu/unix-basics/#" class="uri">https://bioinformatics.uconn.edu/unix-basics/#</a></li>
-<li><a href="https://decodebiology.github.io/bioinfotutorials/" class="uri">https://decodebiology.github.io/bioinfotutorials/</a></li>
-<li><a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/" class="uri">https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/</a></li>
-</ul>
-</section>
-<section id="general-linux-commands" class="level3">
-<h3 class="anchored" data-anchor-id="general-linux-commands">General linux commands</h3>
-<ul>
-<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" class="uri">https://www.thegeekstuff.com/2010/11/50-linux-commands/</a></li>
-</ul>
-</section>
-<section id="regular-expressions" class="level3">
-<h3 class="anchored" data-anchor-id="regular-expressions">Regular expressions</h3>
-<ul>
-<li><a href="https://www.guru99.com/linux-regular-expressions.html" class="uri">https://www.guru99.com/linux-regular-expressions.html</a></li>
+<li>How many files did you create? How many did you expect to create?</li>
+<li>Look at one of the created files. Is the content what you would expect?</li>
+<li>Compare individual examples (for example “AAGTTGGC” vs “GCCATACA”). Did you get the right overlap?</li>
+</ul></li>
 </ul>
 
 

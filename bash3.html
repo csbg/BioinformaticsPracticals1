@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bash reference – Bioinformatics Practicals I</title>
+<title>Bash Unit 3 – Bioinformatics Practicals I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -247,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash_reference.html">Reference</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash3.html">Unit 3</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -304,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash3.html" class="sidebar-item-text sidebar-link">
+  <a href="./bash3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Unit 3</span></a>
   </div>
 </li>
@@ -316,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_reference.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bash_reference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reference</span></a>
   </div>
 </li>
@@ -367,15 +402,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#essential-commands" id="toc-essential-commands" class="nav-link active" data-scroll-target="#essential-commands">Essential commands</a></li>
-  <li><a href="#other-commands" id="toc-other-commands" class="nav-link" data-scroll-target="#other-commands">Other commands</a></li>
-  <li><a href="#important-concepts" id="toc-important-concepts" class="nav-link" data-scroll-target="#important-concepts">Important concepts</a></li>
-  <li><a href="#special-symbols" id="toc-special-symbols" class="nav-link" data-scroll-target="#special-symbols">Special symbols</a></li>
-  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links</a>
+  <li><a href="#file-pattern-matches" id="toc-file-pattern-matches" class="nav-link active" data-scroll-target="#file-pattern-matches">File pattern matches</a></li>
+  <li><a href="#simple-regular-expressions" id="toc-simple-regular-expressions" class="nav-link" data-scroll-target="#simple-regular-expressions">Simple regular expressions</a></li>
+  <li><a href="#checking-the-nucleotides-in-the-ensembl-fasta-file" id="toc-checking-the-nucleotides-in-the-ensembl-fasta-file" class="nav-link" data-scroll-target="#checking-the-nucleotides-in-the-ensembl-fasta-file">Checking the nucleotides in the Ensembl fasta file</a>
   <ul class="collapse">
-  <li><a href="#linux-for-bioinformatics" id="toc-linux-for-bioinformatics" class="nav-link" data-scroll-target="#linux-for-bioinformatics">Linux for bioinformatics</a></li>
-  <li><a href="#general-linux-commands" id="toc-general-linux-commands" class="nav-link" data-scroll-target="#general-linux-commands">General linux commands</a></li>
-  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions">Regular expressions</a></li>
+  <li><a href="#exercise-3.1" id="toc-exercise-3.1" class="nav-link" data-scroll-target="#exercise-3.1">Exercise 3.1</a></li>
+  </ul></li>
+  <li><a href="#reformatting-the-ensembl-fasta-file" id="toc-reformatting-the-ensembl-fasta-file" class="nav-link" data-scroll-target="#reformatting-the-ensembl-fasta-file">Reformatting the Ensembl fasta file</a></li>
+  <li><a href="#identifying-grna-matches" id="toc-identifying-grna-matches" class="nav-link" data-scroll-target="#identifying-grna-matches">Identifying gRNA matches</a>
+  <ul class="collapse">
+  <li><a href="#exercise-3.2" id="toc-exercise-3.2" class="nav-link" data-scroll-target="#exercise-3.2">Exercise 3.2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -384,9 +420,10 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash_reference.html">Reference</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bash1.html">Bash</a></li><li class="breadcrumb-item"><a href="./bash3.html">Unit 3</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bash reference</h1>
+<h1 class="title">Bash Unit 3</h1>
+<p class="subtitle lead">Patterns and regular expressions</p>
 </div>
 
 
@@ -403,132 +440,211 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="essential-commands" class="level2">
-<h2 class="anchored" data-anchor-id="essential-commands">Essential commands</h2>
-<p>Knowledge of these commands is required to pass both the exercises and exam.</p>
+<section id="file-pattern-matches" class="level2">
+<h2 class="anchored" data-anchor-id="file-pattern-matches">File pattern matches</h2>
+<p>Commands can be executed on multiple files at the same time using pattern matches (we have used this already above).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="pp">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> day<span class="pp">*</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Match zero or more characters</td>
+<td><code>*</code></td>
+</tr>
+<tr class="even">
+<td>Match any single character</td>
+<td><code>?</code></td>
+</tr>
+<tr class="odd">
+<td>Match any of the characters in a set</td>
+<td><code>[...]</code></td>
+</tr>
+<tr class="even">
+<td>Match zero or one occurrences of the patterns (extglob)</td>
+<td><code>?</code>(patterns)</td>
+</tr>
+<tr class="odd">
+<td>Match zero or more occurrences of the patterns (extglob)</td>
+<td><code>*</code>(patterns)</td>
+</tr>
+<tr class="even">
+<td>Match one or more occurrences of the patterns (extglob)</td>
+<td><code>+</code>(patterns)</td>
+</tr>
+<tr class="odd">
+<td>Match one occurrence of the patterns (extglob)</td>
+<td><code>@</code>(patterns)</td>
+</tr>
+<tr class="even">
+<td>Match anything that doesn’t match one of the patterns (extglob)</td>
+<td><code>!</code>(patterns)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="simple-regular-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="simple-regular-expressions">Simple regular expressions</h2>
+<p>Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The file <code>sample</code> needs to be copied to your home directory from the directory <code>/resources/bash</code>.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> sample</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> ^a sample</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-E</span> p<span class="dt">\{</span>2} sample</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"a\+t"</span> sample</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">"s/a/XXX/g"</span> sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Descriptions</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>replaces any character</td>
+<td><code>.</code></td>
+</tr>
+<tr class="even">
+<td>matches start of string</td>
+<td><code>^</code></td>
+</tr>
+<tr class="odd">
+<td>matches end of string</td>
+<td><code>$</code></td>
+</tr>
+<tr class="even">
+<td>matches up zero or more times the preceding character</td>
+<td><code>*</code></td>
+</tr>
+<tr class="odd">
+<td>Represent special characters</td>
+<td><code>\</code></td>
+</tr>
+<tr class="even">
+<td>Groups regular expressions</td>
+<td><code>()</code></td>
+</tr>
+<tr class="odd">
+<td>Matches up exactly one character</td>
+<td><code>?</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="checking-the-nucleotides-in-the-ensembl-fasta-file" class="level2">
+<h2 class="anchored" data-anchor-id="checking-the-nucleotides-in-the-ensembl-fasta-file">Checking the nucleotides in the Ensembl fasta file</h2>
+<p>Now let’s use regulare expressions to explore the fasta file. Have a look at the first few lines.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We expect all DNA sequences to be made up of A, C, T, and Gs. Now, we will verify this. First, we will get all DNA-sequences from this file, excluding lines starting with a <code>&gt;</code> (in a FASTA files, these lines are the lines describing the sequence; see <a href="https://en.wikipedia.org/wiki/FASTA_format" class="uri">https://en.wikipedia.org/wiki/FASTA_format</a>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># from "man grep":</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># -v Invert the sense of matching, to select non-matching lines.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next we will use <code>tr</code> to delete newline characters. This will place all sequences in one (very long) line.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next we place every character on a different line.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, we want to remove repetition, to only see the unique nucleotides. To do so, we have to first sort the lines and then make them unique.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># what happens if we only make them unique?</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span> <span class="kw">|</span> <span class="fu">uniq</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="exercise-3.1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.1">Exercise 3.1</h3>
 <ul>
-<li><code>cat</code>: show file contents on terminal</li>
-<li><code>cd</code>: change directory
-<ul>
-<li><code>cd ~</code>: go to your home folder</li>
-<li><code>cd ..</code>: go to parent folder</li>
-</ul></li>
-<li><code>chmod</code>: change permissions</li>
-<li><code>comm</code>: compare two sorted files line by line
-<ul>
-<li><code>comm -12</code>: only output lines common to both files</li>
-</ul></li>
-<li><code>cp</code>: copy file/folder</li>
-<li><code>du</code>: calculate file size
-<ul>
-<li><code>du -h</code>: display file size in a human-readable format</li>
-</ul></li>
-<li><code>echo</code>: display a line of text</li>
-<li><code>grep</code>: find a regular expression in a text file
-<ul>
-<li><code>grep -E</code>: use extended regular expressions</li>
-<li><code>grep -v</code>: invert sense of matching, select non-matching lines</li>
-<li><code>grep -o</code>: print only the matched part of a line</li>
-</ul></li>
-<li><code>gunzip</code>: expand a file that has been compressed in GZ format; replaces the zipped file with the uncompressed file
-<ul>
-<li><code>gunzip -c</code>: write unzipped file contents to stdout (useful for piping)</li>
-</ul></li>
-<li><code>head</code>: output the first lines of a file (by default, the first 10 lines)
-<ul>
-<li><code>head -5</code> or <code>head -n5</code>: print the first 5 lines</li>
-</ul></li>
-<li><code>less</code>: display the contents of a file</li>
-<li><code>ls</code>: list directory contents
-<ul>
-<li><code>ls -l</code>: use a long listing format, i.e., one file/folder per line with additional information (permissions, owner, size, date modified)</li>
-<li><code>ls -a</code>: show all files/folders (i.e., even those starting with <code>.</code>)</li>
-</ul></li>
-<li><code>man</code>: show the manual for a command</li>
-<li><code>mkdir</code>: create folder
-<ul>
-<li><code>mkdir -p</code>: when creating nested folders, also create parent folders</li>
-</ul></li>
-<li><code>mv</code>: move file/folder</li>
-<li><code>nano</code>: edit a text file</li>
-<li><code>passwd</code>: change password</li>
-<li><code>pwd</code>: output the current working directory</li>
-<li><code>sed</code>: filter and transform text
-<ul>
-<li><code>sed 's/foo/bar/g'</code>: substitute all occurrences of <code>foo</code> with <code>bar</code> (<a href="bash.html#reformatting-the-ensembl-fasta-file">details</a>)</li>
-</ul></li>
-<li><code>sort</code>: sort lines in a text file</li>
-<li><code>ssh user@host</code>: connect to a server <code>host</code> with user <code>user</code></li>
-<li><code>tail</code>: output the last lines of a file (by default, the last 10 lines)
-<ul>
-<li><code>tail -5</code> or <code>tail -n5</code>: print the last 5 lines</li>
-</ul></li>
-<li><code>touch</code>: change file timestamp; create empty file if it does not exist</li>
-<li><code>uniq</code>: omit repeated lines of text</li>
-<li><code>wc</code>: print newline, word, and byte counts for each file
-<ul>
-<li><code>wc -l</code>: only print the number of lines</li>
-</ul></li>
-<li><code>wget</code>: download a file</li>
+<li>Create a directory <code>day3</code> in your home directory.</li>
+<li>Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file <code>Homo_sapiens.GRCh38.cds.all.fa.gz</code>.</li>
+<li>Store each number in a file called <code>nt_A.txt</code>, <code>nt_C.txt</code>,… in the directory <code>day3</code>.</li>
 </ul>
 </section>
-<section id="other-commands" class="level2">
-<h2 class="anchored" data-anchor-id="other-commands">Other commands</h2>
-<p>These commands are required for the exercises, but less important for the exam.</p>
-<ul>
-<li><code>clear</code>: clear the terminal</li>
-<li><code>gzip</code>: compress a file</li>
-<li><code>md5sum</code>: calculate the MD5 checksum of a file</li>
-<li><code>source</code>: run bash commands stored in a text file</li>
-<li><code>tr</code>: translate or delete characters
-<ul>
-<li><code>tr -d</code>: delete character</li>
-</ul></li>
-<li><code>zless</code>: scroll through a zipped file</li>
-</ul>
 </section>
-<section id="important-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="important-concepts">Important concepts</h2>
+<section id="reformatting-the-ensembl-fasta-file" class="level2">
+<h2 class="anchored" data-anchor-id="reformatting-the-ensembl-fasta-file">Reformatting the Ensembl fasta file</h2>
+<p>Next, we will reformat the fasta file, such that every entry is on one line and the DNA sequence is at the end of the line.</p>
+<p>Remind ourselves of how this file looks like:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the original format, the <code>&gt;</code> separates different entries and sequences are in the lines below the line with <code>&gt;</code>. First, we will remove newline characters that separate the sequences. To remove the newline characters, we will use the <code>sed</code> command.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-zE</span> <span class="st">'s/([ACTG])\n([ACTG])/\1\2/g'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let breack this up:</p>
 <ul>
-<li><a href="bash.html#permissions">permissions</a></li>
-<li><a href="bash.html#pipes">pipes</a></li>
-<li><a href="bash.html#file-pattern-matches">file pattern matches</a></li>
-<li><a href="bash.html#simple-regular-expressions">regular expressions</a></li>
-<li><a href="bash.html#loops">while loops</a></li>
+<li><code>s///</code> tells sed to substitute.</li>
+<li><code>s///g</code> tells sed to substitue globally - replacing each occurance of <code>x</code>.</li>
+<li><code>s/x/y/g</code> means we substitute <code>x</code> by <code>y</code>.</li>
+<li><code>([ACTG])</code> matches any of the four letters A, C, T, and G. The brackets <code>()</code> tell the regex to <em>store</em> the match for later (see <code>\1</code> and <code>\2</code> below). If we want to use this <em>storing</em> we need to use <code>sed -E</code>.</li>
+<li><code>\n</code> matches the newline.</li>
+<li><code>\1</code> is going to be replaced by the first match within the first brackets <code>()</code>. Therefore, here it will be replaced by the nucleotide before the new line.</li>
+<li><code>\2</code> is going to be replaced by the second match within the second brackets <code>()</code>. Therefore, here it will be replaced by the nucleotide after the new line.</li>
+<li>So ultimately the nulceotide before and after the newline are stored, and then they are written again but without the newline.</li>
 </ul>
-</section>
-<section id="special-symbols" class="level2">
-<h2 class="anchored" data-anchor-id="special-symbols">Special symbols</h2>
+<p>Next, we will remove the newline character that separates the sequence from the line with the entry information, which starts with <code>&gt;</code>, and replace it with <code>seq:</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-zE</span> <span class="st">'s/([ACTG])\n([ACTG])/\1\2/g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-z</span> <span class="st">'s/\n[^&gt;]/ seq:/g'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explanation:</p>
 <ul>
-<li>The <code>(</code> is called a <code>parenthesis</code></li>
-<li>The <code>[</code> is called a <code>squared bracket</code> (sometimes only <code>bracket</code>)</li>
-<li>The <code>{</code> is called a <code>curly bracket</code> (sometimes only <code>brace</code>)</li>
-<li>The <code>~</code> is called a <code>tilde</code></li>
-<li>The <code>*</code> is called an <code>asterisk</code></li>
+<li><code>[^&gt;]</code> means to NOT match <code>&gt;</code>.</li>
+<li><code>\n[^&gt;]</code> replaces all newline characters that are NOT before a <code>&gt;</code>.</li>
 </ul>
+<p>We developed the above approach on the first lines. Now run it an the full file. This may take a couple of minutes. The <code>gzip</code> command will compress the results. The <code>&gt;</code> will store it in a new file <code>GRCh38_reformatted.gz</code>. The reformatted file should end up in your home directory.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-zE</span> <span class="st">'s/([ACTG])\n([ACTG])/\1\2/g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-z</span> <span class="st">'s/\n[^&gt;]/ seq:/g'</span> <span class="kw">|</span> <span class="fu">gzip</span> <span class="op">&gt;</span> GRCh38_reformatted.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explore the generated file.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">zless</span> GRCh38_reformatted.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="useful-links" class="level2">
-<h2 class="anchored" data-anchor-id="useful-links">Useful links</h2>
-<section id="linux-for-bioinformatics" class="level3">
-<h3 class="anchored" data-anchor-id="linux-for-bioinformatics">Linux for bioinformatics</h3>
+<section id="identifying-grna-matches" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-grna-matches">Identifying gRNA matches</h2>
+<p>Now, with the newly formatted file, we can easily identify genes in the database that match a specific gRNA.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We check that all entries have gene symbols:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"gene_symbol"</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"gene_symbol"</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remember: grep -v means to *not* match</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next we extract those sequences matching the guide “TTAAGACA”:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we extract the gene symbols of these matches. First we match all text (<code>.*</code>) from the beginning of the line (<code>^</code>) before the text <code>gene_symbol</code> and delete it.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then we also remove all text after the gene symbol, in this case the space and everything (<code>.*</code>) after that until the end of the line (<code>$</code>).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span>  <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, we get unique gene IDs.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span>  <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="exercise-3.2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.2">Exercise 3.2</h3>
+<p>Create the following files in the directory <code>day3</code>:</p>
 <ul>
-<li><a href="https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0" class="uri">https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0</a></li>
-<li><a href="https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0" class="uri">https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0</a></li>
-<li><a href="https://bioinformatics.uconn.edu/unix-basics/#" class="uri">https://bioinformatics.uconn.edu/unix-basics/#</a></li>
-<li><a href="https://decodebiology.github.io/bioinfotutorials/" class="uri">https://decodebiology.github.io/bioinfotutorials/</a></li>
-<li><a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/" class="uri">https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/</a></li>
-</ul>
-</section>
-<section id="general-linux-commands" class="level3">
-<h3 class="anchored" data-anchor-id="general-linux-commands">General linux commands</h3>
-<ul>
-<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" class="uri">https://www.thegeekstuff.com/2010/11/50-linux-commands/</a></li>
-</ul>
-</section>
-<section id="regular-expressions" class="level3">
-<h3 class="anchored" data-anchor-id="regular-expressions">Regular expressions</h3>
-<ul>
-<li><a href="https://www.guru99.com/linux-regular-expressions.html" class="uri">https://www.guru99.com/linux-regular-expressions.html</a></li>
+<li>Write all entries with sequences matching the guide “GCGGTTTC” into the file <code>guideMatch_GCGGTTTC.txt</code>.</li>
+<li>Write the count of entries with sequences starting with “TGC” into the file <code>count_TGC.txt</code>.</li>
+<li>Write the count of entries of gene “MMP2” into the file <code>count_MMP2.txt</code>. Note: Do not count genes MMP20, MMP21,…</li>
+<li>Write the count of unique genes whose symbol starts with “RPL” into the file <code>count_RPL.txt</code>.</li>
+<li>Write the count of all unique protein coding genes into the file <code>count_protein_coding.txt</code>.</li>
 </ul>
 
 
