@@ -1,5 +1,5 @@
 ---
-title: "Bioinformatics Practicals I"
+title: Introduction
 ---
 
 Modern Life Sciences rely on various computer programs to analyze large biological datasets. The next generation of biologists thus requires basic expertise with high-performance computing, software tools, and automated application of analyses.

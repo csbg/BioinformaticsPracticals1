@@ -3,14 +3,33 @@ project:
 
 website:
   title: "Bioinformatics Practicals I"
-  navbar:
-    left:
-      - bash.qmd
-      - bash_reference.qmd
-      - python1.qmd
-      - python2.qmd
-      - python3.qmd
-      - python4.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - index.qmd
+      - section: Bash
+        contents:
+        - text: Unit 1
+          href: bash1.qmd
+        - text: Unit 2
+          href: bash2.qmd
+        - text: Unit 3
+          href: bash3.qmd
+        - text: Unit 4
+          href: bash4.qmd
+        - text: Reference
+          href: bash_reference.qmd
+      - section: Python
+        contents:
+        - text: Unit 1
+          href: python1.qmd
+        - text: Unit 2
+          href: python2.qmd
+        - text: Unit 3
+          href: python3.qmd
+        - text: Unit 4
+          href: python4.qmd
 
 format:
   html:

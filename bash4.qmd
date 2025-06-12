@@ -1,0 +1,166 @@
+---
+title: Bash Unit 4
+subtitle: Loops and variables
+execute: 
+  enabled: false
+---
+
+## Variables
+
+Variables can hold information which can be passed to different programs.
+
+```bash
+x="test variable"
+echo $x
+echo $x | sed 's/a//g'
+```
+
+Now we will write the gRNAs to test and the regexp patterns into variables.
+
+```bash
+guide=TTAAGACA
+echo $guide
+pattern="seq:[ACTG]*${guide}"
+echo $pattern
+gunzip -c GRCh38_reformatted.gz | grep $pattern | head -30
+gunzip -c GRCh38_reformatted.gz | grep $pattern | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' | head -30
+```
+
+
+## Loops
+
+We will use `while` loops. They have the following syntax:
+
+```bash
+while [condition] do [something] done
+```
+
+Different types of loops exist (<https://ryanstutorials.net/bash-scripting-tutorial/bash-loops.php>), but those are not important for this course.
+
+The following loop starts with x = 1. It then repeats printing "Welcome ... times" and adding +1 to x, until x is greater than 5 (while x is lower or equal to 5 `$x -le 5`).
+```bash
+x=1
+while [ $x -le 5 ]
+do
+  echo "Welcome $x times"
+  x=$(( $x + 1 )) # syntax to add a number to x
+done
+```
+
+Importantly, the loop is ONE construct. Thus when entering `while [ $x -le 5 ]`, the terminal expects additional information, in particular `do [...] done`. While waiting for additional input, the terminal will start lines with `>`. Keep entering the `do`, etc in those lines. The final results will look like this:
+```
+[user]@corso:~$ while [ $x -le 5 ]
+> do
+> echo "Welcome $x times"
+> x=$(( $x + 1 ))
+> done
+Welcome 1 times
+Welcome 2 times
+Welcome 3 times
+Welcome 4 times
+Welcome 5 times
+```
+
+Try to make the above loop count to 10. Or from 10 to 5.
+
+Here are different ways to compare numbers. Assume variable `a` holds 10 and variable `b` holds 20 then:
+
+Operator | Description | Example
+ --- | --- | ---
+`-eq` | Checks if the value of two operands are equal or not; if yes, then the condition becomes true. | `[ $a -eq $b ]` is not true.
+`-ne` | Checks if the value of two operands are equal or not; if values are not equal, then the condition becomes true. | `[ $a -ne $b ]` is true.
+`-gt` | Checks if the value of left operand is greater than the value of right operand; if yes, then the condition becomes true. | `[ $a -gt $b ]` is not true.
+`-lt` | Checks if the value of left operand is less than the value of right operand; if yes, then the condition becomes true. | `[ $a -lt $b ]` is true.
+`-ge` | Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true. | `[ $a -ge $b ]` is not true.
+`-le` | Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true. | `[ $a -le $b ]` is true.
+
+You can also use nano to write the code above into a file (for example here: `script.sh`) and then use the following to execute it:
+
+```bash
+bash script.sh
+```
+
+We can also loop through the content of a file.
+
+```bash
+while read p; do
+  echo "$p"
+done < gRNAs.txt
+```
+
+### Exercise 4.1
+
+Now we will combine the above variables and loopes to test all guides in file `gRNAs.txt` against all DNA sequences in `GRCh38_reformatted.gz`. To do so you need the following steps (also see the hints below!):
+
+- Use the code above (under [Variables](#variables)) that matches guides against DNA sequences and extracts gene symbols for matched sequences. 
+- Place this function into the loop that iterates through the file `gRNAs.txt`, using the while loop shown above that iterates through a file.
+- Store all matches (not just the top 30 coming from `head -30`) of each guide into a file that is named `results_${guide}.txt`. Place all files into a new directory `day4` - ideally already within the loop.
+- Double-check the results by hand (no points).
+	- How many files did you just create?
+	- Look at one of the created files. Is the content what you would expect?
+	- When you run it with only one guide (without the loop) and compare to the results generated within the loop: Do you get the right genes for this guide? Do you get the correct number of genes for this guide?
+
+::: {.callout-tip}
+Hint: To complete the exercise, you can use the following code to extract genes for one guide. In this code, the guide needs to be defined first using `guide=[...]`. However, when placing this code block inside of the loop, you don't define the guide in this way. Instead, it is defined by the loop.
+:::
+
+```bash
+echo $guide
+pattern="seq:[ACTG]*${guide}"
+echo $pattern
+gunzip -c GRCh38_reformatted.gz | grep $pattern | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g' | sort | uniq
+```
+
+Place the above in the loop that iterates throught the gRNA file. 
+
+```bash
+while read guide; do
+  echo $guide
+done < gRNAs.txt
+```
+
+::: {.callout-tip}
+Remember: you need to save the result of the last line (`gunzip ... | uniq`) to a file `results_${guide}.txt`.
+:::
+
+
+## Comparing files
+
+Have a look at the files we generated.
+
+```bash
+cd ~/day4
+ls results_*.txt
+ls -l results_*.txt
+head results_*.txt
+wc -l results_*.txt
+```
+
+Now let's compare results in a pairwise manner. The command `comm` will provide the gene symbols unique to one or the other file, plus the intersection of both.
+
+```bash
+cd ~/day4
+comm results_AAGTTGGC.txt results_GCCATACA.txt
+comm -12 results_AAGTTGGC.txt results_GCCATACA.txt
+```
+
+The count of genes in the overlap (intersection) can be stored in a new variable. To store results of an expression in a new variable, place the expression into parenthesis `x=$()`.
+
+```bash
+cd ~/
+guide1=AAGTTGGC
+guide2=GCCATACA
+overlap=$(comm -12 day4/results_${guide1}.txt day4/results_${guide2}.txt | wc -l)
+echo "$guide1 $guide2 $overlap"
+```
+
+### Exercise 4.2
+
+Now we will compare each pair of guides to test the overlap of genes. Place the result in the directory `day4`:
+
+- Use one loop (that iterates through all guides) within a second loop (that also iterates through all guides) to compare the overlap between all pairs of guides (thus, for simplicity, we will compare all pairs of guides also the overlap of each guide with itself).
+- Use the `comm` command as shown above to extract the overlap, counting the number of genes, and writing the result into a file named `overlap_${guide1}_${guide2}.txt`.
+- "Manually" check results (no points):
+	- How many files did you create? How many did you expect to create?
+	- Look at one of the created files. Is the content what you would expect?
+	- Compare individual examples (for example "AAGTTGGC" vs "GCCATACA"). Did you get the right overlap?

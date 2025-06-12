@@ -71,3 +71,31 @@ These commands are required for the exercises, but less important for the exam.
 - [file pattern matches](bash.html#file-pattern-matches)
 - [regular expressions](bash.html#simple-regular-expressions)
 - [while loops](bash.html#loops)
+
+
+## Special symbols
+
+- The `(` is called a `parenthesis`
+- The `[` is called a `squared bracket` (sometimes only `bracket`)
+- The `{` is called a `curly bracket` (sometimes only `brace`)
+- The `~` is called a `tilde`
+- The `*` is called an `asterisk`
+
+
+## Useful links
+
+### Linux for bioinformatics
+
+- <https://bioinformaticsworkbook.org/Appendix/Unix/unix-basics-1.html#gsc.tab=0>
+- <https://bioinformaticsworkbook.org/Appendix/Unix/UnixCheatSheet.html#gsc.tab=0>
+- <https://bioinformatics.uconn.edu/unix-basics/#>
+- <https://decodebiology.github.io/bioinfotutorials/>
+- <https://www.melbournebioinformatics.org.au/tutorials/tutorials/unix/unix/>
+
+### General linux commands
+
+- <https://www.thegeekstuff.com/2010/11/50-linux-commands/>
+
+### Regular expressions
+
+- <https://www.guru99.com/linux-regular-expressions.html>

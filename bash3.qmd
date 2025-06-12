@@ -1,0 +1,209 @@
+---
+title: Bash Unit 3
+subtitle: Patterns and regular expressions
+execute: 
+  enabled: false
+---
+
+## File pattern matches
+
+Commands can be executed on multiple files at the same time using pattern matches (we have used this already above).
+
+```bash
+ls -l
+ls -l *
+ls -l day*
+wc -l *
+wc -l *.gz
+```
+
+Description | Pattern
+--- |  ---
+Match zero or more characters | `*`
+Match any single character | `?`
+Match any of the characters in a set | `[...]`
+Match zero or one occurrences of the patterns (extglob) | `?`(patterns)
+Match zero or more occurrences of the patterns (extglob) | `*`(patterns)
+Match one or more occurrences of the patterns (extglob) | `+`(patterns)
+Match one occurrence of the patterns (extglob) | `@`(patterns)
+Match anything that doesn't match one of the patterns (extglob) | `!`(patterns)
+
+
+## Simple regular expressions
+
+Regular expressions can be executed on file names but also content within files. Below is the example from the PDF presented during the lecture.
+
+::: {.callout-tip}
+The file `sample` needs to be copied to your home directory from the directory `/resources/bash`.
+:::
+
+
+```bash
+cat sample
+grep ^a sample
+grep -E p\{2} sample
+grep "a\+t" sample
+sed "s/a/XXX/g" sample
+```
+
+Descriptions | Symbol
+--- |  ---
+replaces any character | `.`
+matches start of string | `^`
+matches end of string | `$`
+matches up zero or more times the preceding character | `*`
+Represent special characters | `\`
+Groups regular expressions | `()`
+Matches up exactly one character | `?`
+
+## Checking the nucleotides in the Ensembl fasta file
+
+Now let's use regulare expressions to explore the fasta file. Have a look at the first few lines.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -50
+```
+
+We expect all DNA sequences to be made up of A, C, T, and Gs. Now, we will verify this. First, we will get all DNA-sequences from this file, excluding lines starting with a `>` (in a FASTA files, these lines are the lines describing the sequence; see <https://en.wikipedia.org/wiki/FASTA_format>).
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">"
+
+# from "man grep":
+# -v Invert the sense of matching, to select non-matching lines.
+```
+
+Next we will use `tr` to delete newline characters. This will place all sequences in one (very long) line.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n'
+```
+
+Next we place every character on a different line.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o .
+```
+
+Finally, we want to remove repetition, to only see the unique nucleotides. To do so, we have to first sort the lines and then make them unique.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq
+
+# what happens if we only make them unique?
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | head -20
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | head -20 | uniq
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | wc -l
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | uniq | wc -l
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq | wc -l
+```
+
+### Exercise 3.1
+
+- Create a directory `day3` in your home directory.
+- Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file `Homo_sapiens.GRCh38.cds.all.fa.gz`.
+- Store each number in a file called `nt_A.txt`, `nt_C.txt`,... in the directory `day3`.
+
+## Reformatting the Ensembl fasta file
+
+Next, we will reformat the fasta file, such that every entry is on one line and the DNA sequence is at the end of the line. 
+
+Remind ourselves of how this file looks like:
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500
+```
+
+In the original format, the `>` separates different entries and sequences are in the lines below the line with `>`. First, we will remove newline characters that separate the sequences. To remove the newline characters, we will use the `sed` command.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -zE 's/([ACTG])\n([ACTG])/\1\2/g'
+```
+Let breack this up:
+
+- `s///` tells sed to substitute.
+- `s///g` tells sed to substitue globally - replacing each occurance of `x`.
+- `s/x/y/g` means we substitute `x` by `y`.
+- `([ACTG])` matches any of the four letters A, C, T, and G. The brackets `()` tell the regex to *store* the match for later (see `\1` and `\2` below). If we want to use this *storing* we need to use `sed -E`.
+- `\n` matches the newline.
+- `\1` is going to be replaced by the first match within the first brackets `()`. Therefore, here it will be replaced by the nucleotide before the new line.
+- `\2` is going to be replaced by the second match within the second brackets `()`. Therefore, here it will be replaced by the nucleotide after the new line.
+- So ultimately the nulceotide before and after the newline are stored, and then they are written again but without the newline.
+
+Next, we will remove the newline character that separates the sequence from the line with the entry information, which starts with `>`, and replace it with ` seq:`.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | sed -zE 's/([ACTG])\n([ACTG])/\1\2/g' | sed -z 's/\n[^>]/ seq:/g'
+```
+
+Explanation:
+
+- `[^>]` means to NOT match `>`.
+- `\n[^>]` replaces all newline characters that are NOT before a `>`.
+
+We developed the above approach on the first lines. Now run it an the full file. This may take a couple of minutes. The `gzip` command will compress the results. The `>` will store it in a new file `GRCh38_reformatted.gz`. The reformatted file should end up in your home directory.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | sed -zE 's/([ACTG])\n([ACTG])/\1\2/g' | sed -z 's/\n[^>]/ seq:/g' | gzip > GRCh38_reformatted.gz
+```
+
+Explore the generated file.
+
+```bash
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
+gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | grep ">" | wc -l
+gunzip -c GRCh38_reformatted.gz | wc -l
+zless GRCh38_reformatted.gz
+```
+
+
+## Identifying gRNA matches
+
+Now, with the newly formatted file, we can easily identify genes in the database that match a specific gRNA.
+
+```bash
+gunzip -c GRCh38_reformatted.gz | head -30
+```
+
+We check that all entries have gene symbols:
+
+```bash
+gunzip -c GRCh38_reformatted.gz | grep "gene_symbol" | head -30 
+gunzip -c GRCh38_reformatted.gz | grep -v "gene_symbol" | head -30 
+
+# remember: grep -v means to *not* match
+```
+
+Next we extract those sequences matching the guide "TTAAGACA":
+
+```bash
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | head -30 
+```
+
+Now we extract the gene symbols of these matches. First we match all text (`.*`) from the beginning of the line (`^`) before the text `gene_symbol` and delete it.
+
+```bash
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | head -30
+```
+
+Then we also remove all text after the gene symbol, in this case the space and everything (`.*`) after that until the end of the line (`$`).
+
+```bash
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | head -30
+```
+
+Finally, we get unique gene IDs.
+
+```bash
+gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_symbol://g' | sed 's/ .*$//g'  | sort | uniq
+```
+
+
+### Exercise 3.2
+
+Create the following files in the directory `day3`:
+
+- Write all entries with sequences matching the guide "GCGGTTTC" into the file `guideMatch_GCGGTTTC.txt`.
+- Write the count of entries with sequences starting with "TGC" into the file `count_TGC.txt`.
+- Write the count of entries of gene "MMP2" into the file `count_MMP2.txt`. Note: Do not count genes MMP20, MMP21,...
+- Write the count of unique genes whose symbol starts with "RPL" into the file `count_RPL.txt`.
+- Write the count of all unique protein coding genes into the file `count_protein_coding.txt`.

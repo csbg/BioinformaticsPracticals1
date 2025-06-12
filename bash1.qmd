@@ -1,0 +1,120 @@
+---
+title: Bash Unit 1
+subtitle: Connecting to the cluster
+execute: 
+  enabled: false
+---
+
+## First steps
+
+The command ssh lets you connect to the cluster. You will need VPN active to be able to connect if you are not using the university LAN or "eduroam" WLAN (when you are working from home).
+
+```bash
+ssh [username]@corso.came.sbg.ac.at
+# For example:
+ssh nfortelny@corso.came.sbg.ac.at
+```
+
+::: {.callout-tip}
+You will see a number of different commands over the next days. The key commands are listed at the [bottom of this page](#commands).
+:::
+
+
+Next you will change your password. Make sure to remember this password, which you will you throughout this course.
+
+```bash
+passwd
+```
+
+Now we are connected to the cluster. In the following we will explore this file system. Details will be explored in the next lecture of this course. For now, just execute the commands and see if you can make sense of the results.
+
+The cluster has a file system like any computer. Currently you are in your home directory. The current "path" is shown by the following command:
+
+```bash
+pwd
+```
+You can list the content of your home directory using
+
+```bash
+ls
+ls -l
+```
+
+::: {.callout-tip}
+Do not confuse the lowercase letter `l` (as used in `ls -l`) with the number `1` ("one").
+:::
+
+You can clear the terminal by typing
+
+```bash
+clear
+```
+
+Now, use the up- and down-arrows on your keyboard to look through the history of commands.
+
+Now create a directory:
+
+```bash
+mkdir day1
+```
+
+List content of the directory again:
+```bash
+ls
+ls -l					# This shows you the home directory (and the day1 directory that is within the home directory)
+ls -l day1/		# This shows you the content of the day1 directory
+```
+
+::: {.callout-tip}
+Note: `folder` and `directory` mean the same thing. We will use `directory` from now on.
+:::
+
+What does `mkdir` do? Bring up the manual (press `q` to exit the manual).
+
+```bash
+man mkdir
+```
+
+Now create some files. There are many ways to create a file.
+
+```bash
+# Create an empty file in directory "day1"
+touch day1/this_file_is_empty.txt
+
+# Write the text "abcdefgh" in a file.
+echo "abcdefgh"  > day1/letters.txt
+```
+
+List files again.
+
+```bash
+ls
+ls -l
+ls -l day1/
+```
+
+Take a look at the file content.
+
+```bash
+head day1/*
+```
+
+## Treasure Game
+
+Next, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game:
+- list files and folders in your directory `ls`
+- change between directories `cd`
+- look at the content of a file `cat`
+
+Now you are ready to start. First, download the game:
+```
+cd ~/
+git clone https://github.com/tayssirgh/mozmoz-treasure.git
+cd mozmoz-treasure
+```
+
+Next, run the game:
+```
+chmod +x ./.welcome.sh
+./.welcome.sh
+```
