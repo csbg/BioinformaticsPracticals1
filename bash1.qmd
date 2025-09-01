@@ -107,14 +107,22 @@ Next, we will play a little treasure game, where you have to navigate through di
 - look at the content of a file `cat`
 
 Now you are ready to start. First, download the game:
-```
+
+```bash
 cd ~/
 git clone https://github.com/tayssirgh/mozmoz-treasure.git
 cd mozmoz-treasure
 ```
 
 Next, run the game:
-```
+```bash
 chmod +x ./.welcome.sh
 ./.welcome.sh
+```
+
+You start your journey by entering the folder `the-woodland-gate`, and looking at the grimoire:
+
+```bash
+cd the-woodland-gate
+cat grimoire
 ```
