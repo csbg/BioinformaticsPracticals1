@@ -102,6 +102,7 @@ head day1/*
 ## Treasure Game
 
 Next, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game:
+
 - list files and folders in your directory `ls`
 - change between directories `cd`
 - look at the content of a file `cat`
