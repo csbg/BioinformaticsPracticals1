@@ -246,7 +246,7 @@
     "href": "bash1.html#treasure-game",
     "title": "Bash Unit 1",
     "section": "Treasure Game",
-    "text": "Treasure Game\nNext, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game: - list files and folders in your directory ls - change between directories cd - look at the content of a file cat\nNow you are ready to start. First, download the game:\ncd ~/\ngit clone https://github.com/tayssirgh/mozmoz-treasure.git\ncd mozmoz-treasure\nNext, run the game:\nchmod +x ./.welcome.sh\n./.welcome.sh\nYou start your journey by entering the folder the-woodland-gate, and looking at the grimoire:\ncd the-woodland-gate\ncat grimoire",
+    "text": "Treasure Game\nNext, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game:\n\nlist files and folders in your directory ls\nchange between directories cd\nlook at the content of a file cat\n\nNow you are ready to start. First, download the game:\ncd ~/\ngit clone https://github.com/tayssirgh/mozmoz-treasure.git\ncd mozmoz-treasure\nNext, run the game:\nchmod +x ./.welcome.sh\n./.welcome.sh\nYou start your journey by entering the folder the-woodland-gate, and looking at the grimoire:\ncd the-woodland-gate\ncat grimoire",
     "crumbs": [
       "Bash",
       "Unit 1"
