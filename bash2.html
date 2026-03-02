@@ -412,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#exercise-2.2" id="toc-exercise-2.2" class="nav-link" data-scroll-target="#exercise-2.2">Exercise 2.2</a></li>
   </ul></li>
-  <li><a href="#editing-in-nano" id="toc-editing-in-nano" class="nav-link" data-scroll-target="#editing-in-nano">Editing in nano</a></li>
+  <li><a href="#editing-in-fresh" id="toc-editing-in-fresh" class="nav-link" data-scroll-target="#editing-in-fresh">Editing in fresh</a></li>
   <li><a href="#zipped-files" id="toc-zipped-files" class="nav-link" data-scroll-target="#zipped-files">Zipped files</a></li>
   <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes">Pipes</a>
   <ul class="collapse">
@@ -637,81 +637,14 @@ Tip
 <p>Copy the file <code>gRNAs.txt</code> from your home directory into the directory <code>day2</code>. Then rename the copied file in this directory to <code>gRNAs_exercise.txt</code>.</p>
 </section>
 </section>
-<section id="editing-in-nano" class="level2">
-<h2 class="anchored" data-anchor-id="editing-in-nano">Editing in nano</h2>
-<p>Now add a line at the end of the file <code>gRNAs.txt</code> that is located in your home directory, adding the gRNA sequence “ACTGACTG”. Use the <code>nano</code> editor for this purpose. To quit the nano-editor you need to press Ctrl+X. Then type y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.</p>
-<p>Nano commands:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ctrl+r</td>
-<td>read/insert file</td>
-</tr>
-<tr class="even">
-<td>ctrl+o</td>
-<td>save file</td>
-</tr>
-<tr class="odd">
-<td>ctrl+x</td>
-<td>close file</td>
-</tr>
-<tr class="even">
-<td>alt+a</td>
-<td>start selecting text</td>
-</tr>
-<tr class="odd">
-<td>ctrl+k</td>
-<td>cut selection</td>
-</tr>
-<tr class="even">
-<td>ctrl+u</td>
-<td>uncut (paste) selection</td>
-</tr>
-<tr class="odd">
-<td>alt+/</td>
-<td>go to end of the file</td>
-</tr>
-<tr class="even">
-<td>ctrl+a</td>
-<td>go to start of the line</td>
-</tr>
-<tr class="odd">
-<td>ctrl+e</td>
-<td>go to end of the line</td>
-</tr>
-<tr class="even">
-<td>ctrl+c</td>
-<td>show line number</td>
-</tr>
-<tr class="odd">
-<td>ctrl+_</td>
-<td>go to line number</td>
-</tr>
-<tr class="even">
-<td>ctrl+w</td>
-<td>find matching word</td>
-</tr>
-<tr class="odd">
-<td>alt+w</td>
-<td>find next match</td>
-</tr>
-<tr class="even">
-<td>ctrl+\</td>
-<td>find and replace</td>
-</tr>
-</tbody>
-</table>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> gRNAs.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Now use nano to modify the shell to make things prettier. To do so change the file <code>.bash_profile</code>. This file contains settings for each user (the naming is just by convention). It starts with a <code>.</code>, which for Linux means the file is hidden.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.bash_profile</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This creates the file and also opens it in nano</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add the following lines to <code>.bash_profile</code> in nano, then exit the file and save it - see the commands above.</p>
+<section id="editing-in-fresh" class="level2">
+<h2 class="anchored" data-anchor-id="editing-in-fresh">Editing in fresh</h2>
+<p>Now add a line at the end of the file <code>gRNAs.txt</code> that is located in your home directory, adding the gRNA sequence “ACTGACTG”. Use the <a href="https://getfresh.dev/"><code>fresh</code> editor</a> for this purpose. Save your changes with Ctrl+S and quit the editor with Ctrl+Q.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fresh</span> gRNAs.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now use fresh to modify the shell to make things prettier. To do so change the file <code>.bash_profile</code>. This file contains settings for each user (the naming is just by convention). It starts with a <code>.</code>, which for Linux means the file is hidden.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fresh</span> ~/.bash_profile</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This creates the file and also opens it in fresh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Add the following lines to <code>.bash_profile</code> in fresh, then exit the file and save it - see the commands above.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -737,6 +670,19 @@ Tip
 <p>Also, notice the difference in <code>ls</code> commands to show hidden files (like <code>.bash_profile</code>).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -747,7 +693,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.</p>
+<p>An older, but still very popular alternative to the fresh editor is <a href="https://www.nano-editor.org/"><code>nano</code></a>. However, since fresh has a more intuitive user interface, we use the latter editor in this course.</p>
 </div>
 </div>
 </section>
@@ -778,7 +724,7 @@ Tip
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> gunzip</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -c --stdout --to-stdout</span></span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   Write output on standard output; keep original files unchanged.</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   If there are several input files, the output consists of a sequence </span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   If there are several input files, the output consists of a sequence</span></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   of independently compressed members. To obtain better compression,</span></span>
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   concatenate all input files before compressing them.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Again, remember to clean up your terminal.</p>
