@@ -19,6 +19,7 @@ Knowledge of these commands is required to pass both the exercises and exam.
 - `du`: calculate file size
   - `du -h`: display file size in a human-readable format
 - `echo`: display a line of text
+- `fresh`: edit a text file
 - `grep`: find a regular expression in a text file
   - `grep -E`: use extended regular expressions
   - `grep -v`: invert sense of matching, select non-matching lines

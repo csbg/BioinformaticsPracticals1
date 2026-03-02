@@ -1,7 +1,7 @@
 ---
 title: Bash Unit 2
 subtitle: Files and file systems
-execute: 
+execute:
   enabled: false
 ---
 
@@ -174,41 +174,22 @@ You may be used to a workflow where you first copy a file (e.g., Ctrl+C), then g
 Copy the file `gRNAs.txt` from your home directory into the directory `day2`. Then rename the copied file in this directory to `gRNAs_exercise.txt`.
 
 
-## Editing in nano
+## Editing in fresh
 
-Now add a line at the end of the file `gRNAs.txt` that is located in your home directory, adding the gRNA sequence "ACTGACTG". Use the `nano` editor for this purpose. To quit the nano-editor you need to press Ctrl+X. Then type y+Enter to save the changes. Nano commands are shown in the editor and can be found on the internet. A list is provided below.
-
-Nano commands:
-
-Command | Function
- --- | --- 
-ctrl+r | read/insert file
-ctrl+o | save file
-ctrl+x | close file
-alt+a | start selecting text
-ctrl+k | cut selection
-ctrl+u | uncut (paste) selection
-alt+/ | go to end of the file
-ctrl+a | go to start of the line
-ctrl+e | go to end of the line
-ctrl+c | show line number
-ctrl+_ | go to line number
-ctrl+w | find matching word
-alt+w | find next match
-ctrl+\ | find and replace
+Now add a line at the end of the file `gRNAs.txt` that is located in your home directory, adding the gRNA sequence "ACTGACTG". Use the [`fresh` editor](https://getfresh.dev/) for this purpose. Save your changes with Ctrl+S and quit the editor with Ctrl+Q.
 
 ```bash
-nano gRNAs.txt
+fresh gRNAs.txt
 ```
 
-Now use nano to modify the shell to make things prettier. To do so change the file `.bash_profile`. This file contains settings for each user (the naming is just by convention). It starts with a `.`, which for Linux means the file is hidden. 
+Now use fresh to modify the shell to make things prettier. To do so change the file `.bash_profile`. This file contains settings for each user (the naming is just by convention). It starts with a `.`, which for Linux means the file is hidden.
 
 ```bash
-nano ~/.bash_profile
-# This creates the file and also opens it in nano
+fresh ~/.bash_profile
+# This creates the file and also opens it in fresh
 ```
 
-Add the following lines to `.bash_profile` in nano, then exit the file and save it - see the commands above. 
+Add the following lines to `.bash_profile` in fresh, then exit the file and save it - see the commands above.
 
 ::: {.callout-tip}
 In Windows PowerShell, copy/paste works best if you enable the option to do so via Ctrl+Shift+V, as shown below.
@@ -238,8 +219,12 @@ ls -l
 ls -al
 ```
 
-::: {.callout-tip}
+::: {.callout-important}
 If your grade sheet does not show that the content of .bash_profile is correct but it still works, then leave it. There may be a small difference in between your version and the expected one that does not impact the functionality.
+:::
+
+::: {.callout-tip}
+An older, but still very popular alternative to the fresh editor is [`nano`](https://www.nano-editor.org/). However, since fresh has a more intuitive user interface, we use the latter editor in this course.
 :::
 
 
@@ -261,7 +246,7 @@ cp /resources/bash/Homo_sapiens.GRCh38.cds.all.fa.gz ~/
 
 To make sure you have the entire file properly downloaded, compare the MD5 hash of the file. MD5 hash functions are a compact digital fingerprint of a file. The MD5 hash of the file should be `b16d46bf09c3b8b7909624f1e6c414ce`.
 
-``` bash 
+``` bash
 md5sum ~/Homo_sapiens.GRCh38.cds.all.fa.gz
 md5sum /resources/bash/Homo_sapiens.GRCh38.cds.all.fa.gz
 ```
@@ -297,7 +282,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz
 man gunzip
 # -c --stdout --to-stdout
 #   Write output on standard output; keep original files unchanged.
-#   If there are several input files, the output consists of a sequence 
+#   If there are several input files, the output consists of a sequence
 #   of independently compressed members. To obtain better compression,
 #   concatenate all input files before compressing them.
 ```

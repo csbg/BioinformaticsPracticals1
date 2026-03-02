@@ -74,7 +74,7 @@ Operator | Description | Example
 `-ge` | Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true. | `[ $a -ge $b ]` is not true.
 `-le` | Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true. | `[ $a -le $b ]` is true.
 
-You can also use nano to write the code above into a file (for example here: `script.sh`) and then use the following to execute it:
+You can also use fresh/nano to write the code above into a file (for example here: `script.sh`) and then use the following to execute it:
 
 ```bash
 bash script.sh

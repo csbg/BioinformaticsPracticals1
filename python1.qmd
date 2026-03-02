@@ -30,15 +30,15 @@ print("Hello from the interactive shell")
 ```
 
 Script mode
-: Write Python commands into a text file (e.g., by using nano to create a file `my_program.py`). If you are still in the interactive mode: exit the python console by typing `exit()` or the key combination `Ctrl-D` (`Ctrl` is `Strg` on a German keyboard), then open and edit the file in a text editor such as nano. 
+: Write Python commands into a text file (e.g., by using fresh/nano to create a file `my_program.py`). If you are still in the interactive mode: exit the python console by typing `exit()` or the key combination `Ctrl-D` (`Ctrl` is `Strg` on a German keyboard), then open and edit the file in a text editor such as fresh/nano. 
 ```bash
-nano my_program.py
+nano my_program.py  # or: fresh my_program.py
 ```
 Then enter python code into the file. 
 ```python
 print("Hello from the python script")
 ```
-Then, exit nano to get back to the bash shell and pass the name of this file to the `python` command as argument:
+Then, exit fresh/nano to get back to the bash shell and pass the name of this file to the `python` command as argument:
 ```bash
 python my_program.py
 ```
