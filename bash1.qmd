@@ -123,6 +123,7 @@ cat grimoire
 ```
 
 By solving the tasks in each level (`glade`), you will open up a new directory to enter. So, at each glade, you should do the following steps:
+
 - list files and folders in your directory `ls`
 - look at the content of files using `cat [filename]`, the first one you should open is grimoire: `cat grimoire`
 - execute scripts in the directory using `./script.sh` (Note: the script have the `.sh` ending but are not called `script.sh`. The first one is called `key.sh`)
