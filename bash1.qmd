@@ -101,14 +101,9 @@ head day1/*
 
 ## Treasure Game
 
-Next, we will play a little treasure game, where you have to navigate through directories to find a treasure. You will need three commands to play this game:
+Next, we will play a little treasure game, where you have to navigate through directories to find a treasure.
 
-- list files and folders in your directory `ls`
-- change between directories `cd`
-- look at the content of a file `cat`
-
-Now you are ready to start. First, download the game:
-
+First, download the game:
 ```bash
 cd ~/
 git clone https://github.com/tayssirgh/mozmoz-treasure.git
@@ -122,8 +117,13 @@ chmod +x ./.welcome.sh
 ```
 
 You start your journey by entering the folder `the-woodland-gate`, and looking at the grimoire:
-
 ```bash
 cd the-woodland-gate
 cat grimoire
 ```
+
+By solving the tasks in each level (`glade`), you will open up a new directory to enter. So, at each glade, you should do the following steps:
+- list files and folders in your directory `ls`
+- look at the content of files using `cat [filename]`, the first one you should open is grimoire: `cat grimoire`
+- execute scripts in the directory using `./script.sh` (Note: the script have the `.sh` ending but are not called `script.sh`. The first one is called `key.sh`)
+- after you solved the task(s), a new directory should appear (e.g. `first_glade`). To go to the next level/glade, change into the new directory using `cd` (e.g.: `cd first_glade`).
