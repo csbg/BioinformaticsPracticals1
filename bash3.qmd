@@ -200,7 +200,7 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_sy
 
 ### Exercise 3.2
 
-Create the following files in the directory `day3`:
+Create the following files in the directory `day3` (based on the file `GRCh38_reformatted.gz`):
 
 - Write all entries with sequences matching the guide "GCGGTTTC" into the file `guideMatch_GCGGTTTC.txt`.
 - Write the count of entries with sequences starting with "TGC" into the file `count_TGC.txt`.
