@@ -639,7 +639,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span>  <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="exercise-3.2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3.2">Exercise 3.2</h3>
-<p>Create the following files in the directory <code>day3</code>:</p>
+<p>Create the following files in the directory <code>day3</code> (based on the file <code>GRCh38_reformatted.gz</code>):</p>
 <ul>
 <li>Write all entries with sequences matching the guide “GCGGTTTC” into the file <code>guideMatch_GCGGTTTC.txt</code>.</li>
 <li>Write the count of entries with sequences starting with “TGC” into the file <code>count_TGC.txt</code>.</li>
