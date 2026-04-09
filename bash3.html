@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Bash Unit 3 – Bioinformatics Practicals I</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,19 +70,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a2370c85857dd8b424a4926875f0f1ff.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2595c7eb050eebdfbc98b045594b8514.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-a2370c85857dd8b424a4926875f0f1ff.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-79c920b4234fabadc33fa4796eee2c7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-898899e4a9cd4942f6f1a24679b41a89.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-79c920b4234fabadc33fa4796eee2c7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -405,13 +407,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#file-pattern-matches" id="toc-file-pattern-matches" class="nav-link active" data-scroll-target="#file-pattern-matches">File pattern matches</a></li>
   <li><a href="#simple-regular-expressions" id="toc-simple-regular-expressions" class="nav-link" data-scroll-target="#simple-regular-expressions">Simple regular expressions</a></li>
-  <li><a href="#checking-the-nucleotides-in-the-ensembl-fasta-file" id="toc-checking-the-nucleotides-in-the-ensembl-fasta-file" class="nav-link" data-scroll-target="#checking-the-nucleotides-in-the-ensembl-fasta-file">Checking the nucleotides in the Ensembl fasta file</a>
+  <li><a href="#checking-the-nucleotides-in-the-ensembl-fasta-file" id="toc-checking-the-nucleotides-in-the-ensembl-fasta-file" class="nav-link" data-scroll-target="#checking-the-nucleotides-in-the-ensembl-fasta-file">Checking the nucleotides in the Ensembl fasta file</a></li>
+  <li><a href="#reformatting-the-ensembl-fasta-file" id="toc-reformatting-the-ensembl-fasta-file" class="nav-link" data-scroll-target="#reformatting-the-ensembl-fasta-file">Reformatting the Ensembl fasta file</a></li>
+  <li><a href="#identifying-grna-matches" id="toc-identifying-grna-matches" class="nav-link" data-scroll-target="#identifying-grna-matches">Identifying gRNA matches</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-3.1" id="toc-exercise-3.1" class="nav-link" data-scroll-target="#exercise-3.1">Exercise 3.1</a></li>
-  </ul></li>
-  <li><a href="#reformatting-the-ensembl-fasta-file" id="toc-reformatting-the-ensembl-fasta-file" class="nav-link" data-scroll-target="#reformatting-the-ensembl-fasta-file">Reformatting the Ensembl fasta file</a></li>
-  <li><a href="#identifying-grna-matches" id="toc-identifying-grna-matches" class="nav-link" data-scroll-target="#identifying-grna-matches">Identifying gRNA matches</a>
-  <ul class="collapse">
   <li><a href="#exercise-3.2" id="toc-exercise-3.2" class="nav-link" data-scroll-target="#exercise-3.2">Exercise 3.2</a></li>
   </ul></li>
   </ul>
@@ -558,8 +559,22 @@ Tip
 </section>
 <section id="checking-the-nucleotides-in-the-ensembl-fasta-file" class="level2">
 <h2 class="anchored" data-anchor-id="checking-the-nucleotides-in-the-ensembl-fasta-file">Checking the nucleotides in the Ensembl fasta file</h2>
-<p>Now let’s use regulare expressions to explore the fasta file. Have a look at the first few lines.</p>
+<p>Now let’s use regulare expressions to explore the fasta file.</p>
+<p>But first, have a look at the first few lines.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you run gunzip without the “-c”, you will unzip the file in your home directory. In this case, get help to remove the unzipped file and get a fresh copy.</p>
+</div>
+</div>
 <p>We expect all DNA sequences to be made up of A, C, T, and Gs. Now, we will verify this. First, we will get all DNA-sequences from this file, excluding lines starting with a <code>&gt;</code> (in a FASTA files, these lines are the lines describing the sequence; see <a href="https://en.wikipedia.org/wiki/FASTA_format" class="uri">https://en.wikipedia.org/wiki/FASTA_format</a>).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -578,14 +593,6 @@ Tip
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> Homo_sapiens.GRCh38.cds.all.fa.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-500</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"&gt;"</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> . <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="exercise-3.1" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1">Exercise 3.1</h3>
-<ul>
-<li>Create a directory <code>day3</code> in your home directory.</li>
-<li>Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file <code>Homo_sapiens.GRCh38.cds.all.fa.gz</code>.</li>
-<li>Store each number in a file called <code>nt_A.txt</code>, <code>nt_C.txt</code>,… in the directory <code>day3</code>.</li>
-</ul>
-</section>
 </section>
 <section id="reformatting-the-ensembl-fasta-file" class="level2">
 <h2 class="anchored" data-anchor-id="reformatting-the-ensembl-fasta-file">Reformatting the Ensembl fasta file</h2>
@@ -637,9 +644,20 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span>  <span class="kw">|</span> <span class="fu">head</span> <span class="at">-30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Finally, we get unique gene IDs.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> <span class="at">-c</span> GRCh38_reformatted.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"seq:[ACTG]*TTAAGACA"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/^.*gene_symbol://g'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*$//g'</span>  <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<section id="exercise-3.1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3.1">Exercise 3.1</h3>
+<ul>
+<li>Create a directory <code>day3</code> in your home directory.</li>
+<li>Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file <code>Homo_sapiens.GRCh38.cds.all.fa.gz</code>.</li>
+<li>Store each number in a file called <code>nt_A.txt</code>, <code>nt_C.txt</code>,… in the directory <code>day3</code>.</li>
+</ul>
+</section>
 <section id="exercise-3.2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3.2">Exercise 3.2</h3>
-<p>Create the following files in the directory <code>day3</code> (based on the file <code>GRCh38_reformatted.gz</code>):</p>
+<p>Create the following files in the directory <code>day3</code> (all results should be based on the file <code>GRCh38_reformatted.gz</code>):</p>
 <ul>
 <li>Write all entries with sequences matching the guide “GCGGTTTC” into the file <code>guideMatch_GCGGTTTC.txt</code>.</li>
 <li>Write the count of entries with sequences starting with “TGC” into the file <code>count_TGC.txt</code>.</li>
