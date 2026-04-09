@@ -360,7 +360,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 
 - Copy the file `gRNAs.txt` from your home directory into the directory `day2`.
 - Rename the copied file in this directory to `gRNAs_exercise.txt`.
-- Add a line at the end of the file `gRNAs.txt` that is located in your home directory, adding the gRNA sequence "ACTGACTG".
+- Add one line at the end of the file `gRNAs.txt` that is located in your home directory, adding the gRNA sequence "ACTGACTG". (Note: Make sure to hit enter at the end of the line).
 
 ### Exercise 2.3
 
