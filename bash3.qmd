@@ -58,11 +58,17 @@ Matches up exactly one character | `?`
 
 ## Checking the nucleotides in the Ensembl fasta file
 
-Now let's use regulare expressions to explore the fasta file. Have a look at the first few lines.
+Now let's use regulare expressions to explore the fasta file.
+
+But first, have a look at the first few lines.
 
 ```bash
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -50
 ```
+
+::: {.callout-tip}
+If you run gunzip without the "-c", you will unzip the file in your home directory. In this case, get help to remove the unzipped file and get a fresh copy.
+:::
 
 We expect all DNA sequences to be made up of A, C, T, and Gs. Now, we will verify this. First, we will get all DNA-sequences from this file, excluding lines starting with a `>` (in a FASTA files, these lines are the lines describing the sequence; see <https://en.wikipedia.org/wiki/FASTA_format>).
 
@@ -97,12 +103,6 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | uniq | wc -l
 gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | head -500 | grep -v ">" | tr -d '\n' | grep -o . | sort | uniq | wc -l
 ```
-
-### Exercise 3.1
-
-- Create a directory `day3` in your home directory.
-- Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file `Homo_sapiens.GRCh38.cds.all.fa.gz`.
-- Store each number in a file called `nt_A.txt`, `nt_C.txt`,... in the directory `day3`.
 
 ## Reformatting the Ensembl fasta file
 
@@ -198,9 +198,17 @@ gunzip -c GRCh38_reformatted.gz | grep "seq:[ACTG]*TTAAGACA" | sed 's/^.*gene_sy
 ```
 
 
+## Exercises
+
+### Exercise 3.1
+
+- Create a directory `day3` in your home directory.
+- Count the number of A, C, T, and G of the DNA sequences of the first 1000 lines of file `Homo_sapiens.GRCh38.cds.all.fa.gz`.
+- Store each number in a file called `nt_A.txt`, `nt_C.txt`,... in the directory `day3`.
+
 ### Exercise 3.2
 
-Create the following files in the directory `day3` (based on the file `GRCh38_reformatted.gz`):
+Create the following files in the directory `day3` (all results should be based on the file `GRCh38_reformatted.gz`):
 
 - Write all entries with sequences matching the guide "GCGGTTTC" into the file `guideMatch_GCGGTTTC.txt`.
 - Write the count of entries with sequences starting with "TGC" into the file `count_TGC.txt`.
