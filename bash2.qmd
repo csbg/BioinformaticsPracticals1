@@ -360,7 +360,7 @@ gunzip -c Homo_sapiens.GRCh38.cds.all.fa.gz | wc -l
 
 - Copy the file `gRNAs.txt` from your home directory into the directory `day2`.
 - Rename the copied file in this directory to `gRNAs_exercise.txt`.
-- Add one line at the end of the file `gRNAs.txt` that is located in your home directory, adding the gRNA sequence "ACTGACTG". (Note: Make sure to hit enter at the end of the line).
+- Add one line at the end of this file (`gRNAs_exercise.txt` that is located in the directory `day2`), adding the gRNA sequence "ACTGACTG". (Note: Make sure to hit enter at the end of the line).
 
 ### Exercise 2.3
 
@@ -368,5 +368,5 @@ Place the following files into the directory `~/day2`, using pipes:
 
 - Store the number of lines of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lineNumber.txt`.
 - Write the first 15 lines of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lines1.txt`.
-- Write the 31th to 35th line of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lines2.txt`.
+- Write the 31th to 35th line of `Homo_sapiens.GRCh38.cds.all.fa.gz` into the file `lines2.txt`. Tip: Extract the first 35 lines and then - of these - the last 5.
 - Store the size of `Homo_sapiens.GRCh38.cds.all.fa.gz` in Megabytes into the file `size.txt`.
